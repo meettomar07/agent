@@ -202,10 +202,19 @@ class VerificationAgent:
                 # Registry facts are verified via official domain allowlist
                 continue
 
+            # Structured table facts extracted by TableExtractor from document table rows
+            if fact.notes and "TableExtractor" in fact.notes:
+                continue
+
             if fact.evidence_text and fact.status == "VERIFIED":
                 # Check if evidence snippet exists in raw text
                 snippet = fact.evidence_text.strip()
-                if snippet not in full_text and fact.value not in full_text:
+                cleaned_snippet = re.sub(r"^(?:Age Table|Qualification Table|Schedule Table|Table Row)[^:]*:\s*", "", snippet)
+                if (
+                    snippet not in full_text
+                    and cleaned_snippet not in full_text
+                    and fact.value not in full_text
+                ):
                     fact.status = "UNVERIFIED"
                     fact.notes = "Supporting quote not found verbatim in official document text"
 

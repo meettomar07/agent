@@ -49,6 +49,9 @@ coverage.xml
 *.db-wal
 *.db-shm
 
+# Document storage
+data/documents/
+
 # Environment secrets
 .env
 .env.local
