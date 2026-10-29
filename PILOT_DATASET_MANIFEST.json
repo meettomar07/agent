@@ -1,0 +1,180 @@
+{
+  "dataset_name": "SUPERVISED_LOCAL_PILOT_DATASET",
+  "created_at": "2026-10-29T16:30:00Z",
+  "status": "FROZEN_FOR_PILOT",
+  "total_documents": 15,
+  "authorities_distribution": {
+    "SSC": 3,
+    "UPSC": 3,
+    "TNPSC": 3,
+    "UPPSC": 2,
+    "NTA": 4
+  },
+  "documents": {
+    "pilot_01_ssc_sub-inspector_in_delhi_police.pdf": {
+      "pilot_id": "pilot_01",
+      "source_id": "src_ssc",
+      "authority": "Staff Selection Commission",
+      "title": "Sub-Inspector in Delhi Police and Central Armed Police Forces Examination, 2025:  Declaration of result of PET/PST to shortlist candidates for appearing in Paper-II.",
+      "source_url": "https://ssc.gov.in/api/attachment/uploads/masterData/NoticeBoards/writeup_29102026.pdf",
+      "sha256": "cd8800911a6c103af330b02534ab6a591b90bd9ff7792a43e7df82a3f9062465",
+      "size_bytes": 715406,
+      "content_type": "application/pdf",
+      "local_path": "data\\pilot_notices\\pilot_01_ssc_sub-inspector_in_delhi_police.pdf"
+    },
+    "pilot_02_ssc_combined_hindi_translators_exa.pdf": {
+      "pilot_id": "pilot_02",
+      "source_id": "src_ssc",
+      "authority": "Staff Selection Commission",
+      "title": "Combined Hindi Translators Examination, 2026: Uploading of Tentative Answer Key(s) along with Candidates\u2019 Response Sheet(s)",
+      "source_url": "https://ssc.gov.in/api/attachment/uploads/masterData/NoticeBoards/writeup_21092026.pdf",
+      "sha256": "5e32d9e86f794d6974f4a3d25ad1a703355935e716229a8f27da18438ad36963",
+      "size_bytes": 117542,
+      "content_type": "application/pdf",
+      "local_path": "data\\pilot_notices\\pilot_02_ssc_combined_hindi_translators_exa.pdf"
+    },
+    "pilot_03_ssc_grade__c__stenographers_limite.pdf": {
+      "pilot_id": "pilot_03",
+      "source_id": "src_ssc",
+      "authority": "Staff Selection Commission",
+      "title": "Grade 'C' Stenographers Limited Departmental Competitive Examination, 2025 : Uploading of Final Answer Key and Final Marks",
+      "source_url": "https://ssc.gov.in/api/attachment/uploads/masterData/NoticeBoards/writeup_finalanswerkey_17092026.pdf",
+      "sha256": "b038f451a978ac603d637ea91a6ad2cab1cad43fccdc5fcafd65ab7c6ebf6462",
+      "size_bytes": 276125,
+      "content_type": "application/pdf",
+      "local_path": "data\\pilot_notices\\pilot_03_ssc_grade__c__stenographers_limite.pdf"
+    },
+    "pilot_04_upsc_addendum_notice__03_posts_of_l.html": {
+      "pilot_id": "pilot_04",
+      "source_id": "src_upsc",
+      "authority": "Union Public Service Commission",
+      "title": "Addendum Notice: 03 Posts of Law Officer, Government of NCT of Delhi",
+      "source_url": "https://www.upsc.gov.in/whats-new/03 Posts of Law Officer, Government of NCT of Delhi/Addendum Notice",
+      "sha256": "6740ef1a5c425964e7863868d82d6115caa15f4cd41b3512203e3476b393c494",
+      "size_bytes": 29181,
+      "content_type": "text/html; charset=utf-8",
+      "local_path": "data\\pilot_notices\\pilot_04_upsc_addendum_notice__03_posts_of_l.html"
+    },
+    "pilot_05_upsc_addendum_notice__140_posts_of.html": {
+      "pilot_id": "pilot_05",
+      "source_id": "src_upsc",
+      "authority": "Union Public Service Commission",
+      "title": "Addendum Notice: 140 Posts of Assistant Public Prosecutor, Government of NCT of Delhi",
+      "source_url": "https://www.upsc.gov.in/whats-new/140 Posts of Assistant Public Prosecutor, Government of NCT of Delhi/Addendum Notice",
+      "sha256": "4de436feb3cfed827c48f1d3c49f1c673277e1434a52deb0b59929256af0ea58",
+      "size_bytes": 29346,
+      "content_type": "text/html; charset=utf-8",
+      "local_path": "data\\pilot_notices\\pilot_05_upsc_addendum_notice__140_posts_of.html"
+    },
+    "pilot_06_upsc_addendum_notice__05_posts_of_a.html": {
+      "pilot_id": "pilot_06",
+      "source_id": "src_upsc",
+      "authority": "Union Public Service Commission",
+      "title": "Addendum Notice: 05 Posts of Assistant Public Prosecutor in Central Bureau of Investigation",
+      "source_url": "https://www.upsc.gov.in/whats-new/05 Posts of Assistant Public Prosecutor in Central Bureau of Investigation/Addendum Notice",
+      "sha256": "af23000f4765d9b62e6fc09c7e8d144a4fd50f642cbcb56677ecf3656bc8956b",
+      "size_bytes": 29394,
+      "content_type": "text/html; charset=utf-8",
+      "local_path": "data\\pilot_notices\\pilot_06_upsc_addendum_notice__05_posts_of_a.html"
+    },
+    "pilot_07_tnpsc_rashtriya_indian_military_coll.pdf": {
+      "pilot_id": "pilot_07",
+      "source_id": "src_tnpsc",
+      "authority": "Tamil Nadu Public Service Commission",
+      "title": "RASHTRIYA INDIAN MILITARY COLLEGE, DEHRADUN (JULY-2024 TERM)",
+      "source_url": "https://www.tnpsc.gov.in/Document/english/15_2023_RIMC_ENGLISH.pdf",
+      "sha256": "10ed22a0f3f973229ed175ba453e5e5ae4f40e950ffe38b91da8c88e35456167",
+      "size_bytes": 202847,
+      "content_type": "application/pdf",
+      "local_path": "data\\pilot_notices\\pilot_07_tnpsc_rashtriya_indian_military_coll.pdf"
+    },
+    "pilot_08_tnpsc_rashtriya_indian_military_coll.pdf": {
+      "pilot_id": "pilot_08",
+      "source_id": "src_tnpsc",
+      "authority": "Tamil Nadu Public Service Commission",
+      "title": "RASHTRIYA INDIAN MILITARY COLLEGE,DEHRADUN (JANUARY-2024 TERM)",
+      "source_url": "https://www.tnpsc.gov.in/Document/english/06_2023_RIMC_ENG.pdf",
+      "sha256": "b4150b0c16624cf085972e47786805e5602ae07216efa30cf30b98ba440a0b84",
+      "size_bytes": 196867,
+      "content_type": "application/pdf",
+      "local_path": "data\\pilot_notices\\pilot_08_tnpsc_rashtriya_indian_military_coll.pdf"
+    },
+    "pilot_09_tnpsc_combined_engineering_subordina.pdf": {
+      "pilot_id": "pilot_09",
+      "source_id": "src_tnpsc",
+      "authority": "Tamil Nadu Public Service Commission",
+      "title": "COMBINED ENGINEERING SUBORDINATE SERVICES (EXAMINATION)",
+      "source_url": "https://www.tnpsc.gov.in/Document/english/05_2023_CESSE_ENG.pdf",
+      "sha256": "8bbe3214b0a581da6d23b26c46ac0a8a32cd6d1a1734da58d7f3cde36ef0b68b",
+      "size_bytes": 2362255,
+      "content_type": "application/pdf",
+      "local_path": "data\\pilot_notices\\pilot_09_tnpsc_combined_engineering_subordina.pdf"
+    },
+    "pilot_10_uppsc_samiksha_adhikari___sahayak_sa.html": {
+      "pilot_id": "pilot_10",
+      "source_id": "src_uppsc",
+      "authority": "Uttar Pradesh Public Service Commission",
+      "title": "SAMIKSHA ADHIKARI / SAHAYAK SAMIKSHA ADHIKARI EXAMINATION 2026 (English)",
+      "source_url": "https://uppsc.up.nic.in/OuterPages/View_Advertisement.aspx?ID=307&flag=E",
+      "sha256": "5286cc1f8968b52ab9ebe2964368b0e4699e227e875fd1584ae151b260274ac6",
+      "size_bytes": 159902,
+      "content_type": "text/html; charset=utf-8",
+      "local_path": "data\\pilot_notices\\pilot_10_uppsc_samiksha_adhikari___sahayak_sa.html"
+    },
+    "pilot_11_uppsc_samiksha_adhikari___sahayak_sa.html": {
+      "pilot_id": "pilot_11",
+      "source_id": "src_uppsc",
+      "authority": "Uttar Pradesh Public Service Commission",
+      "title": "SAMIKSHA ADHIKARI / SAHAYAK SAMIKSHA ADHIKARI EXAMINATION 2026 (Hindi)",
+      "source_url": "https://uppsc.up.nic.in/OuterPages/View_Advertisement.aspx?ID=307&flag=H",
+      "sha256": "85feb864f3a85bbb3e58bc0b55b81c4415ebd169143586f5f485cfa3269ba100",
+      "size_bytes": 159902,
+      "content_type": "text/html; charset=utf-8",
+      "local_path": "data\\pilot_notices\\pilot_11_uppsc_samiksha_adhikari___sahayak_sa.html"
+    },
+    "pilot_12_nta_advisory_and_instructions_rega.pdf": {
+      "pilot_id": "pilot_12",
+      "source_id": "src_nta",
+      "authority": "National Testing Agency",
+      "title": "Advisory and Instructions regarding registration process for Joint Entrance Examination (Main) \u2013 2027 (Session 1)",
+      "source_url": "https://nta.ac.in/Download/Notice/Notice_20261028220547.pdf",
+      "sha256": "d24733397846ca61d0ef44f7ab3eda31f09851b48e9a661d95953f37561b53c3",
+      "size_bytes": 714120,
+      "content_type": "application/pdf",
+      "local_path": "data\\pilot_notices\\pilot_12_nta_advisory_and_instructions_rega.pdf"
+    },
+    "pilot_13_nta_extension_of_last_date_for_sub.pdf": {
+      "pilot_id": "pilot_13",
+      "source_id": "src_nta",
+      "authority": "National Testing Agency",
+      "title": "Extension of Last Date for Submission of Online Application Form for UGC-NET December 2026 Examination \u2013 Reg.",
+      "source_url": "https://nta.ac.in/Download/Notice/Notice_20261027235155.pdf",
+      "sha256": "abf6b8a9cebd6653bb26cb70f5ffc742c76fe915d98ef3d83462727308abcbad",
+      "size_bytes": 398322,
+      "content_type": "application/pdf",
+      "local_path": "data\\pilot_notices\\pilot_13_nta_extension_of_last_date_for_sub.pdf"
+    },
+    "pilot_14_nta_3_correction_in_particulars_of.pdf": {
+      "pilot_id": "pilot_14",
+      "source_id": "src_nta",
+      "authority": "National Testing Agency",
+      "title": "3 Correction in Particulars of the Online Application Form of Rashtriya Military School Common Entrance Test (RMS CET) 2026 -Reg. Read More",
+      "source_url": "https://nta.ac.in/Download/Notice/Notice_20261027133408.pdf",
+      "sha256": "588e5ef8b1e7658e1874f288523994bf5c3c48b99eaf2ace84c6400fe8061846",
+      "size_bytes": 915917,
+      "content_type": "application/pdf",
+      "local_path": "data\\pilot_notices\\pilot_14_nta_3_correction_in_particulars_of.pdf"
+    },
+    "pilot_15_nta_relocation_of_nta_office.pdf": {
+      "pilot_id": "pilot_15",
+      "source_id": "src_nta",
+      "authority": "National Testing Agency",
+      "title": "Relocation of NTA Office",
+      "source_url": "https://nta.ac.in/Download/Notice/Notice_20260915113220.pdf",
+      "sha256": "5081418ee394359961844ea78ea6237218b2bfadc0f68aa9ce2bc0a958ba5ba0",
+      "size_bytes": 235689,
+      "content_type": "application/pdf",
+      "local_path": "data\\pilot_notices\\pilot_15_nta_relocation_of_nta_office.pdf"
+    }
+  }
+}
