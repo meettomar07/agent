@@ -975,6 +975,7 @@ class EditorialService:
                 has_unverified_critical = len(unverified_critical) > 0
 
                 # Evaluate normal approval safeguard vs audited override
+                waived_str = ", ".join(unverified_critical) if unverified_critical else None
                 if is_override:
                     if not override_reason or len(override_reason.strip()) < 10:
                         raise EditorialSecurityError(
@@ -983,6 +984,7 @@ class EditorialService:
                         )
                     decision_note_final = (
                         f"[EDITORIAL_OVERRIDE by {editor_email_clean}]: {override_reason.strip()}"
+                        + (f" | Waived Fields: {waived_str}" if waived_str else "")
                         + (f" | Additional Notes: {notes.strip()}" if notes else "")
                     )
                     audit_action = "EDITORIAL_OVERRIDE_APPROVED"
@@ -1019,8 +1021,9 @@ class EditorialService:
                     """
                     INSERT INTO approval_records (
                         id, article_version_id, content_hash, token_hash, reviewer_email,
-                        status, expires_at, decided_at, decision_notes, client_ip, created_at
-                    ) VALUES (?, ?, ?, ?, ?, 'APPROVED', ?, ?, ?, ?, ?)
+                        status, expires_at, decided_at, decision_notes, is_override, override_reason,
+                        unverified_fields_waived, client_ip, created_at
+                    ) VALUES (?, ?, ?, ?, ?, 'APPROVED', ?, ?, ?, ?, ?, ?, ?, ?)
                     """,
                     (
                         approval_id,
@@ -1031,6 +1034,9 @@ class EditorialService:
                         expires_at.isoformat(),
                         now_iso,
                         decision_note_final,
+                        1 if is_override else 0,
+                        override_reason.strip() if is_override and override_reason else None,
+                        waived_str if is_override else None,
                         client_ip,
                         now_iso,
                     ),
@@ -1060,6 +1066,7 @@ class EditorialService:
                             "content_hash": expected_content_hash,
                             "is_override": is_override,
                             "override_reason": override_reason,
+                            "unverified_fields_waived": unverified_critical if is_override else [],
                             "notes": notes,
                             "live_publishing_enabled": False,
                         }),
@@ -1073,6 +1080,8 @@ class EditorialService:
                     "decision": "APPROVED",
                     "approval_id": approval_id,
                     "is_override": is_override,
+                    "override_reason": override_reason.strip() if is_override and override_reason else None,
+                    "unverified_fields_waived": unverified_critical if is_override else [],
                     "decided_at": now_iso,
                     "reviewer_email": editor_email_clean,
                     "live_publishing_enabled": False,

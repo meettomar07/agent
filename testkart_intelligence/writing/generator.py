@@ -48,10 +48,12 @@ class WritingAgent:
             return "admit_card.md.j2"
         elif classification in (NoticeCategory.EXAM_RESULT.value, NoticeCategory.ANSWER_KEY.value):
             return "result_answer_key.md.j2"
-        elif classification == NoticeCategory.CORRIGENDUM.value:
+        elif classification in (NoticeCategory.CORRIGENDUM.value, NoticeCategory.RECRUITMENT_ADDENDUM.value):
             return "corrigendum.md.j2"
         elif classification in (NoticeCategory.INTERNAL_CIRCULAR.value, NoticeCategory.DEPUTATION_NOTICE.value):
             return "internal_circular.md.j2"
+        elif classification in (NoticeCategory.ADMISSION_OR_ENTRANCE_EXAM.value, NoticeCategory.ADMINISTRATIVE_ANNOUNCEMENT.value):
+            return "announcement.md.j2"
         else:
             return "announcement.md.j2"
 

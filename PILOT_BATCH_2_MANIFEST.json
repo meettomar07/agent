@@ -1,0 +1,180 @@
+{
+  "dataset_name": "SUPERVISED_PILOT_BATCH_2_DATASET",
+  "created_at": "2026-10-29T17:25:00Z",
+  "status": "FROZEN_FOR_PILOT_2",
+  "total_documents": 15,
+  "authorities_distribution": {
+    "SSC": 3,
+    "UPSC": 3,
+    "NTA": 3,
+    "UPPSC": 3,
+    "TNPSC": 3
+  },
+  "documents": {
+    "pilot2_01_ssc_steno_addendum.pdf": {
+      "pilot_id": "pilot2_01",
+      "source_id": "src_ssc",
+      "authority": "Staff Selection Commission",
+      "title": "Stenographer Grade C and D Examination 2026, Addendum: Mandatory Scribe Declaration",
+      "source_url": "https://ssc.gov.in/api/attachment/uploads/masterData/NoticeBoards/Stenographer_2026_Addendum_Scribe.pdf",
+      "sha256": "343e6f24cc550de65024ad188504e7f1f093eef96bac639283b8c8d5d26b0777",
+      "size_bytes": 1035,
+      "content_type": "application/pdf",
+      "local_path": "data\\pilot_batch_2\\pilot2_01_ssc_steno_addendum.pdf"
+    },
+    "pilot2_02_ssc_cgl_admit_card_city.pdf": {
+      "pilot_id": "pilot2_02",
+      "source_id": "src_ssc",
+      "authority": "Staff Selection Commission",
+      "title": "Information regarding the city of examination and Admission Certificate for Combined Graduate Level Examination",
+      "source_url": "https://ssc.gov.in/api/attachment/uploads/masterData/NoticeBoards/writeup_city_intimation_cgl.pdf",
+      "sha256": "1e72e5089da71cad8b053e1c86cfa8b7ab86b6122371fd3da453667f4cb8502a",
+      "size_bytes": 1055,
+      "content_type": "application/pdf",
+      "local_path": "data\\pilot_batch_2\\pilot2_02_ssc_cgl_admit_card_city.pdf"
+    },
+    "pilot2_03_ssc_steno_ldce_vacancies.pdf": {
+      "pilot_id": "pilot2_03",
+      "source_id": "src_ssc",
+      "authority": "Staff Selection Commission",
+      "title": "Tentative Vacancy of Grade 'C' Stenographers Limited Departmental Competitive Examination, 2026",
+      "source_url": "https://ssc.gov.in/api/attachment/uploads/masterData/NoticeBoards/tentative_vacancies_steno_ldce_2026.pdf",
+      "sha256": "47fc86c26676097992630db0b43cb1623dc20da6db1648e89fcd42095f4026b7",
+      "size_bytes": 1027,
+      "content_type": "application/pdf",
+      "local_path": "data\\pilot_batch_2\\pilot2_03_ssc_steno_ldce_vacancies.pdf"
+    },
+    "pilot2_04_upsc_geo_scientist_prelim_timetable.html": {
+      "pilot_id": "pilot2_04",
+      "source_id": "src_upsc",
+      "authority": "Union Public Service Commission",
+      "title": "Examination Time Table: Combined Geo-Scientist (Preliminary) Examination, 2027",
+      "source_url": "https://www.upsc.gov.in/whats-new/Combined%20Geo-Scientist%20%28Preliminary%29%20Examination%2C%202027/Time%20Table",
+      "sha256": "f1f4bdfb2aca01a6c4bb2475c470148e9c8e727deea95a873efff7433f5ec7fb",
+      "size_bytes": 27597,
+      "content_type": "text/html",
+      "local_path": "data\\pilot_batch_2\\pilot2_04_upsc_geo_scientist_prelim_timetable.html"
+    },
+    "pilot2_05_upsc_app_delhi_clarification.html": {
+      "pilot_id": "pilot2_05",
+      "source_id": "src_upsc",
+      "authority": "Union Public Service Commission",
+      "title": "Clarification Corrigendum for the post of Assistant Public Prosecutor in Delhi, vide Advt. No. 01/2026",
+      "source_url": "https://www.upsc.gov.in/sites/default/files/AssttPublProseGNCTD_Clarification.pdf",
+      "sha256": "2edaa95e746e4f0e1b6c869e1d5fe4c3e9fa10ae41939505aa42d14f11af2b5b",
+      "size_bytes": 364,
+      "content_type": "text/html",
+      "local_path": "data\\pilot_batch_2\\pilot2_05_upsc_app_delhi_clarification.html"
+    },
+    "pilot2_06_upsc_omr_administrative_guidelines.html": {
+      "pilot_id": "pilot2_06",
+      "source_id": "src_upsc",
+      "authority": "Union Public Service Commission",
+      "title": "Common mistakes done while filling OMR Sheet / Scannable Attendance List",
+      "source_url": "https://www.upsc.gov.in/sites/default/files/Common_Mistake_OMR_Attendance_List.pdf",
+      "sha256": "e48caf687f6257a7ccb6feab35d18d793cf060d4fae08aac7351c624e79e5029",
+      "size_bytes": 375,
+      "content_type": "text/html",
+      "local_path": "data\\pilot_batch_2\\pilot2_06_upsc_omr_administrative_guidelines.html"
+    },
+    "pilot2_07_nta_csir_net_result.pdf": {
+      "pilot_id": "pilot2_07",
+      "source_id": "src_nta",
+      "authority": "National Testing Agency",
+      "title": "Declaration of Result and Rank of the Joint CSIR-UGC NET June 2026",
+      "source_url": "https://nta.ac.in/Download/Notice/Notice_20260912180000.pdf",
+      "sha256": "0af601029293dc8e234f2c8e25f8979261742a13ad04235408b99a3630c13e67",
+      "size_bytes": 1023,
+      "content_type": "application/pdf",
+      "local_path": "data\\pilot_batch_2\\pilot2_07_nta_csir_net_result.pdf"
+    },
+    "pilot2_08_nta_ugc_net_answer_key.pdf": {
+      "pilot_id": "pilot2_08",
+      "source_id": "src_nta",
+      "authority": "National Testing Agency",
+      "title": "Challenge of Provisional Answer Keys for UGC-NET June 2026",
+      "source_url": "https://nta.ac.in/Download/Notice/Notice_20260907153000.pdf",
+      "sha256": "0bc35800bf53c176a34c6b61f96157962bc4f67371d627855461cc26c5ecac96",
+      "size_bytes": 1038,
+      "content_type": "application/pdf",
+      "local_path": "data\\pilot_batch_2\\pilot2_08_nta_ugc_net_answer_key.pdf"
+    },
+    "pilot2_09_nta_cuet_advisory.pdf": {
+      "pilot_id": "pilot2_09",
+      "source_id": "src_nta",
+      "authority": "National Testing Agency",
+      "title": "Public Notice regarding Advisory to candidates appearing for CUET (UG) - 2026",
+      "source_url": "https://nta.ac.in/Download/Notice/Notice_20260515120000.pdf",
+      "sha256": "31e807f75cd3cdaf63de054fe8ca41337fd066c4b350ad78038535f75e13259f",
+      "size_bytes": 1050,
+      "content_type": "application/pdf",
+      "local_path": "data\\pilot_batch_2\\pilot2_09_nta_cuet_advisory.pdf"
+    },
+    "pilot2_10_uppsc_advt_d2_e1_2026.html": {
+      "pilot_id": "pilot2_10",
+      "source_id": "src_uppsc",
+      "authority": "Uttar Pradesh Public Service Commission",
+      "title": "Direct Recruitment Advertisement No. D-2/E-1/2026",
+      "source_url": "https://uppsc.up.nic.in/OuterPages/View_Advertisement.aspx?ID=560&flag=E",
+      "sha256": "60c77302ab8bbf47dfbc813b84567ca650e2ce24b54095665278b3e513fb0f07",
+      "size_bytes": 159902,
+      "content_type": "text/html",
+      "local_path": "data\\pilot_batch_2\\pilot2_10_uppsc_advt_d2_e1_2026.html"
+    },
+    "pilot2_11_uppsc_advt_d6_e1_2025.html": {
+      "pilot_id": "pilot2_11",
+      "source_id": "src_uppsc",
+      "authority": "Uttar Pradesh Public Service Commission",
+      "title": "Direct Recruitment Advertisement No. D-6/E-1/2025",
+      "source_url": "https://uppsc.up.nic.in/OuterPages/View_Advertisement.aspx?ID=558&flag=E",
+      "sha256": "931772f2aa9dfaeec350a684b77535ec7963e95dd52614f5fb02ca7d62897cfb",
+      "size_bytes": 159902,
+      "content_type": "text/html",
+      "local_path": "data\\pilot_batch_2\\pilot2_11_uppsc_advt_d6_e1_2025.html"
+    },
+    "pilot2_12_uppsc_advt_id307.html": {
+      "pilot_id": "pilot2_12",
+      "source_id": "src_uppsc",
+      "authority": "Uttar Pradesh Public Service Commission",
+      "title": "Combined State Engineering Services Examination Advertisement No. A-1/E-1/2026",
+      "source_url": "https://uppsc.up.nic.in/OuterPages/View_Advertisement.aspx?ID=307&flag=E",
+      "sha256": "31eefad49fb313ba75360712d31a70653a855ee0f3e9decf0f2e1d548f0183e7",
+      "size_bytes": 159902,
+      "content_type": "text/html",
+      "local_path": "data\\pilot_batch_2\\pilot2_12_uppsc_advt_id307.html"
+    },
+    "pilot2_13_tnpsc_regulations.pdf": {
+      "pilot_id": "pilot2_13",
+      "source_id": "src_tnpsc",
+      "authority": "Tamil Nadu Public Service Commission",
+      "title": "Tamil Nadu Public Service Commission Regulations, 1954 (Administrative Gazette)",
+      "source_url": "https://www.tnpsc.gov.in/Document/english/regulations_1954.pdf",
+      "sha256": "92d082fd8f59d4856213e0b407d83cc118bdad126ff499c85fb67fbc08f1ea14",
+      "size_bytes": 1027,
+      "content_type": "application/pdf",
+      "local_path": "data\\pilot_batch_2\\pilot2_13_tnpsc_regulations.pdf"
+    },
+    "pilot2_14_tnpsc_csse_ii.pdf": {
+      "pilot_id": "pilot2_14",
+      "source_id": "src_tnpsc",
+      "authority": "Tamil Nadu Public Service Commission",
+      "title": "Combined Engineering Subordinate Services Examination II Notification No. 18/2024",
+      "source_url": "https://www.tnpsc.gov.in/Document/english/18_2012_not_eng_csse_ii.pdf",
+      "sha256": "305d966f8641ae84bbddb4b5e96f34948ed379be40c4d2ac95b2e04ff120b006",
+      "size_bytes": 149711,
+      "content_type": "application/pdf",
+      "local_path": "data\\pilot_batch_2\\pilot2_14_tnpsc_csse_ii.pdf"
+    },
+    "pilot2_15_tnpsc_rules_of_procedure.pdf": {
+      "pilot_id": "pilot2_15",
+      "source_id": "src_tnpsc",
+      "authority": "Tamil Nadu Public Service Commission",
+      "title": "Rules of Procedure of the Tamil Nadu Public Service Commission",
+      "source_url": "https://www.tnpsc.gov.in/Document/english/rules_of_procedure.pdf",
+      "sha256": "90291abe5e05026a669178d807be376010ba8bdcec38027fd14cf973d96ac633",
+      "size_bytes": 1007,
+      "content_type": "application/pdf",
+      "local_path": "data\\pilot_batch_2\\pilot2_15_tnpsc_rules_of_procedure.pdf"
+    }
+  }
+}

@@ -38,11 +38,22 @@ jinja_editorial_env = Environment(
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    """Ensure database schema is ready and sources are seeded."""
+    """Ensure database schema is ready, sources are seeded, and manage scheduler lifecycle."""
     init_db()
     with get_db() as conn:
         seed_sources_if_empty(conn)
+
+    scheduler = None
+    if settings.ENABLE_BACKGROUND_SCHEDULER:
+        from testkart_intelligence.scheduler.job_runner import ScanScheduler
+        scheduler = ScanScheduler()
+        scheduler.start()
+        app.state.scheduler = scheduler
+
     yield
+
+    if scheduler:
+        scheduler.shutdown()
 
 
 app = FastAPI(

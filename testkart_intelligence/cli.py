@@ -95,6 +95,31 @@ def cmd_serve(args):
     uvicorn.run("testkart_intelligence.api.app:app", host=host, port=port, reload=False)
 
 
+def cmd_scheduler(args):
+    """Run local discovery scheduler in foreground."""
+    import time
+    from testkart_intelligence.scheduler.job_runner import ScanScheduler
+    from testkart_intelligence.config import settings
+
+    scheduler = ScanScheduler()
+    print("=================================================================")
+    print(" Testkart Intelligence - Twice-Daily Discovery Scan Scheduler")
+    print(f" Timezone: {settings.TIMEZONE}")
+    print(f" Hours:    {settings.SCAN_HOURS} (Minute: {settings.SCAN_MINUTES:02d})")
+    print("=================================================================")
+    scheduler.start()
+    status = scheduler.get_status()
+    print(f"Scheduler active. Next scheduled scan: {status['next_run_time']}")
+    print("Press Ctrl+C to terminate.")
+    try:
+        while True:
+            time.sleep(1)
+    except KeyboardInterrupt:
+        print("\nStopping scheduler...")
+        scheduler.shutdown()
+        print("Scheduler stopped cleanly.")
+
+
 def cmd_triage(args):
     """Run discovery triage, categorization, and recency assessment across canonical notices."""
     from testkart_intelligence.classification.classifier import NoticeClassifier
@@ -132,6 +157,10 @@ def main():
     p_serve.add_argument("--host", default="127.0.0.1", help="Host interface (defaults to 127.0.0.1)")
     p_serve.add_argument("--port", type=int, default=8000, help="Port (defaults to 8000)")
     p_serve.set_defaults(func=cmd_serve)
+
+    # scheduler
+    p_sched = subparsers.add_parser("scheduler", help="Run local twice-daily discovery scheduler in foreground")
+    p_sched.set_defaults(func=cmd_scheduler)
 
     # sources
     p_src = subparsers.add_parser("sources", help="Manage official sources")

@@ -11,16 +11,19 @@ from testkart_intelligence.database.connection import get_db
 
 class NoticeCategory(str, Enum):
     RECRUITMENT_NOTIFICATION = "RECRUITMENT_NOTIFICATION"
+    RECRUITMENT_ADDENDUM = "RECRUITMENT_ADDENDUM"
     APPLICATION_WINDOW_UPDATE = "APPLICATION_WINDOW_UPDATE"
     EXAM_DATE_ANNOUNCEMENT = "EXAM_DATE_ANNOUNCEMENT"
     ADMIT_CARD_RELEASE = "ADMIT_CARD_RELEASE"
     ANSWER_KEY = "ANSWER_KEY"
     EXAM_RESULT = "EXAM_RESULT"
     CORRIGENDUM = "CORRIGENDUM"
-    CANCELLATION_NOTICE = "CANCELLATION_NOTICE"
-    SYLLABUS_UPDATE = "SYLLABUS_UPDATE"
+    ADMISSION_OR_ENTRANCE_EXAM = "ADMISSION_OR_ENTRANCE_EXAM"
     INTERNAL_CIRCULAR = "INTERNAL_CIRCULAR"
     DEPUTATION_NOTICE = "DEPUTATION_NOTICE"
+    ADMINISTRATIVE_ANNOUNCEMENT = "ADMINISTRATIVE_ANNOUNCEMENT"
+    CANCELLATION_NOTICE = "CANCELLATION_NOTICE"
+    SYLLABUS_UPDATE = "SYLLABUS_UPDATE"
     OTHER_ANNOUNCEMENT = "OTHER_ANNOUNCEMENT"
     HUMAN_REVIEW_REQUIRED = "HUMAN_REVIEW_REQUIRED"
 
@@ -48,13 +51,18 @@ class NoticeClassifier:
         r"cancellation[-_]",
     ]
 
-    # Priority 2: Corrigendum / Amendment / Errata
+    # Priority 2: Addenda & Corrigenda
+    KEYWORDS_ADDENDUM = [
+        r"\baddendum\b",
+        r"\baddendum\s+notice\b",
+        r"\baddendum\s+to\b",
+    ]
+
     KEYWORDS_CORRIGENDUM = [
         r"\bcorrigendum\b",
         r"\berrata\b",
         r"\brevised\s+notice\b",
         r"\bamendment\b",
-        r"\baddendum\b",
         r"\bpartial\s+modification\b",
         r"\bclarification\b",
         r"\badditions?/amendments\b",
@@ -88,6 +96,25 @@ class NoticeClassifier:
         r"\bdeputation\s+posts?\b",
     ]
 
+    # Priority 2.7: Admissions and Entrance Examinations (Takes strict precedence over employment recruitment)
+    KEYWORDS_ADMISSION = [
+        r"\badmission\s+notice\b",
+        r"\badmission\s+notification\b",
+        r"\badmissions?\s+to\b",
+        r"\badmissions?\s+into\b",
+        r"\bentrance\s+(?:examination|exam|test)\b",
+        r"\brash?triya\s+indian\s+military\b",
+        r"\brimc\b",
+        r"\bsainik\s+school\b",
+        r"\bjee\s*\(\s*main\s*\)",
+        r"\bjee\s+main\b",
+        r"\bcuet\b",
+        r"\bneet\b",
+        r"\bph\.?d\s+admission\b",
+        r"\bcounselling\s+(?:schedule|process)\b",
+        r"\bacademic\s+session\b",
+    ]
+
     # Priority 3: Results & Merit Lists
     KEYWORDS_RESULT = [
         r"\bresult\b",
@@ -104,21 +131,21 @@ class NoticeClassifier:
 
     # Priority 4: Answer Keys & Response Sheets
     KEYWORDS_ANSWER_KEY = [
-        r"\banswer\s+key\b",
-        r"\bresponse\s+sheet\b",
+        r"\banswer\s+keys?\b",
+        r"\bresponse\s+sheets?\b",
         r"\bobjection\s+(?:tracker|window|form)\b",
-        r"\btentative\s+key\b",
+        r"\btentative\s+keys?\b",
         r"\brecorded\s+responses?\b",
     ]
 
     # Priority 5: Admit Cards & Hall Tickets
     KEYWORDS_ADMIT_CARD = [
-        r"\badmit\s+card\b",
-        r"\bhall\s+ticket\b",
+        r"\badmit\s+cards?\b",
+        r"\bhall\s+tickets?\b",
         r"\be-admit\b",
-        r"\bcall\s+letter\b",
-        r"\bcity\s+intimation\s+slip\b",
-        r"\bcity\s+slip\b",
+        r"\bcall\s+letters?\b",
+        r"\bcity\s+intimation\s+slips?\b",
+        r"\bcity\s+slips?\b",
         r"\badmission\s+certificates?\b",
     ]
 
@@ -147,6 +174,29 @@ class NoticeClassifier:
         r"\binterview\s+details\b",
         r"\brevised\s+dates?\b",
         r"\brescheduling\b",
+    ]
+
+    # Priority 7.5: General Administrative Announcements (Tenders, relocations, office orders)
+    KEYWORDS_ADMINISTRATIVE = [
+        r"\brelocation\b",
+        r"\boffice\s+relocation\b",
+        r"\bshifting\s+of\s+(?:the\s+)?[a-zA-Z]*\s*office\b",
+        r"\bnotice\s+inviting\s+tenders?\b",
+        r"\btenders?\b",
+        r"\be-?tenders?\b",
+        r"\beoi\b",
+        r"\bexpression\s+of\s+interest\b",
+        r"\bquotations?\b",
+        r"\bprocurement\b",
+        r"\bvendor\s+empanelment\b",
+        r"\bempanelment\b",
+        r"\bvigilance\s+awareness\b",
+        r"\bhindi\s+pakhwada\b",
+        r"\bswachhata\b",
+        r"\bholiday\s+notice\b",
+        r"\bpublic\s+holidays?\b",
+        r"\boffice\s+orders?\b",
+        r"\badministrative\s+orders?\b",
     ]
 
     # Priority 8: Syllabus & Pattern
@@ -225,7 +275,11 @@ class NoticeClassifier:
                 return NoticeCategory.HUMAN_REVIEW_REQUIRED
             return NoticeCategory.CANCELLATION_NOTICE
 
-        # Step 2: Corrigendum / Amendment
+        # Step 2: Addenda & Corrigenda
+        for pat in cls.KEYWORDS_ADDENDUM:
+            if re.search(pat, combined_text):
+                return NoticeCategory.RECRUITMENT_ADDENDUM
+
         for pat in cls.KEYWORDS_CORRIGENDUM:
             if re.search(pat, combined_text):
                 return NoticeCategory.CORRIGENDUM
@@ -272,6 +326,16 @@ class NoticeClassifier:
             if re.search(pat, combined_text):
                 return NoticeCategory.EXAM_DATE_ANNOUNCEMENT
 
+        # Step 7.2: Admissions and Entrance Examinations (Takes strict precedence over employment recruitment)
+        for pat in cls.KEYWORDS_ADMISSION:
+            if re.search(pat, combined_text):
+                return NoticeCategory.ADMISSION_OR_ENTRANCE_EXAM
+
+        # Step 7.5: General Administrative Announcements
+        for pat in cls.KEYWORDS_ADMINISTRATIVE:
+            if re.search(pat, combined_text):
+                return NoticeCategory.ADMINISTRATIVE_ANNOUNCEMENT
+
         # Step 8: Syllabus / Exam Pattern
         for pat in cls.KEYWORDS_SYLLABUS:
             if re.search(pat, combined_text):
@@ -306,11 +370,86 @@ class NoticeClassifier:
         return NoticeCategory.OTHER_ANNOUNCEMENT
 
     @classmethod
+    def link_to_parent_notice(
+        cls,
+        notice_id: str,
+        source_id: str,
+        title: str,
+        notice_number: Optional[str],
+        category: NoticeCategory,
+        conn: sqlite3.Connection,
+    ) -> Tuple[Optional[str], Optional[str], float, str]:
+        """Find and link an addendum, corrigendum, or update to its parent recruitment notice.
+
+        Returns:
+            Tuple of (parent_notice_id, relation_type, relation_confidence, notes)
+        """
+        LINKABLE_CATEGORIES = (
+            NoticeCategory.CORRIGENDUM,
+            NoticeCategory.RECRUITMENT_ADDENDUM,
+            NoticeCategory.APPLICATION_WINDOW_UPDATE,
+            NoticeCategory.EXAM_DATE_ANNOUNCEMENT,
+            NoticeCategory.ADMIT_CARD_RELEASE,
+            NoticeCategory.ANSWER_KEY,
+            NoticeCategory.EXAM_RESULT,
+        )
+        if category not in LINKABLE_CATEGORIES:
+            return (None, None, 0.0, "Notice category is not linkable to a parent recruitment notice")
+
+        parents = conn.execute(
+            """
+            SELECT id, notice_number, title
+            FROM canonical_notices
+            WHERE source_id = ?
+              AND id != ?
+              AND classification = 'RECRUITMENT_NOTIFICATION'
+            ORDER BY first_discovered_at DESC
+            """,
+            (source_id, notice_id),
+        ).fetchall()
+
+        if not parents:
+            return (None, category.value, 0.0, "No parent recruitment notifications in registry for this source")
+
+        # 1. Exact notice_number match
+        if notice_number and str(notice_number).strip():
+            nn_clean = str(notice_number).strip().lower()
+            exact_matches = [p for p in parents if p["notice_number"] and str(p["notice_number"]).strip().lower() == nn_clean]
+            if len(exact_matches) == 1:
+                return (exact_matches[0]["id"], category.value, 0.98, f"Exact notice number match '{notice_number}'")
+            elif len(exact_matches) > 1:
+                p_ids = [p["id"] for p in exact_matches]
+                return (None, category.value, 0.40, f"AMBIGUOUS_PARENT_LINK: Multiple parent notices match notice number '{notice_number}': {p_ids}")
+
+        # 2. Key phrase token matching
+        stop_words = {"notice", "advertisement", "examination", "exam", "recruitment", "for", "the", "post", "posts", "of", "in", "and", "to", "grade", "services"}
+        title_words = set(re.findall(r"\b[a-zA-Z]{3,}\b", title.lower())) - stop_words
+
+        matched_parents = []
+        for p in parents:
+            p_words = set(re.findall(r"\b[a-zA-Z]{3,}\b", p["title"].lower())) - stop_words
+            overlap = title_words & p_words
+            if overlap:
+                jaccard = len(overlap) / len(title_words | p_words)
+                if jaccard >= 0.25 or len(overlap) >= 2:
+                    matched_parents.append((p, jaccard, overlap))
+
+        if len(matched_parents) == 1:
+            p, jaccard, overlap = matched_parents[0]
+            confidence = min(0.95, round(0.70 + jaccard * 0.30, 2))
+            return (p["id"], category.value, confidence, f"Unambiguous title overlap ({', '.join(sorted(overlap))}) with parent '{p['title']}'")
+        elif len(matched_parents) > 1:
+            p_ids = [mp[0]["id"] for mp in matched_parents]
+            return (None, category.value, 0.40, f"AMBIGUOUS_PARENT_LINK: Multiple matching candidate parents: {p_ids}")
+
+        return (None, category.value, 0.0, "No matching parent recruitment notification found")
+
+    @classmethod
     def classify_and_update(cls, notice_id: str, conn: sqlite3.Connection) -> NoticeCategory:
-        """Classify canonical notice and update database record."""
+        """Classify canonical notice, attempt parent linking, and update database record."""
         row = conn.execute(
             """
-            SELECT cn.id, cn.title, cn.source_id, nv.raw_text
+            SELECT cn.id, cn.title, cn.source_id, cn.notice_number, nv.raw_text
             FROM canonical_notices cn
             LEFT JOIN notice_versions nv ON nv.notice_id = cn.id
             WHERE cn.id = ?
@@ -335,13 +474,37 @@ class NoticeClassifier:
         )
         facts = {f["fact_key"]: f["fact_value"] for f in facts_cursor.fetchall()}
 
-        snippet = (row["raw_text"] or "")[:1000]
+        snippet = (row["raw_text"] or "")[:1500]
         category = cls.classify(title=row["title"], content_snippet=snippet, facts=facts)
+
+        # Attempt parent linking for linkable categories
+        parent_id, rel_type, rel_conf, link_notes = cls.link_to_parent_notice(
+            notice_id=notice_id,
+            source_id=row["source_id"],
+            title=row["title"],
+            notice_number=row["notice_number"],
+            category=category,
+            conn=conn,
+        )
+
+        is_ambiguous = "AMBIGUOUS_PARENT_LINK" in link_notes
+        triage_flag_val = "AMBIGUOUS_PARENT_LINK_FLAGGED_FOR_HUMAN_REVIEW" if is_ambiguous else "NONE"
 
         conn.execute(
             """
             UPDATE canonical_notices
             SET classification = ?,
+                parent_notice_id = COALESCE(?, parent_notice_id),
+                relation_type = COALESCE(?, relation_type),
+                relation_confidence = COALESCE(?, relation_confidence),
+                triage_flag = CASE
+                    WHEN ? != 'NONE' THEN ?
+                    ELSE triage_flag
+                END,
+                triage_notes = CASE
+                    WHEN ? != 'NONE' THEN ?
+                    ELSE triage_notes
+                END,
                 status = CASE
                     WHEN ? = 'HUMAN_REVIEW_REQUIRED' THEN 'HUMAN_REVIEW_REQUIRED'
                     ELSE status
@@ -351,6 +514,13 @@ class NoticeClassifier:
             """,
             (
                 category.value,
+                parent_id,
+                rel_type,
+                rel_conf,
+                triage_flag_val,
+                triage_flag_val,
+                triage_flag_val,
+                link_notes,
                 category.value,
                 datetime.now(timezone.utc).isoformat(),
                 notice_id,

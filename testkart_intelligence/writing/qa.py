@@ -238,6 +238,27 @@ class QualityAssuranceAgent:
                     )
                 )
 
+            # Check 4.5: Template routing consistency
+            is_recruitment_template = bool(re.search(r"##\s+Vacancies\s+&\s+Cadre\s+Breakdown|##\s+Eligibility\s+Criteria", markdown))
+            if is_recruitment_template and classification not in ("RECRUITMENT_NOTIFICATION", "OTHER_ANNOUNCEMENT"):
+                checks.append(
+                    QACheckItem(
+                        rule_name="rule_template_routing_consistency",
+                        passed=False,
+                        severity="ERROR",
+                        message=f"Recruitment template incorrectly applied to notice classified as '{classification}'",
+                    )
+                )
+            else:
+                checks.append(
+                    QACheckItem(
+                        rule_name="rule_template_routing_consistency",
+                        passed=True,
+                        severity="INFO",
+                        message="Template routing matches notice classification",
+                    )
+                )
+
             # Check 5: Check for raw heading fragments in data fields
             has_heading_in_data = bool(
                 re.search(r"(?:Application Fee|Age Limit|Fee)\s*[:\-]\s*(?:After completing the process|Candidates must have attained the age of)", markdown, re.IGNORECASE)

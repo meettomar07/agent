@@ -75,6 +75,9 @@ CREATE TABLE IF NOT EXISTS canonical_notices (
     recency_status TEXT NOT NULL DEFAULT 'UNKNOWN',
     triage_flag TEXT NOT NULL DEFAULT 'NONE',
     triage_notes TEXT,
+    parent_notice_id TEXT REFERENCES canonical_notices(id),
+    relation_type TEXT,
+    relation_confidence REAL,
     first_discovered_at TEXT NOT NULL,
     last_updated_at TEXT NOT NULL,
     UNIQUE(source_id, normalized_url)
@@ -204,6 +207,9 @@ CREATE TABLE IF NOT EXISTS approval_records (
     expires_at TEXT NOT NULL,
     decided_at TEXT,
     decision_notes TEXT,
+    is_override INTEGER NOT NULL DEFAULT 0,
+    override_reason TEXT,
+    unverified_fields_waived TEXT,
     client_ip TEXT,
     created_at TEXT NOT NULL
 );

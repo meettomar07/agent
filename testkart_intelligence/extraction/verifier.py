@@ -185,6 +185,10 @@ class VerificationAgent:
                 (canonical_status, now_iso, notice_id),
             )
 
+            # Classify notice and link to parent recruitment notice if applicable
+            from testkart_intelligence.classification.classifier import NoticeClassifier
+            NoticeClassifier.classify_and_update(notice_id, conn)
+
         return version_id, verified_facts
 
     def _verify_and_cross_check_facts(

@@ -55,6 +55,9 @@ def init_db(db_path: Optional[Path] = None) -> None:
                     ("recency_status", "TEXT NOT NULL DEFAULT 'UNKNOWN'"),
                     ("triage_flag", "TEXT NOT NULL DEFAULT 'NONE'"),
                     ("triage_notes", "TEXT"),
+                    ("parent_notice_id", "TEXT REFERENCES canonical_notices(id)"),
+                    ("relation_type", "TEXT"),
+                    ("relation_confidence", "REAL"),
                 ]
                 for col_name, col_type in migrations:
                     if col_name not in existing_cols:
@@ -75,6 +78,18 @@ def init_db(db_path: Optional[Path] = None) -> None:
                 for col_name, col_type in fact_migrations:
                     if col_name not in existing_fact_cols:
                         conn.execute(f"ALTER TABLE extracted_facts ADD COLUMN {col_name} {col_type};")
+
+            # Migration: Ensure approval_records has override governance columns
+            existing_appr_cols = {row["name"] for row in conn.execute("PRAGMA table_info(approval_records)").fetchall()}
+            if existing_appr_cols:
+                appr_migrations = [
+                    ("is_override", "INTEGER NOT NULL DEFAULT 0"),
+                    ("override_reason", "TEXT"),
+                    ("unverified_fields_waived", "TEXT"),
+                ]
+                for col_name, col_type in appr_migrations:
+                    if col_name not in existing_appr_cols:
+                        conn.execute(f"ALTER TABLE approval_records ADD COLUMN {col_name} {col_type};")
         except Exception:
             pass
 
