@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Testkart Editorial Review{% endblock %}</title>
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --border: #e2e8f0;
+      --border-dark: #cbd5e1;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --primary: #0284c7;
+      --primary-hover: #0369a1;
+      --success: #16a34a;
+      --success-bg: #dcfce7;
+      --warning: #d97706;
+      --warning-bg: #fef3c7;
+      --danger: #dc2626;
+      --danger-bg: #fee2e2;
+      --neutral-bg: #f1f5f9;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+    header {
+      background: #0f172a;
+      color: #fff;
+      padding: 0.85rem 1.75rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .brand-group { display: flex; align-items: center; gap: 1rem; }
+    .brand-title { font-size: 1.25rem; font-weight: 700; letter-spacing: -0.02em; margin: 0; }
+    .badge-dev {
+      background: #f59e0b;
+      color: #000;
+      font-size: 0.72rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 9999px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+    }
+    .badge-ip {
+      background: #334155;
+      color: #94a3b8;
+      font-size: 0.72rem;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      font-family: monospace;
+    }
+    nav.subnav {
+      background: #1e293b;
+      padding: 0 1.75rem;
+      display: flex;
+      gap: 0.5rem;
+      overflow-x: auto;
+    }
+    nav.subnav a {
+      color: #94a3b8;
+      text-decoration: none;
+      padding: 0.75rem 0.9rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      border-bottom: 2px solid transparent;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    nav.subnav a:hover, nav.subnav a.active {
+      color: #fff;
+      border-bottom-color: var(--primary);
+    }
+    nav.subnav .pill-count {
+      background: #334155;
+      color: #f1f5f9;
+      font-size: 0.72rem;
+      padding: 0.1rem 0.4rem;
+      border-radius: 9999px;
+      font-weight: 700;
+    }
+    .container {
+      max-width: 1400px;
+      margin: 1.5rem auto;
+      padding: 0 1.25rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      padding: 1.25rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+    }
+    .card h2 {
+      margin-top: 0;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #0f172a;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.6rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    /* Status pills */
+    .status-pill {
+      display: inline-block;
+      padding: 0.2rem 0.55rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+    .status-pass, .status-verified, .status-approved { background: var(--success-bg); color: #15803d; }
+    .status-warning, .status-unverified, .status-draft, .status-pending { background: var(--warning-bg); color: #b45309; }
+    .status-danger, .status-blocked, .status-rejected, .status-failed, .status-contradictory { background: var(--danger-bg); color: #b91c1c; }
+    .status-info, .status-discovered, .status-extracted { background: #e0f2fe; color: #0369a1; }
+    .status-neutral, .status-missing { background: #f1f5f9; color: #475569; }
+    .badge-current { background: #dcfce7; color: #166534; border: 1px solid #86efac; font-weight: 700; }
+    .badge-expired { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
+    .badge-historical { background: #f1f5f9; color: #64748b; border: 1px solid #cbd5e1; }
+    .badge-unknown { background: #f8fafc; color: #94a3b8; border: 1px solid #e2e8f0; }
+
+    /* Tables */
+    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    th, td { text-align: left; padding: 0.65rem 0.85rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+    th { background: #f8fafc; color: #475569; font-weight: 600; }
+    tr:hover td { background: #f8fafc; }
+
+    /* Alerts */
+    .alert {
+      padding: 0.85rem 1.1rem;
+      border-radius: 6px;
+      font-size: 0.88rem;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      border: 1px solid transparent;
+    }
+    .alert-warning { background: #fffbeb; border-color: #fde68a; color: #92400e; }
+    .alert-danger { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+    .alert-info { background: #f0f9ff; border-color: #bae6fd; color: #0369a1; }
+    .alert-success { background: #f0fdf4; border-color: #bbf7d0; color: #166534; }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.45rem 0.85rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      border-radius: 5px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.15s ease;
+    }
+    .btn-primary { background: var(--primary); color: #fff; }
+    .btn-primary:hover { background: var(--primary-hover); }
+    .btn-success { background: var(--success); color: #fff; }
+    .btn-success:hover { background: #15803d; }
+    .btn-danger { background: var(--danger); color: #fff; }
+    .btn-danger:hover { background: #b91c1c; }
+    .btn-warning { background: var(--warning); color: #fff; }
+    .btn-warning:hover { background: #b45309; }
+    .btn-outline { background: #fff; border-color: var(--border-dark); color: #334155; }
+    .btn-outline:hover { background: #f8fafc; }
+    .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    /* Code & Markdown */
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 0.82rem; background: #f1f5f9; padding: 0.15rem 0.35rem; border-radius: 3px; }
+    pre.code-block { background: #0f172a; color: #f8fafc; padding: 1rem; border-radius: 6px; overflow-x: auto; font-size: 0.82rem; line-height: 1.4; }
+    pre.code-block code { background: transparent; padding: 0; color: inherit; }
+
+    /* Form Controls */
+    input[type="text"], input[type="email"], textarea, select {
+      width: 100%;
+      padding: 0.55rem 0.75rem;
+      border: 1px solid var(--border-dark);
+      border-radius: 5px;
+      font-size: 0.88rem;
+      font-family: inherit;
+    }
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.15);
+    }
+    textarea { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+
+    /* Stats Grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .stat-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.1rem;
+      display: flex;
+      flex-direction: column;
+    }
+    .stat-label { font-size: 0.78rem; text-transform: uppercase; font-weight: 600; color: var(--text-muted); }
+    .stat-value { font-size: 1.65rem; font-weight: 700; color: var(--text); margin-top: 0.25rem; }
+    .stat-sub { font-size: 0.75rem; color: var(--text-muted); margin-top: 0.35rem; }
+  </style>
+  {% block extra_head %}{% endblock %}
+</head>
+<body>
+  <header>
+    <div class="brand-group">
+      <h1 class="brand-title">Testkart Intelligence</h1>
+      <span class="badge-dev">LOCAL DEVELOPMENT ONLY &bull; LIVE PUBLISHING DISABLED</span>
+      <span class="badge-ip">127.0.0.1</span>
+    </div>
+    <div style="font-size: 0.82rem; color: #cbd5e1;">
+      Editor Role: <b style="color: #fff;">Human-in-the-Loop</b>
+    </div>
+  </header>
+
+  <nav class="subnav">
+    <a href="/" class="{% if active_tab == 'dashboard' %}active{% endif %}">
+      Overview
+    </a>
+    <a href="/editorial/notices?view=current" class="{% if active_tab == 'notices_current' %}active{% endif %}" style="color: #4ade80;">
+      Current Opportunities <span class="pill-count" style="background: #166534; color: #fff;">{{ metrics.current_opportunities if metrics else '' }}</span>
+    </a>
+    <a href="/editorial/notices?view=recruitment" class="{% if active_tab == 'notices_recruitment' %}active{% endif %}">
+      Recruitment <span class="pill-count">{{ metrics.recruitment_notices if metrics else '' }}</span>
+    </a>
+    <a href="/editorial/notices?view=new" class="{% if active_tab == 'notices_new' %}active{% endif %}">
+      Newly Discovered <span class="pill-count">{{ metrics.new_notices if metrics else '' }}</span>
+    </a>
+    <a href="/editorial/articles?view=awaiting" class="{% if active_tab == 'articles_awaiting' %}active{% endif %}">
+      Drafts Awaiting Review <span class="pill-count">{{ metrics.awaiting_review if metrics else '' }}</span>
+    </a>
+    <a href="/editorial/notices?view=blocked" class="{% if active_tab == 'notices_blocked' %}active{% endif %}">
+      Blocked &amp; Failures <span class="pill-count" style="background: #991b1b; color: #fff;">{{ metrics.blocked_total if metrics else '' }}</span>
+    </a>
+    <a href="/editorial/notices?view=revisions" class="{% if active_tab == 'notices_revisions' %}active{% endif %}">
+      Revisions &amp; Corrigenda <span class="pill-count">{{ metrics.revisions if metrics else '' }}</span>
+    </a>
+    <a href="/editorial/articles?view=decided" class="{% if active_tab == 'articles_decided' %}active{% endif %}">
+      Approved &amp; Rejected <span class="pill-count">{{ (metrics.approved + metrics.rejected) if metrics else '' }}</span>
+    </a>
+    <a href="/editorial/scans" class="{% if active_tab == 'scans' %}active{% endif %}">
+      Scan Health &amp; Logs
+    </a>
+  </nav>
+
+  <div class="container">
+    {% block content %}{% endblock %}
+  </div>
+</body>
+</html>

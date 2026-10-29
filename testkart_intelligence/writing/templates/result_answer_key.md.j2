@@ -1,0 +1,37 @@
+# {{ notice.title }} - Official Result & Answer Key Details
+
+**Authority:** {{ facts.recruiting_authority or notice.authority_name }}  
+**Notice No:** {{ facts.notice_number or "Refer Portal" }}  
+**State / Category:** {{ notice.state }}  
+
+---
+
+## Result / Answer Key Summary
+
+The **{{ facts.recruiting_authority or notice.authority_name }}** has officially published the results / answer key for **{{ notice.title }}**.
+
+Candidates can check their qualification status, response sheets, and objection timelines in accordance with the official announcement.
+
+---
+
+## Examination Details & Key Dates
+
+- **Examination Stage:** {{ notice.title }}
+- **Publication Date:** {{ notice.first_discovered_at[:10] }}
+{% if facts.objection_deadline %}- **Objection Submission Deadline:** {{ facts.objection_deadline }}{% endif %}
+- **Issuing Body:** {{ facts.recruiting_authority or notice.authority_name }}
+
+---
+
+## How to Check Result / Answer Key
+
+1. Visit the authorized official website: [{{ facts.recruiting_authority or notice.authority_name }}]({{ facts.official_source_url or notice.normalized_url }}).
+2. Look for the link titled **{{ notice.title }}**.
+3. Download the result PDF / log in to access the individual scorecard or answer key.
+4. If submitting objections against tentative answer keys, follow the official portal window within the stipulated timeframe.
+
+---
+
+## Verified Official Link
+
+- **Official Result Document / Portal:** [Check Official Notification]({{ facts.official_source_url or notice.normalized_url }})

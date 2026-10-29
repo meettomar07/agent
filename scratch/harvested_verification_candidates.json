@@ -1,0 +1,110 @@
+[
+  {
+    "index": 2,
+    "filename": "ver_02_tnpsc_assistant_professor_of_psychol.pdf",
+    "authority": "Tamil Nadu Public Service Commission",
+    "title": "Assistant Professor of Psychology cum Clinical Psychologist",
+    "source_url": "https://www.tnpsc.gov.in/Document/english/33_2022_AP_PSY_ENG.pdf",
+    "sha256": "972d1c5499d270d77eb771941d8391d3f91f446d59fd98d6190e6344eefcedf2",
+    "size_bytes": 1674232,
+    "page_count": 40,
+    "format": "TEXT_PDF",
+    "readable": true
+  },
+  {
+    "index": 3,
+    "filename": "ver_03_tnpsc_assistant_public_prosecutor_gr.pdf",
+    "authority": "Tamil Nadu Public Service Commission",
+    "title": "Assistant Public Prosecutor Grade-II",
+    "source_url": "https://www.tnpsc.gov.in/Document/english/2018_23_notyfn_APP.pdf",
+    "sha256": "fe89300bf5b7e503b5a2e867b8cff7b401290e96131fefe1b2ad84e75832315e",
+    "size_bytes": 1448314,
+    "page_count": 30,
+    "format": "TEXT_PDF",
+    "readable": true
+  },
+  {
+    "index": 4,
+    "filename": "ver_04_tnpsc_statistician_in_medical_educat.pdf",
+    "authority": "Tamil Nadu Public Service Commission",
+    "title": "Statistician in Medical Education Department",
+    "source_url": "https://www.tnpsc.gov.in/Document/english/2017_20_NOT_EN_Statistician.pdf",
+    "sha256": "b64d07f93c22d777505ee4689fcf48bdbed723dc7e7137fbfe2e6c667a5c1b2d",
+    "size_bytes": 653181,
+    "page_count": 20,
+    "format": "TEXT_PDF",
+    "readable": true
+  },
+  {
+    "index": 5,
+    "filename": "ver_05_nta_cscs_junior_secretariat_assist.pdf",
+    "authority": "National Testing Agency",
+    "title": "CSCS Junior Secretariat Assistant Grade LDCE Examination",
+    "source_url": "https://nta.ac.in/Download/Notice/Notice_20240315131308.pdf",
+    "sha256": "f2fca17e5bf1471d8aa65a7453269f3478f6a1872352ae85f142f06993c90799",
+    "size_bytes": 429546,
+    "page_count": 1,
+    "format": "TEXT_PDF",
+    "readable": false
+  },
+  {
+    "index": 6,
+    "filename": "ver_06_nta_examination_schedule_for_jee_m.pdf",
+    "authority": "National Testing Agency",
+    "title": "Examination Schedule for JEE Main 2025 Session-2",
+    "source_url": "https://nta.ac.in/Download/Notice/Notice_20250310132132.pdf",
+    "sha256": "635c7d12c8e0fde068679f553b13e4fb9619c6f69cd6c90bd3e31f8f33000cbf",
+    "size_bytes": 334110,
+    "page_count": 1,
+    "format": "TEXT_PDF",
+    "readable": false
+  },
+  {
+    "index": 7,
+    "filename": "ver_07_nta_challenge_of_provisional_answe.pdf",
+    "authority": "National Testing Agency",
+    "title": "Challenge of Provisional Answer Key NEET UG 2024",
+    "source_url": "https://nta.ac.in/Download/Notice/Notice_20240629113919.pdf",
+    "sha256": "55f822a3d08e3f95ec5efc369bc9768f514716c6b82d9d0d2c488872c9788c34",
+    "size_bytes": 372811,
+    "page_count": 4,
+    "format": "TEXT_PDF",
+    "readable": true
+  },
+  {
+    "index": 8,
+    "filename": "ver_08_nta_release_of_admit_card_for_cuet.pdf",
+    "authority": "National Testing Agency",
+    "title": "Release of Admit Card for CUET PG 2023 Examination",
+    "source_url": "https://nta.ac.in/Download/Notice/Notice_20230607230401.pdf",
+    "sha256": "2af6365cf48728408c8d3cf857858ecc45395ddcbd16d6ec8ea0565a10e02c44",
+    "size_bytes": 331863,
+    "page_count": 1,
+    "format": "TEXT_PDF",
+    "readable": true
+  },
+  {
+    "index": 9,
+    "filename": "ver_09_upsc_combined_geo_scientist_prelimi.html",
+    "authority": "Union Public Service Commission",
+    "title": "Combined Geo-Scientist Preliminary Examination Time Table",
+    "source_url": "https://www.upsc.gov.in/whats-new/Combined Geo-Scientist (Preliminary) Examination, 2027/Examination Time Table",
+    "sha256": "ebe8f95253f47929886a8ef0f5816cb1186a84ecdc3e5d22e156723c69f30b48",
+    "size_bytes": 29192,
+    "page_count": 1,
+    "format": "HTML",
+    "readable": true
+  },
+  {
+    "index": 10,
+    "filename": "ver_10_upsc_indian_economic_service_interv.html",
+    "authority": "Union Public Service Commission",
+    "title": "Indian Economic Service Interview Schedule",
+    "source_url": "https://www.upsc.gov.in/whats-new/Indian Economic Service - Indian Statistical Service Examination, 2026/Interview Schedule",
+    "sha256": "b45d0e05b4726812774878e5a9123cbf65a6d14895167aea4c1e92699cd614e1",
+    "size_bytes": 29807,
+    "page_count": 1,
+    "format": "HTML",
+    "readable": true
+  }
+]

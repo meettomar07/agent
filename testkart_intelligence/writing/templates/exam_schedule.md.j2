@@ -1,0 +1,41 @@
+# {{ notice.title }} - Examination Schedule & Dates
+
+**Authority:** {{ facts.recruiting_authority or notice.authority_name }}  
+**Notice No:** {{ facts.notice_number or "Refer Official Notification" }}  
+**State / Category:** {{ notice.state }} ({{ notice.category }})  
+
+---
+
+## Examination Schedule Overview
+
+The **{{ facts.recruiting_authority or notice.authority_name }}** has officially announced the examination schedule and timetable for **{{ notice.title }}**.
+
+Candidates preparing for this examination can review the official dates, shifts, and examination timetable below as notified by the authority.
+
+---
+
+## Official Timetable & Dates
+
+| Detail | Official Information |
+| :--- | :--- |
+| **Examination / Subject** | {{ notice.title }} |
+| **Confirmed Examination Dates** | {{ facts.exam_date or "Refer official schedule table" }} |
+| **Issuing Authority** | {{ facts.recruiting_authority or notice.authority_name }} |
+| **Official Notice / File No.** | {{ facts.notice_number or "Refer official notification" }} |
+| **City Intimation / Admit Card** | Will be released on the official portal prior to examination |
+
+---
+
+## Important Instructions for Candidates
+
+1. Check the official examination calendar and verified dates carefully.
+2. Official city intimation slips and e-admit cards will be made accessible through the authority's candidate login portal ahead of the examination.
+3. Candidates are advised to monitor the verified official portal for any administrative shift revisions or timetable updates.
+
+---
+
+## Official Source & Verification Link
+
+- **Official Notice Portal:** [Access Official Notice / Timetable]({{ facts.official_source_url or notice.normalized_url }})
+- **Publishing Authority:** {{ facts.recruiting_authority or notice.authority_name }}
+- **Verification Status:** Verified Official Release

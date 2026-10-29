@@ -1,0 +1,316 @@
+{% extends "editorial_base.html" %}
+
+{% block title %}Testkart Editorial — Official Notices Review &amp; Triage{% endblock %}
+
+{% block content %}
+<div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.75rem;">
+  <div>
+    <h2 style="margin: 0; font-size: 1.35rem; display: flex; align-items: center; gap: 0.5rem;">
+      <span>Official Notices Catalog &amp; Triage</span>
+      <span class="badge-dev" style="font-size: 0.7rem; background: #0284c7; color: #fff;">CANONICAL DISCOVERY</span>
+    </h2>
+    <span style="font-size: 0.85rem; color: var(--text-muted);">
+      Active View: <b>{{ current_view.upper() }}</b> &bull; Displaying {{ notices|length }} notices
+    </span>
+  </div>
+  <div style="display: flex; gap: 0.4rem; flex-wrap: wrap;">
+    <a href="/editorial/notices?view=all" class="btn {% if current_view == 'all' %}btn-primary{% else %}btn-outline{% endif %}">All ({{ metrics.total_notices }})</a>
+    <a href="/editorial/notices?view=current" class="btn {% if current_view == 'current' %}btn-success{% else %}btn-outline{% endif %}" style="{% if current_view != 'current' %}border-color: #86efac; color: #166534;{% endif %}">
+      Current Opportunities ({{ metrics.current_opportunities }})
+    </a>
+    <a href="/editorial/notices?view=recruitment" class="btn {% if current_view == 'recruitment' %}btn-primary{% else %}btn-outline{% endif %}">Recruitment ({{ metrics.recruitment_notices }})</a>
+    <a href="/editorial/notices?view=new" class="btn {% if current_view == 'new' %}btn-primary{% else %}btn-outline{% endif %}">New ({{ metrics.new_notices }})</a>
+    <a href="/editorial/notices?view=revisions" class="btn {% if current_view == 'revisions' %}btn-warning{% else %}btn-outline{% endif %}">Revisions ({{ metrics.revisions }})</a>
+    <a href="/editorial/notices?view=blocked" class="btn {% if current_view == 'blocked' %}btn-danger{% else %}btn-outline{% endif %}">Blocked ({{ metrics.blocked_total }})</a>
+  </div>
+</div>
+
+<!-- Multi-Field Filter Bar -->
+<div class="card" style="margin-bottom: 1.25rem; background: #ffffff; border: 1px solid var(--border);">
+  <form method="GET" action="/editorial/notices" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.75rem; align-items: flex-end;">
+    <input type="hidden" name="view" value="{{ current_view }}">
+
+    <div>
+      <label style="font-size: 0.78rem; font-weight: 600; color: var(--text-muted); display: block; margin-bottom: 0.25rem;">Authority</label>
+      <select name="authority" style="font-size: 0.82rem; padding: 0.4rem 0.6rem;">
+        <option value="">All Authorities (5)</option>
+        <option value="UPSC" {% if filter_authority == 'UPSC' %}selected{% endif %}>UPSC</option>
+        <option value="SSC" {% if filter_authority == 'SSC' %}selected{% endif %}>SSC</option>
+        <option value="NTA" {% if filter_authority == 'NTA' %}selected{% endif %}>NTA</option>
+        <option value="UPPSC" {% if filter_authority == 'UPPSC' %}selected{% endif %}>UPPSC</option>
+        <option value="TNPSC" {% if filter_authority == 'TNPSC' %}selected{% endif %}>TNPSC</option>
+      </select>
+    </div>
+
+    <div>
+      <label style="font-size: 0.78rem; font-weight: 600; color: var(--text-muted); display: block; margin-bottom: 0.25rem;">Notice Category</label>
+      <select name="category" style="font-size: 0.82rem; padding: 0.4rem 0.6rem;">
+        <option value="">All Categories</option>
+        <option value="RECRUITMENT_NOTIFICATION" {% if filter_category == 'RECRUITMENT_NOTIFICATION' %}selected{% endif %}>Recruitment Notification</option>
+        <option value="APPLICATION_WINDOW_UPDATE" {% if filter_category == 'APPLICATION_WINDOW_UPDATE' %}selected{% endif %}>Application Window / Extension</option>
+        <option value="EXAM_DATE_ANNOUNCEMENT" {% if filter_category == 'EXAM_DATE_ANNOUNCEMENT' %}selected{% endif %}>Exam Date / Schedule</option>
+        <option value="ADMIT_CARD_RELEASE" {% if filter_category == 'ADMIT_CARD_RELEASE' %}selected{% endif %}>Admit Card / Hall Ticket</option>
+        <option value="ANSWER_KEY" {% if filter_category == 'ANSWER_KEY' %}selected{% endif %}>Answer Key / Objection</option>
+        <option value="EXAM_RESULT" {% if filter_category == 'EXAM_RESULT' %}selected{% endif %}>Exam Result / Selection List</option>
+        <option value="CORRIGENDUM" {% if filter_category == 'CORRIGENDUM' %}selected{% endif %}>Corrigendum / Addendum</option>
+        <option value="CANCELLATION_NOTICE" {% if filter_category == 'CANCELLATION_NOTICE' %}selected{% endif %}>Cancellation / Withdrawal</option>
+        <option value="SYLLABUS_UPDATE" {% if filter_category == 'SYLLABUS_UPDATE' %}selected{% endif %}>Syllabus / Pattern</option>
+        <option value="OTHER_ANNOUNCEMENT" {% if filter_category == 'OTHER_ANNOUNCEMENT' %}selected{% endif %}>Other Announcement</option>
+        <option value="HUMAN_REVIEW_REQUIRED" {% if filter_category == 'HUMAN_REVIEW_REQUIRED' %}selected{% endif %}>Human Review Required</option>
+      </select>
+    </div>
+
+    <div>
+      <label style="font-size: 0.78rem; font-weight: 600; color: var(--text-muted); display: block; margin-bottom: 0.25rem;">Recency Status</label>
+      <select name="recency" style="font-size: 0.82rem; padding: 0.4rem 0.6rem;">
+        <option value="">All Recency States</option>
+        <option value="CURRENT" {% if filter_recency == 'CURRENT' %}selected{% endif %}>CURRENT (Actionable Opportunity)</option>
+        <option value="EXPIRED" {% if filter_recency == 'EXPIRED' %}selected{% endif %}>EXPIRED (Past Deadline)</option>
+        <option value="HISTORICAL" {% if filter_recency == 'HISTORICAL' %}selected{% endif %}>HISTORICAL (Portal Archive 2018–2025)</option>
+        <option value="UNKNOWN" {% if filter_recency == 'UNKNOWN' %}selected{% endif %}>UNKNOWN (Undated Notice)</option>
+      </select>
+    </div>
+
+    <div>
+      <label style="font-size: 0.78rem; font-weight: 600; color: var(--text-muted); display: block; margin-bottom: 0.25rem;">Review Status</label>
+      <select name="review_status" style="font-size: 0.82rem; padding: 0.4rem 0.6rem;">
+        <option value="">All Review Statuses</option>
+        <option value="DISCOVERED" {% if filter_review_status == 'DISCOVERED' %}selected{% endif %}>DISCOVERED</option>
+        <option value="EXTRACTED" {% if filter_review_status == 'EXTRACTED' %}selected{% endif %}>EXTRACTED</option>
+        <option value="HUMAN_REVIEW_REQUIRED" {% if filter_review_status == 'HUMAN_REVIEW_REQUIRED' %}selected{% endif %}>HUMAN_REVIEW_REQUIRED</option>
+        <option value="SCANNED_OCR_BLOCKED_FLAGGED_FOR_HUMAN_REVIEW" {% if filter_review_status == 'SCANNED_OCR_BLOCKED_FLAGGED_FOR_HUMAN_REVIEW' %}selected{% endif %}>SCANNED OCR BLOCKED</option>
+        <option value="NON_UNICODE_ENCODING_FLAGGED_FOR_HUMAN_REVIEW" {% if filter_review_status == 'NON_UNICODE_ENCODING_FLAGGED_FOR_HUMAN_REVIEW' %}selected{% endif %}>NON-UNICODE ENCODING</option>
+      </select>
+    </div>
+
+    <div>
+      <label style="font-size: 0.78rem; font-weight: 600; color: var(--text-muted); display: block; margin-bottom: 0.25rem;">Keyword / Search</label>
+      <input type="text" name="search" value="{{ filter_search }}" placeholder="Title, notice #, URL..." style="font-size: 0.82rem; padding: 0.4rem 0.6rem;">
+    </div>
+
+    <div style="display: flex; gap: 0.4rem;">
+      <button type="submit" class="btn btn-primary" style="padding: 0.45rem 0.85rem; font-size: 0.82rem;">Filter</button>
+      <a href="/editorial/notices?view={{ current_view }}" class="btn btn-outline" style="padding: 0.45rem 0.85rem; font-size: 0.82rem;">Reset</a>
+    </div>
+  </form>
+</div>
+
+<!-- Notice Listings Table -->
+<div class="card" style="padding: 0; overflow-x: auto;">
+  {% if notices %}
+  <table style="margin: 0; min-width: 1000px;">
+    <thead>
+      <tr>
+        <th style="width: 90px;">Notice ID</th>
+        <th>Authority &amp; Official Notice</th>
+        <th style="width: 160px;">Category</th>
+        <th style="width: 130px;">Recency</th>
+        <th style="width: 130px;">Important Dates</th>
+        <th style="width: 130px;">Triage / Flag</th>
+        <th style="width: 130px;">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for n in notices %}
+      <tr id="notice-row-{{ n.id }}" style="{% if n.recency_status == 'CURRENT' %}background: #f0fdf4;{% elif n.recency_status == 'HISTORICAL' %}background: #fafafa; opacity: 0.85;{% endif %}">
+        <td>
+          <code>{{ n.id[:10] }}..</code>
+          {% if n.version_count > 1 %}
+            <br><span class="status-pill status-warning" style="font-size: 0.68rem; margin-top: 0.2rem;">{{ n.version_count }} versions</span>
+          {% endif %}
+        </td>
+        <td>
+          <div style="display: flex; align-items: baseline; gap: 0.4rem; margin-bottom: 0.2rem;">
+            <b>{{ n.authority_name }}</b>
+            <span style="font-size: 0.75rem; color: var(--text-muted);">({{ n.state }})</span>
+          </div>
+          <div style="font-size: 0.88rem; font-weight: 500; color: #1e293b; line-height: 1.35;">
+            {{ n.title }}
+          </div>
+          <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.25rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
+            {% if n.notice_number %}
+              <span>Notice No: <code>{{ n.notice_number }}</code></span>
+            {% endif %}
+            <span>Discovered: {{ n.first_discovered_at[:10] if n.first_discovered_at else 'N/A' }}</span>
+            <a href="{{ n.normalized_url }}" target="_blank" rel="noopener noreferrer" style="color: var(--primary); text-decoration: none;">
+              Official URL &nearr;
+            </a>
+          </div>
+        </td>
+        <td>
+          {% if n.classification == 'RECRUITMENT_NOTIFICATION' %}
+            <span class="status-pill status-pass">{{ n.classification }}</span>
+          {% elif n.classification == 'CANCELLATION_NOTICE' %}
+            <span class="status-pill status-danger">{{ n.classification }}</span>
+          {% elif n.classification in ('CORRIGENDUM', 'APPLICATION_WINDOW_UPDATE') %}
+            <span class="status-pill status-warning">{{ n.classification }}</span>
+          {% elif n.classification == 'HUMAN_REVIEW_REQUIRED' %}
+            <span class="status-pill status-danger">REVIEW REQUIRED</span>
+          {% else %}
+            <span class="status-pill status-info">{{ n.classification }}</span>
+          {% endif %}
+        </td>
+        <td>
+          {% if n.recency_status == 'CURRENT' %}
+            <span class="status-pill badge-current">CURRENT (Active)</span>
+          {% elif n.recency_status == 'EXPIRED' %}
+            <span class="status-pill badge-expired">EXPIRED</span>
+          {% elif n.recency_status == 'HISTORICAL' %}
+            <span class="status-pill badge-historical">HISTORICAL ARCHIVE</span>
+          {% else %}
+            <span class="status-pill badge-unknown">UNKNOWN DATE</span>
+          {% endif %}
+        </td>
+        <td style="font-size: 0.78rem;">
+          {% if n.published_date %}
+            <div>Pub: <b>{{ n.published_date }}</b></div>
+          {% endif %}
+          {% if n.application_end_date %}
+            <div style="color: #b45309;">Last Date: <b>{{ n.application_end_date }}</b></div>
+          {% endif %}
+          {% if not n.published_date and not n.application_end_date %}
+            <span style="color: var(--text-muted);">None parsed</span>
+          {% endif %}
+        </td>
+        <td>
+          {% if n.triage_flag and n.triage_flag != 'NONE' %}
+            <span class="status-pill {% if 'DUPLICATE' in n.triage_flag or 'CANCELLATION' in n.triage_flag %}status-danger{% else %}status-warning{% endif %}" style="font-size: 0.7rem;">
+              {{ n.triage_flag }}
+            </span>
+            {% if n.triage_notes %}
+              <div style="font-size: 0.72rem; color: var(--text-muted); margin-top: 0.2rem;" title="{{ n.triage_notes }}">
+                {{ n.triage_notes[:40] }}{% if n.triage_notes|length > 40 %}...{% endif %}
+              </div>
+            {% endif %}
+          {% else %}
+            <span style="font-size: 0.75rem; color: var(--text-muted);">Clean</span>
+          {% endif %}
+        </td>
+        <td>
+          <div style="display: flex; flex-direction: column; gap: 0.3rem;">
+            <a href="/editorial/notices/{{ n.id }}" class="btn btn-outline" style="padding: 0.2rem 0.5rem; font-size: 0.75rem; text-align: center;">
+              Inspect &rarr;
+            </a>
+            <button onclick="openFlagModal('{{ n.id }}', '{{ n.classification }}', '{{ n.title|replace('\'', '\\\'') }}')" class="btn btn-outline" style="padding: 0.2rem 0.5rem; font-size: 0.72rem; border-color: #cbd5e1; color: #475569;">
+              Flag for Review
+            </button>
+          </div>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <div style="padding: 2rem; text-align: center; color: var(--text-muted);">
+    <p style="font-size: 1rem; margin-bottom: 0.5rem;">No notices matching the current filter criteria.</p>
+    <a href="/editorial/notices?view={{ current_view }}" class="btn btn-outline" style="font-size: 0.82rem;">Clear All Filters</a>
+  </div>
+  {% endif %}
+</div>
+
+<!-- Modal Dialog for Flagging Bad Classification / Proposed Duplicate -->
+<div id="flagModal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center;">
+  <div style="background: #ffffff; border-radius: 8px; width: 500px; max-width: 90%; padding: 1.5rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);">
+    <h3 style="margin-top: 0; margin-bottom: 0.5rem; font-size: 1.15rem;">Flag Notice for Review</h3>
+    <p id="modalNoticeTitle" style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 1rem; border-left: 3px solid var(--primary); padding-left: 0.5rem;"></p>
+
+    <form id="flagNoticeForm" onsubmit="submitFlagForm(event)">
+      <input type="hidden" id="modalNoticeId" name="notice_id">
+
+      <div style="margin-bottom: 0.85rem;">
+        <label style="font-size: 0.8rem; font-weight: 600; display: block; margin-bottom: 0.25rem;">Flag Reason / Type *</label>
+        <select id="modalFlagType" required style="font-size: 0.85rem;">
+          <option value="MISCLASSIFIED">MISCLASSIFIED — Category incorrectly detected</option>
+          <option value="PROPOSED_DUPLICATE">PROPOSED_DUPLICATE — Cross-page or duplicate announcement</option>
+          <option value="HISTORICAL_ARCHIVE">HISTORICAL_ARCHIVE — Old notification mistakenly marked current</option>
+          <option value="REVISION_SERIES">REVISION_SERIES — Sequential amendment / corrigendum chain</option>
+          <option value="FACT_DISCREPANCY">FACT_DISCREPANCY — Dates or vacancies need re-extraction</option>
+          <option value="HUMAN_REVIEW_REQUIRED">HUMAN_REVIEW_REQUIRED — General factual uncertainty</option>
+        </select>
+      </div>
+
+      <div style="margin-bottom: 0.85rem;">
+        <label style="font-size: 0.8rem; font-weight: 600; display: block; margin-bottom: 0.25rem;">Proposed Classification Override (Optional)</label>
+        <select id="modalProposedCategory" style="font-size: 0.85rem;">
+          <option value="">Keep Existing Classification</option>
+          <option value="RECRUITMENT_NOTIFICATION">RECRUITMENT_NOTIFICATION</option>
+          <option value="APPLICATION_WINDOW_UPDATE">APPLICATION_WINDOW_UPDATE</option>
+          <option value="EXAM_DATE_ANNOUNCEMENT">EXAM_DATE_ANNOUNCEMENT</option>
+          <option value="ADMIT_CARD_RELEASE">ADMIT_CARD_RELEASE</option>
+          <option value="ANSWER_KEY">ANSWER_KEY</option>
+          <option value="EXAM_RESULT">EXAM_RESULT</option>
+          <option value="CORRIGENDUM">CORRIGENDUM</option>
+          <option value="CANCELLATION_NOTICE">CANCELLATION_NOTICE</option>
+          <option value="SYLLABUS_UPDATE">SYLLABUS_UPDATE</option>
+          <option value="OTHER_ANNOUNCEMENT">OTHER_ANNOUNCEMENT</option>
+          <option value="HUMAN_REVIEW_REQUIRED">HUMAN_REVIEW_REQUIRED</option>
+        </select>
+      </div>
+
+      <div style="margin-bottom: 1.25rem;">
+        <label style="font-size: 0.8rem; font-weight: 600; display: block; margin-bottom: 0.25rem;">Editorial Notes / Reason *</label>
+        <textarea id="modalFlagNotes" required rows="3" placeholder="Explain the rationale for flagging this notice..." style="font-size: 0.85rem; font-family: inherit;"></textarea>
+      </div>
+
+      <div style="display: flex; justify-content: flex-end; gap: 0.5rem;">
+        <button type="button" onclick="closeFlagModal()" class="btn btn-outline">Cancel</button>
+        <button type="submit" id="modalSubmitBtn" class="btn btn-primary">Save Flag &amp; Audit Log</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+function openFlagModal(noticeId, currentCategory, title) {
+  document.getElementById('modalNoticeId').value = noticeId;
+  document.getElementById('modalNoticeTitle').innerText = title;
+  document.getElementById('modalFlagNotes').value = '';
+  document.getElementById('flagModal').style.display = 'flex';
+}
+
+function closeFlagModal() {
+  document.getElementById('flagModal').style.display = 'none';
+}
+
+async function submitFlagForm(event) {
+  event.preventDefault();
+  const noticeId = document.getElementById('modalNoticeId').value;
+  const flagType = document.getElementById('modalFlagType').value;
+  const proposedCat = document.getElementById('modalProposedCategory').value;
+  const notes = document.getElementById('modalFlagNotes').value;
+  const btn = document.getElementById('modalSubmitBtn');
+
+  btn.disabled = true;
+  btn.innerText = 'Saving...';
+
+  try {
+    const resp = await fetch('/api/editorial/notices/' + encodeURIComponent(noticeId) + '/flag', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        flag: flagType,
+        notes: notes,
+        proposed_category: proposedCat || null,
+        author: 'editorial_reviewer'
+      })
+    });
+
+    if (!resp.ok) {
+      const err = await resp.json();
+      alert('Error saving flag: ' + (err.detail || resp.statusText));
+      btn.disabled = false;
+      btn.innerText = 'Save Flag & Audit Log';
+      return;
+    }
+
+    closeFlagModal();
+    // Reload with active filters preserved
+    window.location.reload();
+  } catch (e) {
+    alert('Network error while saving flag: ' + e);
+    btn.disabled = false;
+    btn.innerText = 'Save Flag & Audit Log';
+  }
+}
+</script>
+{% endblock %}

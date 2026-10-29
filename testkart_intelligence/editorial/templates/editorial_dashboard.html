@@ -1,0 +1,192 @@
+{% extends "editorial_base.html" %}
+
+{% block title %}Testkart Editorial Review — Dashboard Overview{% endblock %}
+
+{% block content %}
+<div class="stats-grid">
+  <div class="stat-card" style="border-left: 4px solid var(--success); background: #f0fdf4;">
+    <div class="stat-label" style="color: #166534;">Actionable Current Opportunities</div>
+    <div class="stat-value" style="color: #166534;">{{ metrics.current_opportunities }}</div>
+    <div class="stat-sub">Active deadlines or current cycle notices</div>
+  </div>
+  <div class="stat-card" style="border-left: 4px solid #64748b;">
+    <div class="stat-label">Historical Portal Archives</div>
+    <div class="stat-value" style="color: #64748b;">{{ metrics.historical_notices }}</div>
+    <div class="stat-sub">Archived 2018–2025 portal records (73.5%)</div>
+  </div>
+  <div class="stat-card" style="border-left: 4px solid var(--warning);">
+    <div class="stat-label">Expired Notices</div>
+    <div class="stat-value" style="color: var(--warning);">{{ metrics.expired_notices }}</div>
+    <div class="stat-sub">Past deadlines / closed application cycles</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">Total Discovered</div>
+    <div class="stat-value">{{ metrics.total_notices }}</div>
+    <div class="stat-sub">Across 5 approved official authorities</div>
+  </div>
+  <div class="stat-card" style="border-left: 4px solid #d97706;">
+    <div class="stat-label">Flagged / Human Review</div>
+    <div class="stat-value" style="color: #d97706;">{{ metrics.flagged_notices }}</div>
+    <div class="stat-sub">Duplicates, series or classification reviews</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">Active Portals</div>
+    <div class="stat-value">{{ metrics.sources_active }}</div>
+    <div class="stat-sub">{% if metrics.sources_failed > 0 %}<span style="color: var(--danger);">{{ metrics.sources_failed }} portal failures</span>{% else %}<span style="color: var(--success);">All 5 healthy</span>{% endif %}</div>
+  </div>
+</div>
+
+<div class="alert alert-info" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
+  <div>
+    <b>Portal Archive Architecture Notice:</b>
+    Over 73% of discovered notices (1,428 records) represent historical archive documents preserved on official portals (e.g. NTA archives to 2018, TNPSC to 2012).
+    Drafting and publishing workflows strictly filter for <b>CURRENT</b> opportunities to prevent confusing historical exams with active recruitments.
+  </div>
+  <div style="display: flex; gap: 0.5rem;">
+    <a href="/editorial/notices?view=current" class="btn btn-success" style="font-size: 0.78rem;">Explore {{ metrics.current_opportunities }} Current Opportunities &rarr;</a>
+    <a href="/editorial/notices?view=recruitment" class="btn btn-outline" style="font-size: 0.78rem;">Recruitment Notifications ({{ metrics.recruitment_notices }})</a>
+  </div>
+</div>
+
+<div class="card">
+  <h2>
+    <span>Drafts Awaiting Human Review</span>
+    <a href="/editorial/articles?view=awaiting" class="btn btn-outline" style="font-size: 0.75rem;">View All</a>
+  </h2>
+  {% if awaiting_articles %}
+  <table>
+    <thead>
+      <tr>
+        <th>Article ID</th>
+        <th>Authority &amp; Notice Title</th>
+        <th>Type</th>
+        <th>Version</th>
+        <th>QA Status</th>
+        <th>Author</th>
+        <th>Last Updated</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for a in awaiting_articles %}
+      <tr>
+        <td><code>{{ a.id }}</code></td>
+        <td>
+          <b>{{ a.authority_name }}</b><br>
+          <span style="font-size: 0.85rem; color: var(--text);">{{ a.title }}</span>
+        </td>
+        <td><code>{{ a.template_type }}</code></td>
+        <td>v{{ a.version_number or 1 }}</td>
+        <td>
+          {% if a.status == 'QA_PASSED' %}
+            <span class="status-pill status-pass">QA_PASSED</span>
+          {% elif a.status == 'QA_FAILED' %}
+            <span class="status-pill status-danger">QA_FAILED</span>
+          {% elif a.status == 'CORRECTION_REQUESTED' %}
+            <span class="status-pill status-warning">CORRECTION_REQ</span>
+          {% else %}
+            <span class="status-pill status-warning">{{ a.status }}</span>
+          {% endif %}
+        </td>
+        <td><span style="font-size: 0.78rem;">{{ a.generated_by or 'agent_writer' }}</span></td>
+        <td style="font-size: 0.78rem; color: var(--text-muted);">{{ a.updated_at[:19] }}</td>
+        <td>
+          <a href="/editorial/articles/{{ a.id }}" class="btn btn-primary" style="padding: 0.25rem 0.6rem; font-size: 0.78rem;">Open Editor &rarr;</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p style="color: var(--text-muted); font-size: 0.88rem; margin: 0.5rem 0;">No article drafts currently awaiting review.</p>
+  {% endif %}
+</div>
+
+<div class="card">
+  <h2>
+    <span>Blocked Documents &amp; Critical Extraction Failures</span>
+    <a href="/editorial/notices?view=blocked" class="btn btn-outline" style="font-size: 0.75rem;">View All</a>
+  </h2>
+  {% if blocked_notices %}
+  <table>
+    <thead>
+      <tr>
+        <th>Notice ID</th>
+        <th>Authority</th>
+        <th>Title</th>
+        <th>Notice Category</th>
+        <th>Block Reason</th>
+        <th>Discovered</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for n in blocked_notices %}
+      <tr>
+        <td><code>{{ n.id }}</code></td>
+        <td><b>{{ n.authority_name }}</b></td>
+        <td>{{ n.title }}</td>
+        <td><span class="status-pill status-info">{{ n.classification }}</span></td>
+        <td>
+          {% if n.status == 'SCANNED_OCR_BLOCKED_FLAGGED_FOR_HUMAN_REVIEW' %}
+            <span class="status-pill status-danger">SCANNED PDF (&lt;50 chars/pg)</span>
+          {% elif n.status == 'NON_UNICODE_ENCODING_FLAGGED_FOR_HUMAN_REVIEW' %}
+            <span class="status-pill status-danger">NON-UNICODE FONT</span>
+          {% elif n.status == 'HUMAN_REVIEW_REQUIRED' %}
+            <span class="status-pill status-warning">UNCERTAIN CLASSIFICATION</span>
+          {% else %}
+            <span class="status-pill status-danger">{{ n.status }}</span>
+          {% endif %}
+        </td>
+        <td style="font-size: 0.78rem; color: var(--text-muted);">{{ n.first_discovered_at[:19] }}</td>
+        <td>
+          <a href="/editorial/notices/{{ n.id }}" class="btn btn-outline" style="padding: 0.25rem 0.6rem; font-size: 0.78rem;">Inspect Evidence</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p style="color: var(--text-muted); font-size: 0.88rem; margin: 0.5rem 0;">No unreadable or blocked documents at this time.</p>
+  {% endif %}
+</div>
+
+<div class="card">
+  <h2>
+    <span>Newly Discovered Official Notices</span>
+    <a href="/editorial/notices?view=new" class="btn btn-outline" style="font-size: 0.75rem;">View All</a>
+  </h2>
+  {% if new_notices %}
+  <table>
+    <thead>
+      <tr>
+        <th>Notice ID</th>
+        <th>Authority</th>
+        <th>Notice Title</th>
+        <th>Category</th>
+        <th>Status</th>
+        <th>Discovered</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for n in new_notices %}
+      <tr>
+        <td><code>{{ n.id }}</code></td>
+        <td><b>{{ n.authority_name }}</b></td>
+        <td>{{ n.title }}</td>
+        <td><span class="status-pill status-info">{{ n.classification }}</span></td>
+        <td><span class="status-pill status-info">{{ n.status }}</span></td>
+        <td style="font-size: 0.78rem; color: var(--text-muted);">{{ n.first_discovered_at[:19] }}</td>
+        <td>
+          <a href="/editorial/notices/{{ n.id }}" class="btn btn-outline" style="padding: 0.25rem 0.6rem; font-size: 0.78rem;">Review Evidence</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p style="color: var(--text-muted); font-size: 0.88rem; margin: 0.5rem 0;">No new notices discovered in recent scans.</p>
+  {% endif %}
+</div>
+{% endblock %}

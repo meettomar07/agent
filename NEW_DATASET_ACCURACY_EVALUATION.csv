@@ -1,0 +1,469 @@
+notice_file,authority,document_format,notice_category,field_name,ground_truth_value,extracted_value,match_status,confidence,page_number,evidence_quote
+new_val_01_tnpsc_combined_civil_services_examin.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,recruiting_authority,Tamil Nadu Public Service Commission,Tamil Nadu Public Service Commission,EXACT_MATCH,1.00,1,Official publishing authority: Tamil Nadu Public Service Commission
+new_val_01_tnpsc_combined_civil_services_examin.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,notice_number,16/2024,16/2024,EXACT_MATCH,0.95,1,vertisement No.698  Notification No.16/2024
+new_val_01_tnpsc_combined_civil_services_examin.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,application_start_date,17.10.2024,17.10.2024,EXACT_MATCH,0.93,1,Schedule Table (Page 1): Date of Notification : 17 10 2024 . .
+new_val_01_tnpsc_combined_civil_services_examin.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,application_end_date,15.11.2024,15.11.2024,EXACT_MATCH,0.95,1,Last date and time for submission of  online application: 15.11.2024 11.59 P.M.
+new_val_01_tnpsc_combined_civil_services_examin.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,total_vacancies,35,35,EXACT_MATCH,0.92,2,Single Post Table Row (Page 2): Assistant - 35 vacancies
+new_val_01_tnpsc_combined_civil_services_examin.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,exam_date,04.01.2025,04.01.2025,EXACT_MATCH,0.93,1,Schedule Table (Page 1): Paper-I : GeneralTamil 04 01 2025 . . 09 30 AM to 1230 PM . . . . . .
+new_val_01_tnpsc_combined_civil_services_examin.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,application_fee,Rs. 100,Rs. 100/- (Rupees One Hundred only),EXACT_MATCH,0.85,10,ion Fee:     3.9.1. The examination fee of Rs.100/- (Rupees One Hundred only) should be paid at the 
+new_val_01_tnpsc_combined_civil_services_examin.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,age_limit,18 to 35 years,N/A,MISSING_IN_EXTRACTION,0.00,1,
+new_val_01_tnpsc_combined_civil_services_examin.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,eligibility,Degree Certificate,N/A,MISSING_IN_EXTRACTION,0.00,1,
+new_val_02_tnpsc_assistant_public_prosecutor__g.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,recruiting_authority,Tamil Nadu Public Service Commission,Tamil Nadu Public Service Commission,EXACT_MATCH,1.00,1,Official publishing authority: Tamil Nadu Public Service Commission
+new_val_02_tnpsc_assistant_public_prosecutor__g.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,notice_number,13/2024,13/2024,EXACT_MATCH,0.95,1,vertisement No.695  Notification No.13/2024                      Date:13.09.2024  A
+new_val_02_tnpsc_assistant_public_prosecutor__g.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,application_start_date,13.09.2024,13.09.2024,EXACT_MATCH,0.90,1,rtant Dates and Time:    Date of Notification  13.09.2024  Last date and time for submission of onli
+new_val_02_tnpsc_assistant_public_prosecutor__g.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,application_end_date,12.10.2024,12.10.2024,EXACT_MATCH,0.90,1,otification  13.09.2024  Last date and time for submission of online application  12.10.2024 11.59 P
+new_val_02_tnpsc_assistant_public_prosecutor__g.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,total_vacancies,50,N/A,MISSING_IN_EXTRACTION,0.00,1,
+new_val_02_tnpsc_assistant_public_prosecutor__g.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,exam_date,14.12.2024,14.12.2024,EXACT_MATCH,0.93,1,Schedule Table (Page 1): Preliminary Examination : 14 12 2024 . . 02 30 PM to 05 30PM . . . .
+new_val_02_tnpsc_assistant_public_prosecutor__g.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,application_fee,Rs. 100,Rs. 100 (Rupees One hundred only),EXACT_MATCH,0.85,12,.1. The preliminary examination fee of Rs. 100 (Rupees One hundred only) should be paid at the time 
+new_val_02_tnpsc_assistant_public_prosecutor__g.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,age_limit,34 years,N/A,MISSING_IN_EXTRACTION,0.00,1,
+new_val_02_tnpsc_assistant_public_prosecutor__g.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,eligibility,Degree in Law,N/A,MISSING_IN_EXTRACTION,0.00,1,
+new_val_03_tnpsc_combined_technical_services_ex.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,recruiting_authority,Tamil Nadu Public Service Commission,Tamil Nadu Public Service Commission,EXACT_MATCH,1.00,1,Official publishing authority: Tamil Nadu Public Service Commission
+new_val_03_tnpsc_combined_technical_services_ex.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,notice_number,12/2024,12/2024,EXACT_MATCH,0.95,1,rtisement No.693    Notification No.12/2024
+new_val_03_tnpsc_combined_technical_services_ex.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,application_start_date,30.08.2024,30.08.2024,EXACT_MATCH,0.90,1,ortant Date and Time:    Date of Notification  30.08.2024  Last date and time for submission of onli
+new_val_03_tnpsc_combined_technical_services_ex.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,application_end_date,28.09.2024,28.09.2024,EXACT_MATCH,0.90,1,otification  30.08.2024  Last date and time for submission of online application  28.09.2024 11.59 P
+new_val_03_tnpsc_combined_technical_services_ex.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,total_vacancies,22,105,PARTIAL_OR_DISCREPANCY,0.92,4,Table Total Row (Page 4):  | Total |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 105 |  | 
+new_val_03_tnpsc_combined_technical_services_ex.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,exam_date,18.11.2024,18.11.2024,EXACT_MATCH,0.90,1,o  04.10.2024 11.59 P.M  Date and Time of Examination  Paper – I  Subject  Date  Time  Tamil Eligibi
+new_val_03_tnpsc_combined_technical_services_ex.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,application_fee,Rs. 200,Rs. 200 (Rupees Two hundred only),EXACT_MATCH,0.85,23,ion Fee:     3.9.1. The examination fee of Rs. 200 (Rupees Two hundred only) should be paid at the t
+new_val_03_tnpsc_combined_technical_services_ex.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,age_limit,32 years,N/A,MISSING_IN_EXTRACTION,0.00,1,
+new_val_03_tnpsc_combined_technical_services_ex.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,eligibility,Bachelor's degree,Bachelor's degree in Tamil Literature,EXACT_MATCH,0.85,7,"ue process.    4.3. Educational Qualification, Technical Qualification and Experience: S.  No : Name"
+new_val_04_tnpsc_combined_technical_services_ex.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,recruiting_authority,Tamil Nadu Public Service Commission,Tamil Nadu Public Service Commission,EXACT_MATCH,1.00,1,Official publishing authority: Tamil Nadu Public Service Commission
+new_val_04_tnpsc_combined_technical_services_ex.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,notice_number,7/2024,7 / 2024,EXACT_MATCH,0.95,1,rtisement No. 686   Notification No. 7 / 2024
+new_val_04_tnpsc_combined_technical_services_ex.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,application_start_date,15.05.2024,15.05.2024,EXACT_MATCH,0.90,1,ortant Date and Time:    Date of Notification  15.05.2024  Last date and time for submission of onli
+new_val_04_tnpsc_combined_technical_services_ex.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,application_end_date,14.06.2024,14.06.2024,EXACT_MATCH,0.90,1,otification  15.05.2024  Last date and time for submission of online application  14.06.2024 11.59 P
+new_val_04_tnpsc_combined_technical_services_ex.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,total_vacancies,118,5,PARTIAL_OR_DISCREPANCY,0.95,4,tariat  Service  Backlog Vacancies - 5   5  Level 22  (CPS)  BC (OBCM) (G)  1  MBC/
+new_val_04_tnpsc_combined_technical_services_ex.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,exam_date,28.07.2024,28.07.2024,EXACT_MATCH,0.90,1,o  21.06.2024 11.59 P.M  Date and Time of Examination  Paper – I  Subject  Date  Time  Tamil Eligibi
+new_val_04_tnpsc_combined_technical_services_ex.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,application_fee,Rs. 200,Rs. 200 (Rupees Two hundred only),EXACT_MATCH,0.85,25,ion Fee:     3.9.1. The examination fee of Rs. 200 (Rupees Two hundred only) should be paid at the t
+new_val_04_tnpsc_combined_technical_services_ex.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,age_limit,32 years,N/A,MISSING_IN_EXTRACTION,0.00,1,
+new_val_04_tnpsc_combined_technical_services_ex.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,eligibility,Diploma in Engineering,N/A,MISSING_IN_EXTRACTION,0.00,1,
+new_val_05_tnpsc_combined_civil_services_examin.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,recruiting_authority,Tamil Nadu Public Service Commission,Tamil Nadu Public Service Commission,EXACT_MATCH,1.00,1,Official publishing authority: Tamil Nadu Public Service Commission
+new_val_05_tnpsc_combined_civil_services_examin.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,notice_number,5/2024,5 / 2024,EXACT_MATCH,0.95,1,vertisement No.684  Notification No. 5 / 2024
+new_val_05_tnpsc_combined_civil_services_examin.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,application_start_date,23.04.2024,23.04.2024,EXACT_MATCH,0.90,1,I-B and I-C Services    Date of Notification  23.04.2024  Last date and time for submission of onlin
+new_val_05_tnpsc_combined_civil_services_examin.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,application_end_date,22.05.2024,22.05.2024,EXACT_MATCH,0.90,1,otification  23.04.2024  Last date and time for submission of online application  22.05.2024 11.59 P
+new_val_05_tnpsc_combined_civil_services_examin.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,total_vacancies,29,29,EXACT_MATCH,0.92,3,Table Total Row (Page 3): Total | Total |  |  |  |  |  | 29 |  |  |  | 
+new_val_05_tnpsc_combined_civil_services_examin.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,exam_date,12.07.2024,12.07.2024,EXACT_MATCH,0.90,1,to 29.05.2024 11.59 P.M  Date and time of preliminary  examination  12.07.2024   2.30 P.M. to 5.30 P
+new_val_05_tnpsc_combined_civil_services_examin.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,application_fee,Rs. 100,Rs. 100 (Rupees One hundred only),EXACT_MATCH,0.85,19,.1. The preliminary examination fee of Rs. 100 (Rupees One hundred only) should be paid at the time 
+new_val_05_tnpsc_combined_civil_services_examin.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,age_limit,32 years,N/A,MISSING_IN_EXTRACTION,0.00,1,
+new_val_05_tnpsc_combined_civil_services_examin.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,eligibility,Degree,N/A,MISSING_IN_EXTRACTION,0.00,1,
+new_val_06_tnpsc_combined_civil_services_examin.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,recruiting_authority,Tamil Nadu Public Service Commission,Tamil Nadu Public Service Commission,EXACT_MATCH,1.00,1,Official publishing authority: Tamil Nadu Public Service Commission
+new_val_06_tnpsc_combined_civil_services_examin.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,notice_number,4/2024,4 / 2024,EXACT_MATCH,0.95,1,vertisement No.683  Notification No. 4 / 2024
+new_val_06_tnpsc_combined_civil_services_examin.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,application_start_date,28.03.2024,28.03.2024,EXACT_MATCH,0.90,1,I (Group-I Services)    Date of Notification  28.03.2024  Last date and time for submission of onlin
+new_val_06_tnpsc_combined_civil_services_examin.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,application_end_date,27.04.2024,27.04.2024,EXACT_MATCH,0.90,1,otification  28.03.2024  Last date and time for submission of online application  27.04.2024 11.59 P
+new_val_06_tnpsc_combined_civil_services_examin.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,total_vacancies,90,90,EXACT_MATCH,0.92,3,Table Total Row (Page 3):  | Total |  |  |  |  |  |  |  |  |  |  |  | 90 |  |  |  | 
+new_val_06_tnpsc_combined_civil_services_examin.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,exam_date,13.07.2024,13.07.2024,EXACT_MATCH,0.90,1,to 04.05.2024 11.59 P.M  Date and time of preliminary  examination  13.07.2024 FN  09.30 A.M. to 12.
+new_val_06_tnpsc_combined_civil_services_examin.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,application_fee,Rs. 100,Rs. 100 (Rupees One hundred only),EXACT_MATCH,0.85,17,.1. The preliminary examination fee of Rs. 100 (Rupees One hundred only) should be paid at the time 
+new_val_06_tnpsc_combined_civil_services_examin.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,age_limit,21 to 34 years,N/A,MISSING_IN_EXTRACTION,0.00,1,
+new_val_06_tnpsc_combined_civil_services_examin.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,eligibility,Degree of any University,degree of any of the Universities incorporated by,PARTIAL_OR_DISCREPANCY,0.85,5,Name of the  Post  Educational Qualification  1.  Deputy Collector Candidates must possess a degree 
+new_val_07_tnpsc_rashtriya_indian_military_coll.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,OTHER_ANNOUNCEMENT,recruiting_authority,Tamil Nadu Public Service Commission,Tamil Nadu Public Service Commission,EXACT_MATCH,1.00,1,Official publishing authority: Tamil Nadu Public Service Commission
+new_val_07_tnpsc_rashtriya_indian_military_coll.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,OTHER_ANNOUNCEMENT,notice_number,02/2024,02/2024,EXACT_MATCH,0.95,1,umber.     ...2...  Notification No.02/2024     Advertisement No.: 679  [LAYOUT_REC
+new_val_07_tnpsc_rashtriya_indian_military_coll.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,OTHER_ANNOUNCEMENT,application_start_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_07_tnpsc_rashtriya_indian_military_coll.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,OTHER_ANNOUNCEMENT,application_end_date,15.04.2024,N/A,MISSING_IN_EXTRACTION,0.00,1,
+new_val_07_tnpsc_rashtriya_indian_military_coll.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,OTHER_ANNOUNCEMENT,total_vacancies,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_07_tnpsc_rashtriya_indian_military_coll.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,OTHER_ANNOUNCEMENT,exam_date,01.06.2024,1ST  JUNE 2024,EXACT_MATCH,0.90,1,"ADUN,  JAN - 2025 TERM - EXAMINATION TO BE HELD ON 1ST  JUNE 2024                                   "
+new_val_07_tnpsc_rashtriya_indian_military_coll.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,OTHER_ANNOUNCEMENT,application_fee,Rs. 600,N/A,MISSING_IN_EXTRACTION,0.00,1,
+new_val_07_tnpsc_rashtriya_indian_military_coll.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,OTHER_ANNOUNCEMENT,age_limit,11.5 to 13 years,N/A,MISSING_IN_EXTRACTION,0.00,1,
+new_val_07_tnpsc_rashtriya_indian_military_coll.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,OTHER_ANNOUNCEMENT,eligibility,Class VII,N/A,MISSING_IN_EXTRACTION,0.00,1,
+new_val_08_tnpsc_combined_civil_services_examin.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,recruiting_authority,Tamil Nadu Public Service Commission,Tamil Nadu Public Service Commission,EXACT_MATCH,1.00,1,Official publishing authority: Tamil Nadu Public Service Commission
+new_val_08_tnpsc_combined_civil_services_examin.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,notice_number,1/2024,1 / 2024,EXACT_MATCH,0.95,1,ertisement No. 678  Notification No. 1 / 2024
+new_val_08_tnpsc_combined_civil_services_examin.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,application_start_date,30.01.2024,30.01.2024,EXACT_MATCH,0.90,1,IV (Group-IV Services)  Date of Notification  30.01.2024  Last date and time for submission of onlin
+new_val_08_tnpsc_combined_civil_services_examin.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,application_end_date,28.02.2024,28.02.2024,EXACT_MATCH,0.90,1,otification  30.01.2024  Last date and time for submission of online application  28.02.2024 11.59 P
+new_val_08_tnpsc_combined_civil_services_examin.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,total_vacancies,6244,108,PARTIAL_OR_DISCREPANCY,0.92,3,Single Post Table Row (Page 3): Village - 108 vacancies
+new_val_08_tnpsc_combined_civil_services_examin.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,exam_date,09.06.2024,09.06.2024,EXACT_MATCH,0.90,1,06.03.2024 11.59 P.M  Date and time of examination  09.06.2024  09.30 A.M. to 12.30 P.M.  [LAYOUT_RE
+new_val_08_tnpsc_combined_civil_services_examin.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,application_fee,Rs. 100,Rs. 100 (Rupees One hundred only),EXACT_MATCH,0.85,32,ion Fee:     3.9.1. The examination fee of Rs. 100 (Rupees One hundred only) should be paid at the t
+new_val_08_tnpsc_combined_civil_services_examin.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,age_limit,18 to 32 years,18 to 32 years as on 01.07.2024,EXACT_MATCH,0.85,6,didates should have completed the age of 18 years and should not have completed 32  years as on 01.0
+new_val_08_tnpsc_combined_civil_services_examin.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,eligibility,SSLC,degree from a recognized University or Institution,PARTIAL_OR_DISCREPANCY,0.85,9,ess Minimum General Educational  Qualification 4  Junior  Assistant : Must possess Minimum General E
+new_val_09_tnpsc_assistant_agricultural_officer.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,recruiting_authority,Tamil Nadu Public Service Commission,Tamil Nadu Public Service Commission,EXACT_MATCH,1.00,1,Official publishing authority: Tamil Nadu Public Service Commission
+new_val_09_tnpsc_assistant_agricultural_officer.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,notice_number,26/2023,26/2023,EXACT_MATCH,0.95,1,vertisement No.675  Notification No.26/2023
+new_val_09_tnpsc_assistant_agricultural_officer.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,application_start_date,25.11.2023,25.11.2023,EXACT_MATCH,0.90,4,ORTANT DATE AND TIME:    Date of Notification  25.11.2023  Last date for submission of online applic
+new_val_09_tnpsc_assistant_agricultural_officer.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,application_end_date,24.12.2023,24.12.2023,EXACT_MATCH,0.90,4,otification  25.11.2023  Last date for submission of online application  24.12.2023  Application Cor
+new_val_09_tnpsc_assistant_agricultural_officer.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,total_vacancies,263,3,PARTIAL_OR_DISCREPANCY,0.92,2,Single Post Table Row (Page 2): *Vacancies shown here are the vacancies - 3 vacancies
+new_val_09_tnpsc_assistant_agricultural_officer.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,exam_date,07.02.2024,N/A,MISSING_IN_EXTRACTION,0.00,1,
+new_val_09_tnpsc_assistant_agricultural_officer.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,application_fee,Rs. 100,Rs. 100/- (Rupees One hundred only),EXACT_MATCH,0.85,7,"NATION FEE:    CBT Examination fee of Rs.100/- (Rupees One hundred only), is payable by online  mod"
+new_val_09_tnpsc_assistant_agricultural_officer.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,age_limit,18 to 32 years,18,EXACT_MATCH,0.85,4,All Categories : No maximum Age limit 18 Years 32 years@ ‘OTHERS’  [i.e.  ca
+new_val_09_tnpsc_assistant_agricultural_officer.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,eligibility,Diploma in Agriculture,"Diploma in Agriculture from the Institution recognized by the Government of Tamil Nadu or affiliated with the Tamil Nadu Agricultural University; or Gandhigram Rural Institute, Dindigul District; or Annamalai University or any other institution under the control of the Commissioner of Agriculture",EXACT_MATCH,0.85,5,"ce) Act, 2016). (B) EDUCATIONAL QUALIFICATION (as on 25.11.2023):- Name of the : Educational Qualifi"
+new_val_10_tnpsc_combined_accounts_services_exa.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,recruiting_authority,Tamil Nadu Public Service Commission,Tamil Nadu Public Service Commission,EXACT_MATCH,1.00,1,Official publishing authority: Tamil Nadu Public Service Commission
+new_val_10_tnpsc_combined_accounts_services_exa.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,notice_number,25/2023,25/2023,EXACT_MATCH,0.95,1,ertisement No.674   Notification No.25/2023
+new_val_10_tnpsc_combined_accounts_services_exa.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,application_start_date,09.11.2023,09.11.2023,EXACT_MATCH,0.90,4,ANT DATES AND TIME:      Date of Notification  09.11.2023  Last date for submission of online applic
+new_val_10_tnpsc_combined_accounts_services_exa.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,application_end_date,08.12.2023,08.12.2023,EXACT_MATCH,0.90,4,otification  09.11.2023  Last date for submission of online application  08.12.2023  Application Cor
+new_val_10_tnpsc_combined_accounts_services_exa.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,total_vacancies,52,04,PARTIAL_OR_DISCREPANCY,0.92,2,Single Post Table Row (Page 2): (Finance) - 04 vacancies
+new_val_10_tnpsc_combined_accounts_services_exa.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,exam_date,05.02.2024,N/A,MISSING_IN_EXTRACTION,0.00,1,
+new_val_10_tnpsc_combined_accounts_services_exa.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,application_fee,Rs. 200,Rs. 200/- (Rupees Two hundred only),EXACT_MATCH,0.85,9,"NATION FEE:  a) CBT Examination fee of Rs.200/- (Rupees Two hundred only), is payable by online  mod"
+new_val_10_tnpsc_combined_accounts_services_exa.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,age_limit,18 to 32 years,N/A,MISSING_IN_EXTRACTION,0.00,1,
+new_val_10_tnpsc_combined_accounts_services_exa.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,eligibility,Degree in Commerce,prescribed for the posts should have been obtained after passing 10+2,PARTIAL_OR_DISCREPANCY,0.85,6,"ed, Note: (i) : The educational qualification prescribed for the posts should have been obtained  af"
+new_val_11_tnpsc_hostel_superintendent_cum_phys.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,recruiting_authority,Tamil Nadu Public Service Commission,Tamil Nadu Public Service Commission,EXACT_MATCH,1.00,1,Official publishing authority: Tamil Nadu Public Service Commission
+new_val_11_tnpsc_hostel_superintendent_cum_phys.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,notice_number,24/2023,24/2023,EXACT_MATCH,0.95,1,ertisement No. 673  Notification No. 24/2023
+new_val_11_tnpsc_hostel_superintendent_cum_phys.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,application_start_date,18.10.2023,18.10.2023,EXACT_MATCH,0.90,3,RTANT DATES AND TIME:    Date of Notification  18.10.2023  Last date for submission of online applic
+new_val_11_tnpsc_hostel_superintendent_cum_phys.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,application_end_date,16.11.2023,16.11.2023,EXACT_MATCH,0.90,3,otification  18.10.2023  Last date for submission of online application  16.11.2023  Application Cor
+new_val_11_tnpsc_hostel_superintendent_cum_phys.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,total_vacancies,18,N/A,MISSING_IN_EXTRACTION,0.00,1,
+new_val_11_tnpsc_hostel_superintendent_cum_phys.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,exam_date,28.01.2024,N/A,MISSING_IN_EXTRACTION,0.00,1,
+new_val_11_tnpsc_hostel_superintendent_cum_phys.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,application_fee,Rs. 100,Rs. 100/- (Rupees One hundred only),EXACT_MATCH,0.85,7,"TION FEE:      CBT Examination fee of Rs.100/- (Rupees One hundred only), is payable by  online mod"
+new_val_11_tnpsc_hostel_superintendent_cum_phys.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,age_limit,18 to 37 years,N/A,MISSING_IN_EXTRACTION,0.00,1,
+new_val_11_tnpsc_hostel_superintendent_cum_phys.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,eligibility,Diploma in Physical Education,Diploma in Physical Education,EXACT_MATCH,0.85,4,ing the prescribed  Educational Qualification.   iii. The candidates those who are having higher qua
+new_val_12_tnpsc_combined_engineering_services.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,recruiting_authority,Tamil Nadu Public Service Commission,Tamil Nadu Public Service Commission,EXACT_MATCH,1.00,1,Official publishing authority: Tamil Nadu Public Service Commission
+new_val_12_tnpsc_combined_engineering_services.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,notice_number,23/2023,23/2023,EXACT_MATCH,0.95,1,vertisement No.672  Notification No.23/2023
+new_val_12_tnpsc_combined_engineering_services.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,application_start_date,13.10.2023,13.10.2023,EXACT_MATCH,0.90,4,PORTANT DATES AND TIME:  Date of notification  13.10.2023  Last date for submission of online applic
+new_val_12_tnpsc_combined_engineering_services.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,application_end_date,11.11.2023,11.11.2023,EXACT_MATCH,0.90,4,otification  13.10.2023  Last date for submission of online application  11.11.2023  Application Cor
+new_val_12_tnpsc_combined_engineering_services.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,total_vacancies,369,45,PARTIAL_OR_DISCREPANCY,0.92,2,"Aggregate of 11 posts (Page 2): Institute/ Assistant Director of: 1, Training (Post Code 1729): 1, A"
+new_val_12_tnpsc_combined_engineering_services.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,exam_date,06.01.2024,N/A,MISSING_IN_EXTRACTION,0.00,1,
+new_val_12_tnpsc_combined_engineering_services.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,application_fee,Rs. 200,Rs. 200/- (Rupees Two hundred only),EXACT_MATCH,0.85,12,"ON FEE:    Written Examination fee of Rs.200/- (Rupees Two hundred only), is payable by  online mod"
+new_val_12_tnpsc_combined_engineering_services.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,age_limit,18 to 32 years,N/A,MISSING_IN_EXTRACTION,0.00,1,
+new_val_12_tnpsc_combined_engineering_services.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,eligibility,Degree in Engineering,degree in any branch of Engineering or Technology,PARTIAL_OR_DISCREPANCY,0.85,6,"Name of the post  Educational Qualification  1  Principal, ITI/ AD of  Training  i. A degree in any "
+new_val_13_tnpsc_executive_officer__grade_i__gr.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,recruiting_authority,Tamil Nadu Public Service Commission,Tamil Nadu Public Service Commission,EXACT_MATCH,1.00,1,Official publishing authority: Tamil Nadu Public Service Commission
+new_val_13_tnpsc_executive_officer__grade_i__gr.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,notice_number,22/2023,22/2023,EXACT_MATCH,0.95,1,rtisement No.671    Notification No.22/2023
+new_val_13_tnpsc_executive_officer__grade_i__gr.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,application_start_date,13.10.2023,13.10.2023,EXACT_MATCH,0.93,3,Schedule Table (Page 3): Date of Notification : 13 10 2023 . .
+new_val_13_tnpsc_executive_officer__grade_i__gr.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,application_end_date,11.11.2023,11.11.2023,EXACT_MATCH,0.95,42,1.  Last date upto which the application can  be submitted/edited/ payment of fees  can be made: 11.
+new_val_13_tnpsc_executive_officer__grade_i__gr.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,total_vacancies,09,N/A,MISSING_IN_EXTRACTION,0.00,1,
+new_val_13_tnpsc_executive_officer__grade_i__gr.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,exam_date,09.01.2024,N/A,MISSING_IN_EXTRACTION,0.00,1,
+new_val_13_tnpsc_executive_officer__grade_i__gr.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,application_fee,Rs. 150,Rs. 150/- (Rupees One Hundred and Fifty only),EXACT_MATCH,0.85,8,"FEE:    i.  Written Examination fee of Rs.150/- (Rupees One Hundred and Fifty only), is payable  by "
+new_val_13_tnpsc_executive_officer__grade_i__gr.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,age_limit,30 to 37 years,N/A,MISSING_IN_EXTRACTION,0.00,1,
+new_val_13_tnpsc_executive_officer__grade_i__gr.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,eligibility,Degree in Arts or Science,preference shall be given to the employees of,PARTIAL_OR_DISCREPANCY,0.88,5,Qualification Table (Page 5): preference shall be given to the employees of
+new_val_14_tnpsc_mass_interviewer_in_public_hea.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,recruiting_authority,Tamil Nadu Public Service Commission,Tamil Nadu Public Service Commission,EXACT_MATCH,1.00,1,Official publishing authority: Tamil Nadu Public Service Commission
+new_val_14_tnpsc_mass_interviewer_in_public_hea.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,notice_number,18/2023,18/2023,EXACT_MATCH,0.95,1,vertisement No.667  Notification No.18/2023
+new_val_14_tnpsc_mass_interviewer_in_public_hea.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,application_start_date,22.09.2023,22.09.2023,EXACT_MATCH,0.90,2,RTANT DATES AND TIME:    Date of Notification  22.09.2023  Last date for submission of online applic
+new_val_14_tnpsc_mass_interviewer_in_public_hea.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,application_end_date,21.10.2023,21.10.2023,EXACT_MATCH,0.90,2,otification  22.09.2023  Last date for submission of online application  21.10.2023  Application Cor
+new_val_14_tnpsc_mass_interviewer_in_public_hea.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,total_vacancies,02,N/A,MISSING_IN_EXTRACTION,0.00,1,
+new_val_14_tnpsc_mass_interviewer_in_public_hea.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,exam_date,09.12.2023,N/A,MISSING_IN_EXTRACTION,0.00,1,
+new_val_14_tnpsc_mass_interviewer_in_public_hea.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,application_fee,Rs. 100,Rs. 100/- (Rupees One hundred only),EXACT_MATCH,0.85,7,"ATION FEE:     CBT Examination fee of Rs.100/- (Rupees One hundred only), is payable  by online mod"
+new_val_14_tnpsc_mass_interviewer_in_public_hea.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,age_limit,18 to 32 years,N/A,MISSING_IN_EXTRACTION,0.00,1,
+new_val_14_tnpsc_mass_interviewer_in_public_hea.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,eligibility,Degree of B.A. or B.Sc.,Degree of B,EXACT_MATCH,0.85,4,Name of the  Post  Educational Qualification    Mass Interviewer    A Degree of B.A or B.Sc. in Anth
+new_val_15_tnpsc_junior_analyst_in_the_drugs_te.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,recruiting_authority,Tamil Nadu Public Service Commission,Tamil Nadu Public Service Commission,EXACT_MATCH,1.00,1,Official publishing authority: Tamil Nadu Public Service Commission
+new_val_15_tnpsc_junior_analyst_in_the_drugs_te.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,notice_number,17/2023,17/2023,EXACT_MATCH,0.95,1,vertisement No.666  Notification No. 17/2023
+new_val_15_tnpsc_junior_analyst_in_the_drugs_te.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,application_start_date,21.09.2023,21.09.2023,EXACT_MATCH,0.90,3,RTANT DATES AND TIME:    Date of Notification  21.09.2023  Last date for submission of online applic
+new_val_15_tnpsc_junior_analyst_in_the_drugs_te.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,application_end_date,20.10.2023,20.10.2023,EXACT_MATCH,0.90,3,otification  21.09.2023  Last date for submission of online application  20.10.2023  Application Cor
+new_val_15_tnpsc_junior_analyst_in_the_drugs_te.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,total_vacancies,32,N/A,MISSING_IN_EXTRACTION,0.00,1,
+new_val_15_tnpsc_junior_analyst_in_the_drugs_te.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,exam_date,05.12.2023,N/A,MISSING_IN_EXTRACTION,0.00,1,
+new_val_15_tnpsc_junior_analyst_in_the_drugs_te.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,application_fee,Rs. 150,Rs. 100/- (Rupees One hundred only),PARTIAL_OR_DISCREPANCY,0.85,7,"TION FEE:      CBT Examination fee of Rs.100/- (Rupees One hundred only), is payable by  online mod"
+new_val_15_tnpsc_junior_analyst_in_the_drugs_te.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,age_limit,18 to 32 years,N/A,MISSING_IN_EXTRACTION,0.00,1,
+new_val_15_tnpsc_junior_analyst_in_the_drugs_te.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,eligibility,Degree in Pharmacy,Bachelors degree + Post,PARTIAL_OR_DISCREPANCY,0.85,4,.    Note:  i.  The educational qualification prescribed for this post shall have been  obtained by 
+new_val_16_tnpsc_research_assistant_in_the_inst.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,recruiting_authority,Tamil Nadu Public Service Commission,Tamil Nadu Public Service Commission,EXACT_MATCH,1.00,1,Official publishing authority: Tamil Nadu Public Service Commission
+new_val_16_tnpsc_research_assistant_in_the_inst.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,notice_number,16/2023,16/2023,EXACT_MATCH,0.95,1,ertisement No. 665  Notification No. 16/2023
+new_val_16_tnpsc_research_assistant_in_the_inst.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,application_start_date,21.09.2023,20.09.2023,PARTIAL_OR_DISCREPANCY,0.90,3,TANT DATES AND TIME:    _Date of Notification                20.09.2023  Last date for submission of
+new_val_16_tnpsc_research_assistant_in_the_inst.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,application_end_date,20.10.2023,19.10.2023,PARTIAL_OR_DISCREPANCY,0.90,3,20.09.2023  Last date for submission of online application                19.10.2023  Application Co
+new_val_16_tnpsc_research_assistant_in_the_inst.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,total_vacancies,06,37,PARTIAL_OR_DISCREPANCY,0.92,2,"Aggregate of 2 posts (Page 2): the Institute of: 13, Producer’s: 24"
+new_val_16_tnpsc_research_assistant_in_the_inst.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,exam_date,07.12.2023,N/A,MISSING_IN_EXTRACTION,0.00,1,
+new_val_16_tnpsc_research_assistant_in_the_inst.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,application_fee,Rs. 150,Rs. 200/- (Rupees Two hundred only),PARTIAL_OR_DISCREPANCY,0.85,8,"ATION FEE:  (i) CBT Examination fee of Rs.200/- (Rupees Two hundred only), is payable by  online mod"
+new_val_16_tnpsc_research_assistant_in_the_inst.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,age_limit,18 to 32 years,32,EXACT_MATCH,0.85,4,"ine, Ranipet     No Maximum Age limit   32 years@       2.  Manager (Veterinar"
+new_val_16_tnpsc_research_assistant_in_the_inst.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,RECRUITMENT,eligibility,Master's degree,"prescribed for the posts should have been obtained by passing the required qualification in the following order of studies: 10th + HSC or its equivalent + Bachelor’s Degree + PG Degree from recognised Institution as required under Section 25 of the Tamil Nadu Government Servants (Conditions of Service) Act, 2016",PARTIAL_OR_DISCREPANCY,0.85,5,mited Note: (i) The educational qualification prescribed for the posts should have been obtained by 
+new_val_17_nta_9_correction_in_particulars_of.pdf,National Testing Agency,SCANNED_PDF,CORRIGENDUM,recruiting_authority,National Testing Agency,National Testing Agency,EXACT_MATCH,1.00,1,Official publishing authority: National Testing Agency
+new_val_17_nta_9_correction_in_particulars_of.pdf,National Testing Agency,SCANNED_PDF,CORRIGENDUM,notice_number,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_17_nta_9_correction_in_particulars_of.pdf,National Testing Agency,SCANNED_PDF,CORRIGENDUM,application_start_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_17_nta_9_correction_in_particulars_of.pdf,National Testing Agency,SCANNED_PDF,CORRIGENDUM,application_end_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_17_nta_9_correction_in_particulars_of.pdf,National Testing Agency,SCANNED_PDF,CORRIGENDUM,total_vacancies,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_17_nta_9_correction_in_particulars_of.pdf,National Testing Agency,SCANNED_PDF,CORRIGENDUM,exam_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_17_nta_9_correction_in_particulars_of.pdf,National Testing Agency,SCANNED_PDF,CORRIGENDUM,application_fee,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_17_nta_9_correction_in_particulars_of.pdf,National Testing Agency,SCANNED_PDF,CORRIGENDUM,age_limit,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_17_nta_9_correction_in_particulars_of.pdf,National Testing Agency,SCANNED_PDF,CORRIGENDUM,eligibility,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_18_nta_declaration_of_the_results_of.pdf,National Testing Agency,SCANNED_PDF,EXAM_RESULT,recruiting_authority,National Testing Agency,National Testing Agency,EXACT_MATCH,1.00,1,Official publishing authority: National Testing Agency
+new_val_18_nta_declaration_of_the_results_of.pdf,National Testing Agency,SCANNED_PDF,EXAM_RESULT,notice_number,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_18_nta_declaration_of_the_results_of.pdf,National Testing Agency,SCANNED_PDF,EXAM_RESULT,application_start_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_18_nta_declaration_of_the_results_of.pdf,National Testing Agency,SCANNED_PDF,EXAM_RESULT,application_end_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_18_nta_declaration_of_the_results_of.pdf,National Testing Agency,SCANNED_PDF,EXAM_RESULT,total_vacancies,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_18_nta_declaration_of_the_results_of.pdf,National Testing Agency,SCANNED_PDF,EXAM_RESULT,exam_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_18_nta_declaration_of_the_results_of.pdf,National Testing Agency,SCANNED_PDF,EXAM_RESULT,application_fee,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_18_nta_declaration_of_the_results_of.pdf,National Testing Agency,SCANNED_PDF,EXAM_RESULT,age_limit,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_18_nta_declaration_of_the_results_of.pdf,National Testing Agency,SCANNED_PDF,EXAM_RESULT,eligibility,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_19_nta_11_issuance_of_certificates_fo.pdf,National Testing Agency,SCANNED_PDF,OTHER_ANNOUNCEMENT,recruiting_authority,National Testing Agency,National Testing Agency,EXACT_MATCH,1.00,1,Official publishing authority: National Testing Agency
+new_val_19_nta_11_issuance_of_certificates_fo.pdf,National Testing Agency,SCANNED_PDF,OTHER_ANNOUNCEMENT,notice_number,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_19_nta_11_issuance_of_certificates_fo.pdf,National Testing Agency,SCANNED_PDF,OTHER_ANNOUNCEMENT,application_start_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_19_nta_11_issuance_of_certificates_fo.pdf,National Testing Agency,SCANNED_PDF,OTHER_ANNOUNCEMENT,application_end_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_19_nta_11_issuance_of_certificates_fo.pdf,National Testing Agency,SCANNED_PDF,OTHER_ANNOUNCEMENT,total_vacancies,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_19_nta_11_issuance_of_certificates_fo.pdf,National Testing Agency,SCANNED_PDF,OTHER_ANNOUNCEMENT,exam_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_19_nta_11_issuance_of_certificates_fo.pdf,National Testing Agency,SCANNED_PDF,OTHER_ANNOUNCEMENT,application_fee,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_19_nta_11_issuance_of_certificates_fo.pdf,National Testing Agency,SCANNED_PDF,OTHER_ANNOUNCEMENT,age_limit,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_19_nta_11_issuance_of_certificates_fo.pdf,National Testing Agency,SCANNED_PDF,OTHER_ANNOUNCEMENT,eligibility,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_20_nta_12_public_notice_regarding_iss.pdf,National Testing Agency,SCANNED_PDF,OTHER_ANNOUNCEMENT,recruiting_authority,National Testing Agency,National Testing Agency,EXACT_MATCH,1.00,1,Official publishing authority: National Testing Agency
+new_val_20_nta_12_public_notice_regarding_iss.pdf,National Testing Agency,SCANNED_PDF,OTHER_ANNOUNCEMENT,notice_number,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_20_nta_12_public_notice_regarding_iss.pdf,National Testing Agency,SCANNED_PDF,OTHER_ANNOUNCEMENT,application_start_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_20_nta_12_public_notice_regarding_iss.pdf,National Testing Agency,SCANNED_PDF,OTHER_ANNOUNCEMENT,application_end_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_20_nta_12_public_notice_regarding_iss.pdf,National Testing Agency,SCANNED_PDF,OTHER_ANNOUNCEMENT,total_vacancies,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_20_nta_12_public_notice_regarding_iss.pdf,National Testing Agency,SCANNED_PDF,OTHER_ANNOUNCEMENT,exam_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_20_nta_12_public_notice_regarding_iss.pdf,National Testing Agency,SCANNED_PDF,OTHER_ANNOUNCEMENT,application_fee,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_20_nta_12_public_notice_regarding_iss.pdf,National Testing Agency,SCANNED_PDF,OTHER_ANNOUNCEMENT,age_limit,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_20_nta_12_public_notice_regarding_iss.pdf,National Testing Agency,SCANNED_PDF,OTHER_ANNOUNCEMENT,eligibility,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_21_nta_inviting_online_application_fo.pdf,National Testing Agency,SCANNED_PDF,RECRUITMENT,recruiting_authority,National Testing Agency,National Testing Agency,EXACT_MATCH,1.00,1,Official publishing authority: National Testing Agency
+new_val_21_nta_inviting_online_application_fo.pdf,National Testing Agency,SCANNED_PDF,RECRUITMENT,notice_number,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_21_nta_inviting_online_application_fo.pdf,National Testing Agency,SCANNED_PDF,RECRUITMENT,application_start_date,23 September 2026,N/A,MISSING_IN_EXTRACTION,0.00,1,
+new_val_21_nta_inviting_online_application_fo.pdf,National Testing Agency,SCANNED_PDF,RECRUITMENT,application_end_date,25 October 2026,25 October 2026,EXACT_MATCH,0.90,1,026 (Up to 05.00 PM) and last date for submission of late fee - 25 October 2026 (Up to 11 PM)* *- Ex
+new_val_21_nta_inviting_online_application_fo.pdf,National Testing Agency,SCANNED_PDF,RECRUITMENT,total_vacancies,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_21_nta_inviting_online_application_fo.pdf,National Testing Agency,SCANNED_PDF,RECRUITMENT,exam_date,07.12.2026,23 September 2026 to 20 October 2026,PARTIAL_OR_DISCREPANCY,0.90,1,Class IX Examination fee Date of examination 23 September 2026 to 20 October 2026 (Up to 05:00 P.M.)
+new_val_21_nta_inviting_online_application_fo.pdf,National Testing Agency,SCANNED_PDF,RECRUITMENT,application_fee,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_21_nta_inviting_online_application_fo.pdf,National Testing Agency,SCANNED_PDF,RECRUITMENT,age_limit,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_21_nta_inviting_online_application_fo.pdf,National Testing Agency,SCANNED_PDF,RECRUITMENT,eligibility,Class VIII,N/A,MISSING_IN_EXTRACTION,0.00,1,
+new_val_22_nta_affidavit_filed_on_behalf_of_t.pdf,National Testing Agency,TEXT_PDF,OTHER_ANNOUNCEMENT,recruiting_authority,National Testing Agency,National Testing Agency,EXACT_MATCH,1.00,1,Official publishing authority: National Testing Agency
+new_val_22_nta_affidavit_filed_on_behalf_of_t.pdf,National Testing Agency,TEXT_PDF,OTHER_ANNOUNCEMENT,notice_number,157111/2026,157111/2026,EXACT_MATCH,0.95,54,) FOR ADMISSION  IA No. 157111/2026 - EX-PARTE AD-INTERIM RELIEF   WITH W.P
+new_val_22_nta_affidavit_filed_on_behalf_of_t.pdf,National Testing Agency,TEXT_PDF,OTHER_ANNOUNCEMENT,application_start_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_22_nta_affidavit_filed_on_behalf_of_t.pdf,National Testing Agency,TEXT_PDF,OTHER_ANNOUNCEMENT,application_end_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_22_nta_affidavit_filed_on_behalf_of_t.pdf,National Testing Agency,TEXT_PDF,OTHER_ANNOUNCEMENT,total_vacancies,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_22_nta_affidavit_filed_on_behalf_of_t.pdf,National Testing Agency,TEXT_PDF,OTHER_ANNOUNCEMENT,exam_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_22_nta_affidavit_filed_on_behalf_of_t.pdf,National Testing Agency,TEXT_PDF,OTHER_ANNOUNCEMENT,application_fee,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_22_nta_affidavit_filed_on_behalf_of_t.pdf,National Testing Agency,TEXT_PDF,OTHER_ANNOUNCEMENT,age_limit,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_22_nta_affidavit_filed_on_behalf_of_t.pdf,National Testing Agency,TEXT_PDF,OTHER_ANNOUNCEMENT,eligibility,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_23_nta_declaration_of_results_nta_sco.pdf,National Testing Agency,SCANNED_PDF,EXAM_RESULT,recruiting_authority,National Testing Agency,National Testing Agency,EXACT_MATCH,1.00,1,Official publishing authority: National Testing Agency
+new_val_23_nta_declaration_of_results_nta_sco.pdf,National Testing Agency,SCANNED_PDF,EXAM_RESULT,notice_number,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_23_nta_declaration_of_results_nta_sco.pdf,National Testing Agency,SCANNED_PDF,EXAM_RESULT,application_start_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_23_nta_declaration_of_results_nta_sco.pdf,National Testing Agency,SCANNED_PDF,EXAM_RESULT,application_end_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_23_nta_declaration_of_results_nta_sco.pdf,National Testing Agency,SCANNED_PDF,EXAM_RESULT,total_vacancies,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_23_nta_declaration_of_results_nta_sco.pdf,National Testing Agency,SCANNED_PDF,EXAM_RESULT,exam_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_23_nta_declaration_of_results_nta_sco.pdf,National Testing Agency,SCANNED_PDF,EXAM_RESULT,application_fee,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_23_nta_declaration_of_results_nta_sco.pdf,National Testing Agency,SCANNED_PDF,EXAM_RESULT,age_limit,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_23_nta_declaration_of_results_nta_sco.pdf,National Testing Agency,SCANNED_PDF,EXAM_RESULT,eligibility,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_24_nta_display_of_final_answer_keys_o.pdf,National Testing Agency,SCANNED_PDF,ANSWER_KEY,recruiting_authority,National Testing Agency,National Testing Agency,EXACT_MATCH,1.00,1,Official publishing authority: National Testing Agency
+new_val_24_nta_display_of_final_answer_keys_o.pdf,National Testing Agency,SCANNED_PDF,ANSWER_KEY,notice_number,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_24_nta_display_of_final_answer_keys_o.pdf,National Testing Agency,SCANNED_PDF,ANSWER_KEY,application_start_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_24_nta_display_of_final_answer_keys_o.pdf,National Testing Agency,SCANNED_PDF,ANSWER_KEY,application_end_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_24_nta_display_of_final_answer_keys_o.pdf,National Testing Agency,SCANNED_PDF,ANSWER_KEY,total_vacancies,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_24_nta_display_of_final_answer_keys_o.pdf,National Testing Agency,SCANNED_PDF,ANSWER_KEY,exam_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_24_nta_display_of_final_answer_keys_o.pdf,National Testing Agency,SCANNED_PDF,ANSWER_KEY,application_fee,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_24_nta_display_of_final_answer_keys_o.pdf,National Testing Agency,SCANNED_PDF,ANSWER_KEY,age_limit,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_24_nta_display_of_final_answer_keys_o.pdf,National Testing Agency,SCANNED_PDF,ANSWER_KEY,eligibility,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_25_nta_17_declaration_of_results_of_u.pdf,National Testing Agency,TEXT_PDF,EXAM_RESULT,recruiting_authority,National Testing Agency,National Testing Agency,EXACT_MATCH,1.00,1,Official publishing authority: National Testing Agency
+new_val_25_nta_17_declaration_of_results_of_u.pdf,National Testing Agency,TEXT_PDF,EXAM_RESULT,notice_number,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_25_nta_17_declaration_of_results_of_u.pdf,National Testing Agency,TEXT_PDF,EXAM_RESULT,application_start_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_25_nta_17_declaration_of_results_of_u.pdf,National Testing Agency,TEXT_PDF,EXAM_RESULT,application_end_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_25_nta_17_declaration_of_results_of_u.pdf,National Testing Agency,TEXT_PDF,EXAM_RESULT,total_vacancies,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_25_nta_17_declaration_of_results_of_u.pdf,National Testing Agency,TEXT_PDF,EXAM_RESULT,exam_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_25_nta_17_declaration_of_results_of_u.pdf,National Testing Agency,TEXT_PDF,EXAM_RESULT,application_fee,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_25_nta_17_declaration_of_results_of_u.pdf,National Testing Agency,TEXT_PDF,EXAM_RESULT,age_limit,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_25_nta_17_declaration_of_results_of_u.pdf,National Testing Agency,TEXT_PDF,EXAM_RESULT,eligibility,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_26_nta_ugc_net_exam_june_2026___3__su.pdf,National Testing Agency,TEXT_PDF,EXAM_SCHEDULE,recruiting_authority,National Testing Agency,National Testing Agency,EXACT_MATCH,1.00,1,Official publishing authority: National Testing Agency
+new_val_26_nta_ugc_net_exam_june_2026___3__su.pdf,National Testing Agency,TEXT_PDF,EXAM_SCHEDULE,notice_number,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_26_nta_ugc_net_exam_june_2026___3__su.pdf,National Testing Agency,TEXT_PDF,EXAM_SCHEDULE,application_start_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_26_nta_ugc_net_exam_june_2026___3__su.pdf,National Testing Agency,TEXT_PDF,EXAM_SCHEDULE,application_end_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_26_nta_ugc_net_exam_june_2026___3__su.pdf,National Testing Agency,TEXT_PDF,EXAM_SCHEDULE,total_vacancies,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_26_nta_ugc_net_exam_june_2026___3__su.pdf,National Testing Agency,TEXT_PDF,EXAM_SCHEDULE,exam_date,04.09.2026,N/A,MISSING_IN_EXTRACTION,0.00,1,
+new_val_26_nta_ugc_net_exam_june_2026___3__su.pdf,National Testing Agency,TEXT_PDF,EXAM_SCHEDULE,application_fee,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_26_nta_ugc_net_exam_june_2026___3__su.pdf,National Testing Agency,TEXT_PDF,EXAM_SCHEDULE,age_limit,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_26_nta_ugc_net_exam_june_2026___3__su.pdf,National Testing Agency,TEXT_PDF,EXAM_SCHEDULE,eligibility,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_27_nta_19_display_of_final_answer_key.pdf,National Testing Agency,TEXT_PDF,ANSWER_KEY,recruiting_authority,National Testing Agency,National Testing Agency,EXACT_MATCH,1.00,1,Official publishing authority: National Testing Agency
+new_val_27_nta_19_display_of_final_answer_key.pdf,National Testing Agency,TEXT_PDF,ANSWER_KEY,notice_number,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_27_nta_19_display_of_final_answer_key.pdf,National Testing Agency,TEXT_PDF,ANSWER_KEY,application_start_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_27_nta_19_display_of_final_answer_key.pdf,National Testing Agency,TEXT_PDF,ANSWER_KEY,application_end_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_27_nta_19_display_of_final_answer_key.pdf,National Testing Agency,TEXT_PDF,ANSWER_KEY,total_vacancies,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_27_nta_19_display_of_final_answer_key.pdf,National Testing Agency,TEXT_PDF,ANSWER_KEY,exam_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_27_nta_19_display_of_final_answer_key.pdf,National Testing Agency,TEXT_PDF,ANSWER_KEY,application_fee,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_27_nta_19_display_of_final_answer_key.pdf,National Testing Agency,TEXT_PDF,ANSWER_KEY,age_limit,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_27_nta_19_display_of_final_answer_key.pdf,National Testing Agency,TEXT_PDF,ANSWER_KEY,eligibility,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_28_nta_procedure_for_issuance_of_dupl.pdf,National Testing Agency,SCANNED_PDF,OTHER_ANNOUNCEMENT,recruiting_authority,National Testing Agency,National Testing Agency,EXACT_MATCH,1.00,1,Official publishing authority: National Testing Agency
+new_val_28_nta_procedure_for_issuance_of_dupl.pdf,National Testing Agency,SCANNED_PDF,OTHER_ANNOUNCEMENT,notice_number,NTA/OM/D/88/2026-ED-11,NTA/OM/D/88/2026-ED-11,EXACT_MATCH,0.95,3,New Delhi — 110002 F. No.: NTA/OM/D/88/2026-ED-11 Dated: 17.09.2026 OFFICE MEMORANDUM Sub
+new_val_28_nta_procedure_for_issuance_of_dupl.pdf,National Testing Agency,SCANNED_PDF,OTHER_ANNOUNCEMENT,application_start_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_28_nta_procedure_for_issuance_of_dupl.pdf,National Testing Agency,SCANNED_PDF,OTHER_ANNOUNCEMENT,application_end_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_28_nta_procedure_for_issuance_of_dupl.pdf,National Testing Agency,SCANNED_PDF,OTHER_ANNOUNCEMENT,total_vacancies,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_28_nta_procedure_for_issuance_of_dupl.pdf,National Testing Agency,SCANNED_PDF,OTHER_ANNOUNCEMENT,exam_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_28_nta_procedure_for_issuance_of_dupl.pdf,National Testing Agency,SCANNED_PDF,OTHER_ANNOUNCEMENT,application_fee,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_28_nta_procedure_for_issuance_of_dupl.pdf,National Testing Agency,SCANNED_PDF,OTHER_ANNOUNCEMENT,age_limit,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_28_nta_procedure_for_issuance_of_dupl.pdf,National Testing Agency,SCANNED_PDF,OTHER_ANNOUNCEMENT,eligibility,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_29_nta_announcement_of_date_s__for_st.pdf,National Testing Agency,SCANNED_PDF,EXAM_SCHEDULE,recruiting_authority,National Testing Agency,National Testing Agency,EXACT_MATCH,1.00,1,Official publishing authority: National Testing Agency
+new_val_29_nta_announcement_of_date_s__for_st.pdf,National Testing Agency,SCANNED_PDF,EXAM_SCHEDULE,notice_number,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_29_nta_announcement_of_date_s__for_st.pdf,National Testing Agency,SCANNED_PDF,EXAM_SCHEDULE,application_start_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_29_nta_announcement_of_date_s__for_st.pdf,National Testing Agency,SCANNED_PDF,EXAM_SCHEDULE,application_end_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_29_nta_announcement_of_date_s__for_st.pdf,National Testing Agency,SCANNED_PDF,EXAM_SCHEDULE,total_vacancies,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_29_nta_announcement_of_date_s__for_st.pdf,National Testing Agency,SCANNED_PDF,EXAM_SCHEDULE,exam_date,07.12.2026,N/A,MISSING_IN_EXTRACTION,0.00,1,
+new_val_29_nta_announcement_of_date_s__for_st.pdf,National Testing Agency,SCANNED_PDF,EXAM_SCHEDULE,application_fee,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_29_nta_announcement_of_date_s__for_st.pdf,National Testing Agency,SCANNED_PDF,EXAM_SCHEDULE,age_limit,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_29_nta_announcement_of_date_s__for_st.pdf,National Testing Agency,SCANNED_PDF,EXAM_SCHEDULE,eligibility,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_30_nta_22_notice_inviting_quotation.pdf,National Testing Agency,TEXT_PDF,OTHER_ANNOUNCEMENT,recruiting_authority,National Testing Agency,National Testing Agency,EXACT_MATCH,1.00,1,Official publishing authority: National Testing Agency
+new_val_30_nta_22_notice_inviting_quotation.pdf,National Testing Agency,TEXT_PDF,OTHER_ANNOUNCEMENT,notice_number,NTA/Proc./Hotel-Empanel/2026,NTA/Proc./Hotel-Empanel/2026-27/01,EXACT_MATCH,0.95,1,ELHI  NIQ Reference No.  NTA/Proc./Hotel-Empanel/2026-27/01  Date of Issue  17.09.2026  Mode of Pub
+new_val_30_nta_22_notice_inviting_quotation.pdf,National Testing Agency,TEXT_PDF,OTHER_ANNOUNCEMENT,application_start_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_30_nta_22_notice_inviting_quotation.pdf,National Testing Agency,TEXT_PDF,OTHER_ANNOUNCEMENT,application_end_date,08.10.2026,08.10.2026,EXACT_MATCH,0.90,1,"r-procurement@nta.gov.in Last Date & Time for  Submission : 08.10.2026, up to 3:00 PM Date & Time of"
+new_val_30_nta_22_notice_inviting_quotation.pdf,National Testing Agency,TEXT_PDF,OTHER_ANNOUNCEMENT,total_vacancies,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_30_nta_22_notice_inviting_quotation.pdf,National Testing Agency,TEXT_PDF,OTHER_ANNOUNCEMENT,exam_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_30_nta_22_notice_inviting_quotation.pdf,National Testing Agency,TEXT_PDF,OTHER_ANNOUNCEMENT,application_fee,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_30_nta_22_notice_inviting_quotation.pdf,National Testing Agency,TEXT_PDF,OTHER_ANNOUNCEMENT,age_limit,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_30_nta_22_notice_inviting_quotation.pdf,National Testing Agency,TEXT_PDF,OTHER_ANNOUNCEMENT,eligibility,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_31_nta_24_eoi_for_translation_reviewe.pdf,National Testing Agency,TEXT_PDF,RECRUITMENT,recruiting_authority,National Testing Agency,National Testing Agency,EXACT_MATCH,1.00,1,Official publishing authority: National Testing Agency
+new_val_31_nta_24_eoi_for_translation_reviewe.pdf,National Testing Agency,TEXT_PDF,RECRUITMENT,notice_number,NTA/EoI-Empanelment/2026,N/A,MISSING_IN_EXTRACTION,0.00,1,
+new_val_31_nta_24_eoi_for_translation_reviewe.pdf,National Testing Agency,TEXT_PDF,RECRUITMENT,application_start_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_31_nta_24_eoi_for_translation_reviewe.pdf,National Testing Agency,TEXT_PDF,RECRUITMENT,application_end_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_31_nta_24_eoi_for_translation_reviewe.pdf,National Testing Agency,TEXT_PDF,RECRUITMENT,total_vacancies,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_31_nta_24_eoi_for_translation_reviewe.pdf,National Testing Agency,TEXT_PDF,RECRUITMENT,exam_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_31_nta_24_eoi_for_translation_reviewe.pdf,National Testing Agency,TEXT_PDF,RECRUITMENT,application_fee,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_31_nta_24_eoi_for_translation_reviewe.pdf,National Testing Agency,TEXT_PDF,RECRUITMENT,age_limit,25 and 65 years,25 and 65 years,EXACT_MATCH,0.85,7,ot  eligible. 2 Age Between 25 and 65 years as on the date of application
+new_val_31_nta_24_eoi_for_translation_reviewe.pdf,National Testing Agency,TEXT_PDF,RECRUITMENT,eligibility,Master's degree or higher,N/A,MISSING_IN_EXTRACTION,0.00,1,
+new_val_32_nta_eoi_for_subject_matter_expert.pdf,National Testing Agency,TEXT_PDF,RECRUITMENT,recruiting_authority,National Testing Agency,National Testing Agency,EXACT_MATCH,1.00,1,Official publishing authority: National Testing Agency
+new_val_32_nta_eoi_for_subject_matter_expert.pdf,National Testing Agency,TEXT_PDF,RECRUITMENT,notice_number,NTA/EoI-Empanelment/2026,N/A,MISSING_IN_EXTRACTION,0.00,1,
+new_val_32_nta_eoi_for_subject_matter_expert.pdf,National Testing Agency,TEXT_PDF,RECRUITMENT,application_start_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_32_nta_eoi_for_subject_matter_expert.pdf,National Testing Agency,TEXT_PDF,RECRUITMENT,application_end_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_32_nta_eoi_for_subject_matter_expert.pdf,National Testing Agency,TEXT_PDF,RECRUITMENT,total_vacancies,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_32_nta_eoi_for_subject_matter_expert.pdf,National Testing Agency,TEXT_PDF,RECRUITMENT,exam_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_32_nta_eoi_for_subject_matter_expert.pdf,National Testing Agency,TEXT_PDF,RECRUITMENT,application_fee,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_32_nta_eoi_for_subject_matter_expert.pdf,National Testing Agency,TEXT_PDF,RECRUITMENT,age_limit,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_32_nta_eoi_for_subject_matter_expert.pdf,National Testing Agency,TEXT_PDF,RECRUITMENT,eligibility,Master's degree,Master's degree (or equivalent) in the relevant subject domain with at least 60% marks,EXACT_MATCH,0.85,4,ments of NTA.    4. Eligibility Criteria  Applicants must meet ALL of the following criteria to be c
+new_val_33_upsc_written_result__with_name___co.html,Union Public Service Commission,HTML,EXAM_RESULT,recruiting_authority,Union Public Service Commission,Union Public Service Commission,EXACT_MATCH,1.00,1,Official publishing authority: Union Public Service Commission
+new_val_33_upsc_written_result__with_name___co.html,Union Public Service Commission,HTML,EXAM_RESULT,notice_number,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_33_upsc_written_result__with_name___co.html,Union Public Service Commission,HTML,EXAM_RESULT,application_start_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_33_upsc_written_result__with_name___co.html,Union Public Service Commission,HTML,EXAM_RESULT,application_end_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_33_upsc_written_result__with_name___co.html,Union Public Service Commission,HTML,EXAM_RESULT,total_vacancies,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_33_upsc_written_result__with_name___co.html,Union Public Service Commission,HTML,EXAM_RESULT,exam_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_33_upsc_written_result__with_name___co.html,Union Public Service Commission,HTML,EXAM_RESULT,application_fee,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_33_upsc_written_result__with_name___co.html,Union Public Service Commission,HTML,EXAM_RESULT,age_limit,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_33_upsc_written_result__with_name___co.html,Union Public Service Commission,HTML,EXAM_RESULT,eligibility,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_34_upsc_examination_time_table__combin.html,Union Public Service Commission,HTML,EXAM_SCHEDULE,recruiting_authority,Union Public Service Commission,Union Public Service Commission,EXACT_MATCH,1.00,1,Official publishing authority: Union Public Service Commission
+new_val_34_upsc_examination_time_table__combin.html,Union Public Service Commission,HTML,EXAM_SCHEDULE,notice_number,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_34_upsc_examination_time_table__combin.html,Union Public Service Commission,HTML,EXAM_SCHEDULE,application_start_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_34_upsc_examination_time_table__combin.html,Union Public Service Commission,HTML,EXAM_SCHEDULE,application_end_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_34_upsc_examination_time_table__combin.html,Union Public Service Commission,HTML,EXAM_SCHEDULE,total_vacancies,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_34_upsc_examination_time_table__combin.html,Union Public Service Commission,HTML,EXAM_SCHEDULE,exam_date,07.02.2027,N/A,MISSING_IN_EXTRACTION,0.00,1,
+new_val_34_upsc_examination_time_table__combin.html,Union Public Service Commission,HTML,EXAM_SCHEDULE,application_fee,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_34_upsc_examination_time_table__combin.html,Union Public Service Commission,HTML,EXAM_SCHEDULE,age_limit,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_34_upsc_examination_time_table__combin.html,Union Public Service Commission,HTML,EXAM_SCHEDULE,eligibility,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_35_upsc_written_result__08_posts_of_ad.html,Union Public Service Commission,HTML,EXAM_RESULT,recruiting_authority,Union Public Service Commission,Union Public Service Commission,EXACT_MATCH,1.00,1,Official publishing authority: Union Public Service Commission
+new_val_35_upsc_written_result__08_posts_of_ad.html,Union Public Service Commission,HTML,EXAM_RESULT,notice_number,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_35_upsc_written_result__08_posts_of_ad.html,Union Public Service Commission,HTML,EXAM_RESULT,application_start_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_35_upsc_written_result__08_posts_of_ad.html,Union Public Service Commission,HTML,EXAM_RESULT,application_end_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_35_upsc_written_result__08_posts_of_ad.html,Union Public Service Commission,HTML,EXAM_RESULT,total_vacancies,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_35_upsc_written_result__08_posts_of_ad.html,Union Public Service Commission,HTML,EXAM_RESULT,exam_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_35_upsc_written_result__08_posts_of_ad.html,Union Public Service Commission,HTML,EXAM_RESULT,application_fee,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_35_upsc_written_result__08_posts_of_ad.html,Union Public Service Commission,HTML,EXAM_RESULT,age_limit,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_35_upsc_written_result__08_posts_of_ad.html,Union Public Service Commission,HTML,EXAM_RESULT,eligibility,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_36_upsc_written_result__19_posts_of_ma.html,Union Public Service Commission,HTML,EXAM_RESULT,recruiting_authority,Union Public Service Commission,Union Public Service Commission,EXACT_MATCH,1.00,1,Official publishing authority: Union Public Service Commission
+new_val_36_upsc_written_result__19_posts_of_ma.html,Union Public Service Commission,HTML,EXAM_RESULT,notice_number,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_36_upsc_written_result__19_posts_of_ma.html,Union Public Service Commission,HTML,EXAM_RESULT,application_start_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_36_upsc_written_result__19_posts_of_ma.html,Union Public Service Commission,HTML,EXAM_RESULT,application_end_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_36_upsc_written_result__19_posts_of_ma.html,Union Public Service Commission,HTML,EXAM_RESULT,total_vacancies,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_36_upsc_written_result__19_posts_of_ma.html,Union Public Service Commission,HTML,EXAM_RESULT,exam_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_36_upsc_written_result__19_posts_of_ma.html,Union Public Service Commission,HTML,EXAM_RESULT,application_fee,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_36_upsc_written_result__19_posts_of_ma.html,Union Public Service Commission,HTML,EXAM_RESULT,age_limit,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_36_upsc_written_result__19_posts_of_ma.html,Union Public Service Commission,HTML,EXAM_RESULT,eligibility,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_37_upsc_written_result__combined_defen.html,Union Public Service Commission,HTML,EXAM_RESULT,recruiting_authority,Union Public Service Commission,Union Public Service Commission,EXACT_MATCH,1.00,1,Official publishing authority: Union Public Service Commission
+new_val_37_upsc_written_result__combined_defen.html,Union Public Service Commission,HTML,EXAM_RESULT,notice_number,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_37_upsc_written_result__combined_defen.html,Union Public Service Commission,HTML,EXAM_RESULT,application_start_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_37_upsc_written_result__combined_defen.html,Union Public Service Commission,HTML,EXAM_RESULT,application_end_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_37_upsc_written_result__combined_defen.html,Union Public Service Commission,HTML,EXAM_RESULT,total_vacancies,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_37_upsc_written_result__combined_defen.html,Union Public Service Commission,HTML,EXAM_RESULT,exam_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_37_upsc_written_result__combined_defen.html,Union Public Service Commission,HTML,EXAM_RESULT,application_fee,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_37_upsc_written_result__combined_defen.html,Union Public Service Commission,HTML,EXAM_RESULT,age_limit,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_37_upsc_written_result__combined_defen.html,Union Public Service Commission,HTML,EXAM_RESULT,eligibility,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_38_upsc_notice__04_posts_of_homoeopath.html,Union Public Service Commission,HTML,RECRUITMENT,recruiting_authority,Union Public Service Commission,Union Public Service Commission,EXACT_MATCH,1.00,1,Official publishing authority: Union Public Service Commission
+new_val_38_upsc_notice__04_posts_of_homoeopath.html,Union Public Service Commission,HTML,RECRUITMENT,notice_number,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_38_upsc_notice__04_posts_of_homoeopath.html,Union Public Service Commission,HTML,RECRUITMENT,application_start_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_38_upsc_notice__04_posts_of_homoeopath.html,Union Public Service Commission,HTML,RECRUITMENT,application_end_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_38_upsc_notice__04_posts_of_homoeopath.html,Union Public Service Commission,HTML,RECRUITMENT,total_vacancies,04,04,EXACT_MATCH,0.95,1,ent Home >> Whats New >> 04 Posts of Homoeopathic Physician In NDMC >> Notice × E
+new_val_38_upsc_notice__04_posts_of_homoeopath.html,Union Public Service Commission,HTML,RECRUITMENT,exam_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_38_upsc_notice__04_posts_of_homoeopath.html,Union Public Service Commission,HTML,RECRUITMENT,application_fee,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_38_upsc_notice__04_posts_of_homoeopath.html,Union Public Service Commission,HTML,RECRUITMENT,age_limit,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_38_upsc_notice__04_posts_of_homoeopath.html,Union Public Service Commission,HTML,RECRUITMENT,eligibility,Degree in Homoeopathy,N/A,MISSING_IN_EXTRACTION,0.00,1,
+new_val_39_upsc_final_result__combined_geo_sci.html,Union Public Service Commission,HTML,EXAM_RESULT,recruiting_authority,Union Public Service Commission,Union Public Service Commission,EXACT_MATCH,1.00,1,Official publishing authority: Union Public Service Commission
+new_val_39_upsc_final_result__combined_geo_sci.html,Union Public Service Commission,HTML,EXAM_RESULT,notice_number,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_39_upsc_final_result__combined_geo_sci.html,Union Public Service Commission,HTML,EXAM_RESULT,application_start_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_39_upsc_final_result__combined_geo_sci.html,Union Public Service Commission,HTML,EXAM_RESULT,application_end_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_39_upsc_final_result__combined_geo_sci.html,Union Public Service Commission,HTML,EXAM_RESULT,total_vacancies,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_39_upsc_final_result__combined_geo_sci.html,Union Public Service Commission,HTML,EXAM_RESULT,exam_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_39_upsc_final_result__combined_geo_sci.html,Union Public Service Commission,HTML,EXAM_RESULT,application_fee,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_39_upsc_final_result__combined_geo_sci.html,Union Public Service Commission,HTML,EXAM_RESULT,age_limit,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_39_upsc_final_result__combined_geo_sci.html,Union Public Service Commission,HTML,EXAM_RESULT,eligibility,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_40_upsc_notice__704_posts_of_vice_prin.html,Union Public Service Commission,HTML,RECRUITMENT,recruiting_authority,Union Public Service Commission,Union Public Service Commission,EXACT_MATCH,1.00,1,Official publishing authority: Union Public Service Commission
+new_val_40_upsc_notice__704_posts_of_vice_prin.html,Union Public Service Commission,HTML,RECRUITMENT,notice_number,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_40_upsc_notice__704_posts_of_vice_prin.html,Union Public Service Commission,HTML,RECRUITMENT,application_start_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_40_upsc_notice__704_posts_of_vice_prin.html,Union Public Service Commission,HTML,RECRUITMENT,application_end_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_40_upsc_notice__704_posts_of_vice_prin.html,Union Public Service Commission,HTML,RECRUITMENT,total_vacancies,704,704,EXACT_MATCH,0.95,1,"ent Home >> Whats New >> 704 Posts of Vice Principal In Education Department, GNCT"
+new_val_40_upsc_notice__704_posts_of_vice_prin.html,Union Public Service Commission,HTML,RECRUITMENT,exam_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_40_upsc_notice__704_posts_of_vice_prin.html,Union Public Service Commission,HTML,RECRUITMENT,application_fee,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_40_upsc_notice__704_posts_of_vice_prin.html,Union Public Service Commission,HTML,RECRUITMENT,age_limit,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_40_upsc_notice__704_posts_of_vice_prin.html,Union Public Service Commission,HTML,RECRUITMENT,eligibility,Master's Degree,N/A,MISSING_IN_EXTRACTION,0.00,1,
+new_val_41_upsc_notice__124_posts_of_principal.html,Union Public Service Commission,HTML,RECRUITMENT,recruiting_authority,Union Public Service Commission,Union Public Service Commission,EXACT_MATCH,1.00,1,Official publishing authority: Union Public Service Commission
+new_val_41_upsc_notice__124_posts_of_principal.html,Union Public Service Commission,HTML,RECRUITMENT,notice_number,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_41_upsc_notice__124_posts_of_principal.html,Union Public Service Commission,HTML,RECRUITMENT,application_start_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_41_upsc_notice__124_posts_of_principal.html,Union Public Service Commission,HTML,RECRUITMENT,application_end_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_41_upsc_notice__124_posts_of_principal.html,Union Public Service Commission,HTML,RECRUITMENT,total_vacancies,124,124,EXACT_MATCH,0.95,1,"ent Home >> Whats New >> 124 Posts of Principal In Education Department, GNCTD >>"
+new_val_41_upsc_notice__124_posts_of_principal.html,Union Public Service Commission,HTML,RECRUITMENT,exam_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_41_upsc_notice__124_posts_of_principal.html,Union Public Service Commission,HTML,RECRUITMENT,application_fee,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_41_upsc_notice__124_posts_of_principal.html,Union Public Service Commission,HTML,RECRUITMENT,age_limit,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_41_upsc_notice__124_posts_of_principal.html,Union Public Service Commission,HTML,RECRUITMENT,eligibility,Master's Degree,N/A,MISSING_IN_EXTRACTION,0.00,1,
+new_val_42_upsc_interview_schedule__indian_eco.html,Union Public Service Commission,HTML,EXAM_SCHEDULE,recruiting_authority,Union Public Service Commission,Union Public Service Commission,EXACT_MATCH,1.00,1,Official publishing authority: Union Public Service Commission
+new_val_42_upsc_interview_schedule__indian_eco.html,Union Public Service Commission,HTML,EXAM_SCHEDULE,notice_number,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_42_upsc_interview_schedule__indian_eco.html,Union Public Service Commission,HTML,EXAM_SCHEDULE,application_start_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_42_upsc_interview_schedule__indian_eco.html,Union Public Service Commission,HTML,EXAM_SCHEDULE,application_end_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_42_upsc_interview_schedule__indian_eco.html,Union Public Service Commission,HTML,EXAM_SCHEDULE,total_vacancies,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_42_upsc_interview_schedule__indian_eco.html,Union Public Service Commission,HTML,EXAM_SCHEDULE,exam_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_42_upsc_interview_schedule__indian_eco.html,Union Public Service Commission,HTML,EXAM_SCHEDULE,application_fee,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_42_upsc_interview_schedule__indian_eco.html,Union Public Service Commission,HTML,EXAM_SCHEDULE,age_limit,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_42_upsc_interview_schedule__indian_eco.html,Union Public Service Commission,HTML,EXAM_SCHEDULE,eligibility,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_43_uppsc_samiksha_adhikari__sahayak_sam.html,Uttar Pradesh Public Service Commission,HTML,RECRUITMENT,recruiting_authority,Uttar Pradesh Public Service Commission,Uttar Pradesh Public Service Commission,EXACT_MATCH,1.00,1,Official publishing authority: Uttar Pradesh Public Service Commission
+new_val_43_uppsc_samiksha_adhikari__sahayak_sam.html,Uttar Pradesh Public Service Commission,HTML,RECRUITMENT,notice_number,A-5/E-1/2025,A-5/E-1/2025,EXACT_MATCH,0.95,1,"IFICATION FOR ADVT. NO. A-5/E-1/2025, ASSISTANT TE.. Visible upto : 30/10/20"
+new_val_43_uppsc_samiksha_adhikari__sahayak_sam.html,Uttar Pradesh Public Service Commission,HTML,RECRUITMENT,application_start_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_43_uppsc_samiksha_adhikari__sahayak_sam.html,Uttar Pradesh Public Service Commission,HTML,RECRUITMENT,application_end_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_43_uppsc_samiksha_adhikari__sahayak_sam.html,Uttar Pradesh Public Service Commission,HTML,RECRUITMENT,total_vacancies,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_43_uppsc_samiksha_adhikari__sahayak_sam.html,Uttar Pradesh Public Service Commission,HTML,RECRUITMENT,exam_date,02/11/2026,02/11/2026,EXACT_MATCH,0.90,1,"-09/15,S-09/16,S-09/17) (EXAM DATE - 02/11/2026-06/11/2026). Visible upto : 06/11/2026 3. Do"
+new_val_43_uppsc_samiksha_adhikari__sahayak_sam.html,Uttar Pradesh Public Service Commission,HTML,RECRUITMENT,application_fee,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_43_uppsc_samiksha_adhikari__sahayak_sam.html,Uttar Pradesh Public Service Commission,HTML,RECRUITMENT,age_limit,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_43_uppsc_samiksha_adhikari__sahayak_sam.html,Uttar Pradesh Public Service Commission,HTML,RECRUITMENT,eligibility,Bachelor's Degree,N/A,MISSING_IN_EXTRACTION,0.00,1,
+new_val_44_uppsc_d_6_e_1_2025___21_09_2026.html,Uttar Pradesh Public Service Commission,HTML,RECRUITMENT,recruiting_authority,Uttar Pradesh Public Service Commission,Uttar Pradesh Public Service Commission,EXACT_MATCH,1.00,1,Official publishing authority: Uttar Pradesh Public Service Commission
+new_val_44_uppsc_d_6_e_1_2025___21_09_2026.html,Uttar Pradesh Public Service Commission,HTML,RECRUITMENT,notice_number,D-6/E-1/2025,A-5/E-1/2025,PARTIAL_OR_DISCREPANCY,0.95,1,"IFICATION FOR ADVT. NO. A-5/E-1/2025, ASSISTANT TE.. Visible upto : 30/10/20"
+new_val_44_uppsc_d_6_e_1_2025___21_09_2026.html,Uttar Pradesh Public Service Commission,HTML,RECRUITMENT,application_start_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_44_uppsc_d_6_e_1_2025___21_09_2026.html,Uttar Pradesh Public Service Commission,HTML,RECRUITMENT,application_end_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_44_uppsc_d_6_e_1_2025___21_09_2026.html,Uttar Pradesh Public Service Commission,HTML,RECRUITMENT,total_vacancies,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_44_uppsc_d_6_e_1_2025___21_09_2026.html,Uttar Pradesh Public Service Commission,HTML,RECRUITMENT,exam_date,02/11/2026,02/11/2026,EXACT_MATCH,0.90,1,"-09/15,S-09/16,S-09/17) (EXAM DATE - 02/11/2026-06/11/2026). Visible upto : 06/11/2026 3. Do"
+new_val_44_uppsc_d_6_e_1_2025___21_09_2026.html,Uttar Pradesh Public Service Commission,HTML,RECRUITMENT,application_fee,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_44_uppsc_d_6_e_1_2025___21_09_2026.html,Uttar Pradesh Public Service Commission,HTML,RECRUITMENT,age_limit,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_44_uppsc_d_6_e_1_2025___21_09_2026.html,Uttar Pradesh Public Service Commission,HTML,RECRUITMENT,eligibility,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_45_uppsc_d_2_e_1_2026___14_09_2026.html,Uttar Pradesh Public Service Commission,HTML,RECRUITMENT,recruiting_authority,Uttar Pradesh Public Service Commission,Uttar Pradesh Public Service Commission,EXACT_MATCH,1.00,1,Official publishing authority: Uttar Pradesh Public Service Commission
+new_val_45_uppsc_d_2_e_1_2026___14_09_2026.html,Uttar Pradesh Public Service Commission,HTML,RECRUITMENT,notice_number,D-2/E-1/2026,A-5/E-1/2025,PARTIAL_OR_DISCREPANCY,0.95,1,"IFICATION FOR ADVT. NO. A-5/E-1/2025, ASSISTANT TE.. Visible upto : 30/10/20"
+new_val_45_uppsc_d_2_e_1_2026___14_09_2026.html,Uttar Pradesh Public Service Commission,HTML,RECRUITMENT,application_start_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_45_uppsc_d_2_e_1_2026___14_09_2026.html,Uttar Pradesh Public Service Commission,HTML,RECRUITMENT,application_end_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_45_uppsc_d_2_e_1_2026___14_09_2026.html,Uttar Pradesh Public Service Commission,HTML,RECRUITMENT,total_vacancies,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_45_uppsc_d_2_e_1_2026___14_09_2026.html,Uttar Pradesh Public Service Commission,HTML,RECRUITMENT,exam_date,02/11/2026,02/11/2026,EXACT_MATCH,0.90,1,"-09/15,S-09/16,S-09/17) (EXAM DATE - 02/11/2026-06/11/2026). Visible upto : 06/11/2026 3. Do"
+new_val_45_uppsc_d_2_e_1_2026___14_09_2026.html,Uttar Pradesh Public Service Commission,HTML,RECRUITMENT,application_fee,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_45_uppsc_d_2_e_1_2026___14_09_2026.html,Uttar Pradesh Public Service Commission,HTML,RECRUITMENT,age_limit,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_45_uppsc_d_2_e_1_2026___14_09_2026.html,Uttar Pradesh Public Service Commission,HTML,RECRUITMENT,eligibility,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_46_ssc_notification_for_recruitment_o.pdf,Staff Selection Commission,TEXT_PDF,RECRUITMENT,recruiting_authority,Staff Selection Commission,Staff Selection Commission,EXACT_MATCH,1.00,1,Official publishing authority: Staff Selection Commission
+new_val_46_ssc_notification_for_recruitment_o.pdf,Staff Selection Commission,TEXT_PDF,RECRUITMENT,notice_number,01/2027,N/A,MISSING_IN_EXTRACTION,0.00,1,
+new_val_46_ssc_notification_for_recruitment_o.pdf,Staff Selection Commission,TEXT_PDF,RECRUITMENT,application_start_date,13.06.2024,N/A,MISSING_IN_EXTRACTION,0.00,1,
+new_val_46_ssc_notification_for_recruitment_o.pdf,Staff Selection Commission,TEXT_PDF,RECRUITMENT,application_end_date,03.07.2024,N/A,MISSING_IN_EXTRACTION,0.00,1,
+new_val_46_ssc_notification_for_recruitment_o.pdf,Staff Selection Commission,TEXT_PDF,RECRUITMENT,total_vacancies,300,N/A,MISSING_IN_EXTRACTION,0.00,1,
+new_val_46_ssc_notification_for_recruitment_o.pdf,Staff Selection Commission,TEXT_PDF,RECRUITMENT,exam_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_46_ssc_notification_for_recruitment_o.pdf,Staff Selection Commission,TEXT_PDF,RECRUITMENT,application_fee,Rs. 300,N/A,MISSING_IN_EXTRACTION,0.00,1,
+new_val_46_ssc_notification_for_recruitment_o.pdf,Staff Selection Commission,TEXT_PDF,RECRUITMENT,age_limit,18 to 22 years,N/A,MISSING_IN_EXTRACTION,0.00,1,
+new_val_46_ssc_notification_for_recruitment_o.pdf,Staff Selection Commission,TEXT_PDF,RECRUITMENT,eligibility,Matriculation,Matriculation OR Industrial Training Institute (ITI) OR equivalent from Board of Education recognised by the Central/ State Government,EXACT_MATCH,0.85,1,"ITIZENS  possessing educational qualifications and age as prescribed below, for recruitment as an En"
+new_val_47_ssc_important_notice___schedule_of.pdf,Staff Selection Commission,TEXT_PDF,EXAM_SCHEDULE,recruiting_authority,Staff Selection Commission,Staff Selection Commission,EXACT_MATCH,1.00,1,Official publishing authority: Staff Selection Commission
+new_val_47_ssc_important_notice___schedule_of.pdf,Staff Selection Commission,TEXT_PDF,EXAM_SCHEDULE,notice_number,HQ-EC033/7/2025-EC,HQ-EC033/7/2025-EC,EXACT_MATCH,0.95,1,F. No. HQ-EC033/7/2025-EC  Staff Selection Commission  *****
+new_val_47_ssc_important_notice___schedule_of.pdf,Staff Selection Commission,TEXT_PDF,EXAM_SCHEDULE,application_start_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_47_ssc_important_notice___schedule_of.pdf,Staff Selection Commission,TEXT_PDF,EXAM_SCHEDULE,application_end_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_47_ssc_important_notice___schedule_of.pdf,Staff Selection Commission,TEXT_PDF,EXAM_SCHEDULE,total_vacancies,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_47_ssc_important_notice___schedule_of.pdf,Staff Selection Commission,TEXT_PDF,EXAM_SCHEDULE,exam_date,18.11.2026,N/A,MISSING_IN_EXTRACTION,0.00,1,
+new_val_47_ssc_important_notice___schedule_of.pdf,Staff Selection Commission,TEXT_PDF,EXAM_SCHEDULE,application_fee,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_47_ssc_important_notice___schedule_of.pdf,Staff Selection Commission,TEXT_PDF,EXAM_SCHEDULE,age_limit,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_47_ssc_important_notice___schedule_of.pdf,Staff Selection Commission,TEXT_PDF,EXAM_SCHEDULE,eligibility,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_48_ssc_cancellation_notice_for_the_po.pdf,Staff Selection Commission,TEXT_PDF,CANCELLATION_NOTICE,recruiting_authority,Staff Selection Commission,Staff Selection Commission,EXACT_MATCH,1.00,1,Official publishing authority: Staff Selection Commission
+new_val_48_ssc_cancellation_notice_for_the_po.pdf,Staff Selection Commission,TEXT_PDF,CANCELLATION_NOTICE,notice_number,S-6002/7/2026-Selection,S-6002/7/2026-Selection,EXACT_MATCH,0.95,1,F.No.  S-6002/7/2026-Selection Post  Dated:  30.09.2026  ಭಾರತಸರ್ಕಾರ  ಸ
+new_val_48_ssc_cancellation_notice_for_the_po.pdf,Staff Selection Commission,TEXT_PDF,CANCELLATION_NOTICE,application_start_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_48_ssc_cancellation_notice_for_the_po.pdf,Staff Selection Commission,TEXT_PDF,CANCELLATION_NOTICE,application_end_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_48_ssc_cancellation_notice_for_the_po.pdf,Staff Selection Commission,TEXT_PDF,CANCELLATION_NOTICE,total_vacancies,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_48_ssc_cancellation_notice_for_the_po.pdf,Staff Selection Commission,TEXT_PDF,CANCELLATION_NOTICE,exam_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_48_ssc_cancellation_notice_for_the_po.pdf,Staff Selection Commission,TEXT_PDF,CANCELLATION_NOTICE,application_fee,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_48_ssc_cancellation_notice_for_the_po.pdf,Staff Selection Commission,TEXT_PDF,CANCELLATION_NOTICE,age_limit,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_48_ssc_cancellation_notice_for_the_po.pdf,Staff Selection Commission,TEXT_PDF,CANCELLATION_NOTICE,eligibility,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_49_ssc_cancellation_notice_for_the_po.pdf,Staff Selection Commission,TEXT_PDF,CANCELLATION_NOTICE,recruiting_authority,Staff Selection Commission,Staff Selection Commission,EXACT_MATCH,1.00,1,Official publishing authority: Staff Selection Commission
+new_val_49_ssc_cancellation_notice_for_the_po.pdf,Staff Selection Commission,TEXT_PDF,CANCELLATION_NOTICE,notice_number,S-6002/7/2025-Selection,S-6002/7/2025-Selection,EXACT_MATCH,0.95,1,F.No.  S-6002/7/2025-Selection Post  Dated:  30.09.2026  ಭಾರತಸರ್ಕಾರ  ಸ
+new_val_49_ssc_cancellation_notice_for_the_po.pdf,Staff Selection Commission,TEXT_PDF,CANCELLATION_NOTICE,application_start_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_49_ssc_cancellation_notice_for_the_po.pdf,Staff Selection Commission,TEXT_PDF,CANCELLATION_NOTICE,application_end_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_49_ssc_cancellation_notice_for_the_po.pdf,Staff Selection Commission,TEXT_PDF,CANCELLATION_NOTICE,total_vacancies,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_49_ssc_cancellation_notice_for_the_po.pdf,Staff Selection Commission,TEXT_PDF,CANCELLATION_NOTICE,exam_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_49_ssc_cancellation_notice_for_the_po.pdf,Staff Selection Commission,TEXT_PDF,CANCELLATION_NOTICE,application_fee,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_49_ssc_cancellation_notice_for_the_po.pdf,Staff Selection Commission,TEXT_PDF,CANCELLATION_NOTICE,age_limit,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_49_ssc_cancellation_notice_for_the_po.pdf,Staff Selection Commission,TEXT_PDF,CANCELLATION_NOTICE,eligibility,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_50_ssc_important_notice__grade__c__st.pdf,Staff Selection Commission,SCANNED_PDF,EXAM_SCHEDULE,recruiting_authority,Staff Selection Commission,Staff Selection Commission,EXACT_MATCH,1.00,1,Official publishing authority: Staff Selection Commission
+new_val_50_ssc_important_notice__grade__c__st.pdf,Staff Selection Commission,SCANNED_PDF,EXAM_SCHEDULE,notice_number,HQ-EC033/7/2025-EC,HQ-EC033/7/2025-EC,EXACT_MATCH,0.95,1,F.No. HQ-EC033/7/2025-EC Staff Selection Commission IMPORTANT NO
+new_val_50_ssc_important_notice__grade__c__st.pdf,Staff Selection Commission,SCANNED_PDF,EXAM_SCHEDULE,application_start_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_50_ssc_important_notice__grade__c__st.pdf,Staff Selection Commission,SCANNED_PDF,EXAM_SCHEDULE,application_end_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_50_ssc_important_notice__grade__c__st.pdf,Staff Selection Commission,SCANNED_PDF,EXAM_SCHEDULE,total_vacancies,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_50_ssc_important_notice__grade__c__st.pdf,Staff Selection Commission,SCANNED_PDF,EXAM_SCHEDULE,exam_date,09.05.2025,N/A,MISSING_IN_EXTRACTION,0.00,1,
+new_val_50_ssc_important_notice__grade__c__st.pdf,Staff Selection Commission,SCANNED_PDF,EXAM_SCHEDULE,application_fee,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_50_ssc_important_notice__grade__c__st.pdf,Staff Selection Commission,SCANNED_PDF,EXAM_SCHEDULE,age_limit,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_50_ssc_important_notice__grade__c__st.pdf,Staff Selection Commission,SCANNED_PDF,EXAM_SCHEDULE,eligibility,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_51_ssc_tentative_vacancy_of_combined.pdf,Staff Selection Commission,TEXT_PDF,INTERNAL_CIRCULAR,recruiting_authority,Staff Selection Commission,Staff Selection Commission,EXACT_MATCH,1.00,1,Official publishing authority: Staff Selection Commission
+new_val_51_ssc_tentative_vacancy_of_combined.pdf,Staff Selection Commission,TEXT_PDF,INTERNAL_CIRCULAR,notice_number,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_51_ssc_tentative_vacancy_of_combined.pdf,Staff Selection Commission,TEXT_PDF,INTERNAL_CIRCULAR,application_start_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_51_ssc_tentative_vacancy_of_combined.pdf,Staff Selection Commission,TEXT_PDF,INTERNAL_CIRCULAR,application_end_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_51_ssc_tentative_vacancy_of_combined.pdf,Staff Selection Commission,TEXT_PDF,INTERNAL_CIRCULAR,total_vacancies,17727,10731,PARTIAL_OR_DISCREPANCY,0.92,3,Table Total Row (Page 3): TOTAL |  |  |  |  |  |  | 4412 | 1715 | 804 | 2772 | 1028 | 10731 | 373 | 
+new_val_51_ssc_tentative_vacancy_of_combined.pdf,Staff Selection Commission,TEXT_PDF,INTERNAL_CIRCULAR,exam_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_51_ssc_tentative_vacancy_of_combined.pdf,Staff Selection Commission,TEXT_PDF,INTERNAL_CIRCULAR,application_fee,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_51_ssc_tentative_vacancy_of_combined.pdf,Staff Selection Commission,TEXT_PDF,INTERNAL_CIRCULAR,age_limit,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_51_ssc_tentative_vacancy_of_combined.pdf,Staff Selection Commission,TEXT_PDF,INTERNAL_CIRCULAR,eligibility,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_52_ssc_stenographer_grade_c_and_d_exa.pdf,Staff Selection Commission,TEXT_PDF,EXAM_RESULT,recruiting_authority,Staff Selection Commission,Staff Selection Commission,EXACT_MATCH,1.00,1,Official publishing authority: Staff Selection Commission
+new_val_52_ssc_stenographer_grade_c_and_d_exa.pdf,Staff Selection Commission,TEXT_PDF,EXAM_RESULT,notice_number,E/13/2026-C-2,E/13/2026-C-2,EXACT_MATCH,0.95,1,No. E/13/2026-C-2 SECTION-Part(1) Government of India Dep
+new_val_52_ssc_stenographer_grade_c_and_d_exa.pdf,Staff Selection Commission,TEXT_PDF,EXAM_RESULT,application_start_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_52_ssc_stenographer_grade_c_and_d_exa.pdf,Staff Selection Commission,TEXT_PDF,EXAM_RESULT,application_end_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_52_ssc_stenographer_grade_c_and_d_exa.pdf,Staff Selection Commission,TEXT_PDF,EXAM_RESULT,total_vacancies,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_52_ssc_stenographer_grade_c_and_d_exa.pdf,Staff Selection Commission,TEXT_PDF,EXAM_RESULT,exam_date,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_52_ssc_stenographer_grade_c_and_d_exa.pdf,Staff Selection Commission,TEXT_PDF,EXAM_RESULT,application_fee,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_52_ssc_stenographer_grade_c_and_d_exa.pdf,Staff Selection Commission,TEXT_PDF,EXAM_RESULT,age_limit,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,
+new_val_52_ssc_stenographer_grade_c_and_d_exa.pdf,Staff Selection Commission,TEXT_PDF,EXAM_RESULT,eligibility,N/A,N/A,NOT_APPLICABLE_IN_NOTICE,0.00,1,

@@ -1,0 +1,137 @@
+{% extends "editorial_base.html" %}
+
+{% block title %}Testkart Editorial — Source Scan Health &amp; Logs{% endblock %}
+
+{% block content %}
+<div style="margin-bottom: 1rem;">
+  <h2 style="margin: 0; font-size: 1.35rem;">Official Portal Scan Health &amp; Execution Logs</h2>
+  <span style="font-size: 0.85rem; color: var(--text-muted);">
+    Scheduled and manual discovery scan diagnostics across all official government sources
+  </span>
+</div>
+
+<!-- Configured Sources Health -->
+<div class="card">
+  <h2>Official Government Portals Health</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Code</th>
+        <th>Portal Name</th>
+        <th>State / Category</th>
+        <th>Official Domain</th>
+        <th>Status</th>
+        <th>Consecutive Errors</th>
+        <th>Last Checked</th>
+        <th>Last Success</th>
+        <th>Last Error Detail</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for s in scan_health.sources %}
+      <tr>
+        <td><b>{{ s.code }}</b></td>
+        <td>{{ s.name }}</td>
+        <td>{{ s.state }} &bull; {{ s.category }}</td>
+        <td><code>{{ s.official_domain }}</code></td>
+        <td>
+          {% if s.enabled and s.consecutive_failures == 0 %}
+            <span class="status-pill status-pass">HEALTHY</span>
+          {% elif s.enabled and s.consecutive_failures > 0 %}
+            <span class="status-pill status-danger">{{ s.consecutive_failures }} ERRORS</span>
+          {% else %}
+            <span class="status-pill status-neutral">DISABLED (ROADMAP)</span>
+          {% endif %}
+        </td>
+        <td>{{ s.consecutive_failures }}</td>
+        <td style="font-size: 0.78rem; color: var(--text-muted);">
+          {{ s.last_checked_at[:19] if s.last_checked_at else 'Never' }}
+        </td>
+        <td style="font-size: 0.78rem; color: var(--text-muted);">
+          {{ s.last_success_at[:19] if s.last_success_at else 'Never' }}
+        </td>
+        <td style="font-size: 0.78rem; color: #b91c1c; max-width: 250px; word-break: break-all;">
+          {{ s.last_error or '-' }}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<!-- Recent Failed Scans -->
+<div class="card">
+  <h2>Recent Source Scan Failures</h2>
+  {% if scan_health.failed_logs %}
+  <table>
+    <thead>
+      <tr>
+        <th>Checked At</th>
+        <th>Source</th>
+        <th>Status</th>
+        <th>Latency</th>
+        <th>Error Message</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for fl in scan_health.failed_logs %}
+      <tr>
+        <td style="font-size: 0.78rem; color: var(--text-muted);">{{ fl.checked_at[:19] }}</td>
+        <td><b>{{ fl.source_code }}</b> ({{ fl.source_name }})</td>
+        <td><span class="status-pill status-danger">{{ fl.status }}</span></td>
+        <td style="font-size: 0.78rem;">{{ fl.response_time_ms }} ms</td>
+        <td style="font-size: 0.8rem; color: #b91c1c; font-family: monospace;">{{ fl.error_message }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p style="color: var(--text-muted); font-size: 0.88rem; margin: 0.5rem 0;">No failed scan execution logs recorded.</p>
+  {% endif %}
+</div>
+
+<!-- Scan Runs History -->
+<div class="card">
+  <h2>Scan Runs History</h2>
+  {% if scan_health.recent_scans %}
+  <table>
+    <thead>
+      <tr>
+        <th>Scan ID</th>
+        <th>Type</th>
+        <th>Status</th>
+        <th>Started</th>
+        <th>Completed</th>
+        <th>Checked</th>
+        <th>Notices</th>
+        <th>Errors</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for sc in scan_health.recent_scans %}
+      <tr>
+        <td><code>{{ sc.id }}</code></td>
+        <td><b>{{ sc.scan_type }}</b></td>
+        <td>
+          {% if sc.status == 'COMPLETED' %}
+            <span class="status-pill status-pass">COMPLETED</span>
+          {% elif sc.status == 'RUNNING' %}
+            <span class="status-pill status-warning">RUNNING</span>
+          {% else %}
+            <span class="status-pill status-danger">{{ sc.status }}</span>
+          {% endif %}
+        </td>
+        <td style="font-size: 0.78rem; color: var(--text-muted);">{{ sc.started_at[:19] }}</td>
+        <td style="font-size: 0.78rem; color: var(--text-muted);">{{ sc.completed_at[:19] if sc.completed_at else '-' }}</td>
+        <td>{{ sc.sources_checked }}</td>
+        <td>{{ sc.notices_found }}</td>
+        <td>{{ sc.errors_count }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p style="color: var(--text-muted); font-size: 0.88rem; margin: 0.5rem 0;">No scan runs recorded yet.</p>
+  {% endif %}
+</div>
+{% endblock %}

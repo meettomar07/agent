@@ -1,0 +1,742 @@
+{% extends "editorial_base.html" %}
+
+{% block title %}Draft Editor: {{ article.title }}{% endblock %}
+
+{% block extra_head %}
+<style>
+  .editor-grid {
+    display: grid;
+    grid-template-columns: 420px 1fr;
+    gap: 1.25rem;
+    align-items: start;
+  }
+  .evidence-pane {
+    max-height: calc(100vh - 180px);
+    overflow-y: auto;
+    padding-right: 0.5rem;
+  }
+  .tab-bar {
+    display: flex;
+    gap: 0.25rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 1rem;
+  }
+  .tab-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+  }
+  .tab-btn.active {
+    color: var(--primary);
+    border-bottom-color: var(--primary);
+  }
+  .preview-box {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 1.5rem;
+    min-height: 480px;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+  .preview-box h1, .preview-box h2, .preview-box h3 {
+    color: #0f172a;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.3rem;
+  }
+  .editorial-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+  }
+  .editorial-table th, .editorial-table td {
+    border: 1px solid var(--border);
+    padding: 0.5rem 0.75rem;
+    text-align: left;
+  }
+  .editorial-table th { background: #f8fafc; font-weight: 600; }
+  .action-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    padding: 1rem 1.25rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    margin-top: 1rem;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+  .override-panel {
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    border-radius: 6px;
+    padding: 1rem;
+    margin-top: 1rem;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Top Header -->
+<div style="margin-bottom: 1rem;">
+  <a href="/editorial/articles?view=awaiting" class="btn btn-outline" style="font-size: 0.78rem;">&larr; Back to Drafts</a>
+</div>
+
+<div class="card" style="margin-bottom: 1rem; padding: 1rem 1.25rem;">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; flex-wrap: wrap;">
+    <div>
+      <div style="font-size: 0.8rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase;">
+        {{ notice_review.notice.authority_name }} &bull; <code>{{ article.template_type }}</code>
+      </div>
+      <h2 style="margin: 0.2rem 0 0.4rem 0; border: none; padding: 0; font-size: 1.25rem;">
+        {{ article.title }}
+      </h2>
+      <div style="display: flex; gap: 0.5rem; align-items: center; font-size: 0.8rem;">
+        <span>Status:</span>
+        {% if article.status == 'APPROVED' %}
+          <span class="status-pill status-pass">APPROVED</span>
+        {% elif article.status == 'REJECTED' %}
+          <span class="status-pill status-danger">REJECTED</span>
+        {% elif article.status == 'QA_PASSED' %}
+          <span class="status-pill status-pass">QA_PASSED</span>
+        {% elif article.status == 'QA_FAILED' %}
+          <span class="status-pill status-danger">QA_FAILED</span>
+        {% elif article.status == 'CORRECTION_REQUESTED' %}
+          <span class="status-pill status-warning">CORRECTION_REQUESTED</span>
+        {% else %}
+          <span class="status-pill status-warning">{{ article.status }}</span>
+        {% endif %}
+        <span>&bull;</span>
+        <span>Version: <b>v{{ current_version.version_number }}</b></span>
+        <span>&bull;</span>
+        <span>Content Hash: <code title="{{ current_version.content_hash }}">{{ current_version.content_hash[:12] }}...</code></span>
+        <span>&bull;</span>
+        <span>Author:
+          {% if current_version.generated_by.startswith('human_editor:') %}
+            <b style="color: #0284c7;">{{ current_version.generated_by }}</b>
+          {% else %}
+            <span style="color: var(--text-muted);">{{ current_version.generated_by }}</span>
+          {% endif %}
+        </span>
+      </div>
+    </div>
+    <div>
+      <a href="/editorial/notices/{{ notice_review.notice.id }}" class="btn btn-outline" style="font-size: 0.8rem;">
+        View Notice &amp; Evidence &rarr;
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Unresolved Factual Issues Alert Banner -->
+{% if unresolved_issues %}
+<div class="alert alert-danger" style="margin-bottom: 1.25rem;">
+  <div style="width: 100%;">
+    <strong style="font-size: 0.95rem;">UNRESOLVED FACTUAL ISSUES ({{ unresolved_issues|length }}):</strong>
+    <ul style="margin: 0.4rem 0 0.2rem 1.2rem; padding: 0; font-size: 0.85rem;">
+      {% for issue in unresolved_issues %}
+        <li>{{ issue }}</li>
+      {% endfor %}
+    </ul>
+    <div style="font-size: 0.8rem; margin-top: 0.35rem; color: #7f1d1d;">
+      &bull; Normal approval is <b>BLOCKED</b> until all factual issues are resolved.
+      {% if not can_normally_approve %}
+        An explicit, audited editorial override is required if manually verified from source evidence.
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% else %}
+<div class="alert alert-success" style="margin-bottom: 1.25rem; font-size: 0.85rem;">
+  <strong>ALL FACTUAL CHECKS PASSED:</strong> Extracted facts are verified against source evidence and automated QA checks passed. Ready for standard editorial approval.
+</div>
+{% endif %}
+
+<!-- Two Column Layout: Evidence on Left, Draft Editor on Right -->
+<div class="editor-grid">
+  <!-- Left Column: Source Evidence & Verified Facts -->
+  <div class="evidence-pane">
+    <div class="card" style="padding: 1rem; margin-bottom: 1rem;">
+      <h2 style="font-size: 0.95rem; margin-bottom: 0.5rem;">Official Notice Evidence</h2>
+      <div style="font-size: 0.82rem; margin-bottom: 0.5rem;">
+        <span style="color: var(--text-muted);">Authority:</span> <b>{{ notice_review.notice.authority_name }}</b><br>
+        <span style="color: var(--text-muted);">Classification:</span> <code>{{ notice_review.notice.classification }}</code><br>
+        <span style="color: var(--text-muted);">Portal URL:</span>
+        <a href="{{ notice_review.notice.normalized_url }}" target="_blank" rel="noopener noreferrer" style="word-break: break-all; color: var(--primary);">
+          Official Link &nearr;
+        </a>
+      </div>
+      {% if notice_review.latest_version and notice_review.safe_file_available %}
+        <a href="/editorial/documents/{{ notice_review.latest_version.id }}/download" class="btn btn-outline" style="width: 100%; justify-content: center; font-size: 0.78rem;">
+          Download Official PDF (v{{ notice_review.latest_version.version_number }})
+        </a>
+      {% endif %}
+    </div>
+
+    <!-- Critical Recruitment Fields Card -->
+    {% if critical_fields_summary %}
+    <div class="card" style="padding: 1rem; margin-bottom: 1rem;">
+      <h2 style="font-size: 0.95rem; margin-bottom: 0.5rem; display: flex; justify-content: space-between; align-items: center;">
+        <span>Critical Recruitment Fields</span>
+        <span style="font-size: 0.72rem; font-weight: normal; color: var(--text-muted);">Verification Required</span>
+      </h2>
+      <div style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.5rem;">
+        Confirmation or correction is required before approval.
+      </div>
+      {% for cf in critical_fields_summary %}
+      <div style="border-bottom: 1px solid var(--border); padding: 0.45rem 0; font-size: 0.8rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.2rem;">
+          <b style="color: var(--text);">{{ cf.label }}</b>
+          {% if cf.flag == 'CORRECTED' %}
+            <span class="status-pill status-pass" style="font-size: 0.65rem;">CORRECTED</span>
+          {% elif cf.flag == 'CONFIRMED' %}
+            <span class="status-pill status-pass" style="font-size: 0.65rem;">CONFIRMED</span>
+          {% elif cf.flag == 'CONTRADICTORY' %}
+            <span class="status-pill status-danger" style="font-size: 0.65rem;">CONTRADICTORY</span>
+          {% elif cf.flag == 'LOW_CONFIDENCE' %}
+            <span class="status-pill status-warning" style="font-size: 0.65rem;">LOW CONF ({{ (cf.confidence * 100)|round|int }}%)</span>
+          {% elif cf.flag == 'MISSING' %}
+            <span class="status-pill status-danger" style="font-size: 0.65rem;">MISSING</span>
+          {% else %}
+            <span class="status-pill status-neutral" style="font-size: 0.65rem;">UNCONFIRMED</span>
+          {% endif %}
+        </div>
+        <div style="margin: 0.15rem 0;">
+          {% if cf.corrected_value %}
+            <div style="color: #0284c7; font-weight: 600; font-size: 0.82rem;">[Reviewer]: {{ cf.corrected_value }}</div>
+            <div style="color: var(--text-muted); font-size: 0.72rem; text-decoration: line-through;">[Extracted]: {{ cf.machine_value }}</div>
+          {% elif cf.machine_value %}
+            <div style="font-family: monospace; background: #f8fafc; padding: 0.15rem 0.3rem; border-radius: 3px; font-size: 0.8rem;">
+              {{ cf.machine_value }}
+            </div>
+          {% else %}
+            <span style="color: #b91c1c; font-size: 0.75rem; font-style: italic;">No value extracted from source</span>
+          {% endif %}
+        </div>
+        {% if cf.evidence_text %}
+          <div style="font-size: 0.72rem; color: var(--text-muted); font-style: italic; border-left: 2px solid #cbd5e1; padding-left: 0.35rem; margin-top: 0.2rem;">
+            &ldquo;{{ cf.evidence_text }}&rdquo;
+            {% if cf.page_number %}(p. {{ cf.page_number }}){% endif %}
+          </div>
+        {% endif %}
+        {% if cf.fact_id %}
+          <div style="display: flex; gap: 0.3rem; margin-top: 0.35rem;">
+            {% if not cf.is_confirmed %}
+              <button class="btn btn-outline" style="font-size: 0.68rem; padding: 0.15rem 0.4rem; color: #059669;" onclick="confirmFact('{{ cf.fact_id }}')">&check; Confirm</button>
+            {% endif %}
+            <button class="btn btn-outline" style="font-size: 0.68rem; padding: 0.15rem 0.4rem; color: #0284c7;" onclick="correctFact('{{ cf.fact_id }}', '{{ cf.effective_value or '' }}')">&#9998; Correct</button>
+          </div>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- Extracted Facts Card -->
+    <div class="card" style="padding: 1rem; margin-bottom: 1rem;">
+      <h2 style="font-size: 0.95rem; margin-bottom: 0.5rem;">
+        <span>Extracted Facts</span>
+        <span style="font-size: 0.75rem; font-weight: normal; color: var(--text-muted);">{{ notice_review.all_facts|length }} fields</span>
+      </h2>
+      {% if notice_review.all_facts %}
+        {% for f in notice_review.all_facts %}
+        <div style="border-bottom: 1px solid var(--border); padding: 0.45rem 0; font-size: 0.82rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <b style="color: var(--text);">{{ f.fact_key }}</b>
+            {% if f.verified_status == 'VERIFIED' %}
+              <span class="status-pill status-pass" style="font-size: 0.68rem;">VERIFIED</span>
+            {% elif f.verified_status == 'UNVERIFIED' %}
+              <span class="status-pill status-warning" style="font-size: 0.68rem;">UNVERIFIED</span>
+            {% elif f.verified_status == 'CONTRADICTORY' %}
+              <span class="status-pill status-danger" style="font-size: 0.68rem;">CONTRADICTORY</span>
+            {% else %}
+              <span class="status-pill status-neutral" style="font-size: 0.68rem;">{{ f.verified_status }}</span>
+            {% endif %}
+          </div>
+          <div style="margin: 0.2rem 0; font-family: monospace; background: #f8fafc; padding: 0.2rem 0.4rem; border-radius: 3px;">
+            {{ f.fact_value }}
+          </div>
+          {% if f.evidence_text %}
+            <div style="font-size: 0.75rem; color: var(--text-muted); font-style: italic; border-left: 2px solid #cbd5e1; padding-left: 0.4rem;">
+              &ldquo;{{ f.evidence_text }}&rdquo;
+              {% if f.page_number %}(p. {{ f.page_number }}){% endif %}
+            </div>
+          {% endif %}
+        </div>
+        {% endfor %}
+      {% else %}
+        <p style="font-size: 0.82rem; color: var(--text-muted);">No facts extracted.</p>
+      {% endif %}
+    </div>
+
+    <!-- QA Results -->
+    <div class="card" style="padding: 1rem; margin-bottom: 1rem;">
+      <h2 style="font-size: 0.95rem; margin-bottom: 0.5rem;">Automated QA Checks</h2>
+      {% if qa_results %}
+        {% for q in qa_results %}
+        <div style="border-bottom: 1px solid var(--border); padding: 0.35rem 0; font-size: 0.78rem;">
+          <div style="display: flex; justify-content: space-between;">
+            <b>{{ q.rule_name }}</b>
+            {% if q.passed %}
+              <span class="status-pill status-pass" style="font-size: 0.65rem;">PASS</span>
+            {% else %}
+              <span class="status-pill status-danger" style="font-size: 0.65rem;">FAIL ({{ q.severity }})</span>
+            {% endif %}
+          </div>
+          {% if not q.passed %}
+            <div style="color: #b91c1c; margin-top: 0.15rem;">{{ q.message }}</div>
+          {% endif %}
+        </div>
+        {% endfor %}
+      {% else %}
+        <p style="font-size: 0.82rem; color: var(--text-muted);">No QA results recorded.</p>
+      {% endif %}
+    </div>
+  </div>
+
+  <!-- Right Column: Draft Editor & Preview -->
+  <div>
+    <div class="tab-bar">
+      <button class="tab-btn active" id="tab-btn-edit" onclick="switchTab('edit')">Markdown Editor</button>
+      <button class="tab-btn" id="tab-btn-preview" onclick="switchTab('preview')">Formatted Preview</button>
+    </div>
+
+    <!-- Edit Pane -->
+    <div id="pane-edit">
+      <div style="margin-bottom: 0.75rem;">
+        <label style="display: block; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.3rem;">
+          Article Title
+        </label>
+        <input type="text" id="draft-title" value="{{ article.title }}" style="font-size: 1rem; font-weight: 600;">
+      </div>
+
+      <div style="margin-bottom: 0.75rem;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 0.3rem;">
+          <label style="font-size: 0.8rem; font-weight: 600; text-transform: uppercase; color: var(--text-muted);">
+            Article Markdown Content
+          </label>
+          <span style="font-size: 0.75rem; color: var(--text-muted);" id="word-count"></span>
+        </div>
+        <textarea id="draft-content" rows="22" style="font-size: 0.88rem; line-height: 1.5;">{{ current_version.content_markdown }}</textarea>
+      </div>
+
+      <div style="font-size: 0.78rem; color: var(--text-muted);">
+        Saving edits will generate an immutable new version (v{{ current_version.version_number + 1 }}), reset status to DRAFT, invalidate any prior approvals, and run automated QA checks.
+      </div>
+    </div>
+
+    <!-- Preview Pane -->
+    <div id="pane-preview" style="display: none;">
+      <div class="preview-box" id="preview-box">
+        {{ initial_rendered_preview | safe }}
+      </div>
+    </div>
+
+    <!-- Action Toolbar -->
+    <div class="action-bar">
+      <div style="display: flex; gap: 0.5rem; align-items: center;">
+        <button type="button" class="btn btn-outline" onclick="saveDraft()" id="btn-save">
+          Save Draft (v{{ current_version.version_number + 1 }})
+        </button>
+        <button type="button" class="btn btn-outline" style="color: #b45309;" onclick="requestCorrection()">
+          Request Correction...
+        </button>
+        <button type="button" class="btn btn-outline" style="color: #b91c1c;" onclick="rejectDraft()">
+          Reject Draft...
+        </button>
+      </div>
+
+      <div>
+        {% if can_normally_approve %}
+          <button type="button" class="btn btn-success" style="font-size: 0.88rem; padding: 0.55rem 1.1rem;" onclick="submitApprove(false)">
+            &check; Approve Draft (v{{ current_version.version_number }})
+          </button>
+        {% else %}
+          <button type="button" class="btn btn-success" disabled title="Normal approval is blocked by unverified critical facts, QA errors, or unreadable document">
+            &check; Normal Approval Blocked
+          </button>
+        {% endif %}
+      </div>
+    </div>
+
+    <!-- Audited Override Panel (shown when normal approval is blocked) -->
+    {% if not can_normally_approve %}
+    <div class="override-panel" id="override-container">
+      <div style="font-size: 0.88rem; font-weight: 700; color: #92400e; margin-bottom: 0.35rem;">
+        Explicit Editorial Override Workflow
+      </div>
+      <p style="font-size: 0.8rem; color: #78350f; margin: 0 0 0.6rem 0;">
+        Normal approval is blocked because material factual claims are unverified or QA failed. If you have personally verified the facts against the official document, you may record an audited editorial override.
+      </p>
+
+      <div style="margin-bottom: 0.5rem;">
+        <label style="display: flex; align-items: center; gap: 0.4rem; font-size: 0.82rem; font-weight: 600; color: #92400e;">
+          <input type="checkbox" id="override-confirm">
+          I confirm that I have inspected the official source document and verified the material facts.
+        </label>
+      </div>
+
+      <div style="margin-bottom: 0.5rem;">
+        <label style="display: block; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; color: #92400e; margin-bottom: 0.2rem;">
+          Mandatory Override Justification (Min 10 characters)
+        </label>
+        <input type="text" id="override-reason" placeholder="e.g. Manually verified 85 vacancies and application deadline from PDF page 2..." style="background: #fff;">
+      </div>
+
+      <div style="display: flex; justify-content: space-between; align-items: center; gap: 0.75rem;">
+        <div style="flex: 1;">
+          <label style="display: block; font-size: 0.72rem; color: #92400e;">Responsible Editor Email:</label>
+          <input type="email" id="editor-email" value="meettomar07@gmail.com" style="background: #fff; font-size: 0.82rem; padding: 0.35rem 0.5rem;">
+        </div>
+        <div>
+          <button type="button" class="btn btn-warning" onclick="submitApprove(true)" style="margin-top: 1rem;">
+            Submit Audited Override &amp; Approve
+          </button>
+        </div>
+      </div>
+      <div style="font-size: 0.72rem; color: #92400e; margin-top: 0.4rem;">
+        &bull; Note: Override records an immutable entry in <code>audit_events</code>. Live publishing remains permanently disabled (<code>ALLOW_LIVE_PUBLISHING = False</code>).
+      </div>
+    </div>
+    {% endif %}
+
+    <!-- Version History & Audit Trail Section -->
+    <div class="card" style="margin-top: 1.5rem; padding: 1rem;">
+      <h2 style="font-size: 0.95rem;">Article Version History</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Version</th>
+            <th>Title</th>
+            <th>Content Hash</th>
+            <th>Author</th>
+            <th>Created At</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for v in version_history %}
+          <tr {% if v.id == current_version.id %}style="background: #f0fdf4;"{% endif %}>
+            <td>
+              <b>v{{ v.version_number }}</b>
+              {% if v.id == current_version.id %}<span class="status-pill status-pass" style="font-size: 0.65rem;">CURRENT</span>{% endif %}
+            </td>
+            <td>{{ v.title }}</td>
+            <td><code title="{{ v.content_hash }}">{{ v.content_hash[:12] }}...</code></td>
+            <td style="font-size: 0.78rem;">{{ v.generated_by }}</td>
+            <td style="font-size: 0.75rem; color: var(--text-muted);">{{ v.created_at[:19] }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Audit Events Trail -->
+    <div class="card" style="margin-top: 1rem; padding: 1rem;">
+      <h2 style="font-size: 0.95rem;">Audit Trail &amp; Decisions History</h2>
+      {% if audit_events %}
+      <table>
+        <thead>
+          <tr>
+            <th>Timestamp</th>
+            <th>Action</th>
+            <th>Actor</th>
+            <th>Payload Summary</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for ae in audit_events %}
+          <tr>
+            <td style="font-size: 0.75rem; color: var(--text-muted);">{{ ae.timestamp[:19] }}</td>
+            <td>
+              {% if 'APPROV' in ae.action %}
+                <span class="status-pill status-pass" style="font-size: 0.7rem;">{{ ae.action }}</span>
+              {% elif 'REJECT' in ae.action %}
+                <span class="status-pill status-danger" style="font-size: 0.7rem;">{{ ae.action }}</span>
+              {% else %}
+                <span class="status-pill status-info" style="font-size: 0.7rem;">{{ ae.action }}</span>
+              {% endif %}
+            </td>
+            <td style="font-size: 0.78rem;">{{ ae.actor }}</td>
+            <td style="font-size: 0.75rem; font-family: monospace; max-width: 350px; word-break: break-all;">
+              {{ ae.payload_json }}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% else %}
+      <p style="font-size: 0.82rem; color: var(--text-muted);">No audit events recorded yet.</p>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<script>
+  const articleId = {{ article.id | tojson }};
+  const expectedVersionId = {{ current_version.id | tojson }};
+  const expectedContentHash = {{ current_version.content_hash | tojson }};
+
+  function updateWordCount() {
+    const text = document.getElementById("draft-content").value;
+    const words = text.trim() ? text.trim().split(/\s+/).length : 0;
+    const chars = text.length;
+    document.getElementById("word-count").innerText = `${words} words | ${chars} chars`;
+  }
+  document.getElementById("draft-content").addEventListener("input", updateWordCount);
+  updateWordCount();
+
+  async function switchTab(tab) {
+    const editBtn = document.getElementById("tab-btn-edit");
+    const prevBtn = document.getElementById("tab-btn-preview");
+    const editPane = document.getElementById("pane-edit");
+    const prevPane = document.getElementById("pane-preview");
+
+    if (tab === "edit") {
+      editBtn.classList.add("active");
+      prevBtn.classList.remove("active");
+      editPane.style.display = "block";
+      prevPane.style.display = "none";
+    } else {
+      prevBtn.classList.add("active");
+      editBtn.classList.remove("active");
+      editPane.style.display = "none";
+      prevPane.style.display = "block";
+
+      // Render fresh preview via preview API
+      const content = document.getElementById("draft-content").value;
+      try {
+        const resp = await fetch(`/api/editorial/articles/${articleId}/preview`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ content_markdown: content })
+        });
+        if (resp.ok) {
+          const data = await resp.json();
+          document.getElementById("preview-box").innerHTML = data.rendered_html;
+        }
+      } catch (err) {
+        console.error("Preview render failed:", err);
+      }
+    }
+  }
+
+  async function saveDraft() {
+    const title = document.getElementById("draft-title").value.trim();
+    const content = document.getElementById("draft-content").value.trim();
+    const editorEmail = (document.getElementById("editor-email")?.value || "meettomar07@gmail.com").trim();
+
+    if (!title || !content) {
+      alert("Article title and content cannot be empty.");
+      return;
+    }
+
+    try {
+      const resp = await fetch(`/api/editorial/articles/${articleId}/save`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          expected_version_id: expectedVersionId,
+          title: title,
+          content_markdown: content,
+          editor_email: editorEmail
+        })
+      });
+
+      if (resp.status === 409) {
+        const err = await resp.json();
+        alert(`Concurrency Conflict:\n${err.detail}\n\nPlease reload the page.`);
+        return;
+      }
+
+      if (!resp.ok) {
+        const err = await resp.json();
+        alert(`Failed to save draft: ${err.detail || 'Unknown error'}`);
+        return;
+      }
+
+      const res = await resp.json();
+      alert(`Draft saved successfully as version v${res.version_number}! QA Status: ${res.status}`);
+      window.location.reload();
+    } catch (err) {
+      alert(`Network error saving draft: ${err}`);
+    }
+  }
+
+  async function submitApprove(isOverride) {
+    const editorEmail = (document.getElementById("editor-email")?.value || "meettomar07@gmail.com").trim();
+    let overrideReason = null;
+
+    if (isOverride) {
+      const confirmed = document.getElementById("override-confirm").checked;
+      if (!confirmed) {
+        alert("You must check the confirmation checkbox acknowledging personal verification.");
+        return;
+      }
+      overrideReason = document.getElementById("override-reason").value.trim();
+      if (!overrideReason || overrideReason.length < 10) {
+        alert("A detailed override justification (minimum 10 characters) is required.");
+        return;
+      }
+    }
+
+    try {
+      const resp = await fetch(`/api/editorial/articles/${articleId}/decide`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          expected_version_id: expectedVersionId,
+          expected_content_hash: expectedContentHash,
+          decision: "APPROVE",
+          editor_email: editorEmail,
+          is_override: isOverride,
+          override_reason: overrideReason
+        })
+      });
+
+      if (resp.status === 409) {
+        const err = await resp.json();
+        alert(`Concurrency Conflict:\n${err.detail}\n\nPlease reload the page.`);
+        return;
+      }
+
+      if (!resp.ok) {
+        const err = await resp.json();
+        alert(`Approval rejected: ${err.detail || 'Unknown error'}`);
+        return;
+      }
+
+      const res = await resp.json();
+      alert(`Article draft approved successfully! (Live publishing remains strictly disabled).`);
+      window.location.reload();
+    } catch (err) {
+      alert(`Network error: ${err}`);
+    }
+  }
+
+  async function rejectDraft() {
+    const reason = prompt("Please enter the reason for rejecting this article draft:");
+    if (reason === null) return;
+    if (!reason.trim()) {
+      alert("A rejection reason is required.");
+      return;
+    }
+
+    const editorEmail = (document.getElementById("editor-email")?.value || "meettomar07@gmail.com").trim();
+
+    try {
+      const resp = await fetch(`/api/editorial/articles/${articleId}/decide`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          expected_version_id: expectedVersionId,
+          expected_content_hash: expectedContentHash,
+          decision: "REJECT",
+          editor_email: editorEmail,
+          notes: reason.trim()
+        })
+      });
+
+      if (resp.status === 409) {
+        const err = await resp.json();
+        alert(`Concurrency Conflict:\n${err.detail}\n\nPlease reload the page.`);
+        return;
+      }
+
+      if (!resp.ok) {
+        const err = await resp.json();
+        alert(`Rejection failed: ${err.detail || 'Unknown error'}`);
+        return;
+      }
+
+      alert("Article draft status updated to REJECTED.");
+      window.location.reload();
+    } catch (err) {
+      alert(`Network error: ${err}`);
+    }
+  }
+
+  async function requestCorrection() {
+    const notes = prompt("Enter specific feedback/corrections required for this draft:");
+    if (notes === null) return;
+    if (!notes.trim()) {
+      alert("Correction notes are required.");
+      return;
+    }
+
+    const editorEmail = (document.getElementById("editor-email")?.value || "meettomar07@gmail.com").trim();
+
+    try {
+      const resp = await fetch(`/api/editorial/articles/${articleId}/decide`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          expected_version_id: expectedVersionId,
+          expected_content_hash: expectedContentHash,
+          decision: "REQUEST_CORRECTION",
+          editor_email: editorEmail,
+          notes: notes.trim()
+        })
+      });
+
+      if (!resp.ok) {
+        const err = await resp.json();
+        alert(`Request correction failed: ${err.detail || 'Unknown error'}`);
+        return;
+      }
+
+      alert("Correction request recorded. Status updated to CORRECTION_REQUESTED.");
+      window.location.reload();
+    } catch (err) {
+      alert(`Network error: ${err}`);
+    }
+  }
+
+  async function confirmFact(factId) {
+    if (!confirm("Confirm this extracted fact as verified against source evidence?")) return;
+    const editorEmail = (document.getElementById("editor-email")?.value || "meettomar07@gmail.com").trim();
+    try {
+      const resp = await fetch(`/api/editorial/facts/${factId}/confirm`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ reviewer_email: editorEmail })
+      });
+      const data = await resp.json();
+      if (!resp.ok) throw new Error(data.detail || "Failed to confirm fact");
+      window.location.reload();
+    } catch (err) {
+      alert(`Error confirming fact: ${err.message || err}`);
+    }
+  }
+
+  async function correctFact(factId, currentVal) {
+    const newVal = prompt("Enter corrected fact value:", currentVal);
+    if (newVal === null) return;
+    if (!newVal.trim()) { alert("Corrected value cannot be empty"); return; }
+    const reason = prompt("Enter reason for correction (e.g. Verified on page 4 table 2):");
+    if (!reason || reason.trim().length < 3) { alert("A valid reason (minimum 3 characters) is required"); return; }
+    const editorEmail = (document.getElementById("editor-email")?.value || "meettomar07@gmail.com").trim();
+    try {
+      const resp = await fetch(`/api/editorial/facts/${factId}/correct`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          corrected_value: newVal.trim(),
+          reason: reason.trim(),
+          reviewer_email: editorEmail
+        })
+      });
+      const data = await resp.json();
+      if (!resp.ok) throw new Error(data.detail || "Failed to correct fact");
+      window.location.reload();
+    } catch (err) {
+      alert(`Error correcting fact: ${err.message || err}`);
+    }
+  }
+</script>
+{% endblock %}

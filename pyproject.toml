@@ -1,0 +1,35 @@
+[project]
+name = "testkart-intelligence"
+version = "0.1.0"
+description = "Testkart Government Exam Intelligence & Publishing Multi-Agent System"
+authors = [{ name = "Testkart Engineering Team" }]
+requires-python = ">=3.11"
+dependencies = [
+    "httpx>=0.28.0",
+    "beautifulsoup4>=4.13.0",
+    "pymupdf>=1.25.0",
+    "pydantic>=2.10.0",
+    "pydantic-settings>=2.7.0",
+    "fastapi>=0.115.0",
+    "uvicorn>=0.34.0",
+    "apscheduler>=3.11.0",
+    "jinja2>=3.1.5",
+    "pytest>=8.3.0",
+    "python-dateutil>=2.9.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short"
+pythonpath = ["."]
+filterwarnings = [
+    "ignore::DeprecationWarning",
+    "ignore:.*starlette.*",
+]
+
+[tool.setuptools.packages.find]
+include = ["testkart_intelligence*"]
+exclude = ["data*", "tests*"]

@@ -1,0 +1,349 @@
+notice_file,authority,format,readable,field_name,ground_truth_value,extracted_value,match_status,confidence,evidence_text
+gen_01_tnpsc_assistant_jailor__men___women.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,recruiting_authority,Tamil Nadu Public Service Commission,Tamil Nadu Public Service Commission,EXACT_MATCH,1.0,Official publishing authority: Tamil Nadu Public Service Commission
+gen_01_tnpsc_assistant_jailor__men___women.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,notice_number,09/2023,09/2023,EXACT_MATCH,0.95,"tisement No.657 77 
+Notification No. 09/2023"
+gen_01_tnpsc_assistant_jailor__men___women.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,application_start_date,12.04.2023,12.04.2023,EXACT_MATCH,0.9,"e) Act, 2016]. 
+ 
+ 
+ 
+A 
+Date of Notification 
+ 12.04.2023 
+B 
+Last date for submission of online appli"
+gen_01_tnpsc_assistant_jailor__men___women.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,application_end_date,11.05.2023,11.05.2023,EXACT_MATCH,0.9,"ication 
+ 12.04.2023 
+B 
+Last date for submission of online application  
+ 11.05.2023 
+C 
+Application Correction Window "
+gen_01_tnpsc_assistant_jailor__men___women.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,total_vacancies,59,,MISSING_IN_EXTRACTION,0.0,
+gen_01_tnpsc_assistant_jailor__men___women.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,exam_date,01.07.2023,,MISSING_IN_EXTRACTION,0.0,
+gen_01_tnpsc_assistant_jailor__men___women.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,application_fee,Rs. 100,Rs. 100/- (Rupees One Hundred only),EXACT_MATCH,0.85,"FEE: 
+ 
+ 
+Written Examination fee of Rs.100/- (Rupees One Hundred only), is payable by 
+online throug"
+gen_01_tnpsc_assistant_jailor__men___women.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,age_limit,18 to 32 years,18 to 32 years,EXACT_MATCH,0.9,Age Table (Page 3): General category maximum age 32 years across 1 cadre rows
+gen_01_tnpsc_assistant_jailor__men___women.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,eligibility,degree of any of the Universities recognized by the University Grants Commission,prescribed for these posts should have been obtained by passing the required qualification in the order of studies 10th + HSC or its equivalent + Bachelors Degree Course,PARTIAL_OR_DISCREPANCY,0.85,"ion.
+Note:
+(i)  The educational qualification prescribed for these posts should have  been obtained by passing the requi"
+gen_02_tnpsc_tourist_officer.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,recruiting_authority,Tamil Nadu Public Service Commission,Tamil Nadu Public Service Commission,EXACT_MATCH,1.0,Official publishing authority: Tamil Nadu Public Service Commission
+gen_02_tnpsc_tourist_officer.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,notice_number,03/2023,03/2023,EXACT_MATCH,0.95,"vertisement No.649 
+Notification No.03/2023"
+gen_02_tnpsc_tourist_officer.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,application_start_date,25.01.2023,25.01.2023,EXACT_MATCH,0.9,"RTANT DATES AND TIME: 
+ 
+Date of Notification 
+25.01.2023 
+Last date for submission 
+of online applica"
+gen_02_tnpsc_tourist_officer.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,application_end_date,23.02.2023,23.02.2023,EXACT_MATCH,0.9,"otification 
+25.01.2023 
+Last date for submission 
+of online application 
+23.02.2023 
+Application Correction 
+Window Per"
+gen_02_tnpsc_tourist_officer.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,total_vacancies,3,3,EXACT_MATCH,0.92,Table Total Row (Page 2):  |  |  | Total | 3 |  |  |  |  | 
+gen_02_tnpsc_tourist_officer.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,exam_date,10.06.2023,,MISSING_IN_EXTRACTION,0.0,
+gen_02_tnpsc_tourist_officer.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,application_fee,Rs. 200,Rs. 200/- (Rupees Two Hundred only),EXACT_MATCH,0.85,"Fee: 
+ 
+i. Written Examination fee of Rs.200/- (Rupees Two Hundred only), is payable by online 
+throug"
+gen_02_tnpsc_tourist_officer.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,age_limit,18 to 32 years,Not exceeding 18 years,PARTIAL_OR_DISCREPANCY,0.9,"Age Table (Page 3): 1 . |  | SCs SC(A)s STs MBCs/DCs , , , , |  | 18 years | No age limit | No age limit | "
+gen_02_tnpsc_tourist_officer.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,eligibility,Post Graduate degree in Travel and Tourism,degree in Travel and Tourism; (or),EXACT_MATCH,0.85,"ssess the following educational qualification awarded by any 
+University or Institution recognized by the University Gra"
+gen_03_tnpsc_road_inspector_in_rural_develo.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,recruiting_authority,Tamil Nadu Public Service Commission,Tamil Nadu Public Service Commission,EXACT_MATCH,1.0,Official publishing authority: Tamil Nadu Public Service Commission
+gen_03_tnpsc_road_inspector_in_rural_develo.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,notice_number,02/2023,02/2023,EXACT_MATCH,0.95,"ertisement No. 646 
+Notification No.02/2023"
+gen_03_tnpsc_road_inspector_in_rural_develo.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,application_start_date,13.01.2023,13.01.2023,EXACT_MATCH,0.93,Schedule Table (Page 2): Date of Notification : 13 01 2023 . .
+gen_03_tnpsc_road_inspector_in_rural_develo.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,application_end_date,11.02.2023,11.02.2023,EXACT_MATCH,0.95,Last date for submission of online  application: 11.02.2023
+gen_03_tnpsc_road_inspector_in_rural_develo.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,total_vacancies,761,1452,PARTIAL_OR_DISCREPANCY,0.92,"Aggregate of 2 posts (Page 2): Road Inspector in: 761, Rural Development and: 691"
+gen_03_tnpsc_road_inspector_in_rural_develo.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,exam_date,07.05.2023,,MISSING_IN_EXTRACTION,0.0,
+gen_03_tnpsc_road_inspector_in_rural_develo.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,application_fee,Rs. 100,Rs. 100/- (Rupees One hundred only),EXACT_MATCH,0.85,"FEE: 
+ 
+ 
+Written Examination fee of Rs.100/- (Rupees One hundred only), is payable by 
+online mode t"
+gen_03_tnpsc_road_inspector_in_rural_develo.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,age_limit,37 years,18 to 37 years,EXACT_MATCH,0.9,Age Table (Page 3): General category maximum age 37 years across 1 cadre rows
+gen_03_tnpsc_road_inspector_in_rural_develo.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,eligibility,I.T.I. Certificate in Civil Draughtsmenship,Diploma in Civil Engineering,PARTIAL_OR_DISCREPANCY,0.85,"mentioned below: 
+ 
+Educational Qualification 
+Must possess an I.T.I. Certificate in Civil Draughtsmenship from a 
+Gover"
+gen_04_tnpsc_junior_scientific_officer.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,recruiting_authority,Tamil Nadu Public Service Commission,Tamil Nadu Public Service Commission,EXACT_MATCH,1.0,Official publishing authority: Tamil Nadu Public Service Commission
+gen_04_tnpsc_junior_scientific_officer.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,notice_number,10/2023,10/2023,EXACT_MATCH,0.95,"vertisement No.659 
+Notification No.10/2023"
+gen_04_tnpsc_junior_scientific_officer.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,application_start_date,27.04.2023,27.04.2023,EXACT_MATCH,0.9,"RTANT DATES AND TIME: 
+ 
+Date of Notification 
+27.04.2023 
+Last date for submission of online applicat"
+gen_04_tnpsc_junior_scientific_officer.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,application_end_date,26.05.2023,26.05.2023,EXACT_MATCH,0.9,"otification 
+27.04.2023 
+Last date for submission of online application 
+26.05.2023 
+Application Correction Window Perio"
+gen_04_tnpsc_junior_scientific_officer.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,total_vacancies,31,31,EXACT_MATCH,0.92,Table Total Row (Page 2): Total |  | 31
+gen_04_tnpsc_junior_scientific_officer.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,exam_date,23.07.2023,,MISSING_IN_EXTRACTION,0.0,
+gen_04_tnpsc_junior_scientific_officer.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,application_fee,Rs. 100,Rs. 150/-,PARTIAL_OR_DISCREPANCY,0.85,"UCTED_TABLE]
+6
+b) : Examination Fee : Rs.150/-
+Note
+The Examination fee shou"
+gen_04_tnpsc_junior_scientific_officer.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,age_limit,32 years,Not exceeding 18 years,PARTIAL_OR_DISCREPANCY,0.9,"Age Table (Page 3): Sl . No . 1 . | Category of Applicants | SCs SC(A)s STs MBCs/DCs , , , , |  | Minimum Age 18 Years |"
+gen_04_tnpsc_junior_scientific_officer.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,eligibility,"M.Sc., (Forensic Science) Degree","Degree and a Degree in the Subject, for the",PARTIAL_OR_DISCREPANCY,0.85,"e) 
+Act, 2016) 
+(B) EDUCATIONAL QUALIFICATION (as on 27.04.2023)  
+ 
+Applicants should possess the following or its equi"
+gen_05_tnpsc_combined_geology_subordinate_s.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,recruiting_authority,Tamil Nadu Public Service Commission,Tamil Nadu Public Service Commission,EXACT_MATCH,1.0,Official publishing authority: Tamil Nadu Public Service Commission
+gen_05_tnpsc_combined_geology_subordinate_s.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,notice_number,11/2023,11/2023,EXACT_MATCH,0.95,"vertisement No.660 
+Notification No.11/2023"
+gen_05_tnpsc_combined_geology_subordinate_s.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,application_start_date,25.05.2023,25.05.2023,EXACT_MATCH,0.9,"ervice) 
+Act, 2016. 
+ 
+ 
+Date of Notification 
+   25.05.2023 
+Last date for submission of online applicat"
+gen_05_tnpsc_combined_geology_subordinate_s.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,application_end_date,23.06.2023,23.06.2023,EXACT_MATCH,0.9,"fication 
+   25.05.2023 
+Last date for submission of online application  
+   23.06.2023 
+Application Correction Window P"
+gen_05_tnpsc_combined_geology_subordinate_s.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,total_vacancies,40,,MISSING_IN_EXTRACTION,0.0,
+gen_05_tnpsc_combined_geology_subordinate_s.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,exam_date,18.08.2023,,MISSING_IN_EXTRACTION,0.0,
+gen_05_tnpsc_combined_geology_subordinate_s.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,application_fee,Rs. 100,Rs. 150/-,PARTIAL_OR_DISCREPANCY,0.85,". (A) FEES:-    a)  Registration Fee:
+Rs.150/-
+For One Time Registration (Re"
+gen_05_tnpsc_combined_geology_subordinate_s.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,age_limit,32 years,18 to 32 years,EXACT_MATCH,0.9,Age Table (Page 3): General category maximum age 32 years across 1 cadre rows
+gen_05_tnpsc_combined_geology_subordinate_s.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,eligibility,Master of Science degree in Geology,degree in Geology or Master of,EXACT_MATCH,0.85,"Name of the post 
+Educational Qualification 
+Assistant Geologist in  Ground 
+water wing  of Water Resources  
+Department"
+gen_06_tnpsc_civil_judge_in_tamil_nadu_stat.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,recruiting_authority,Tamil Nadu Public Service Commission,Tamil Nadu Public Service Commission,EXACT_MATCH,1.0,Official publishing authority: Tamil Nadu Public Service Commission
+gen_06_tnpsc_civil_judge_in_tamil_nadu_stat.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,notice_number,12/2023,12/2023,EXACT_MATCH,0.95,"vertisement No.661 
+Notification No.12/2023"
+gen_06_tnpsc_civil_judge_in_tamil_nadu_stat.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,application_start_date,01.06.2023,01.06.2023,EXACT_MATCH,0.9,"ORTANT DATES AND TIME 
+ 
+Date of notification 
+     01.06.2023 
+Last date for submission of online applicat"
+gen_06_tnpsc_civil_judge_in_tamil_nadu_stat.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,application_end_date,30.06.2023,30.06.2023,EXACT_MATCH,0.9,"cation 
+     01.06.2023 
+Last date for submission of online application 
+    30.06.2023 
+Online Application Correction W"
+gen_06_tnpsc_civil_judge_in_tamil_nadu_stat.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,total_vacancies,245,,MISSING_IN_EXTRACTION,0.0,
+gen_06_tnpsc_civil_judge_in_tamil_nadu_stat.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,exam_date,19.08.2023,,MISSING_IN_EXTRACTION,0.0,
+gen_06_tnpsc_civil_judge_in_tamil_nadu_stat.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,application_fee,Rs. 100,Rs. 100/- (Rupees One hundred only),EXACT_MATCH,0.85,": 
+ 
+1. Preliminary Examination fee of Rs.100/- (Rupees One hundred only), is payable online 
+through N"
+gen_06_tnpsc_civil_judge_in_tamil_nadu_stat.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,age_limit,25 to 37 years,18 to 42 years,PARTIAL_OR_DISCREPANCY,0.9,Age Table (Page 4): General category maximum age 42 years across 3 cadre rows
+gen_06_tnpsc_civil_judge_in_tamil_nadu_stat.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,eligibility,Degree in Law of a University in India,"prescribed for the post should have been obtained by passing the required qualification in the following order of studies: 10th + HSC or its equivalent + Bachelor’s degree as required under Section 25 of the Tamil Nadu Government Servants (Conditions of Service) Act, 2016",PARTIAL_OR_DISCREPANCY,0.85,"ia.
+Note:
+(i) : The educational qualification prescribed for the post should have been obtained  by passing the required"
+gen_07_tnpsc_combined_research_assistant_in.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,recruiting_authority,Tamil Nadu Public Service Commission,Tamil Nadu Public Service Commission,EXACT_MATCH,1.0,Official publishing authority: Tamil Nadu Public Service Commission
+gen_07_tnpsc_combined_research_assistant_in.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,notice_number,13/2023,13/2023,EXACT_MATCH,0.95,"vertisement No.662 
+Notification No.13/2023"
+gen_07_tnpsc_combined_research_assistant_in.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,application_start_date,26.06.2023,26.06.2023,EXACT_MATCH,0.9,",16,600/- 
+(Level 18) 
+ 
+Date of Notification 
+   26.06.2023 
+Last date for submission of online applicat"
+gen_07_tnpsc_combined_research_assistant_in.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,application_end_date,25.07.2023,25.07.2023,EXACT_MATCH,0.9,"fication 
+   26.06.2023 
+Last date for submission of online application  
+   25.07.2023 
+Application Correction Window P"
+gen_07_tnpsc_combined_research_assistant_in.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,total_vacancies,6,,MISSING_IN_EXTRACTION,0.0,
+gen_07_tnpsc_combined_research_assistant_in.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,exam_date,09.09.2023,,MISSING_IN_EXTRACTION,0.0,
+gen_07_tnpsc_combined_research_assistant_in.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,application_fee,Rs. 100,Rs. 150/- (For Both Interview & Non-Interview posts ),PARTIAL_OR_DISCREPANCY,0.85,"ears are  exempted.
+Examination Fee : Rs.150/-
+(For Both Interview & Non-Interview posts )    Note: - The Examination fe"
+gen_07_tnpsc_combined_research_assistant_in.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,age_limit,18 to 32 years,18 to 32 years,EXACT_MATCH,0.9,Age Table (Page 3): General category maximum age 32 years across 1 cadre rows
+gen_07_tnpsc_combined_research_assistant_in.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,eligibility,Master's Degree of any recognized University or Institution with Statistics,Degree of any recognized,EXACT_MATCH,0.85,"Name of the Post 
+Educational Qualification 
+1. 
+Research Assistant in 
+Statistics  
+A Master’s Degree of any recognized"
+gen_08_tnpsc_assistant_training_officer___j.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,recruiting_authority,Tamil Nadu Public Service Commission,Tamil Nadu Public Service Commission,EXACT_MATCH,1.0,Official publishing authority: Tamil Nadu Public Service Commission
+gen_08_tnpsc_assistant_training_officer___j.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,notice_number,14/2023,14/2023,EXACT_MATCH,0.95,"vertisement No.663 
+Notification No.14/2023"
+gen_08_tnpsc_assistant_training_officer___j.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,application_start_date,18.07.2023,18.07.2023,EXACT_MATCH,0.9,"RTANT DATES AND TIME: 
+ 
+Date of Notification 
+18.07.2023 
+Last date for submission of online applicat"
+gen_08_tnpsc_assistant_training_officer___j.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,application_end_date,16.08.2023,16.08.2023,EXACT_MATCH,0.9,"otification 
+18.07.2023 
+Last date for submission of online application 
+16.08.2023 
+Application Correction Window Perio"
+gen_08_tnpsc_assistant_training_officer___j.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,total_vacancies,7,,MISSING_IN_EXTRACTION,0.0,
+gen_08_tnpsc_assistant_training_officer___j.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,exam_date,05.10.2023,,MISSING_IN_EXTRACTION,0.0,
+gen_08_tnpsc_assistant_training_officer___j.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,application_fee,Rs. 100,Rs. 100/- (Rupees One hundred only),EXACT_MATCH,0.85,"TION FEE: 
+ 
+ 
+CBT Examination fee of Rs.100/- (Rupees One hundred only), is payable by online 
+mode t"
+gen_08_tnpsc_assistant_training_officer___j.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,age_limit,37 years,18 to 37 years,EXACT_MATCH,0.9,Age Table (Page 3): General category maximum age 37 years across 1 cadre rows
+gen_08_tnpsc_assistant_training_officer___j.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,eligibility,Must have been declared eligible for College course of study,Diploma in Handloom Technology,PARTIAL_OR_DISCREPANCY,0.85,"ess Minimum General Educational 
+Qualification.   
+AND 
+(ii) Must possess a Diploma in Handloom Technology 
+obtained fro"
+gen_09_tnpsc_combined_library_examination.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,recruiting_authority,Tamil Nadu Public Service Commission,Tamil Nadu Public Service Commission,EXACT_MATCH,1.0,Official publishing authority: Tamil Nadu Public Service Commission
+gen_09_tnpsc_combined_library_examination.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,notice_number,04/2023,04/2023,EXACT_MATCH,0.95,"ertisement No. 650 
+Notification No. 04/2023"
+gen_09_tnpsc_combined_library_examination.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,application_start_date,31.01.2023,31.01.2023,EXACT_MATCH,0.93,Schedule Table (Page 3): Date of Notification : 31 01 2023 . .
+gen_09_tnpsc_combined_library_examination.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,application_end_date,01.03.2023,01.03.2023,EXACT_MATCH,0.95,1.  Last date  upto which the Online  Application can be submitted/ payment  of fees can be made: 01.03.2023
+gen_09_tnpsc_combined_library_examination.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,total_vacancies,35,,MISSING_IN_EXTRACTION,0.0,
+gen_09_tnpsc_combined_library_examination.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,exam_date,13.05.2023,,MISSING_IN_EXTRACTION,0.0,
+gen_09_tnpsc_combined_library_examination.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,application_fee,Rs. 100,Rs. 200/-(Rupees Two Hundred only),PARTIAL_OR_DISCREPANCY,0.85,"FEE: 
+ Written/CBT Examination fee of Rs.200/-(Rupees Two Hundred only) for 
+Interview posts and Rs.1"
+gen_09_tnpsc_combined_library_examination.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,age_limit,32 years,18 to 59 years,PARTIAL_OR_DISCREPANCY,0.9,Age Table (Page 3): 1 . | College Librarian in Government Law Colleges |  |  | No Maximum Age limit |  | 59 years . |  |
+gen_09_tnpsc_combined_library_examination.pdf,Tamil Nadu Public Service Commission,TEXT_PDF,True,eligibility,Master's Degree in Library Science or Information Science,"College Librarian in Government Law Colleges : (i) A Master’s Degree in Library Science or Information Science or Documentation Science or an equivalent professional degree, with not less than fifty five percentage of marks (or an equivalent grade in a point scale, wherever grading system is followed):",EXACT_MATCH,0.85,")
+Name of the Post  Educational Qualification
+College Librarian in  Government Law Colleges : (i)  A Master’s Degree in "
+gen_10_nta_advertisement_for_video_editor.pdf,National Testing Agency,SCANNED_PDF,False,recruiting_authority,National Testing Agency,National Testing Agency,EXACT_MATCH,1.0,Official publishing authority: National Testing Agency
+gen_10_nta_advertisement_for_video_editor.pdf,National Testing Agency,SCANNED_PDF,False,notice_number,53,,MISSING_IN_EXTRACTION,0.0,
+gen_10_nta_advertisement_for_video_editor.pdf,National Testing Agency,SCANNED_PDF,False,application_start_date,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_10_nta_advertisement_for_video_editor.pdf,National Testing Agency,SCANNED_PDF,False,application_end_date,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_10_nta_advertisement_for_video_editor.pdf,National Testing Agency,SCANNED_PDF,False,total_vacancies,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_10_nta_advertisement_for_video_editor.pdf,National Testing Agency,SCANNED_PDF,False,exam_date,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_10_nta_advertisement_for_video_editor.pdf,National Testing Agency,SCANNED_PDF,False,application_fee,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_10_nta_advertisement_for_video_editor.pdf,National Testing Agency,SCANNED_PDF,False,age_limit,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_10_nta_advertisement_for_video_editor.pdf,National Testing Agency,SCANNED_PDF,False,eligibility,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_11_nta_engagement_of_general_manager.pdf,National Testing Agency,TEXT_PDF,True,recruiting_authority,National Testing Agency,National Testing Agency,EXACT_MATCH,1.0,Official publishing authority: National Testing Agency
+gen_11_nta_engagement_of_general_manager.pdf,National Testing Agency,TEXT_PDF,True,notice_number,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_11_nta_engagement_of_general_manager.pdf,National Testing Agency,TEXT_PDF,True,application_start_date,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_11_nta_engagement_of_general_manager.pdf,National Testing Agency,TEXT_PDF,True,application_end_date,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_11_nta_engagement_of_general_manager.pdf,National Testing Agency,TEXT_PDF,True,total_vacancies,1,,MISSING_IN_EXTRACTION,0.0,
+gen_11_nta_engagement_of_general_manager.pdf,National Testing Agency,TEXT_PDF,True,exam_date,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_11_nta_engagement_of_general_manager.pdf,National Testing Agency,TEXT_PDF,True,application_fee,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_11_nta_engagement_of_general_manager.pdf,National Testing Agency,TEXT_PDF,True,age_limit,below 58 years,,MISSING_IN_EXTRACTION,0.0,
+gen_11_nta_engagement_of_general_manager.pdf,National Testing Agency,TEXT_PDF,True,eligibility,"Ph.D. in Psychometrics, Educational Measurement, Statistics",Degree : Institution : Class,PARTIAL_OR_DISCREPANCY,0.85,"rmanent Address
+B.  Educational Qualifications
+(Starting from the highest qualification. Attach self-attested copies of "
+gen_12_nta_engagement_of_general_manager.pdf,National Testing Agency,TEXT_PDF,True,recruiting_authority,National Testing Agency,National Testing Agency,EXACT_MATCH,1.0,Official publishing authority: National Testing Agency
+gen_12_nta_engagement_of_general_manager.pdf,National Testing Agency,TEXT_PDF,True,notice_number,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_12_nta_engagement_of_general_manager.pdf,National Testing Agency,TEXT_PDF,True,application_start_date,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_12_nta_engagement_of_general_manager.pdf,National Testing Agency,TEXT_PDF,True,application_end_date,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_12_nta_engagement_of_general_manager.pdf,National Testing Agency,TEXT_PDF,True,total_vacancies,1,,MISSING_IN_EXTRACTION,0.0,
+gen_12_nta_engagement_of_general_manager.pdf,National Testing Agency,TEXT_PDF,True,exam_date,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_12_nta_engagement_of_general_manager.pdf,National Testing Agency,TEXT_PDF,True,application_fee,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_12_nta_engagement_of_general_manager.pdf,National Testing Agency,TEXT_PDF,True,age_limit,below 55 years,,MISSING_IN_EXTRACTION,0.0,
+gen_12_nta_engagement_of_general_manager.pdf,National Testing Agency,TEXT_PDF,True,eligibility,B.Tech/B.E./M.Tech/M.S. in Computer Science,Degree : Institution : Class,PARTIAL_OR_DISCREPANCY,0.85,"rmanent Address
+B.  Educational Qualifications
+(Starting from the highest qualification. Attach self-attested copies of "
+gen_13_nta_engagement_of_general_manager.pdf,National Testing Agency,TEXT_PDF,True,recruiting_authority,National Testing Agency,National Testing Agency,EXACT_MATCH,1.0,Official publishing authority: National Testing Agency
+gen_13_nta_engagement_of_general_manager.pdf,National Testing Agency,TEXT_PDF,True,notice_number,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_13_nta_engagement_of_general_manager.pdf,National Testing Agency,TEXT_PDF,True,application_start_date,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_13_nta_engagement_of_general_manager.pdf,National Testing Agency,TEXT_PDF,True,application_end_date,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_13_nta_engagement_of_general_manager.pdf,National Testing Agency,TEXT_PDF,True,total_vacancies,1,,MISSING_IN_EXTRACTION,0.0,
+gen_13_nta_engagement_of_general_manager.pdf,National Testing Agency,TEXT_PDF,True,exam_date,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_13_nta_engagement_of_general_manager.pdf,National Testing Agency,TEXT_PDF,True,application_fee,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_13_nta_engagement_of_general_manager.pdf,National Testing Agency,TEXT_PDF,True,age_limit,below 55 years,,MISSING_IN_EXTRACTION,0.0,
+gen_13_nta_engagement_of_general_manager.pdf,National Testing Agency,TEXT_PDF,True,eligibility,Master's degree/B.Tech/MBA,degree from a recognised university or,PARTIAL_OR_DISCREPANCY,0.85,"ons and Experience 
+Essential 
+Qualifications 
+ 
+B.E. / B.Tech. / Graduate degree from a recognised university or 
+inst"
+gen_14_nta_engagement_of_general_manager.pdf,National Testing Agency,TEXT_PDF,True,recruiting_authority,National Testing Agency,National Testing Agency,EXACT_MATCH,1.0,Official publishing authority: National Testing Agency
+gen_14_nta_engagement_of_general_manager.pdf,National Testing Agency,TEXT_PDF,True,notice_number,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_14_nta_engagement_of_general_manager.pdf,National Testing Agency,TEXT_PDF,True,application_start_date,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_14_nta_engagement_of_general_manager.pdf,National Testing Agency,TEXT_PDF,True,application_end_date,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_14_nta_engagement_of_general_manager.pdf,National Testing Agency,TEXT_PDF,True,total_vacancies,1,,MISSING_IN_EXTRACTION,0.0,
+gen_14_nta_engagement_of_general_manager.pdf,National Testing Agency,TEXT_PDF,True,exam_date,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_14_nta_engagement_of_general_manager.pdf,National Testing Agency,TEXT_PDF,True,application_fee,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_14_nta_engagement_of_general_manager.pdf,National Testing Agency,TEXT_PDF,True,age_limit,below 60 years,,MISSING_IN_EXTRACTION,0.0,
+gen_14_nta_engagement_of_general_manager.pdf,National Testing Agency,TEXT_PDF,True,eligibility,Master's degree,degree from a recognised university or institution of repute,PARTIAL_OR_DISCREPANCY,0.85,"ons and Experience 
+Essential 
+Qualifications 
+ 
+Graduate degree from a recognised university or institution of repute."
+gen_15_nta_engagement_of_young_profession.pdf,National Testing Agency,TEXT_PDF,True,recruiting_authority,National Testing Agency,National Testing Agency,EXACT_MATCH,1.0,Official publishing authority: National Testing Agency
+gen_15_nta_engagement_of_young_profession.pdf,National Testing Agency,TEXT_PDF,True,notice_number,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_15_nta_engagement_of_young_profession.pdf,National Testing Agency,TEXT_PDF,True,application_start_date,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_15_nta_engagement_of_young_profession.pdf,National Testing Agency,TEXT_PDF,True,application_end_date,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_15_nta_engagement_of_young_profession.pdf,National Testing Agency,TEXT_PDF,True,total_vacancies,16,16,EXACT_MATCH,0.92,Table Total Row (Page 2):  |  |  | Total | 16 | 
+gen_15_nta_engagement_of_young_profession.pdf,National Testing Agency,TEXT_PDF,True,exam_date,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_15_nta_engagement_of_young_profession.pdf,National Testing Agency,TEXT_PDF,True,application_fee,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_15_nta_engagement_of_young_profession.pdf,National Testing Agency,TEXT_PDF,True,age_limit,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_15_nta_engagement_of_young_profession.pdf,National Testing Agency,TEXT_PDF,True,eligibility,Civil Services Examination,,MISSING_IN_EXTRACTION,0.0,
+gen_16_nta_inviting_online_application_fo.pdf,National Testing Agency,SCANNED_PDF,False,recruiting_authority,National Testing Agency,National Testing Agency,EXACT_MATCH,1.0,Official publishing authority: National Testing Agency
+gen_16_nta_inviting_online_application_fo.pdf,National Testing Agency,SCANNED_PDF,False,notice_number,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_16_nta_inviting_online_application_fo.pdf,National Testing Agency,SCANNED_PDF,False,application_start_date,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_16_nta_inviting_online_application_fo.pdf,National Testing Agency,SCANNED_PDF,False,application_end_date,N/A,06 December 2026,SPURIOUS_EXTRACTION,0.9,ssion of a lication form Last date for submission of online application forms and Fee Date for late submission of online
+gen_16_nta_inviting_online_application_fo.pdf,National Testing Agency,SCANNED_PDF,False,total_vacancies,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_16_nta_inviting_online_application_fo.pdf,National Testing Agency,SCANNED_PDF,False,exam_date,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_16_nta_inviting_online_application_fo.pdf,National Testing Agency,SCANNED_PDF,False,application_fee,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_16_nta_inviting_online_application_fo.pdf,National Testing Agency,SCANNED_PDF,False,age_limit,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_16_nta_inviting_online_application_fo.pdf,National Testing Agency,SCANNED_PDF,False,eligibility,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_17_nta_correction_in_application_form.pdf,National Testing Agency,SCANNED_PDF,False,recruiting_authority,National Testing Agency,National Testing Agency,EXACT_MATCH,1.0,Official publishing authority: National Testing Agency
+gen_17_nta_correction_in_application_form.pdf,National Testing Agency,SCANNED_PDF,False,notice_number,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_17_nta_correction_in_application_form.pdf,National Testing Agency,SCANNED_PDF,False,application_start_date,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_17_nta_correction_in_application_form.pdf,National Testing Agency,SCANNED_PDF,False,application_end_date,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_17_nta_correction_in_application_form.pdf,National Testing Agency,SCANNED_PDF,False,total_vacancies,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_17_nta_correction_in_application_form.pdf,National Testing Agency,SCANNED_PDF,False,exam_date,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_17_nta_correction_in_application_form.pdf,National Testing Agency,SCANNED_PDF,False,application_fee,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_17_nta_correction_in_application_form.pdf,National Testing Agency,SCANNED_PDF,False,age_limit,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_17_nta_correction_in_application_form.pdf,National Testing Agency,SCANNED_PDF,False,eligibility,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_18_upsc_04_posts_of_homoeopathic_physi.html,Union Public Service Commission,HTML,True,recruiting_authority,Union Public Service Commission,Union Public Service Commission,EXACT_MATCH,1.0,Official publishing authority: Union Public Service Commission
+gen_18_upsc_04_posts_of_homoeopathic_physi.html,Union Public Service Commission,HTML,True,notice_number,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_18_upsc_04_posts_of_homoeopathic_physi.html,Union Public Service Commission,HTML,True,application_start_date,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_18_upsc_04_posts_of_homoeopathic_physi.html,Union Public Service Commission,HTML,True,application_end_date,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_18_upsc_04_posts_of_homoeopathic_physi.html,Union Public Service Commission,HTML,True,total_vacancies,4,04,EXACT_MATCH,0.95,"ent
+Home
+>>
+Whats New
+>>
+04 Posts of Homoeopathic Physician In NDMC
+>>
+Notice
+Nam"
+gen_18_upsc_04_posts_of_homoeopathic_physi.html,Union Public Service Commission,HTML,True,exam_date,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_18_upsc_04_posts_of_homoeopathic_physi.html,Union Public Service Commission,HTML,True,application_fee,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_18_upsc_04_posts_of_homoeopathic_physi.html,Union Public Service Commission,HTML,True,age_limit,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_18_upsc_04_posts_of_homoeopathic_physi.html,Union Public Service Commission,HTML,True,eligibility,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_19_upsc_704_posts_of_vice_principal_in.html,Union Public Service Commission,HTML,True,recruiting_authority,Union Public Service Commission,Union Public Service Commission,EXACT_MATCH,1.0,Official publishing authority: Union Public Service Commission
+gen_19_upsc_704_posts_of_vice_principal_in.html,Union Public Service Commission,HTML,True,notice_number,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_19_upsc_704_posts_of_vice_principal_in.html,Union Public Service Commission,HTML,True,application_start_date,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_19_upsc_704_posts_of_vice_principal_in.html,Union Public Service Commission,HTML,True,application_end_date,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_19_upsc_704_posts_of_vice_principal_in.html,Union Public Service Commission,HTML,True,total_vacancies,704,704,EXACT_MATCH,0.95,"ent
+Home
+>>
+Whats New
+>>
+704 Posts of Vice Principal In Education Department, GNCT"
+gen_19_upsc_704_posts_of_vice_principal_in.html,Union Public Service Commission,HTML,True,exam_date,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_19_upsc_704_posts_of_vice_principal_in.html,Union Public Service Commission,HTML,True,application_fee,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_19_upsc_704_posts_of_vice_principal_in.html,Union Public Service Commission,HTML,True,age_limit,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_19_upsc_704_posts_of_vice_principal_in.html,Union Public Service Commission,HTML,True,eligibility,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_20_upsc_combined_geo_scientist_prelimi.html,Union Public Service Commission,HTML,True,recruiting_authority,Union Public Service Commission,Union Public Service Commission,EXACT_MATCH,1.0,Official publishing authority: Union Public Service Commission
+gen_20_upsc_combined_geo_scientist_prelimi.html,Union Public Service Commission,HTML,True,notice_number,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_20_upsc_combined_geo_scientist_prelimi.html,Union Public Service Commission,HTML,True,application_start_date,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_20_upsc_combined_geo_scientist_prelimi.html,Union Public Service Commission,HTML,True,application_end_date,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_20_upsc_combined_geo_scientist_prelimi.html,Union Public Service Commission,HTML,True,total_vacancies,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_20_upsc_combined_geo_scientist_prelimi.html,Union Public Service Commission,HTML,True,exam_date,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_20_upsc_combined_geo_scientist_prelimi.html,Union Public Service Commission,HTML,True,application_fee,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_20_upsc_combined_geo_scientist_prelimi.html,Union Public Service Commission,HTML,True,age_limit,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_20_upsc_combined_geo_scientist_prelimi.html,Union Public Service Commission,HTML,True,eligibility,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_21_upsc_indian_economic_service_interv.html,Union Public Service Commission,HTML,True,recruiting_authority,Union Public Service Commission,Union Public Service Commission,EXACT_MATCH,1.0,Official publishing authority: Union Public Service Commission
+gen_21_upsc_indian_economic_service_interv.html,Union Public Service Commission,HTML,True,notice_number,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_21_upsc_indian_economic_service_interv.html,Union Public Service Commission,HTML,True,application_start_date,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_21_upsc_indian_economic_service_interv.html,Union Public Service Commission,HTML,True,application_end_date,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_21_upsc_indian_economic_service_interv.html,Union Public Service Commission,HTML,True,total_vacancies,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_21_upsc_indian_economic_service_interv.html,Union Public Service Commission,HTML,True,exam_date,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_21_upsc_indian_economic_service_interv.html,Union Public Service Commission,HTML,True,application_fee,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_21_upsc_indian_economic_service_interv.html,Union Public Service Commission,HTML,True,age_limit,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,
+gen_21_upsc_indian_economic_service_interv.html,Union Public Service Commission,HTML,True,eligibility,N/A,,NOT_APPLICABLE_IN_NOTICE,0.0,

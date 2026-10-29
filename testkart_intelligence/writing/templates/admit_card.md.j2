@@ -1,0 +1,42 @@
+# {{ notice.title }} - Admit Card & City Intimation
+
+**Authority:** {{ facts.recruiting_authority or notice.authority_name }}  
+**Notice No:** {{ facts.notice_number or "Refer Portal" }}  
+**State / Category:** {{ notice.state }} ({{ notice.category }})  
+
+---
+
+## Admit Card & City Intimation Overview
+
+The **{{ facts.recruiting_authority or notice.authority_name }}** has activated the official portal link for the download of Admission Certificates / Hall Tickets / City Intimation slips for **{{ notice.title }}**.
+
+Candidates appearing for this examination stage can download their official e-admit card and verify their designated examination city following the authorized steps below.
+
+---
+
+## Key Examination & Hall Ticket Details
+
+| Detail | Official Information |
+| :--- | :--- |
+| **Exam Name / Stage** | {{ notice.title }} |
+| **Scheduled Exam Date** | {{ facts.exam_date or "Refer official schedule" }} |
+| **Admit Card / City Slip Status** | {{ facts.admit_card_date or "Available for download on official portal" }} |
+| **Issuing Authority** | {{ facts.recruiting_authority or notice.authority_name }} |
+
+---
+
+## Steps to Download Admit Card / City Slip
+
+1. Navigate to the verified official portal: [{{ facts.recruiting_authority or notice.authority_name }}]({{ facts.official_source_url or notice.normalized_url }}).
+2. Click on the Admit Card / Hall Ticket / City Intimation download link.
+3. Enter your Registration Number / Roll Number and Date of Birth / Password.
+4. Download and print the admit card on A4 size paper.
+5. Carry the printed admit card along with an original photo identity card to the examination venue.
+
+---
+
+## Official Verification Link
+
+- **Official Download Portal:** [Access Official Notice / Admit Card]({{ facts.official_source_url or notice.normalized_url }})
+- **Publishing Authority:** {{ facts.recruiting_authority or notice.authority_name }}
+- **Verification Status:** Verified Official Release

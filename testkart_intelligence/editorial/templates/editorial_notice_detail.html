@@ -1,0 +1,351 @@
+{% extends "editorial_base.html" %}
+
+{% block title %}Evidence Review: {{ notice.title }}{% endblock %}
+
+{% block content %}
+<div style="margin-bottom: 1.25rem;">
+  <a href="/editorial/notices?view=all" class="btn btn-outline" style="font-size: 0.78rem;">&larr; Back to Notices</a>
+</div>
+
+<!-- Header Card -->
+<div class="card">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem;">
+    <div>
+      <div style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase;">
+        {{ notice.authority_name }} &bull; {{ notice.category }} ({{ notice.state }})
+      </div>
+      <h2 style="margin: 0.25rem 0 0.5rem 0; border-bottom: none; padding-bottom: 0;">
+        {{ notice.title }}
+      </h2>
+      <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
+        <span class="status-pill status-info">{{ notice.classification }}</span>
+        {% if notice.status in ('SCANNED_OCR_BLOCKED_FLAGGED_FOR_HUMAN_REVIEW', 'NON_UNICODE_ENCODING_FLAGGED_FOR_HUMAN_REVIEW') %}
+          <span class="status-pill status-danger">{{ notice.status }}</span>
+        {% elif notice.status == 'HUMAN_REVIEW_REQUIRED' %}
+          <span class="status-pill status-warning">{{ notice.status }}</span>
+        {% else %}
+          <span class="status-pill status-pass">{{ notice.status }}</span>
+        {% endif %}
+        {% if notice.notice_number %}
+          <span style="font-size: 0.82rem; color: var(--text-muted);">Notice No: <code>{{ notice.notice_number }}</code></span>
+        {% endif %}
+      </div>
+    </div>
+    <div>
+      {% if linked_article %}
+        <a href="/editorial/articles/{{ linked_article.id }}" class="btn btn-primary" style="font-size: 0.88rem;">
+          Open Draft Editor &rarr;
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<!-- Readability / OCR Warnings -->
+{% if readability_warnings %}
+  {% for rw in readability_warnings %}
+    <div class="alert alert-danger">
+      <div>
+        <strong style="font-size: 0.95rem;">READABILITY ALERT:</strong><br>
+        {{ rw }}
+      </div>
+    </div>
+  {% endfor %}
+{% endif %}
+
+<!-- Missing / Unverified Critical Facts Warning -->
+{% if missing_critical_fields %}
+  <div class="alert alert-warning">
+    <div>
+      <strong style="font-size: 0.95rem;">CRITICAL FACTS UNVERIFIED:</strong><br>
+      The following required fields for this recruitment notice are missing or could not be verified from official evidence:
+      <ul style="margin: 0.4rem 0 0.2rem 1.2rem; padding: 0;">
+        {% for mf in missing_critical_fields %}
+          <li><b>{{ mf }}</b></li>
+        {% endfor %}
+      </ul>
+      <em>Draft approval is blocked until these facts are verified and edited by a human reviewer.</em>
+    </div>
+  </div>
+{% endif %}
+
+<div style="display: grid; grid-template-columns: 1fr 2fr; gap: 1.5rem;">
+  <!-- Left: Official Source Document Info -->
+  <div>
+    <div class="card">
+      <h2>Official Source Document</h2>
+      <div style="font-size: 0.85rem; margin-bottom: 0.75rem;">
+        <div style="color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase; font-weight: 600;">Verified Government URL</div>
+        {% if is_safe_url %}
+          <a href="{{ notice.normalized_url }}" target="_blank" rel="noopener noreferrer" style="word-break: break-all; color: var(--primary);">
+            {{ notice.normalized_url }}
+          </a>
+        {% else %}
+          <span style="word-break: break-all; color: var(--danger);">{{ notice.normalized_url }} (Unverified domain)</span>
+        {% endif %}
+      </div>
+
+      {% if latest_version %}
+      <div style="font-size: 0.85rem; margin-bottom: 0.75rem;">
+        <div style="color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase; font-weight: 600;">Document SHA-256 Hash</div>
+        <code style="word-break: break-all; font-size: 0.75rem;">{{ latest_version.document_hash }}</code>
+      </div>
+
+      <div style="font-size: 0.85rem; margin-bottom: 0.75rem;">
+        <div style="color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase; font-weight: 600;">Document Type &amp; Pages</div>
+        <span>{{ latest_version.document_type }} &bull; {{ latest_version.page_count or 1 }} page(s)</span>
+      </div>
+
+      <div style="font-size: 0.85rem; margin-bottom: 0.75rem;">
+        <div style="color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase; font-weight: 600;">First Discovered</div>
+        <span style="color: var(--text-muted);">{{ notice.first_discovered_at[:19] }}</span>
+      </div>
+
+      <div style="margin-top: 1rem; border-top: 1px solid var(--border); padding-top: 0.75rem;">
+        {% if safe_file_available %}
+          <a href="/editorial/documents/{{ latest_version.id }}/download" class="btn btn-primary" style="width: 100%; justify-content: center;">
+            Download Local Verified PDF &darr;
+          </a>
+        {% else %}
+          <a href="{{ notice.normalized_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="width: 100%; justify-content: center;">
+            Open Official Portal Link &nearr;
+          </a>
+        {% endif %}
+      </div>
+      {% endif %}
+    </div>
+
+    <!-- Document Version History -->
+    {% if versions|length > 1 %}
+    <div class="card">
+      <h2>Document Versions History</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Ver</th>
+            <th>Type</th>
+            <th>Hash (Prefix)</th>
+            <th>Retrieved</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for v in versions %}
+          <tr>
+            <td>v{{ v.version_number }}</td>
+            <td>{{ v.document_type }}</td>
+            <td><code>{{ v.document_hash[:10] }}...</code></td>
+            <td style="font-size: 0.75rem; color: var(--text-muted);">{{ v.retrieved_at[:16] }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% endif %}
+  </div>
+
+  <!-- Right: Extracted Facts and Evidence -->
+  <div>
+    <!-- Critical Recruitment Fields Table -->
+    {% if critical_fields_summary %}
+    <div class="card" style="margin-bottom: 1.25rem;">
+      <h2>
+        <span>Critical Recruitment Fields Verification</span>
+        <span style="font-size: 0.78rem; font-weight: normal; color: var(--text-muted);">
+          6 Key Fields Mandatory for Review
+        </span>
+      </h2>
+      <div class="alert alert-info" style="font-size: 0.82rem; padding: 0.6rem 0.85rem; margin-bottom: 1rem;">
+        <strong>Human Review Protocol:</strong> Recruitment facts require explicit human verification or correction before an article draft can receive standard approval.
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 20%;">Field</th>
+            <th style="width: 25%;">Machine vs Corrected</th>
+            <th style="width: 15%;">Status &amp; Conf.</th>
+            <th style="width: 25%;">Source Evidence</th>
+            <th style="width: 15%;">Editorial Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for cf in critical_fields_summary %}
+          <tr>
+            <td>
+              <b>{{ cf.label }}</b><br>
+              <code style="font-size: 0.72rem; color: var(--text-muted);">{{ cf.field_key }}</code>
+            </td>
+            <td>
+              {% if cf.corrected_value %}
+                <div style="font-size: 0.82rem; color: #0284c7; font-weight: 600;">
+                  [Corrected]: {{ cf.corrected_value }}
+                </div>
+                <div style="font-size: 0.72rem; color: var(--text-muted); text-decoration: line-through;">
+                  [Machine]: {{ cf.machine_value or 'None' }}
+                </div>
+              {% elif cf.machine_value %}
+                <code style="font-size: 0.82rem;">{{ cf.machine_value }}</code>
+              {% else %}
+                <span class="status-pill status-danger" style="font-size: 0.7rem;">MISSING</span>
+              {% endif %}
+            </td>
+            <td>
+              {% if cf.flag == 'CORRECTED' %}
+                <span class="status-pill status-pass">CORRECTED</span>
+              {% elif cf.flag == 'CONFIRMED' %}
+                <span class="status-pill status-pass">CONFIRMED</span>
+              {% elif cf.flag == 'CONTRADICTORY' %}
+                <span class="status-pill status-danger">CONTRADICTORY</span>
+              {% elif cf.flag == 'LOW_CONFIDENCE' %}
+                <span class="status-pill status-warning">LOW CONF ({{ (cf.confidence * 100)|round|int }}%)</span>
+              {% elif cf.flag == 'MISSING' %}
+                <span class="status-pill status-danger">MISSING</span>
+              {% else %}
+                <span class="status-pill status-neutral">UNCONFIRMED</span>
+              {% endif %}
+              {% if cf.is_confirmed %}
+                <div style="font-size: 0.7rem; color: #059669; margin-top: 0.2rem;">&check; Verified by Editor</div>
+              {% endif %}
+            </td>
+            <td>
+              {% if cf.evidence_text %}
+                <div style="font-size: 0.76rem; background: #f8fafc; border-left: 2px solid #cbd5e1; padding: 0.25rem 0.4rem;">
+                  &ldquo;{{ cf.evidence_text }}&rdquo;
+                </div>
+                {% if cf.page_number %}
+                  <span style="font-size: 0.7rem; color: var(--text-muted);">Page {{ cf.page_number }}</span>
+                {% endif %}
+              {% else %}
+                <span style="font-size: 0.75rem; color: var(--text-muted);">No excerpt</span>
+              {% endif %}
+            </td>
+            <td>
+              {% if cf.fact_id %}
+                <div style="display: flex; gap: 0.3rem; flex-wrap: wrap;">
+                  {% if not cf.is_confirmed %}
+                    <button class="btn btn-outline" style="font-size: 0.7rem; padding: 0.2rem 0.4rem; color: #059669;" onclick="confirmFact('{{ cf.fact_id }}')">Confirm</button>
+                  {% endif %}
+                  <button class="btn btn-outline" style="font-size: 0.7rem; padding: 0.2rem 0.4rem; color: #0284c7;" onclick="correctFact('{{ cf.fact_id }}', '{{ cf.effective_value or '' }}')">Correct</button>
+                </div>
+              {% else %}
+                <span style="font-size: 0.72rem; color: var(--text-muted);">Not extracted</span>
+              {% endif %}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% endif %}
+
+    <!-- All Extracted Facts Card -->
+    <div class="card">
+      <h2>
+        <span>All Extracted Structured Facts</span>
+        <span style="font-size: 0.78rem; font-weight: normal; color: var(--text-muted);">
+          Total: {{ all_facts|length }}
+        </span>
+      </h2>
+
+      {% if all_facts %}
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 25%;">Fact Key</th>
+            <th style="width: 25%;">Extracted Value</th>
+            <th style="width: 15%;">Status</th>
+            <th style="width: 35%;">Source Evidence &amp; Page</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for f in all_facts %}
+          <tr>
+            <td><b>{{ f.fact_key }}</b></td>
+            <td>
+              {% if f.corrected_value %}
+                <span style="color: #0284c7; font-weight: 600;">{{ f.corrected_value }}</span>
+                <span style="font-size: 0.7rem; color: var(--text-muted); display: block; text-decoration: line-through;">{{ f.fact_value }}</span>
+              {% else %}
+                <code>{{ f.fact_value }}</code>
+              {% endif %}
+            </td>
+            <td>
+              {% if f.is_confirmed %}
+                <span class="status-pill status-pass">CONFIRMED</span>
+              {% elif f.verified_status == 'VERIFIED' %}
+                <span class="status-pill status-pass">VERIFIED</span>
+              {% elif f.verified_status == 'UNVERIFIED' %}
+                <span class="status-pill status-warning">UNVERIFIED</span>
+              {% elif f.verified_status == 'CONTRADICTORY' %}
+                <span class="status-pill status-danger">CONTRADICTORY</span>
+              {% else %}
+                <span class="status-pill status-neutral">{{ f.verified_status }}</span>
+              {% endif %}
+            </td>
+            <td>
+              {% if f.evidence_text %}
+                <div style="font-size: 0.8rem; background: #f8fafc; border-left: 3px solid #cbd5e1; padding: 0.35rem 0.6rem; margin-bottom: 0.25rem;">
+                  &ldquo;{{ f.evidence_text }}&rdquo;
+                </div>
+              {% else %}
+                <span style="color: var(--text-muted); font-size: 0.78rem;">No excerpt available</span>
+              {% endif %}
+              {% if f.page_number %}
+                <span style="font-size: 0.72rem; color: var(--text-muted);">Page {{ f.page_number }}</span>
+              {% endif %}
+              {% if f.verification_notes %}
+                <br><span style="font-size: 0.72rem; color: #b45309;">Note: {{ f.verification_notes }}</span>
+              {% endif %}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% else %}
+      <p style="color: var(--text-muted); font-size: 0.88rem; margin: 1rem 0;">No structured facts extracted for this notice version.</p>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<script>
+async function confirmFact(factId) {
+  if (!confirm("Confirm this extracted fact as verified against official sources?")) return;
+  try {
+    const res = await fetch(`/api/editorial/facts/${factId}/confirm`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ reviewer_email: "meettomar07@gmail.com" })
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.detail || "Failed to confirm fact");
+    location.reload();
+  } catch (e) {
+    alert("Error: " + e.message);
+  }
+}
+
+async function correctFact(factId, currentVal) {
+  const newVal = prompt("Enter corrected fact value:", currentVal);
+  if (newVal === null) return;
+  if (!newVal.trim()) { alert("Corrected value cannot be empty"); return; }
+  const reason = prompt("Enter reason for correction (e.g. Verified from page 3 table):");
+  if (!reason || reason.trim().length < 3) { alert("A valid reason (minimum 3 characters) is required"); return; }
+  try {
+    const res = await fetch(`/api/editorial/facts/${factId}/correct`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        corrected_value: newVal.trim(),
+        reason: reason.trim(),
+        reviewer_email: "meettomar07@gmail.com"
+      })
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.detail || "Failed to correct fact");
+    location.reload();
+  } catch (e) {
+    alert("Error: " + e.message);
+  }
+}
+</script>
+{% endblock %}

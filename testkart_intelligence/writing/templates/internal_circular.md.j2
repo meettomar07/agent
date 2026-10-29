@@ -1,0 +1,52 @@
+# Internal Vacancy Notice: {{ notice.title }}
+
+**Issuing Authority:** {{ facts.recruiting_authority or notice.authority_name }}  
+**Notice Reference:** {{ facts.notice_number or "Refer Official Departmental Circular" }}  
+**Jurisdiction / Category:** {{ notice.state }} ({{ notice.category }})  
+**Classification:** **INTERNAL DEPARTMENTAL CIRCULAR / DEPUTATION ONLY**  
+
+---
+
+> [!NOTE]
+> **RESTRICTED VACANCY CIRCULAR — SERVING PERSONNEL / PROPER CHANNEL ONLY**  
+> This notification relates to an **internal departmental examination (LDCE)** or **appointment on deputation basis**. This vacancy is **NOT open to direct public or external applicants**. Only eligible serving departmental employees or candidates applying through proper official channels with cadre controlling authority approval are eligible to apply.
+
+---
+
+## Circular Overview & Scope
+
+The **{{ facts.recruiting_authority or notice.authority_name }}** has released an official circular regarding **{{ notice.title }}**.
+
+- **Publishing Authority:** {{ facts.recruiting_authority or notice.authority_name }}
+- **Type of Circular:** Internal Departmental Competitive Examination / Deputation Vacancy
+- **Eligible Target Group:** Regular serving government employees fulfilling cadre eligibility criteria
+- **Mode of Application:** Through proper official departmental channel / Cadre Controlling Authority
+- **Total Posts / Vacancies:** {{ facts.total_vacancies or "As notified in official circular" }}
+
+---
+
+## Key Circular Details
+
+| Detail | Departmental Information |
+| :--- | :--- |
+| **Notice Title** | {{ notice.title }} |
+| **Recruiting Authority** | {{ facts.recruiting_authority or notice.authority_name }} |
+| **Notice / Circular Ref** | {{ facts.notice_number or "Refer official circular" }} |
+| **Eligibility Scope** | Restricted to eligible serving departmental / government employees |
+| **Application Process** | Submission through parent department / proper channel |
+
+---
+
+## Instructions for Serving Employees & Departmental Candidates
+
+1. Eligible departmental personnel should review the complete eligibility conditions, service duration requirements, and cadre guidelines specified in the official circular.
+2. Applications must be routed through the competent administrative authority / parent department along with requisite integrity certificates and vigilance clearance where applicable.
+3. **Advisory for General Job Seekers:** External open-market candidates must note that this circular does not invite direct public applications.
+
+---
+
+## Official Circular Document & Evidence
+
+- **Official Departmental Circular:** [Download Official Circular / Notice]({{ facts.official_source_url or notice.normalized_url }})
+- **Publishing Authority Portal:** {{ notice.authority_name }}
+- **Verification Status:** Verified Official Government Circular

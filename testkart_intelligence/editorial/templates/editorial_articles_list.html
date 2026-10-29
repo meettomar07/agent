@@ -1,0 +1,76 @@
+{% extends "editorial_base.html" %}
+
+{% block title %}Testkart Editorial — Blog Article Drafts{% endblock %}
+
+{% block content %}
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+  <div>
+    <h2 style="margin: 0; font-size: 1.35rem;">Blog Article Drafts Catalog</h2>
+    <span style="font-size: 0.85rem; color: var(--text-muted);">
+      Filter: <b>{{ current_view.upper() }}</b> &bull; {{ articles|length }} articles displayed
+    </span>
+  </div>
+  <div style="display: flex; gap: 0.4rem;">
+    <a href="/editorial/articles?view=all" class="btn {% if current_view == 'all' %}btn-primary{% else %}btn-outline{% endif %}">All</a>
+    <a href="/editorial/articles?view=awaiting" class="btn {% if current_view == 'awaiting' %}btn-primary{% else %}btn-outline{% endif %}">Awaiting Review</a>
+    <a href="/editorial/articles?view=blocked" class="btn {% if current_view == 'blocked' %}btn-danger{% else %}btn-outline{% endif %}">QA Failed</a>
+    <a href="/editorial/articles?view=decided" class="btn {% if current_view == 'decided' %}btn-success{% else %}btn-outline{% endif %}">Approved / Rejected</a>
+  </div>
+</div>
+
+<div class="card">
+  {% if articles %}
+  <table>
+    <thead>
+      <tr>
+        <th>Article ID</th>
+        <th>Authority &amp; Draft Title</th>
+        <th>Notice Type</th>
+        <th>Status</th>
+        <th>Version</th>
+        <th>Author / Agent</th>
+        <th>Last Updated</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for a in articles %}
+      <tr>
+        <td><code>{{ a.id }}</code></td>
+        <td>
+          <b>{{ a.authority_name }}</b><br>
+          <span style="font-size: 0.9rem;">{{ a.title }}</span>
+        </td>
+        <td><span class="status-pill status-info">{{ a.notice_classification }}</span></td>
+        <td>
+          {% if a.status == 'APPROVED' %}
+            <span class="status-pill status-pass">APPROVED</span>
+          {% elif a.status == 'REJECTED' %}
+            <span class="status-pill status-danger">REJECTED</span>
+          {% elif a.status == 'QA_PASSED' %}
+            <span class="status-pill status-pass">QA_PASSED</span>
+          {% elif a.status == 'QA_FAILED' %}
+            <span class="status-pill status-danger">QA_FAILED</span>
+          {% elif a.status == 'CORRECTION_REQUESTED' %}
+            <span class="status-pill status-warning">CORRECTION_REQ</span>
+          {% else %}
+            <span class="status-pill status-warning">{{ a.status }}</span>
+          {% endif %}
+        </td>
+        <td>v{{ a.version_number or 1 }}</td>
+        <td><span style="font-size: 0.78rem;">{{ a.generated_by or 'agent_writer' }}</span></td>
+        <td style="font-size: 0.78rem; color: var(--text-muted);">{{ a.updated_at[:19] }}</td>
+        <td>
+          <a href="/editorial/articles/{{ a.id }}" class="btn btn-primary" style="padding: 0.25rem 0.6rem; font-size: 0.78rem;">
+            Open Editor &rarr;
+          </a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p style="color: var(--text-muted); font-size: 0.9rem; margin: 1rem 0;">No articles matching the current view filter.</p>
+  {% endif %}
+</div>
+{% endblock %}

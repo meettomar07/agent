@@ -1,0 +1,59 @@
+{
+  "dataset_name": "DEVELOPMENT_SET_13_NOTICES",
+  "purpose": "RULE_DEBUGGING_AND_DEVELOPMENT",
+  "total_documents": 13,
+  "documents": {
+    "dev_01_ssc_mts_havaldar_result.pdf": {
+      "sha256": "a54d658f31f133d5133b667a56d5e0078399e6a62ff7941cc5760a233e428aa5",
+      "size_bytes": 291587
+    },
+    "dev_03_nta_exam_calendar_march_2027.pdf": {
+      "sha256": "0e54c6b33bff3fe7129b8b3c41816b7dcd9d1994ef7378ab9a84a00dcedd63dd",
+      "size_bytes": 806979
+    },
+    "dev_04_nta_ugc_net_reexam_admit_card.pdf": {
+      "sha256": "879befde17ef627aae4cfc2bd4fa29847768d6ca1d39c83f62d71f418807c4f6",
+      "size_bytes": 447652
+    },
+    "dev_05_nta_nittt_exam_schedule.pdf": {
+      "sha256": "c5b37f70e31c04288d6d3619b9d73fb0a2378c0ae9b40860e82d3eb1e8f9948d",
+      "size_bytes": 839602
+    },
+    "dev_06_nta_aiapget_admit_card.pdf": {
+      "sha256": "bb016ed4a33d6322d1288d473c5d3d9128fe25923b4a295ac82f9a8f56ccc446",
+      "size_bytes": 779111
+    },
+    "dev_07_nta_joint_csir_admit_card.pdf": {
+      "sha256": "8b868bd71da62f975a47bb12c33a1a28af307344a136259a74f547c1aaf03115",
+      "size_bytes": 467956
+    },
+    "dev_08_tnpsc_ctse_diploma_recruitment.pdf": {
+      "sha256": "12e3c4f72c4c2fc56688998ab9dcc88aabea208c1990eebc1005b3df6fa1e5a5",
+      "size_bytes": 1477226
+    },
+    "dev_09_tnpsc_cts_non_interview_posts.pdf": {
+      "sha256": "9b93135509a48962fcc32c0d1e0e2026aeec0507bb4c5dd7c74ce46c5996bf67",
+      "size_bytes": 2255876
+    },
+    "dev_10_upsc_homoeopathic_physician_notice.html": {
+      "sha256": "499448217f52ab74c7e3c1fb8a54f36759cfb627e20d018faec610ace357bdf3",
+      "size_bytes": 29614
+    },
+    "dev_11_upsc_vice_principal_gnctd_notice.html": {
+      "sha256": "069f7192f98eec181153eb5cba2b75e9a325d01e420c99b8bf0e41d084d04d07",
+      "size_bytes": 29781
+    },
+    "dev_12_upsc_manager_sec_officer_result.html": {
+      "sha256": "9a097191f06809ce1a3bc667d601ced8bbe43db2f7c62a71cf9d9de22acebab1",
+      "size_bytes": 29949
+    },
+    "dev_13_tnpsc_special_competitive_exam.pdf": {
+      "sha256": "b638e8f0730fd0cb9cd13db4886e2451761524ff0c3f5c0f1827da06190c6308",
+      "size_bytes": 592890
+    },
+    "dev_14_tnpsc_rimc_re_notification.pdf": {
+      "sha256": "e935f146347a7f389100364e5eb927241d53a519a99cd887fa77e7744d0be329",
+      "size_bytes": 195891
+    }
+  }
+}

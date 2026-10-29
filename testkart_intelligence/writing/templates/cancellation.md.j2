@@ -1,0 +1,38 @@
+# Cancellation Notice: {{ notice.title }}
+
+**Publishing Authority:** {{ facts.recruiting_authority or notice.authority_name }}  
+**Notice Reference:** {{ facts.notice_number or "Refer Official Circular" }}  
+**Jurisdiction:** {{ notice.state }}  
+**Current Status:** **CANCELLED / WITHDRAWN**  
+
+---
+
+> [!WARNING]
+> **RECRUITMENT / EXAMINATION CANCELLED**  
+> This examination or recruitment process has been officially **cancelled or withdrawn** by {{ facts.recruiting_authority or notice.authority_name }}. Candidates must **NOT** submit applications, register on any portal, or pay application fees for this notification.
+
+---
+
+## Official Cancellation Details
+
+The **{{ facts.recruiting_authority or notice.authority_name }}** has formally issued a notification cancelling **{{ notice.title }}**.
+
+- **Issuing Authority:** {{ facts.recruiting_authority or notice.authority_name }}
+- **Cancellation Notice Reference:** {{ facts.notice_number or "Official Cancellation Document" }}
+- **Publication Date:** {{ notice.first_discovered_at[:10] }}
+- **Status of Selection Process:** Closed / Revoked by Official Order
+
+---
+
+## Important Guidance for Candidates
+
+1. **Do Not Apply:** The application window is closed and void. Any third-party portals offering registration are unauthorized.
+2. **Do Not Pay Fees:** No examination fee is payable for cancelled posts. If fee refund rules apply, check the official cancellation order.
+3. **Official Verification:** Always verify updates directly from the official portal link provided below.
+
+---
+
+## Official Circular & Evidence
+
+- **Official Cancellation Order:** [Download Official Cancellation Notice]({{ facts.official_source_url or notice.normalized_url }})
+- **Publishing Portal:** {{ notice.authority_name }}

@@ -1,0 +1,39 @@
+# Corrigendum: {{ notice.title }}
+
+**Publishing Authority:** {{ facts.recruiting_authority or notice.authority_name }}  
+**Corrigendum Reference:** {{ facts.notice_number or "Corrigendum Notice" }}  
+**Jurisdiction:** {{ notice.state }}  
+
+---
+
+## Notice of Revision / Corrigendum
+
+The **{{ facts.recruiting_authority or notice.authority_name }}** has issued an official corrigendum / amendment regarding **{{ notice.title }}**.
+
+Candidates must take note of the revisions issued to the previous notification.
+
+---
+
+## Summary of Official Changes
+
+- **Nature of Notice:** Corrigendum / Official Revision
+- **Issuing Body:** {{ facts.recruiting_authority or notice.authority_name }}
+- **Date Issued:** {{ notice.first_discovered_at[:10] }}
+{% if facts.application_end_date %}- **Revised Application Deadline:** {{ facts.application_end_date }}{% endif %}
+{% if facts.exam_date %}- **Revised Examination Date:** {{ facts.exam_date }}{% endif %}
+{% if facts.total_vacancies %}- **Revised Vacancy Count:** {{ facts.total_vacancies }} posts{% endif %}
+
+---
+
+## What Candidates Must Do
+
+1. Read the full corrigendum document carefully using the official link below.
+2. Note any changes to eligibility, vacancies, exam dates, or submission timelines.
+3. If an application deadline was extended, submit the form before the revised closing date.
+
+---
+
+## Official Documents & Source Evidence
+
+- **Official Corrigendum Document:** [View Corrigendum Notice]({{ facts.official_source_url or notice.normalized_url }})
+- **Issuing Portal:** {{ notice.authority_name }}

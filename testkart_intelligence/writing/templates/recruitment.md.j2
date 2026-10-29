@@ -1,0 +1,59 @@
+# {{ facts.exam_name or notice.title }}
+
+**Published By:** {{ facts.recruiting_authority or notice.authority_name }}  
+**Official Notice No:** {{ facts.notice_number or "Refer Official Notification" }}  
+**State / Jurisdiction:** {{ notice.state }}  
+**Source Category:** {{ notice.category }}  
+
+---
+
+## Overview
+
+The **{{ facts.recruiting_authority or notice.authority_name }}** has officially published the notification for **{{ facts.exam_name or notice.title }}**. Candidates interested in applying for this recruitment can review the verified eligibility criteria, important schedule dates, and official notification details below.
+
+> [!NOTE]
+> All information in this article is sourced exclusively from official government portal releases. Testkart does not use secondary coaching aggregators or unverified third-party sources.
+
+---
+
+## Important Dates
+
+| Event | Official Date |
+| :--- | :--- |
+| **Notification Release Date** | {{ facts.notification_date or notice.first_discovered_at[:10] }} |
+| **Online Application Start Date** | {{ facts.application_start_date or "Not specified in verified extraction (Requires Editor Review)" }} |
+| **Last Date to Apply Online** | {{ facts.application_end_date or "Not specified in verified extraction (Requires Editor Review)" }} |
+| **Scheduled Examination Date** | {{ facts.exam_date or "To be notified by authority" }} |
+
+---
+
+## Vacancies & Eligibility Summary
+
+- **Total Vacancies:** {% if facts.total_vacancies %}**{{ facts.total_vacancies }}** posts{% else %}Refer to official notification document{% endif %}
+- **Educational Qualification:** {{ facts.eligibility_qualification or "Refer to official notification document" }}
+- **Age Criteria:** {{ facts.age_limit or "Refer to official notification document" }}
+
+---
+
+## Application Fee & Salary Details
+
+- **Application Fee:** {{ facts.application_fee or "Refer to official notification document" }}
+- **Pay Scale / Remuneration:** {% if facts.salary_pay_scale %}{{ facts.salary_pay_scale }}{% else %}Not specified in initial notification{% endif %}
+
+---
+
+## How to Apply
+
+1. Visit the verified official recruitment portal: [{{ facts.recruiting_authority or notice.authority_name }}]({{ facts.official_source_url or notice.normalized_url }}).
+2. Locate the active link for **{{ facts.exam_name or notice.title }}**.
+3. Register using valid mobile number and email ID.
+4. Fill in the online application form and upload prescribed documents.
+5. Pay the application fee (if applicable) and save the final confirmation page.
+
+---
+
+## Official Documents & Source Links
+
+- **Official Source URL:** [View Notification / Portal]({{ facts.official_source_url or notice.normalized_url }})
+- **Publishing Authority:** {{ facts.recruiting_authority or notice.authority_name }}
+- **Verification Status:** Verified Official Document

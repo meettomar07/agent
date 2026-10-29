@@ -1,0 +1,216 @@
+{
+  "dataset_name": "INDEPENDENT_VERIFICATION_SET_11_NOTICES",
+  "purpose": "GENERALIZATION_VERIFICATION_AFTER_FROZEN_REMEDIATION",
+  "total_documents": 11,
+  "documents": {
+    "ver_01_tnpsc_executive_officer_grade_i.pdf": {
+      "sha256": "093b468fb6160af8f3da6b6acd2c759eed75c6b51efbd109933a6c99074aaaaf",
+      "size_bytes": 106714,
+      "authority": "Tamil Nadu Public Service Commission",
+      "category": "RECRUITMENT",
+      "format": "TEXT_PDF",
+      "readable": true,
+      "ground_truth_facts": {
+        "recruiting_authority": "Tamil Nadu Public Service Commission",
+        "notice_number": "08/2012",
+        "application_start_date": "02.04.2012",
+        "application_end_date": "02.05.2012",
+        "total_vacancies": "14",
+        "exam_date": "23.06.2012",
+        "application_fee": "Rs. 130",
+        "age_limit": "30 to 35 years",
+        "eligibility": "degree in Arts, Science or Commerce"
+      }
+    },
+    "ver_02_tnpsc_assistant_professor_of_psychol.pdf": {
+      "sha256": "972d1c5499d270d77eb771941d8391d3f91f446d59fd98d6190e6344eefcedf2",
+      "size_bytes": 1674232,
+      "authority": "Tamil Nadu Public Service Commission",
+      "category": "RECRUITMENT",
+      "format": "TEXT_PDF",
+      "readable": true,
+      "ground_truth_facts": {
+        "recruiting_authority": "Tamil Nadu Public Service Commission",
+        "notice_number": "33/2022",
+        "application_start_date": "15.11.2022",
+        "application_end_date": "14.12.2022",
+        "total_vacancies": "24",
+        "exam_date": "14.03.2023",
+        "application_fee": "Rs. 200",
+        "age_limit": "18 to 32 years",
+        "eligibility": "M.A., or M.Sc., Degree in Psychology"
+      }
+    },
+    "ver_03_tnpsc_assistant_public_prosecutor_gr.pdf": {
+      "sha256": "fe89300bf5b7e503b5a2e867b8cff7b401290e96131fefe1b2ad84e75832315e",
+      "size_bytes": 1448314,
+      "authority": "Tamil Nadu Public Service Commission",
+      "category": "RECRUITMENT",
+      "format": "TEXT_PDF",
+      "readable": true,
+      "ground_truth_facts": {
+        "recruiting_authority": "Tamil Nadu Public Service Commission",
+        "notice_number": "23/2018",
+        "application_start_date": "03.10.2018",
+        "application_end_date": "31.10.2018",
+        "total_vacancies": "46",
+        "exam_date": "05.01.2019",
+        "application_fee": "Rs. 150",
+        "age_limit": "34 years",
+        "eligibility": "Must possess B.L. degree"
+      }
+    },
+    "ver_04_tnpsc_statistician_in_medical_educat.pdf": {
+      "sha256": "b64d07f93c22d777505ee4689fcf48bdbed723dc7e7137fbfe2e6c667a5c1b2d",
+      "size_bytes": 653181,
+      "authority": "Tamil Nadu Public Service Commission",
+      "category": "RECRUITMENT",
+      "format": "TEXT_PDF",
+      "readable": true,
+      "ground_truth_facts": {
+        "recruiting_authority": "Tamil Nadu Public Service Commission",
+        "notice_number": "20 /2017",
+        "application_start_date": "05.09.2017",
+        "application_end_date": "03.10.2017",
+        "total_vacancies": "31",
+        "exam_date": "26.11.2017",
+        "application_fee": "Rs. 150",
+        "age_limit": "18 to 30 years",
+        "eligibility": "Degree"
+      }
+    },
+    "ver_05_nta_cscs_junior_secretariat_assist.pdf": {
+      "sha256": "f2fca17e5bf1471d8aa65a7453269f3478f6a1872352ae85f142f06993c90799",
+      "size_bytes": 429546,
+      "authority": "National Testing Agency",
+      "category": "EXAM_SCHEDULE",
+      "format": "TEXT_PDF",
+      "readable": false,
+      "ground_truth_facts": {
+        "recruiting_authority": "National Testing Agency",
+        "notice_number": "N/A",
+        "application_start_date": "N/A",
+        "application_end_date": "N/A",
+        "total_vacancies": "N/A",
+        "exam_date": "N/A",
+        "application_fee": "N/A",
+        "age_limit": "N/A",
+        "eligibility": "N/A"
+      }
+    },
+    "ver_06_nta_examination_schedule_for_jee_m.pdf": {
+      "sha256": "635c7d12c8e0fde068679f553b13e4fb9619c6f69cd6c90bd3e31f8f33000cbf",
+      "size_bytes": 334110,
+      "authority": "National Testing Agency",
+      "category": "EXAM_SCHEDULE",
+      "format": "TEXT_PDF",
+      "readable": false,
+      "ground_truth_facts": {
+        "recruiting_authority": "National Testing Agency",
+        "notice_number": "N/A",
+        "application_start_date": "N/A",
+        "application_end_date": "N/A",
+        "total_vacancies": "N/A",
+        "exam_date": "N/A",
+        "application_fee": "N/A",
+        "age_limit": "N/A",
+        "eligibility": "N/A"
+      }
+    },
+    "ver_07_nta_challenge_of_provisional_answe.pdf": {
+      "sha256": "55f822a3d08e3f95ec5efc369bc9768f514716c6b82d9d0d2c488872c9788c34",
+      "size_bytes": 372811,
+      "authority": "National Testing Agency",
+      "category": "ANSWER_KEY",
+      "format": "TEXT_PDF",
+      "readable": true,
+      "ground_truth_facts": {
+        "recruiting_authority": "National Testing Agency",
+        "notice_number": "N/A",
+        "application_start_date": "N/A",
+        "application_end_date": "N/A",
+        "total_vacancies": "N/A",
+        "exam_date": "N/A",
+        "application_fee": "N/A",
+        "age_limit": "N/A",
+        "eligibility": "N/A"
+      }
+    },
+    "ver_08_nta_release_of_admit_card_for_cuet.pdf": {
+      "sha256": "2af6365cf48728408c8d3cf857858ecc45395ddcbd16d6ec8ea0565a10e02c44",
+      "size_bytes": 331863,
+      "authority": "National Testing Agency",
+      "category": "ADMIT_CARD",
+      "format": "TEXT_PDF",
+      "readable": true,
+      "ground_truth_facts": {
+        "recruiting_authority": "National Testing Agency",
+        "notice_number": "N/A",
+        "application_start_date": "N/A",
+        "application_end_date": "N/A",
+        "total_vacancies": "N/A",
+        "exam_date": "N/A",
+        "application_fee": "N/A",
+        "age_limit": "N/A",
+        "eligibility": "N/A"
+      }
+    },
+    "ver_09_upsc_combined_geo_scientist_prelimi.html": {
+      "sha256": "ebe8f95253f47929886a8ef0f5816cb1186a84ecdc3e5d22e156723c69f30b48",
+      "size_bytes": 29192,
+      "authority": "Union Public Service Commission",
+      "category": "EXAMINATION_SCHEDULE",
+      "format": "HTML",
+      "readable": true,
+      "ground_truth_facts": {
+        "recruiting_authority": "Union Public Service Commission",
+        "notice_number": "N/A",
+        "application_start_date": "N/A",
+        "application_end_date": "N/A",
+        "total_vacancies": "N/A",
+        "exam_date": "N/A",
+        "application_fee": "N/A",
+        "age_limit": "N/A",
+        "eligibility": "N/A"
+      }
+    },
+    "ver_10_upsc_indian_economic_service_interv.html": {
+      "sha256": "b45d0e05b4726812774878e5a9123cbf65a6d14895167aea4c1e92699cd614e1",
+      "size_bytes": 29807,
+      "authority": "Union Public Service Commission",
+      "category": "INTERVIEW_SCHEDULE",
+      "format": "HTML",
+      "readable": true,
+      "ground_truth_facts": {
+        "recruiting_authority": "Union Public Service Commission",
+        "notice_number": "N/A",
+        "application_start_date": "N/A",
+        "application_end_date": "N/A",
+        "total_vacancies": "N/A",
+        "exam_date": "N/A",
+        "application_fee": "N/A",
+        "age_limit": "N/A",
+        "eligibility": "N/A"
+      }
+    },
+    "ver_11_tnpsc_assistant_geo_chemist.pdf": {
+      "sha256": "7c6c065a6f9da5398c1da8b419c8892a5c7c02bd15134be4ff27361b0c8b912d",
+      "size_bytes": 106678,
+      "authority": "Tamil Nadu Public Service Commission",
+      "category": "RECRUITMENT",
+      "format": "TEXT_PDF",
+      "readable": true,
+      "ground_truth_facts": {
+        "recruiting_authority": "Tamil Nadu Public Service Commission",
+        "notice_number": "01/2012",
+        "application_start_date": "02.04.2012",
+        "application_end_date": "02.05.2012",
+        "total_vacancies": "7",
+        "exam_date": "02.06.2012",
+        "application_fee": "Rs. 130",
+        "age_limit": "18 to 30 years",
+        "eligibility": "Master's degree in Chemistry"
+      }
+    }
+  }
+}

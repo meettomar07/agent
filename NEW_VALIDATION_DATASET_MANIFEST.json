@@ -1,0 +1,1008 @@
+{
+  "dataset_name": "Testkart Independent Validation Dataset (52 Canonical Notices)",
+  "created_at": "2026-10-27T14:29:15.546925+00:00",
+  "status": "FROZEN_INDEPENDENT_EVALUATION_GATE",
+  "total_documents": 52,
+  "authorities_distribution": {
+    "Tamil Nadu Public Service Commission": 16,
+    "National Testing Agency": 16,
+    "Union Public Service Commission": 10,
+    "Staff Selection Commission": 7,
+    "Uttar Pradesh Public Service Commission": 3
+  },
+  "format_distribution": {
+    "TEXT_PDF": 29,
+    "SCANNED_PDF": 10,
+    "HTML": 13
+  },
+  "documents": {
+    "new_val_01_tnpsc_combined_civil_services_examin.pdf": {
+      "sha256": "a8824101a7c67d1fa481530f5a8d3f204ab213c0f5bcffcf97fe0e9b404f72ce",
+      "size_bytes": 736312,
+      "authority": "Tamil Nadu Public Service Commission",
+      "category": "RECRUITMENT",
+      "format": "TEXT_PDF",
+      "readable": true,
+      "ground_truth_facts": {
+        "recruiting_authority": "Tamil Nadu Public Service Commission",
+        "notice_number": "16/2024",
+        "application_start_date": "17.10.2024",
+        "application_end_date": "15.11.2024",
+        "total_vacancies": "35",
+        "exam_date": "04.01.2025",
+        "application_fee": "Rs. 100",
+        "age_limit": "18 to 35 years",
+        "eligibility": "Degree Certificate"
+      }
+    },
+    "new_val_02_tnpsc_assistant_public_prosecutor__g.pdf": {
+      "sha256": "e771084e487c9c40421fa73043847926d9691eba7f5dd7f3ef1fd5e6e71de387",
+      "size_bytes": 656274,
+      "authority": "Tamil Nadu Public Service Commission",
+      "category": "RECRUITMENT",
+      "format": "TEXT_PDF",
+      "readable": true,
+      "ground_truth_facts": {
+        "recruiting_authority": "Tamil Nadu Public Service Commission",
+        "notice_number": "13/2024",
+        "application_start_date": "13.09.2024",
+        "application_end_date": "12.10.2024",
+        "total_vacancies": "50",
+        "exam_date": "14.12.2024",
+        "application_fee": "Rs. 100",
+        "age_limit": "34 years",
+        "eligibility": "Degree in Law"
+      }
+    },
+    "new_val_03_tnpsc_combined_technical_services_ex.pdf": {
+      "sha256": "8675f68b7530d7ca4d24dd7b233459ad5212956e496be0ead5100a1d19d44732",
+      "size_bytes": 1492472,
+      "authority": "Tamil Nadu Public Service Commission",
+      "category": "RECRUITMENT",
+      "format": "TEXT_PDF",
+      "readable": true,
+      "ground_truth_facts": {
+        "recruiting_authority": "Tamil Nadu Public Service Commission",
+        "notice_number": "12/2024",
+        "application_start_date": "30.08.2024",
+        "application_end_date": "28.09.2024",
+        "total_vacancies": "22",
+        "exam_date": "18.11.2024",
+        "application_fee": "Rs. 200",
+        "age_limit": "32 years",
+        "eligibility": "Bachelor's degree"
+      }
+    },
+    "new_val_04_tnpsc_combined_technical_services_ex.pdf": {
+      "sha256": "2fe597bdf9ac492793689eb410859c9b45da566a9093e24c6946396494eab310",
+      "size_bytes": 1678513,
+      "authority": "Tamil Nadu Public Service Commission",
+      "category": "RECRUITMENT",
+      "format": "TEXT_PDF",
+      "readable": true,
+      "ground_truth_facts": {
+        "recruiting_authority": "Tamil Nadu Public Service Commission",
+        "notice_number": "7/2024",
+        "application_start_date": "15.05.2024",
+        "application_end_date": "14.06.2024",
+        "total_vacancies": "118",
+        "exam_date": "28.07.2024",
+        "application_fee": "Rs. 200",
+        "age_limit": "32 years",
+        "eligibility": "Diploma in Engineering"
+      }
+    },
+    "new_val_05_tnpsc_combined_civil_services_examin.pdf": {
+      "sha256": "36b3f8db58beb14625c8490490683efaa30b9c1666faffc9e926d4eadcdc8509",
+      "size_bytes": 1063632,
+      "authority": "Tamil Nadu Public Service Commission",
+      "category": "RECRUITMENT",
+      "format": "TEXT_PDF",
+      "readable": true,
+      "ground_truth_facts": {
+        "recruiting_authority": "Tamil Nadu Public Service Commission",
+        "notice_number": "5/2024",
+        "application_start_date": "23.04.2024",
+        "application_end_date": "22.05.2024",
+        "total_vacancies": "29",
+        "exam_date": "12.07.2024",
+        "application_fee": "Rs. 100",
+        "age_limit": "32 years",
+        "eligibility": "Degree"
+      }
+    },
+    "new_val_06_tnpsc_combined_civil_services_examin.pdf": {
+      "sha256": "dc4fa1cb482aafcafa800017c4e626c067d375ac2ffcbb7a92b641c8916f07cd",
+      "size_bytes": 1052310,
+      "authority": "Tamil Nadu Public Service Commission",
+      "category": "RECRUITMENT",
+      "format": "TEXT_PDF",
+      "readable": true,
+      "ground_truth_facts": {
+        "recruiting_authority": "Tamil Nadu Public Service Commission",
+        "notice_number": "4/2024",
+        "application_start_date": "28.03.2024",
+        "application_end_date": "27.04.2024",
+        "exam_date": "13.07.2024",
+        "total_vacancies": "90",
+        "application_fee": "Rs. 100",
+        "age_limit": "21 to 34 years",
+        "eligibility": "Degree of any University"
+      }
+    },
+    "new_val_07_tnpsc_rashtriya_indian_military_coll.pdf": {
+      "sha256": "20a5f67304ee315225481acf9c7a22dc59a36642d408f4b172a274ccd832eb24",
+      "size_bytes": 196089,
+      "authority": "Tamil Nadu Public Service Commission",
+      "category": "OTHER_ANNOUNCEMENT",
+      "format": "TEXT_PDF",
+      "readable": true,
+      "ground_truth_facts": {
+        "recruiting_authority": "Tamil Nadu Public Service Commission",
+        "notice_number": "02/2024",
+        "application_start_date": "N/A",
+        "application_end_date": "15.04.2024",
+        "total_vacancies": "N/A",
+        "exam_date": "01.06.2024",
+        "application_fee": "Rs. 600",
+        "age_limit": "11.5 to 13 years",
+        "eligibility": "Class VII"
+      }
+    },
+    "new_val_08_tnpsc_combined_civil_services_examin.pdf": {
+      "sha256": "899835eb1d6913562e02f1f1ca758d8b249e4fee6dcec8834383b1fe8bd71685",
+      "size_bytes": 958728,
+      "authority": "Tamil Nadu Public Service Commission",
+      "category": "RECRUITMENT",
+      "format": "TEXT_PDF",
+      "readable": true,
+      "ground_truth_facts": {
+        "recruiting_authority": "Tamil Nadu Public Service Commission",
+        "notice_number": "1/2024",
+        "application_start_date": "30.01.2024",
+        "application_end_date": "28.02.2024",
+        "total_vacancies": "6244",
+        "exam_date": "09.06.2024",
+        "application_fee": "Rs. 100",
+        "age_limit": "18 to 32 years",
+        "eligibility": "SSLC"
+      }
+    },
+    "new_val_09_tnpsc_assistant_agricultural_officer.pdf": {
+      "sha256": "b6859d3bf75bf80de2899c2c4ace1bd957fcf36d0ad1536c07fe1a3ecd81e01a",
+      "size_bytes": 2617576,
+      "authority": "Tamil Nadu Public Service Commission",
+      "category": "RECRUITMENT",
+      "format": "TEXT_PDF",
+      "readable": true,
+      "ground_truth_facts": {
+        "recruiting_authority": "Tamil Nadu Public Service Commission",
+        "notice_number": "26/2023",
+        "application_start_date": "25.11.2023",
+        "application_end_date": "24.12.2023",
+        "total_vacancies": "263",
+        "exam_date": "07.02.2024",
+        "application_fee": "Rs. 100",
+        "age_limit": "18 to 32 years",
+        "eligibility": "Diploma in Agriculture"
+      }
+    },
+    "new_val_10_tnpsc_combined_accounts_services_exa.pdf": {
+      "sha256": "718d586b01b7f306a3d11d1a4b67267d72fc9045a9defbfdf19414a72c1fcfe6",
+      "size_bytes": 1535805,
+      "authority": "Tamil Nadu Public Service Commission",
+      "category": "RECRUITMENT",
+      "format": "TEXT_PDF",
+      "readable": true,
+      "ground_truth_facts": {
+        "recruiting_authority": "Tamil Nadu Public Service Commission",
+        "notice_number": "25/2023",
+        "application_start_date": "09.11.2023",
+        "application_end_date": "08.12.2023",
+        "total_vacancies": "52",
+        "exam_date": "05.02.2024",
+        "application_fee": "Rs. 200",
+        "age_limit": "18 to 32 years",
+        "eligibility": "Degree in Commerce"
+      }
+    },
+    "new_val_11_tnpsc_hostel_superintendent_cum_phys.pdf": {
+      "sha256": "889ced9ce369f42f40eabaabd9daa28bfbe54474a6ae0534ab486e0e9f205c7c",
+      "size_bytes": 2437576,
+      "authority": "Tamil Nadu Public Service Commission",
+      "category": "RECRUITMENT",
+      "format": "TEXT_PDF",
+      "readable": true,
+      "ground_truth_facts": {
+        "recruiting_authority": "Tamil Nadu Public Service Commission",
+        "notice_number": "24/2023",
+        "application_start_date": "18.10.2023",
+        "application_end_date": "16.11.2023",
+        "total_vacancies": "18",
+        "exam_date": "28.01.2024",
+        "application_fee": "Rs. 100",
+        "age_limit": "18 to 37 years",
+        "eligibility": "Diploma in Physical Education"
+      }
+    },
+    "new_val_12_tnpsc_combined_engineering_services.pdf": {
+      "sha256": "faeacf651c4f403db3c66029d6adb9882e8ae6a45fb481b55a72c3896a2f9633",
+      "size_bytes": 1201829,
+      "authority": "Tamil Nadu Public Service Commission",
+      "category": "RECRUITMENT",
+      "format": "TEXT_PDF",
+      "readable": true,
+      "ground_truth_facts": {
+        "recruiting_authority": "Tamil Nadu Public Service Commission",
+        "notice_number": "23/2023",
+        "application_start_date": "13.10.2023",
+        "application_end_date": "11.11.2023",
+        "total_vacancies": "369",
+        "exam_date": "06.01.2024",
+        "application_fee": "Rs. 200",
+        "age_limit": "18 to 32 years",
+        "eligibility": "Degree in Engineering"
+      }
+    },
+    "new_val_13_tnpsc_executive_officer__grade_i__gr.pdf": {
+      "sha256": "1bb4ce6b1591241c2700d4f51efec76e4bfaf83a15b7fdc92a4942c04ed865d2",
+      "size_bytes": 2560642,
+      "authority": "Tamil Nadu Public Service Commission",
+      "category": "RECRUITMENT",
+      "format": "TEXT_PDF",
+      "readable": true,
+      "ground_truth_facts": {
+        "recruiting_authority": "Tamil Nadu Public Service Commission",
+        "notice_number": "22/2023",
+        "application_start_date": "13.10.2023",
+        "application_end_date": "11.11.2023",
+        "total_vacancies": "09",
+        "exam_date": "09.01.2024",
+        "application_fee": "Rs. 150",
+        "age_limit": "30 to 37 years",
+        "eligibility": "Degree in Arts or Science"
+      }
+    },
+    "new_val_14_tnpsc_mass_interviewer_in_public_hea.pdf": {
+      "sha256": "9d48e4a0015b03405c5eff74289b8df4f1bf9806316a083f87773bdc65157f6e",
+      "size_bytes": 2330559,
+      "authority": "Tamil Nadu Public Service Commission",
+      "category": "RECRUITMENT",
+      "format": "TEXT_PDF",
+      "readable": true,
+      "ground_truth_facts": {
+        "recruiting_authority": "Tamil Nadu Public Service Commission",
+        "notice_number": "18/2023",
+        "application_start_date": "22.09.2023",
+        "application_end_date": "21.10.2023",
+        "total_vacancies": "02",
+        "exam_date": "09.12.2023",
+        "application_fee": "Rs. 100",
+        "age_limit": "18 to 32 years",
+        "eligibility": "Degree of B.A. or B.Sc."
+      }
+    },
+    "new_val_15_tnpsc_junior_analyst_in_the_drugs_te.pdf": {
+      "sha256": "b510b9c7df01df9cb2ccdaf60f1f93c46cafab36a3534e6964b0dcb07720888f",
+      "size_bytes": 2829642,
+      "authority": "Tamil Nadu Public Service Commission",
+      "category": "RECRUITMENT",
+      "format": "TEXT_PDF",
+      "readable": true,
+      "ground_truth_facts": {
+        "recruiting_authority": "Tamil Nadu Public Service Commission",
+        "notice_number": "17/2023",
+        "application_start_date": "21.09.2023",
+        "application_end_date": "20.10.2023",
+        "total_vacancies": "32",
+        "exam_date": "05.12.2023",
+        "application_fee": "Rs. 150",
+        "age_limit": "18 to 32 years",
+        "eligibility": "Degree in Pharmacy"
+      }
+    },
+    "new_val_16_tnpsc_research_assistant_in_the_inst.pdf": {
+      "sha256": "2c74691604d5ba19a210a5ebe22f0a6500b981706b950a9f1c86099108a7fede",
+      "size_bytes": 2653216,
+      "authority": "Tamil Nadu Public Service Commission",
+      "category": "RECRUITMENT",
+      "format": "TEXT_PDF",
+      "readable": true,
+      "ground_truth_facts": {
+        "recruiting_authority": "Tamil Nadu Public Service Commission",
+        "notice_number": "16/2023",
+        "application_start_date": "21.09.2023",
+        "application_end_date": "20.10.2023",
+        "total_vacancies": "06",
+        "exam_date": "07.12.2023",
+        "application_fee": "Rs. 150",
+        "age_limit": "18 to 32 years",
+        "eligibility": "Master's degree"
+      }
+    },
+    "new_val_17_nta_9_correction_in_particulars_of.pdf": {
+      "sha256": "7dc36c9db639a70a61b64a03f9c3851832eaf3d683c78bfd1b2378053758b377",
+      "size_bytes": 925167,
+      "authority": "National Testing Agency",
+      "category": "CORRIGENDUM",
+      "format": "SCANNED_PDF",
+      "readable": true,
+      "ground_truth_facts": {
+        "recruiting_authority": "National Testing Agency",
+        "notice_number": "N/A",
+        "application_start_date": "N/A",
+        "application_end_date": "N/A",
+        "total_vacancies": "N/A",
+        "exam_date": "N/A",
+        "application_fee": "N/A",
+        "age_limit": "N/A",
+        "eligibility": "N/A"
+      }
+    },
+    "new_val_18_nta_declaration_of_the_results_of.pdf": {
+      "sha256": "7e64a74ee292f33f0ac8797e184089e32a476ba8223ee63b3173c369215d3f0a",
+      "size_bytes": 360570,
+      "authority": "National Testing Agency",
+      "category": "EXAM_RESULT",
+      "format": "SCANNED_PDF",
+      "readable": true,
+      "ground_truth_facts": {
+        "recruiting_authority": "National Testing Agency",
+        "notice_number": "N/A",
+        "application_start_date": "N/A",
+        "application_end_date": "N/A",
+        "total_vacancies": "N/A",
+        "exam_date": "N/A",
+        "application_fee": "N/A",
+        "age_limit": "N/A",
+        "eligibility": "N/A"
+      }
+    },
+    "new_val_19_nta_11_issuance_of_certificates_fo.pdf": {
+      "sha256": "d21d073d3785ef5a2f98f93a84ef9b60f5332c55716f19daf9baa7ea17ad2352",
+      "size_bytes": 356450,
+      "authority": "National Testing Agency",
+      "category": "OTHER_ANNOUNCEMENT",
+      "format": "SCANNED_PDF",
+      "readable": true,
+      "ground_truth_facts": {
+        "recruiting_authority": "National Testing Agency",
+        "notice_number": "N/A",
+        "application_start_date": "N/A",
+        "application_end_date": "N/A",
+        "total_vacancies": "N/A",
+        "exam_date": "N/A",
+        "application_fee": "N/A",
+        "age_limit": "N/A",
+        "eligibility": "N/A"
+      }
+    },
+    "new_val_20_nta_12_public_notice_regarding_iss.pdf": {
+      "sha256": "f9ae9358a575464b257dd8a819acfdd0fe03cea7bdfdf50197d75acb5c8a90cc",
+      "size_bytes": 347331,
+      "authority": "National Testing Agency",
+      "category": "OTHER_ANNOUNCEMENT",
+      "format": "SCANNED_PDF",
+      "readable": true,
+      "ground_truth_facts": {
+        "recruiting_authority": "National Testing Agency",
+        "notice_number": "N/A",
+        "application_start_date": "N/A",
+        "application_end_date": "N/A",
+        "total_vacancies": "N/A",
+        "exam_date": "N/A",
+        "application_fee": "N/A",
+        "age_limit": "N/A",
+        "eligibility": "N/A"
+      }
+    },
+    "new_val_21_nta_inviting_online_application_fo.pdf": {
+      "sha256": "50418215adcd794ce6989a9ecb7578fd4197b53a4e9027732dccc916aa005a05",
+      "size_bytes": 865371,
+      "authority": "National Testing Agency",
+      "category": "RECRUITMENT",
+      "format": "SCANNED_PDF",
+      "readable": true,
+      "ground_truth_facts": {
+        "recruiting_authority": "National Testing Agency",
+        "notice_number": "N/A",
+        "application_start_date": "23 September 2026",
+        "application_end_date": "25 October 2026",
+        "total_vacancies": "N/A",
+        "exam_date": "07.12.2026",
+        "application_fee": "N/A",
+        "age_limit": "N/A",
+        "eligibility": "Class VIII"
+      }
+    },
+    "new_val_22_nta_affidavit_filed_on_behalf_of_t.pdf": {
+      "sha256": "9f6f1d6581e4d7829926df106ee3d3d77627072076dafe1b2607662375c24948",
+      "size_bytes": 1488669,
+      "authority": "National Testing Agency",
+      "category": "OTHER_ANNOUNCEMENT",
+      "format": "TEXT_PDF",
+      "readable": true,
+      "ground_truth_facts": {
+        "recruiting_authority": "National Testing Agency",
+        "notice_number": "157111/2026",
+        "application_start_date": "N/A",
+        "application_end_date": "N/A",
+        "total_vacancies": "N/A",
+        "exam_date": "N/A",
+        "application_fee": "N/A",
+        "age_limit": "N/A",
+        "eligibility": "N/A"
+      }
+    },
+    "new_val_23_nta_declaration_of_results_nta_sco.pdf": {
+      "sha256": "0d58dd0fb415210f5b3f7082591b9f57984a48343ab2ff5d5a1282f94aaed0cd",
+      "size_bytes": 1607174,
+      "authority": "National Testing Agency",
+      "category": "EXAM_RESULT",
+      "format": "SCANNED_PDF",
+      "readable": true,
+      "ground_truth_facts": {
+        "recruiting_authority": "National Testing Agency",
+        "notice_number": "N/A",
+        "application_start_date": "N/A",
+        "application_end_date": "N/A",
+        "total_vacancies": "N/A",
+        "exam_date": "N/A",
+        "application_fee": "N/A",
+        "age_limit": "N/A",
+        "eligibility": "N/A"
+      }
+    },
+    "new_val_24_nta_display_of_final_answer_keys_o.pdf": {
+      "sha256": "41f83d6e6a80244744c8cf6b14b745c3d1fdda5e3a8a40c0543b14902758d184",
+      "size_bytes": 665040,
+      "authority": "National Testing Agency",
+      "category": "ANSWER_KEY",
+      "format": "SCANNED_PDF",
+      "readable": true,
+      "ground_truth_facts": {
+        "recruiting_authority": "National Testing Agency",
+        "notice_number": "N/A",
+        "application_start_date": "N/A",
+        "application_end_date": "N/A",
+        "total_vacancies": "N/A",
+        "exam_date": "N/A",
+        "application_fee": "N/A",
+        "age_limit": "N/A",
+        "eligibility": "N/A"
+      }
+    },
+    "new_val_25_nta_17_declaration_of_results_of_u.pdf": {
+      "sha256": "498d8e45b8459df2ec3b8860aede97ca3f91d1d92d50aff1793e6a1681a504d6",
+      "size_bytes": 270238,
+      "authority": "National Testing Agency",
+      "category": "EXAM_RESULT",
+      "format": "TEXT_PDF",
+      "readable": true,
+      "ground_truth_facts": {
+        "recruiting_authority": "National Testing Agency",
+        "notice_number": "N/A",
+        "application_start_date": "N/A",
+        "application_end_date": "N/A",
+        "total_vacancies": "N/A",
+        "exam_date": "N/A",
+        "application_fee": "N/A",
+        "age_limit": "N/A",
+        "eligibility": "N/A"
+      }
+    },
+    "new_val_26_nta_ugc_net_exam_june_2026___3__su.pdf": {
+      "sha256": "2e5b60318383747ea7eb3838c5987e6930f308531fb68e59552c7e44a7af7b4e",
+      "size_bytes": 86517,
+      "authority": "National Testing Agency",
+      "category": "EXAM_SCHEDULE",
+      "format": "TEXT_PDF",
+      "readable": true,
+      "ground_truth_facts": {
+        "recruiting_authority": "National Testing Agency",
+        "notice_number": "N/A",
+        "application_start_date": "N/A",
+        "application_end_date": "N/A",
+        "total_vacancies": "N/A",
+        "exam_date": "04.09.2026",
+        "application_fee": "N/A",
+        "age_limit": "N/A",
+        "eligibility": "N/A"
+      }
+    },
+    "new_val_27_nta_19_display_of_final_answer_key.pdf": {
+      "sha256": "f6c8988b48207cbb200f9147cc91cfa6fb0925fbf49e9a718d5b0a66bea38ad0",
+      "size_bytes": 317726,
+      "authority": "National Testing Agency",
+      "category": "ANSWER_KEY",
+      "format": "TEXT_PDF",
+      "readable": true,
+      "ground_truth_facts": {
+        "recruiting_authority": "National Testing Agency",
+        "notice_number": "N/A",
+        "application_start_date": "N/A",
+        "application_end_date": "N/A",
+        "total_vacancies": "N/A",
+        "exam_date": "N/A",
+        "application_fee": "N/A",
+        "age_limit": "N/A",
+        "eligibility": "N/A"
+      }
+    },
+    "new_val_28_nta_procedure_for_issuance_of_dupl.pdf": {
+      "sha256": "fc8b90ff3d3f330202017c5eb98c6bfa1d0863d049cfd52b63dc94832f4dbf25",
+      "size_bytes": 2789391,
+      "authority": "National Testing Agency",
+      "category": "OTHER_ANNOUNCEMENT",
+      "format": "SCANNED_PDF",
+      "readable": true,
+      "ground_truth_facts": {
+        "recruiting_authority": "National Testing Agency",
+        "notice_number": "NTA/OM/D/88/2026-ED-11",
+        "application_start_date": "N/A",
+        "application_end_date": "N/A",
+        "total_vacancies": "N/A",
+        "exam_date": "N/A",
+        "application_fee": "N/A",
+        "age_limit": "N/A",
+        "eligibility": "N/A"
+      }
+    },
+    "new_val_29_nta_announcement_of_date_s__for_st.pdf": {
+      "sha256": "19971d94d3d132521c79445bbc02e5c54ffafae0ca7bee9a5d06307fa06fff1b",
+      "size_bytes": 354940,
+      "authority": "National Testing Agency",
+      "category": "EXAM_SCHEDULE",
+      "format": "SCANNED_PDF",
+      "readable": true,
+      "ground_truth_facts": {
+        "recruiting_authority": "National Testing Agency",
+        "notice_number": "N/A",
+        "application_start_date": "N/A",
+        "application_end_date": "N/A",
+        "total_vacancies": "N/A",
+        "exam_date": "07.12.2026",
+        "application_fee": "N/A",
+        "age_limit": "N/A",
+        "eligibility": "N/A"
+      }
+    },
+    "new_val_30_nta_22_notice_inviting_quotation.pdf": {
+      "sha256": "341a530d7e25d71e0bb8864c57817a5b3816bd68c64a77daf42418c77cc22f47",
+      "size_bytes": 615294,
+      "authority": "National Testing Agency",
+      "category": "OTHER_ANNOUNCEMENT",
+      "format": "TEXT_PDF",
+      "readable": true,
+      "ground_truth_facts": {
+        "recruiting_authority": "National Testing Agency",
+        "notice_number": "NTA/Proc./Hotel-Empanel/2026",
+        "application_start_date": "N/A",
+        "application_end_date": "08.10.2026",
+        "total_vacancies": "N/A",
+        "exam_date": "N/A",
+        "application_fee": "N/A",
+        "age_limit": "N/A",
+        "eligibility": "N/A"
+      }
+    },
+    "new_val_31_nta_24_eoi_for_translation_reviewe.pdf": {
+      "sha256": "3b60b289b8045ce9157ed12c035a660565ae8c7f19560f7c45596da5e5119178",
+      "size_bytes": 1434246,
+      "authority": "National Testing Agency",
+      "category": "RECRUITMENT",
+      "format": "TEXT_PDF",
+      "readable": true,
+      "ground_truth_facts": {
+        "recruiting_authority": "National Testing Agency",
+        "notice_number": "NTA/EoI-Empanelment/2026",
+        "application_start_date": "N/A",
+        "application_end_date": "N/A",
+        "total_vacancies": "N/A",
+        "exam_date": "N/A",
+        "application_fee": "N/A",
+        "age_limit": "25 and 65 years",
+        "eligibility": "Master's degree or higher"
+      }
+    },
+    "new_val_32_nta_eoi_for_subject_matter_expert.pdf": {
+      "sha256": "56a3948f7dccb14c8c91791251fb2bacb663a66f0b5df37b6949167c8c935ddc",
+      "size_bytes": 1429473,
+      "authority": "National Testing Agency",
+      "category": "RECRUITMENT",
+      "format": "TEXT_PDF",
+      "readable": true,
+      "ground_truth_facts": {
+        "recruiting_authority": "National Testing Agency",
+        "notice_number": "NTA/EoI-Empanelment/2026",
+        "application_start_date": "N/A",
+        "application_end_date": "N/A",
+        "total_vacancies": "N/A",
+        "exam_date": "N/A",
+        "application_fee": "N/A",
+        "age_limit": "N/A",
+        "eligibility": "Master's degree"
+      }
+    },
+    "new_val_33_upsc_written_result__with_name___co.html": {
+      "sha256": "4278718eb0367122e178a09ce557be46637eb94f0292d204fa50c18ee2d93f75",
+      "size_bytes": 29915,
+      "authority": "Union Public Service Commission",
+      "category": "EXAM_RESULT",
+      "format": "HTML",
+      "readable": true,
+      "ground_truth_facts": {
+        "recruiting_authority": "Union Public Service Commission",
+        "notice_number": "N/A",
+        "application_start_date": "N/A",
+        "application_end_date": "N/A",
+        "total_vacancies": "N/A",
+        "exam_date": "N/A",
+        "application_fee": "N/A",
+        "age_limit": "N/A",
+        "eligibility": "N/A"
+      }
+    },
+    "new_val_34_upsc_examination_time_table__combin.html": {
+      "sha256": "71e647fa6ca01012da1bbee81276fb9868fe277a129482cd36b25e93f79f0302",
+      "size_bytes": 29771,
+      "authority": "Union Public Service Commission",
+      "category": "EXAM_SCHEDULE",
+      "format": "HTML",
+      "readable": true,
+      "ground_truth_facts": {
+        "recruiting_authority": "Union Public Service Commission",
+        "notice_number": "N/A",
+        "application_start_date": "N/A",
+        "application_end_date": "N/A",
+        "total_vacancies": "N/A",
+        "exam_date": "07.02.2027",
+        "application_fee": "N/A",
+        "age_limit": "N/A",
+        "eligibility": "N/A"
+      }
+    },
+    "new_val_35_upsc_written_result__08_posts_of_ad.html": {
+      "sha256": "80e323b462459b45e57050ec44f7f188d8ecbca1ed7a17e205922d68ce9ad4d1",
+      "size_bytes": 30012,
+      "authority": "Union Public Service Commission",
+      "category": "EXAM_RESULT",
+      "format": "HTML",
+      "readable": true,
+      "ground_truth_facts": {
+        "recruiting_authority": "Union Public Service Commission",
+        "notice_number": "N/A",
+        "application_start_date": "N/A",
+        "application_end_date": "N/A",
+        "total_vacancies": "N/A",
+        "exam_date": "N/A",
+        "application_fee": "N/A",
+        "age_limit": "N/A",
+        "eligibility": "N/A"
+      }
+    },
+    "new_val_36_upsc_written_result__19_posts_of_ma.html": {
+      "sha256": "99bf3c6fda385c94158235b026afbf3b7225768f724cc088731031cb43a5fa09",
+      "size_bytes": 29907,
+      "authority": "Union Public Service Commission",
+      "category": "EXAM_RESULT",
+      "format": "HTML",
+      "readable": true,
+      "ground_truth_facts": {
+        "recruiting_authority": "Union Public Service Commission",
+        "notice_number": "N/A",
+        "application_start_date": "N/A",
+        "application_end_date": "N/A",
+        "total_vacancies": "N/A",
+        "exam_date": "N/A",
+        "application_fee": "N/A",
+        "age_limit": "N/A",
+        "eligibility": "N/A"
+      }
+    },
+    "new_val_37_upsc_written_result__combined_defen.html": {
+      "sha256": "3a9e72e33623517101e89495fc4a7b641667d1b33551dfe99b103b3a83a0daaa",
+      "size_bytes": 29805,
+      "authority": "Union Public Service Commission",
+      "category": "EXAM_RESULT",
+      "format": "HTML",
+      "readable": true,
+      "ground_truth_facts": {
+        "recruiting_authority": "Union Public Service Commission",
+        "notice_number": "N/A",
+        "application_start_date": "N/A",
+        "application_end_date": "N/A",
+        "total_vacancies": "N/A",
+        "exam_date": "N/A",
+        "application_fee": "N/A",
+        "age_limit": "N/A",
+        "eligibility": "N/A"
+      }
+    },
+    "new_val_38_upsc_notice__04_posts_of_homoeopath.html": {
+      "sha256": "30f7b19861731d93ce8601d459911cf1bfdab33c62ca53c3de812789f3af689b",
+      "size_bytes": 29721,
+      "authority": "Union Public Service Commission",
+      "category": "RECRUITMENT",
+      "format": "HTML",
+      "readable": true,
+      "ground_truth_facts": {
+        "recruiting_authority": "Union Public Service Commission",
+        "notice_number": "N/A",
+        "application_start_date": "N/A",
+        "application_end_date": "N/A",
+        "total_vacancies": "04",
+        "exam_date": "N/A",
+        "application_fee": "N/A",
+        "age_limit": "N/A",
+        "eligibility": "Degree in Homoeopathy"
+      }
+    },
+    "new_val_39_upsc_final_result__combined_geo_sci.html": {
+      "sha256": "10e50ad09dd4032f04a47e38cb837477818b8f5b5ce3d404255ddc2f0bdea601",
+      "size_bytes": 29776,
+      "authority": "Union Public Service Commission",
+      "category": "EXAM_RESULT",
+      "format": "HTML",
+      "readable": true,
+      "ground_truth_facts": {
+        "recruiting_authority": "Union Public Service Commission",
+        "notice_number": "N/A",
+        "application_start_date": "N/A",
+        "application_end_date": "N/A",
+        "total_vacancies": "N/A",
+        "exam_date": "N/A",
+        "application_fee": "N/A",
+        "age_limit": "N/A",
+        "eligibility": "N/A"
+      }
+    },
+    "new_val_40_upsc_notice__704_posts_of_vice_prin.html": {
+      "sha256": "fe704eac697fe848c3b62fd8034a6f9355c9b8b4b0afadba30063f6f3a60b355",
+      "size_bytes": 29880,
+      "authority": "Union Public Service Commission",
+      "category": "RECRUITMENT",
+      "format": "HTML",
+      "readable": true,
+      "ground_truth_facts": {
+        "recruiting_authority": "Union Public Service Commission",
+        "notice_number": "N/A",
+        "application_start_date": "N/A",
+        "application_end_date": "N/A",
+        "total_vacancies": "704",
+        "exam_date": "N/A",
+        "application_fee": "N/A",
+        "age_limit": "N/A",
+        "eligibility": "Master's Degree"
+      }
+    },
+    "new_val_41_upsc_notice__124_posts_of_principal.html": {
+      "sha256": "df53aa6186001635629f52374a5264b6b8c005df96d6e9a004c7177416460148",
+      "size_bytes": 29833,
+      "authority": "Union Public Service Commission",
+      "category": "RECRUITMENT",
+      "format": "HTML",
+      "readable": true,
+      "ground_truth_facts": {
+        "recruiting_authority": "Union Public Service Commission",
+        "notice_number": "N/A",
+        "application_start_date": "N/A",
+        "application_end_date": "N/A",
+        "total_vacancies": "124",
+        "exam_date": "N/A",
+        "application_fee": "N/A",
+        "age_limit": "N/A",
+        "eligibility": "Master's Degree"
+      }
+    },
+    "new_val_42_upsc_interview_schedule__indian_eco.html": {
+      "sha256": "5d668a8dc04f9f6c363e760a7c429c545090ca65ce94b5801ac62079c362a256",
+      "size_bytes": 30628,
+      "authority": "Union Public Service Commission",
+      "category": "EXAM_SCHEDULE",
+      "format": "HTML",
+      "readable": true,
+      "ground_truth_facts": {
+        "recruiting_authority": "Union Public Service Commission",
+        "notice_number": "N/A",
+        "application_start_date": "N/A",
+        "application_end_date": "N/A",
+        "total_vacancies": "N/A",
+        "exam_date": "N/A",
+        "application_fee": "N/A",
+        "age_limit": "N/A",
+        "eligibility": "N/A"
+      }
+    },
+    "new_val_43_uppsc_samiksha_adhikari__sahayak_sam.html": {
+      "sha256": "287c9813a56573273ac443a920466601f2951abf769183fdcf18010422478f3b",
+      "size_bytes": 166512,
+      "authority": "Uttar Pradesh Public Service Commission",
+      "category": "RECRUITMENT",
+      "format": "HTML",
+      "readable": true,
+      "ground_truth_facts": {
+        "recruiting_authority": "Uttar Pradesh Public Service Commission",
+        "notice_number": "A-5/E-1/2025",
+        "application_start_date": "N/A",
+        "application_end_date": "N/A",
+        "total_vacancies": "N/A",
+        "exam_date": "02/11/2026",
+        "application_fee": "N/A",
+        "age_limit": "N/A",
+        "eligibility": "Bachelor's Degree"
+      }
+    },
+    "new_val_44_uppsc_d_6_e_1_2025___21_09_2026.html": {
+      "sha256": "60e53ed2a281f3f719a55e87a18905a80caae680ae266e154c842f5c645dcbf8",
+      "size_bytes": 166512,
+      "authority": "Uttar Pradesh Public Service Commission",
+      "category": "RECRUITMENT",
+      "format": "HTML",
+      "readable": true,
+      "ground_truth_facts": {
+        "recruiting_authority": "Uttar Pradesh Public Service Commission",
+        "notice_number": "D-6/E-1/2025",
+        "application_start_date": "N/A",
+        "application_end_date": "N/A",
+        "total_vacancies": "N/A",
+        "exam_date": "02/11/2026",
+        "application_fee": "N/A",
+        "age_limit": "N/A",
+        "eligibility": "N/A"
+      }
+    },
+    "new_val_45_uppsc_d_2_e_1_2026___14_09_2026.html": {
+      "sha256": "565d09d62cb5b327524251e8d420b6d4e88fd9552a00325286bc946eb53ddbb0",
+      "size_bytes": 166512,
+      "authority": "Uttar Pradesh Public Service Commission",
+      "category": "RECRUITMENT",
+      "format": "HTML",
+      "readable": true,
+      "ground_truth_facts": {
+        "recruiting_authority": "Uttar Pradesh Public Service Commission",
+        "notice_number": "D-2/E-1/2026",
+        "application_start_date": "N/A",
+        "application_end_date": "N/A",
+        "total_vacancies": "N/A",
+        "exam_date": "02/11/2026",
+        "application_fee": "N/A",
+        "age_limit": "N/A",
+        "eligibility": "N/A"
+      }
+    },
+    "new_val_46_ssc_notification_for_recruitment_o.pdf": {
+      "sha256": "2862c781906f90582c29da172c5cf7efa5fc7fba9d90c779d4a0f0f805961b18",
+      "size_bytes": 927193,
+      "authority": "Staff Selection Commission",
+      "category": "RECRUITMENT",
+      "format": "TEXT_PDF",
+      "readable": true,
+      "ground_truth_facts": {
+        "recruiting_authority": "Staff Selection Commission",
+        "notice_number": "01/2027",
+        "application_start_date": "13.06.2024",
+        "application_end_date": "03.07.2024",
+        "total_vacancies": "300",
+        "exam_date": "N/A",
+        "application_fee": "Rs. 300",
+        "age_limit": "18 to 22 years",
+        "eligibility": "Matriculation"
+      }
+    },
+    "new_val_47_ssc_important_notice___schedule_of.pdf": {
+      "sha256": "075a53cb13a5b51cbf99ac7c23c8c86ef10502d68593701cd2323699479dd8bb",
+      "size_bytes": 489064,
+      "authority": "Staff Selection Commission",
+      "category": "EXAM_SCHEDULE",
+      "format": "TEXT_PDF",
+      "readable": true,
+      "ground_truth_facts": {
+        "recruiting_authority": "Staff Selection Commission",
+        "notice_number": "HQ-EC033/7/2025-EC",
+        "application_start_date": "N/A",
+        "application_end_date": "N/A",
+        "total_vacancies": "N/A",
+        "exam_date": "18.11.2026",
+        "application_fee": "N/A",
+        "age_limit": "N/A",
+        "eligibility": "N/A"
+      }
+    },
+    "new_val_48_ssc_cancellation_notice_for_the_po.pdf": {
+      "sha256": "62f9811c22beda4a3d6c3b97dca2256b86c3945e7a536205df8162ad00c2fbfa",
+      "size_bytes": 594240,
+      "authority": "Staff Selection Commission",
+      "category": "CANCELLATION_NOTICE",
+      "format": "TEXT_PDF",
+      "readable": true,
+      "ground_truth_facts": {
+        "recruiting_authority": "Staff Selection Commission",
+        "notice_number": "S-6002/7/2026-Selection",
+        "application_start_date": "N/A",
+        "application_end_date": "N/A",
+        "total_vacancies": "N/A",
+        "exam_date": "N/A",
+        "application_fee": "N/A",
+        "age_limit": "N/A",
+        "eligibility": "N/A"
+      }
+    },
+    "new_val_49_ssc_cancellation_notice_for_the_po.pdf": {
+      "sha256": "6c533d7d785ecc6643da90cb953cdc19750c3aa2d1fe38344b1f4434d8052491",
+      "size_bytes": 593274,
+      "authority": "Staff Selection Commission",
+      "category": "CANCELLATION_NOTICE",
+      "format": "TEXT_PDF",
+      "readable": true,
+      "ground_truth_facts": {
+        "recruiting_authority": "Staff Selection Commission",
+        "notice_number": "S-6002/7/2025-Selection",
+        "application_start_date": "N/A",
+        "application_end_date": "N/A",
+        "total_vacancies": "N/A",
+        "exam_date": "N/A",
+        "application_fee": "N/A",
+        "age_limit": "N/A",
+        "eligibility": "N/A"
+      }
+    },
+    "new_val_50_ssc_important_notice__grade__c__st.pdf": {
+      "sha256": "3f708532a5bfab41a6268dcc2007630cdb6e8fc7d734081a096b3eb0ff0aef3d",
+      "size_bytes": 88228,
+      "authority": "Staff Selection Commission",
+      "category": "EXAM_SCHEDULE",
+      "format": "SCANNED_PDF",
+      "readable": true,
+      "ground_truth_facts": {
+        "recruiting_authority": "Staff Selection Commission",
+        "notice_number": "HQ-EC033/7/2025-EC",
+        "application_start_date": "N/A",
+        "application_end_date": "N/A",
+        "total_vacancies": "N/A",
+        "exam_date": "09.05.2025",
+        "application_fee": "N/A",
+        "age_limit": "N/A",
+        "eligibility": "N/A"
+      }
+    },
+    "new_val_51_ssc_tentative_vacancy_of_combined.pdf": {
+      "sha256": "7e14fb4250d5c9def0ffe0c26abb9ca25bccebc57f78c276e9ff225681a8ed12",
+      "size_bytes": 4913727,
+      "authority": "Staff Selection Commission",
+      "category": "INTERNAL_CIRCULAR",
+      "format": "TEXT_PDF",
+      "readable": true,
+      "ground_truth_facts": {
+        "recruiting_authority": "Staff Selection Commission",
+        "notice_number": "N/A",
+        "application_start_date": "N/A",
+        "application_end_date": "N/A",
+        "total_vacancies": "17727",
+        "exam_date": "N/A",
+        "application_fee": "N/A",
+        "age_limit": "N/A",
+        "eligibility": "N/A"
+      }
+    },
+    "new_val_52_ssc_stenographer_grade_c_and_d_exa.pdf": {
+      "sha256": "086f61c8de9438581d9ff5a7f12aa4876613ba2e9cd534bca8ad0f199609ba31",
+      "size_bytes": 27113,
+      "authority": "Staff Selection Commission",
+      "category": "EXAM_RESULT",
+      "format": "TEXT_PDF",
+      "readable": true,
+      "ground_truth_facts": {
+        "recruiting_authority": "Staff Selection Commission",
+        "notice_number": "E/13/2026-C-2",
+        "application_start_date": "N/A",
+        "application_end_date": "N/A",
+        "total_vacancies": "N/A",
+        "exam_date": "N/A",
+        "application_fee": "N/A",
+        "age_limit": "N/A",
+        "eligibility": "N/A"
+      }
+    }
+  }
+}

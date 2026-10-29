@@ -1,0 +1,37 @@
+# {{ notice.title }}
+
+**Issuing Authority:** {{ facts.recruiting_authority or notice.authority_name }}  
+**Notice Reference:** {{ facts.notice_number or "Official Circular" }}  
+**State / Region:** {{ notice.state }}  
+
+---
+
+## Announcement Summary
+
+The **{{ facts.recruiting_authority or notice.authority_name }}** has issued an official announcement regarding **{{ notice.title }}**.
+
+Candidates and stakeholders are advised to note the official notice details released directly by the authority.
+
+---
+
+## Important Highlights & Schedule
+
+- **Authority:** {{ facts.recruiting_authority or notice.authority_name }}
+- **Published / Discovered Date:** {{ notice.first_discovered_at[:10] }}
+{% if facts.exam_date %}- **Relevant Schedule Date:** {{ facts.exam_date }}{% endif %}
+{% if facts.application_end_date %}- **Important Deadline:** {{ facts.application_end_date }}{% endif %}
+
+---
+
+## Action Required for Candidates
+
+1. Access the official circular using the verified authority link below.
+2. Verify application numbers or registration details mentioned in the notice.
+3. Keep track of subsequent updates exclusively through official portals.
+
+---
+
+## Verified Source Link
+
+- **Official Notice Link:** [{{ notice.authority_name }} Portal]({{ facts.official_source_url or notice.normalized_url }})
+- **Authority Domain:** {{ notice.normalized_url }}
