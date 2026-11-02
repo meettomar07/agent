@@ -27,6 +27,7 @@ class DiscoveryEngine:
         self.fetcher = fetcher or SafeFetcher()
         self.registry = SourceRegistryService(db_path)
         self.recover_orphaned_scans()
+        self.check_and_record_missed_windows()
 
     def recover_orphaned_scans(self) -> int:
         """Mark any previously running scan runs as FAILED upon process restart."""
@@ -46,6 +47,125 @@ class DiscoveryEngine:
                 return cursor.rowcount
         except Exception:
             return 0
+
+    def check_and_record_missed_windows(
+        self,
+        pilot_start_time: Optional[datetime] = None,
+        as_of: Optional[datetime] = None,
+    ) -> int:
+        """Detect and record scheduled scan windows that were missed due to machine sleep or process downtime.
+
+        Checks scheduled hours [6, 18] in Asia/Kolkata timezone between pilot_start_time
+        (or earliest recorded scheduled scan) and as_of (default now).
+        For each past scheduled window with no corresponding scan run, inserts a scan_run
+        with status='MISSED' to prevent claiming continuous operation.
+        """
+        from zoneinfo import ZoneInfo
+        from datetime import timedelta
+        from testkart_intelligence.config import settings
+
+        tz = ZoneInfo(settings.TIMEZONE)
+        now_dt = as_of or datetime.now(tz)
+        if now_dt.tzinfo is None:
+            now_dt = now_dt.replace(tzinfo=tz)
+        else:
+            now_dt = now_dt.astimezone(tz)
+
+        # Determine reference start time
+        start_dt = pilot_start_time
+        if start_dt is None:
+            try:
+                with get_db(self.db_path) as conn:
+                    # Check pilot metadata table if present
+                    row = None
+                    try:
+                        row = conn.execute(
+                            "SELECT value FROM system_metadata WHERE key = 'pilot_start_time'"
+                        ).fetchone()
+                    except Exception:
+                        pass
+                    if row and row["value"]:
+                        start_dt = datetime.fromisoformat(row["value"])
+                    else:
+                        earliest_row = conn.execute(
+                            "SELECT min(started_at) as earliest FROM scan_runs WHERE scan_type = 'SCHEDULED' AND status != 'MISSED'"
+                        ).fetchone()
+                        if earliest_row and earliest_row["earliest"]:
+                            start_dt = datetime.fromisoformat(earliest_row["earliest"])
+            except Exception:
+                pass
+
+        if start_dt is None:
+            return 0
+
+        if start_dt.tzinfo is None:
+            start_dt = start_dt.replace(tzinfo=tz)
+        else:
+            start_dt = start_dt.astimezone(tz)
+
+        if start_dt >= now_dt:
+            return 0
+
+        # Enumerate all scheduled window datetimes between start_dt and now_dt
+        current_date = start_dt.date()
+        end_date = now_dt.date()
+        expected_windows: List[datetime] = []
+
+        d = current_date
+        while d <= end_date:
+            for hour in sorted(settings.SCAN_HOURS):
+                w_dt = datetime(d.year, d.month, d.day, hour, settings.SCAN_MINUTES, tzinfo=tz)
+                if w_dt > start_dt and w_dt <= (now_dt - timedelta(minutes=15)):
+                    expected_windows.append(w_dt)
+            d += timedelta(days=1)
+
+        if not expected_windows:
+            return 0
+
+        missed_count = 0
+        try:
+            with get_db(self.db_path) as conn:
+                for w_dt in expected_windows:
+                    w_iso = w_dt.isoformat()
+                    min_bound = (w_dt - timedelta(minutes=45)).isoformat()
+                    max_bound = (w_dt + timedelta(minutes=45)).isoformat()
+
+                    existing = conn.execute(
+                        """
+                        SELECT id FROM scan_runs
+                        WHERE scan_type = 'SCHEDULED'
+                          AND status IN ('COMPLETED', 'FAILED')
+                          AND started_at >= ? AND started_at <= ?
+                        """,
+                        (min_bound, max_bound),
+                    ).fetchone()
+
+                    if not existing:
+                        already_missed = conn.execute(
+                            "SELECT id FROM scan_runs WHERE status = 'MISSED' AND started_at = ?",
+                            (w_iso,),
+                        ).fetchone()
+                        if not already_missed:
+                            missed_id = f"scan_missed_{w_dt.strftime('%Y%m%d_%H%M')}_{uuid.uuid4().hex[:6]}"
+                            conn.execute(
+                                """
+                                INSERT INTO scan_runs (
+                                    id, scan_type, status, started_at, completed_at,
+                                    sources_checked, notices_found, errors_count, error_summary
+                                ) VALUES (?, 'SCHEDULED', 'MISSED', ?, ?, 0, 0, 0, ?)
+                                """,
+                                (
+                                    missed_id,
+                                    w_iso,
+                                    w_iso,
+                                    f"Scheduled scan window missed ({w_dt.strftime('%H:%M')} Asia/Kolkata): Host machine was asleep, offline, or scheduler daemon was inactive.",
+                                ),
+                            )
+                            missed_count += 1
+        except Exception:
+            return 0
+
+        return missed_count
 
     def run_scan(
         self,

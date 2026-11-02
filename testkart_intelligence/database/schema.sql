@@ -30,7 +30,7 @@ CREATE INDEX IF NOT EXISTS idx_sources_category ON official_sources(category);
 CREATE TABLE IF NOT EXISTS scan_runs (
     id TEXT PRIMARY KEY,
     scan_type TEXT NOT NULL, -- 'SCHEDULED' | 'MANUAL'
-    status TEXT NOT NULL,    -- 'RUNNING' | 'COMPLETED' | 'FAILED'
+    status TEXT NOT NULL,    -- 'RUNNING' | 'COMPLETED' | 'FAILED' | 'MISSED'
     started_at TEXT NOT NULL,
     completed_at TEXT,
     sources_checked INTEGER NOT NULL DEFAULT 0,
@@ -247,3 +247,10 @@ CREATE TABLE IF NOT EXISTS audit_events (
 
 CREATE INDEX IF NOT EXISTS idx_audit_entity ON audit_events(entity_type, entity_id);
 CREATE INDEX IF NOT EXISTS idx_audit_timestamp ON audit_events(timestamp);
+
+-- 13. System & Pilot Metadata
+CREATE TABLE IF NOT EXISTS system_metadata (
+    key TEXT PRIMARY KEY,
+    value TEXT NOT NULL,
+    updated_at TEXT NOT NULL
+);

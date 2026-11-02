@@ -97,6 +97,7 @@ class OperationalMetricsService:
                     sum(CASE WHEN scan_type = 'MANUAL' THEN 1 ELSE 0 END) as manual_count,
                     sum(CASE WHEN status = 'COMPLETED' THEN 1 ELSE 0 END) as completed_count,
                     sum(CASE WHEN status = 'FAILED' THEN 1 ELSE 0 END) as failed_count,
+                    sum(CASE WHEN status = 'MISSED' THEN 1 ELSE 0 END) as missed_count,
                     sum(notices_found) as total_notices_found,
                     sum(errors_count) as total_scan_errors
                 FROM scan_runs
@@ -108,6 +109,7 @@ class OperationalMetricsService:
             total_runs = scan_runs_stats["total_scans"] or 0
             completed_runs = scan_runs_stats["completed_count"] or 0
             failed_runs = scan_runs_stats["failed_count"] or 0
+            missed_runs = scan_runs_stats["missed_count"] or 0
             uptime_pct = round((completed_runs / total_runs * 100), 2) if total_runs > 0 else 100.0
 
             # 3. Document Fetches & Ingestion Integrity
@@ -298,7 +300,7 @@ class OperationalMetricsService:
                     "manual_runs": scan_runs_stats["manual_count"] or 0,
                     "completed_runs": completed_runs,
                     "failed_runs": failed_runs,
-                    "missed_runs": 0,
+                    "missed_runs": missed_runs,
                     "uptime_pct": uptime_pct,
                     "timezone": settings.TIMEZONE,
                     "scan_hours": settings.SCAN_HOURS,

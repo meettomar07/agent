@@ -759,3 +759,146 @@ def test_safety_invariants_and_zero_external_dispatches(pilot_db, monkeypatch):
     pub = MockPublisher(db_path=pilot_db)
     with pytest.raises(LivePublishingDisabledError):
         pub.publish("art_v_any", "hash_any", "appr_any")
+
+
+# =========================================================================
+# 7. Real-World Pilot Verification: Missed Windows, Cross-Process Locks & Human Actions
+# =========================================================================
+
+def test_missed_scan_windows_recorded_as_missed(pilot_db):
+    """Verify that missed scan windows (e.g. computer asleep or offline) are recorded
+    as MISSED in scan_runs, not SUCCESSFUL or COMPLETED, and metrics reflect missed_runs."""
+    from zoneinfo import ZoneInfo
+    tz = ZoneInfo("Asia/Kolkata")
+    # Simulate a pilot that started yesterday at 12:00 IST
+    now = datetime(2026, 11, 2, 14, 0, tzinfo=tz)
+    pilot_start = datetime(2026, 11, 1, 12, 0, tzinfo=tz)
+
+    engine = DiscoveryEngine(db_path=pilot_db)
+
+    # Before checking, no scan runs exist
+    with get_db(pilot_db) as conn:
+        assert conn.execute("SELECT count(*) as c FROM scan_runs").fetchone()["c"] == 0
+
+    # Execute check_and_record_missed_windows
+    missed_count = engine.check_and_record_missed_windows(pilot_start_time=pilot_start, as_of=now)
+    # Windows expected: 2026-11-01 18:00 and 2026-11-02 06:00 (2 windows)
+    assert missed_count == 2
+
+    with get_db(pilot_db) as conn:
+        missed_rows = conn.execute("SELECT * FROM scan_runs WHERE status = 'MISSED' ORDER BY started_at ASC").fetchall()
+        assert len(missed_rows) == 2
+        assert missed_rows[0]["scan_type"] == "SCHEDULED"
+        assert missed_rows[0]["status"] == "MISSED"
+        assert "2026-11-01T18:00:00" in missed_rows[0]["started_at"]
+        assert "Host machine was asleep, offline, or scheduler daemon was inactive" in missed_rows[0]["error_summary"]
+
+        assert missed_rows[1]["scan_type"] == "SCHEDULED"
+        assert missed_rows[1]["status"] == "MISSED"
+        assert "2026-11-02T06:00:00" in missed_rows[1]["started_at"]
+
+    # Verify idempotency
+    missed_count_repeat = engine.check_and_record_missed_windows(pilot_start_time=pilot_start, as_of=now)
+    assert missed_count_repeat == 0
+
+    # Verify metrics reporting reflects missed runs and adjusts uptime
+    svc = OperationalMetricsService(db_path=pilot_db)
+    metrics = svc.get_cumulative_metrics()
+    assert metrics["scheduler"]["missed_runs"] == 2
+    assert metrics["scheduler"]["completed_runs"] == 0
+    assert metrics["scheduler"]["uptime_pct"] == 0.0
+
+
+def test_cross_process_duplicate_scheduler_lock(pilot_db, tmp_path):
+    """Verify that cross-process scheduler lock prevents launching multiple scheduler daemons."""
+    scheduler = ScanScheduler(db_path=pilot_db)
+    lock_file = scheduler.lock_file
+
+    # Simulate another active OS process by writing a foreign PID to lock_file
+    lock_file.parent.mkdir(parents=True, exist_ok=True)
+    foreign_pid = 999999
+    with open(lock_file, "w", encoding="utf-8") as f:
+        f.write(str(foreign_pid))
+
+    # Starting a new scheduler while lock_file is held by an active foreign PID must raise SchedulerAlreadyRunningError
+    sched2 = ScanScheduler(db_path=pilot_db)
+    # Clear in-memory instance reference to strictly test cross-process lock file
+    ScanScheduler._active_instance = None
+
+    # Patch psutil to report the foreign PID as live
+    with patch("psutil.pid_exists", return_value=True):
+        with pytest.raises(SchedulerAlreadyRunningError) as exc_info:
+            sched2.start()
+        assert "already running in another process" in str(exc_info.value)
+
+    # Clean up lock file
+    lock_file.unlink(missing_ok=True)
+
+
+def test_distinguish_human_editorial_actions_from_automated_test_driver(pilot_db):
+    """Verify that actual human reviews produce distinct audit trails (custom decision notes,
+    fact corrections, confirmations) distinguishable from rapid automated driver runs."""
+    editorial = EditorialService(db_path=pilot_db)
+    now_iso = datetime.now(timezone.utc).isoformat()
+
+    # 1. Setup sample draft and facts
+    with get_db(pilot_db) as conn:
+        conn.execute(
+            """
+            INSERT INTO canonical_notices (id, source_id, authority_name, notice_number, title, normalized_url, category, state, classification, status, first_discovered_at, last_updated_at)
+            VALUES ('not_human_test', 'src_upsc', 'UPSC', 'N-HT-01', 'Civil Services 2026', 'https://upsc.gov.in/cse2026.pdf', 'PSC', 'Central', 'RECRUITMENT_NOTIFICATION', 'EXTRACTED', ?, ?)
+            """,
+            (now_iso, now_iso),
+        )
+        conn.execute(
+            """
+            INSERT INTO notice_versions (id, notice_id, version_number, document_url, document_hash, document_type, storage_path, retrieved_at)
+            VALUES ('ver_ht_01', 'not_human_test', 1, 'https://upsc.gov.in/cse2026.pdf', 'hash_ht', 'PDF', 'cse.pdf', ?)
+            """,
+            (now_iso,),
+        )
+        conn.executemany(
+            """
+            INSERT INTO extracted_facts (id, notice_version_id, fact_key, fact_value, verified_status, created_at)
+            VALUES (?, 'ver_ht_01', ?, ?, 'VERIFIED', ?)
+            """,
+            [
+                ("f_ht_vac", "total_vacancies", "950", now_iso),
+                ("f_ht_start", "application_start_date", "01.02.2026", now_iso),
+                ("f_ht_end", "application_end_date", "21.02.2026", now_iso),
+            ]
+        )
+
+    writer = WritingAgent(db_path=pilot_db)
+    art_id, art_v1_id, art_hash1 = writer.draft_article("not_human_test")
+
+    # 2. Human reviewer confirms vacancy and corrects application deadline based on gazette inspection
+    editorial.confirm_fact(fact_id="f_ht_vac", reviewer_email="meettomar07@gmail.com")
+    editorial.correct_fact(
+        fact_id="f_ht_end",
+        corrected_value="28.02.2026",
+        reviewer_email="meettomar07@gmail.com",
+        reason="Corrigendum gazette page 3 extended deadline to 28th Feb.",
+    )
+
+    # 3. Human reviewer submits decision with human context
+    decision = editorial.submit_decision(
+        article_id=art_id,
+        expected_version_id=art_v1_id,
+        expected_content_hash=art_hash1,
+        decision="APPROVE",
+        editor_email="meettomar07@gmail.com",
+        notes="Verified against UPSC CSE 2026 Gazette pages 1-14. Confirmed vacancies and corrected deadline.",
+        client_ip="127.0.0.1",
+    )
+    assert decision["decision"] == "APPROVED"
+
+    # 4. Verify in metrics that human fact confirmations and corrections are tracked
+    svc = OperationalMetricsService(db_path=pilot_db)
+    m = svc.get_cumulative_metrics()
+
+    assert m["editorial"]["human_fact_confirmations"] == 2
+    assert m["editorial"]["human_fact_corrections"] == 1
+    assert m["editorial"]["normal_approvals"] == 1
+    assert "meettomar07@gmail.com" in m["editorial"]["actors_breakdown"]
+
