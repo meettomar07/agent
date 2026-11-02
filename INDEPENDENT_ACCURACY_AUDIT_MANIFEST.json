@@ -1,0 +1,180 @@
+{
+  "dataset_name": "INDEPENDENT_ACCURACY_AUDIT_DATASET",
+  "created_at": "2026-10-29T17:45:00Z",
+  "status": "FROZEN_FOR_INDEPENDENT_AUDIT",
+  "total_documents": 15,
+  "authorities_distribution": {
+    "SSC": 3,
+    "UPSC": 3,
+    "NTA": 3,
+    "UPPSC": 3,
+    "TNPSC": 3
+  },
+  "documents": {
+    "audit_01_ssc_scientific_asst_recruitment.pdf": {
+      "audit_id": "audit_01",
+      "source_id": "src_ssc",
+      "authority": "Staff Selection Commission",
+      "title": "Recruitment of Scientific Assistant in India Meteorological Department Examination, 2026",
+      "source_url": "https://ssc.gov.in/api/attachment/uploads/masterData/NoticeBoards/scientific_asst_imd_2026.pdf",
+      "sha256": "15e6fdc5045222d5d7f4d198ef7bfc2cda18977d8168ecca60fb9b97868a93c1",
+      "size_bytes": 1441,
+      "content_type": "application/pdf",
+      "local_path": "data\\independent_accuracy_audit_notices\\audit_01_ssc_scientific_asst_recruitment.pdf"
+    },
+    "audit_02_ssc_je_corrigendum.pdf": {
+      "audit_id": "audit_02",
+      "source_id": "src_ssc",
+      "authority": "Staff Selection Commission",
+      "title": "Corrigendum to Junior Engineer (Civil, Mechanical & Electrical) Examination, 2026",
+      "source_url": "https://ssc.gov.in/api/attachment/uploads/masterData/NoticeBoards/corrigendum_je_exam_2026.pdf",
+      "sha256": "0de8fd7af1044d24e75bc6d02a39ce1ed9dbd684c10ed0b3dc2f4b914a2cb0bc",
+      "size_bytes": 1206,
+      "content_type": "application/pdf",
+      "local_path": "data\\independent_accuracy_audit_notices\\audit_02_ssc_je_corrigendum.pdf"
+    },
+    "audit_03_ssc_mts_instructions.pdf": {
+      "audit_id": "audit_03",
+      "source_id": "src_ssc",
+      "authority": "Staff Selection Commission",
+      "title": "Important Notice: Guidelines and Instructions for PwBD Candidates in Multi Tasking Staff Exam",
+      "source_url": "https://ssc.gov.in/api/attachment/uploads/masterData/NoticeBoards/instructions_pwbd_mts_2026.pdf",
+      "sha256": "86986954a812e332ed69da723b757c70d5df15758d363f0caf509d79e6307e3a",
+      "size_bytes": 1251,
+      "content_type": "application/pdf",
+      "local_path": "data\\independent_accuracy_audit_notices\\audit_03_ssc_mts_instructions.pdf"
+    },
+    "audit_04_upsc_specialist_grade_recruitment.html": {
+      "audit_id": "audit_04",
+      "source_id": "src_upsc",
+      "authority": "Union Public Service Commission",
+      "title": "Recruitment Notification for 45 Posts of Specialist Grade III Assistant Professor",
+      "source_url": "https://www.upsc.gov.in/recruitment/advt_15_2026_specialist_grade.html",
+      "sha256": "18180a94d6407e54f4fc0e18910f47e33714ea34569e983a0b4146b130501033",
+      "size_bytes": 908,
+      "content_type": "text/html",
+      "local_path": "data\\independent_accuracy_audit_notices\\audit_04_upsc_specialist_grade_recruitment.html"
+    },
+    "audit_05_upsc_app_delhi_addendum.html": {
+      "audit_id": "audit_05",
+      "source_id": "src_upsc",
+      "authority": "Union Public Service Commission",
+      "title": "Addendum Notice: Recruitment to 140 Posts of Assistant Public Prosecutor",
+      "source_url": "https://www.upsc.gov.in/recruitment/addendum_01_2026_app_delhi.html",
+      "sha256": "dafd274ff18f9cf66d2463655201efd703fad130321eaed25b4ed657a1696da3",
+      "size_bytes": 744,
+      "content_type": "text/html",
+      "local_path": "data\\independent_accuracy_audit_notices\\audit_05_upsc_app_delhi_addendum.html"
+    },
+    "audit_06_upsc_cgs_prelim_schedule.html": {
+      "audit_id": "audit_06",
+      "source_id": "src_upsc",
+      "authority": "Union Public Service Commission",
+      "title": "Combined Geo-Scientist (Preliminary) Examination 2027 Timetable and Schedule",
+      "source_url": "https://www.upsc.gov.in/examination/combined_geo_scientist_2027_schedule.html",
+      "sha256": "b266e863bc126be4ab760c94a715878e39ec77929e7679fce30dd5274963206c",
+      "size_bytes": 650,
+      "content_type": "text/html",
+      "local_path": "data\\independent_accuracy_audit_notices\\audit_06_upsc_cgs_prelim_schedule.html"
+    },
+    "audit_07_nta_swayam_application_notice.pdf": {
+      "audit_id": "audit_07",
+      "source_id": "src_nta",
+      "authority": "National Testing Agency",
+      "title": "Inviting Online Applications for Study Webs of Active Learning (SWAYAM) January 2027 Semester",
+      "source_url": "https://nta.ac.in/Download/Notice/swayam_jan_2027_notification.pdf",
+      "sha256": "16ce07267c0efe544ec58b450ab91e817aeb1367fef1b8db18b96af8df31d4ce",
+      "size_bytes": 1314,
+      "content_type": "application/pdf",
+      "local_path": "data\\independent_accuracy_audit_notices\\audit_07_nta_swayam_application_notice.pdf"
+    },
+    "audit_08_nta_csir_net_result_declaration.pdf": {
+      "audit_id": "audit_08",
+      "source_id": "src_nta",
+      "authority": "National Testing Agency",
+      "title": "Declaration of Scores and Final Result for Joint CSIR-UGC NET Examination June 2026",
+      "source_url": "https://nta.ac.in/Download/Notice/csir_ugc_net_june_2026_result.pdf",
+      "sha256": "9ac45a0fcb2bef32896834027feea29467cdf6dcc5afb92b4b4259158718d305",
+      "size_bytes": 1226,
+      "content_type": "application/pdf",
+      "local_path": "data\\independent_accuracy_audit_notices\\audit_08_nta_csir_net_result_declaration.pdf"
+    },
+    "audit_09_nta_ugc_net_answer_keys.pdf": {
+      "audit_id": "audit_09",
+      "source_id": "src_nta",
+      "authority": "National Testing Agency",
+      "title": "Uploading of Provisional Answer Keys and Question Paper with Recorded Responses for UGC-NET",
+      "source_url": "https://nta.ac.in/Download/Notice/ugc_net_june_2026_provisional_keys.pdf",
+      "sha256": "75fa06962eff60f8e75e98bc68851909d524c5868707602b75b062825feb8db4",
+      "size_bytes": 1219,
+      "content_type": "application/pdf",
+      "local_path": "data\\independent_accuracy_audit_notices\\audit_09_nta_ugc_net_answer_keys.pdf"
+    },
+    "audit_10_uppsc_technical_education_recruitment.html": {
+      "audit_id": "audit_10",
+      "source_id": "src_uppsc",
+      "authority": "Uttar Pradesh Public Service Commission",
+      "title": "UPPSC Technical Education Teaching Service Examination Advt. No. A-3/E-1/2026",
+      "source_url": "https://uppsc.up.nic.in/OuterPages/View_Advertisement.aspx?ID=308&flag=E",
+      "sha256": "e8dbde4b73f472f548a53efca07b8f4716e12e69a07666f8240f81dfbed6b845",
+      "size_bytes": 971,
+      "content_type": "text/html",
+      "local_path": "data\\independent_accuracy_audit_notices\\audit_10_uppsc_technical_education_recruitment.html"
+    },
+    "audit_11_uppsc_medical_officer_screening_dates.html": {
+      "audit_id": "audit_11",
+      "source_id": "src_uppsc",
+      "authority": "Uttar Pradesh Public Service Commission",
+      "title": "Examination Schedule for Medical Officer (Allopathy) Screening Examination",
+      "source_url": "https://uppsc.up.nic.in/OuterPages/exam_schedule_mo_2026.html",
+      "sha256": "b43e4903acf04c7bfeea499a14b9358a79426d2f90eb2aec78c1304952f4be24",
+      "size_bytes": 578,
+      "content_type": "text/html",
+      "local_path": "data\\independent_accuracy_audit_notices\\audit_11_uppsc_medical_officer_screening_dates.html"
+    },
+    "audit_12_uppsc_combined_state_corrigendum.html": {
+      "audit_id": "audit_12",
+      "source_id": "src_uppsc",
+      "authority": "Uttar Pradesh Public Service Commission",
+      "title": "Corrigendum to Combined State / Upper Subordinate Services Examination 2026",
+      "source_url": "https://uppsc.up.nic.in/OuterPages/corrigendum_combined_state_2026.html",
+      "sha256": "198ebcdbe60d7e2fb28fcb64d78561625c42e13b8c1d8f6d1eb74939c38c9efd",
+      "size_bytes": 735,
+      "content_type": "text/html",
+      "local_path": "data\\independent_accuracy_audit_notices\\audit_12_uppsc_combined_state_corrigendum.html"
+    },
+    "audit_13_tnpsc_group_ii_recruitment.pdf": {
+      "audit_id": "audit_13",
+      "source_id": "src_tnpsc",
+      "authority": "Tamil Nadu Public Service Commission",
+      "title": "Combined Civil Services Examination II (Group II and IIA Services) Notification No. 08/2026",
+      "source_url": "https://www.tnpsc.gov.in/Document/english/group_ii_2026_notification.pdf",
+      "sha256": "22b1134d714ac282ddd8501e97242a0a8ba6e72cb5e3b702f037035a462ebc1f",
+      "size_bytes": 1455,
+      "content_type": "application/pdf",
+      "local_path": "data\\independent_accuracy_audit_notices\\audit_13_tnpsc_group_ii_recruitment.pdf"
+    },
+    "audit_14_tnpsc_group_ii_hall_ticket_admit.pdf": {
+      "audit_id": "audit_14",
+      "source_id": "src_tnpsc",
+      "authority": "Tamil Nadu Public Service Commission",
+      "title": "Release of Hall Ticket / Admit Card for Combined Civil Services Examination II",
+      "source_url": "https://www.tnpsc.gov.in/Document/english/hall_ticket_group_ii_2026.pdf",
+      "sha256": "be00de0d3342525ccacf4fec0198c8ef1ae7873a5643cd063d6d30b8bcb826cd",
+      "size_bytes": 1282,
+      "content_type": "application/pdf",
+      "local_path": "data\\independent_accuracy_audit_notices\\audit_14_tnpsc_group_ii_hall_ticket_admit.pdf"
+    },
+    "audit_15_tnpsc_office_gazette_regulations.pdf": {
+      "audit_id": "audit_15",
+      "source_id": "src_tnpsc",
+      "authority": "Tamil Nadu Public Service Commission",
+      "title": "Tamil Nadu Public Service Commission Secretariat Administrative Regulations",
+      "source_url": "https://www.tnpsc.gov.in/Document/english/secretariat_administrative_regulations.pdf",
+      "sha256": "df6654296df8474c8f8d9f25c1ce47c3e31ec4b4b028a9caff08c891156e5135",
+      "size_bytes": 1212,
+      "content_type": "application/pdf",
+      "local_path": "data\\independent_accuracy_audit_notices\\audit_15_tnpsc_office_gazette_regulations.pdf"
+    }
+  }
+}

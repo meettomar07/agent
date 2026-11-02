@@ -1,0 +1,184 @@
+[
+  {
+    "audit_id": "audit_01",
+    "authority": "Staff Selection Commission",
+    "title": "Recruitment of Scientific Assistant in India Meteorological Department Examination, 2026",
+    "template": "recruitment.md.j2",
+    "qa_score": 100.0,
+    "qa_pass": true,
+    "material_errors": [],
+    "formatting_caveats": [],
+    "md_excerpt": "# Recruitment of Scientific Assistant in India Meteorological Department Examination, 2026  **Published By:** Staff Selection Commission   **Official Notice No:** Refer Official Notification   **State / Jurisdiction:** Central   **Source Category:** Central    ---  ## Overview  The **Staff Selection Commission** has officially published the notific"
+  },
+  {
+    "audit_id": "audit_02",
+    "authority": "Staff Selection Commission",
+    "title": "Corrigendum to Junior Engineer (Civil, Mechanical & Electrical) Examination, 2026",
+    "template": "corrigendum.md.j2",
+    "qa_score": 100.0,
+    "qa_pass": true,
+    "material_errors": [],
+    "formatting_caveats": [],
+    "md_excerpt": "# Corrigendum: Corrigendum to Junior Engineer (Civil, Mechanical & Electrical) Examination, 2026  **Publishing Authority:** Staff Selection Commission   **Corrigendum Reference:** HQ-EC033/7/2025-EC   **Jurisdiction:** Central    ---  ## Notice of Revision / Corrigendum  The **Staff Selection Commission** has issued an official corrigendum / amendm"
+  },
+  {
+    "audit_id": "audit_03",
+    "authority": "Staff Selection Commission",
+    "title": "Important Notice: Guidelines and Instructions for PwBD Candidates in Multi Tasking Staff Exam",
+    "template": "announcement.md.j2",
+    "qa_score": 100.0,
+    "qa_pass": true,
+    "material_errors": [],
+    "formatting_caveats": [
+      "Classification divergence: GT=ADMINISTRATIVE_ANNOUNCEMENT, Draft Template=announcement.md.j2 (OTHER_ANNOUNCEMENT)"
+    ],
+    "md_excerpt": "# Important Notice: Guidelines and Instructions for PwBD Candidates in Multi Tasking Staff Exam  **Issuing Authority:** Staff Selection Commission   **Notice Reference:** 12/1/2026-C-1   **State / Region:** Central    ---  ## Announcement Summary  The **Staff Selection Commission** has issued an official announcement regarding **Important Notice: G"
+  },
+  {
+    "audit_id": "audit_04",
+    "authority": "Union Public Service Commission",
+    "title": "Recruitment Notification for 45 Posts of Specialist Grade III Assistant Professor",
+    "template": "recruitment.md.j2",
+    "qa_score": 60.0,
+    "qa_pass": false,
+    "material_errors": [
+      "Material Error: Recruitment notice lacks verified application closing date (02.12.2026)",
+      "Editorial Block: Article failed QA inspection (Score: 60.0/100.0)"
+    ],
+    "formatting_caveats": [],
+    "md_excerpt": "# Recruitment Notification for 45 Posts of Specialist Grade III Assistant Professor  **Published By:** Union Public Service Commission   **Official Notice No:** 15/2026   **State / Jurisdiction:** Central   **Source Category:** Central    ---  ## Overview  The **Union Public Service Commission** has officially published the notification for **Recru"
+  },
+  {
+    "audit_id": "audit_05",
+    "authority": "Union Public Service Commission",
+    "title": "Addendum Notice: Recruitment to 140 Posts of Assistant Public Prosecutor",
+    "template": "corrigendum.md.j2",
+    "qa_score": 100.0,
+    "qa_pass": true,
+    "material_errors": [],
+    "formatting_caveats": [],
+    "md_excerpt": "# Corrigendum: Addendum Notice: Recruitment to 140 Posts of Assistant Public Prosecutor  **Publishing Authority:** Union Public Service Commission   **Corrigendum Reference:** 01/2026   **Jurisdiction:** Central    ---  ## Notice of Revision / Corrigendum  The **Union Public Service Commission** has issued an official corrigendum / amendment regard"
+  },
+  {
+    "audit_id": "audit_06",
+    "authority": "Union Public Service Commission",
+    "title": "Combined Geo-Scientist (Preliminary) Examination 2027 Timetable and Schedule",
+    "template": "admit_card.md.j2",
+    "qa_score": 100.0,
+    "qa_pass": true,
+    "material_errors": [],
+    "formatting_caveats": [
+      "Classification divergence: GT=EXAM_DATE_ANNOUNCEMENT, Draft Template=admit_card.md.j2 (ADMIT_CARD_RELEASE)"
+    ],
+    "md_excerpt": "# Combined Geo-Scientist (Preliminary) Examination 2027 Timetable and Schedule - Admit Card & City Intimation  **Authority:** Union Public Service Commission   **Notice No:** F.1/4/2026-E.I   **State / Category:** Central (Central)    ---  ## Admit Card & City Intimation Overview  The **Union Public Service Commission** has activated the official p"
+  },
+  {
+    "audit_id": "audit_07",
+    "authority": "National Testing Agency",
+    "title": "Inviting Online Applications for Study Webs of Active Learning (SWAYAM) January 2027 Semester",
+    "template": "recruitment.md.j2",
+    "qa_score": 100.0,
+    "qa_pass": true,
+    "material_errors": [],
+    "formatting_caveats": [
+      "Classification divergence: GT=ADMISSION_OR_ENTRANCE_EXAM, Draft Template=recruitment.md.j2 (RECRUITMENT_NOTIFICATION)"
+    ],
+    "md_excerpt": "# Inviting Online Applications for Study Webs of Active Learning (SWAYAM) January 2027 Semester  **Published By:** National Testing Agency   **Official Notice No:** NTA/SWAYAM/2026/01   **State / Jurisdiction:** Central   **Source Category:** Central    ---  ## Overview  The **National Testing Agency** has officially published the notification for "
+  },
+  {
+    "audit_id": "audit_08",
+    "authority": "National Testing Agency",
+    "title": "Declaration of Scores and Final Result for Joint CSIR-UGC NET Examination June 2026",
+    "template": "result_answer_key.md.j2",
+    "qa_score": 100.0,
+    "qa_pass": true,
+    "material_errors": [],
+    "formatting_caveats": [],
+    "md_excerpt": "# Declaration of Scores and Final Result for Joint CSIR-UGC NET Examination June 2026 - Official Result & Answer Key Details  **Authority:** National Testing Agency   **Notice No:** NTA/CSIR-NET/RESULT/2026   **State / Category:** Central    ---  ## Result / Answer Key Summary  The **National Testing Agency** has officially published the results / "
+  },
+  {
+    "audit_id": "audit_09",
+    "authority": "National Testing Agency",
+    "title": "Uploading of Provisional Answer Keys and Question Paper with Recorded Responses for UGC-NET",
+    "template": "result_answer_key.md.j2",
+    "qa_score": 100.0,
+    "qa_pass": true,
+    "material_errors": [],
+    "formatting_caveats": [],
+    "md_excerpt": "# Uploading of Provisional Answer Keys and Question Paper with Recorded Responses for UGC-NET - Official Result & Answer Key Details  **Authority:** National Testing Agency   **Notice No:** NTA/UGC-NET/KEY/2026   **State / Category:** Central    ---  ## Result / Answer Key Summary  The **National Testing Agency** has officially published the result"
+  },
+  {
+    "audit_id": "audit_10",
+    "authority": "Uttar Pradesh Public Service Commission",
+    "title": "UPPSC Technical Education Teaching Service Examination Advt. No. A-3/E-1/2026",
+    "template": "recruitment.md.j2",
+    "qa_score": 60.0,
+    "qa_pass": false,
+    "material_errors": [
+      "Editorial Block: Article failed QA inspection (Score: 60.0/100.0)"
+    ],
+    "formatting_caveats": [],
+    "md_excerpt": "# UPPSC Technical Education Teaching Service Examination Advt. No. A-3/E-1/2026  **Published By:** Uttar Pradesh Public Service Commission   **Official Notice No:** A-3/E-1/2026   **State / Jurisdiction:** Uttar Pradesh   **Source Category:** Central    ---  ## Overview  The **Uttar Pradesh Public Service Commission** has officially published the n"
+  },
+  {
+    "audit_id": "audit_11",
+    "authority": "Uttar Pradesh Public Service Commission",
+    "title": "Examination Schedule for Medical Officer (Allopathy) Screening Examination",
+    "template": "admit_card.md.j2",
+    "qa_score": 100.0,
+    "qa_pass": true,
+    "material_errors": [],
+    "formatting_caveats": [
+      "Classification divergence: GT=EXAM_DATE_ANNOUNCEMENT, Draft Template=admit_card.md.j2 (ADMIT_CARD_RELEASE)"
+    ],
+    "md_excerpt": "# Examination Schedule for Medical Officer (Allopathy) Screening Examination - Admit Card & City Intimation  **Authority:** Uttar Pradesh Public Service Commission   **Notice No:** 42/E-2/2026   **State / Category:** Uttar Pradesh (Central)    ---  ## Admit Card & City Intimation Overview  The **Uttar Pradesh Public Service Commission** has activat"
+  },
+  {
+    "audit_id": "audit_12",
+    "authority": "Uttar Pradesh Public Service Commission",
+    "title": "Corrigendum to Combined State / Upper Subordinate Services Examination 2026",
+    "template": "corrigendum.md.j2",
+    "qa_score": 100.0,
+    "qa_pass": true,
+    "material_errors": [],
+    "formatting_caveats": [
+      "Omission: Notice contains 220 vacancies, but draft displays TBD/Not Disclosed"
+    ],
+    "md_excerpt": "# Corrigendum: Corrigendum to Combined State / Upper Subordinate Services Examination 2026  **Publishing Authority:** Uttar Pradesh Public Service Commission   **Corrigendum Reference:** A-1/E-1/2026   **Jurisdiction:** Uttar Pradesh    ---  ## Notice of Revision / Corrigendum  The **Uttar Pradesh Public Service Commission** has issued an official "
+  },
+  {
+    "audit_id": "audit_13",
+    "authority": "Tamil Nadu Public Service Commission",
+    "title": "Combined Civil Services Examination II (Group II and IIA Services) Notification No. 08/2026",
+    "template": "recruitment.md.j2",
+    "qa_score": 100.0,
+    "qa_pass": true,
+    "material_errors": [],
+    "formatting_caveats": [],
+    "md_excerpt": "# Combined Civil Services Examination II (Group II and IIA Services) Notification No. 08/2026  **Published By:** Tamil Nadu Public Service Commission   **Official Notice No:** 08/2026   **State / Jurisdiction:** Tamil Nadu   **Source Category:** Central    ---  ## Overview  The **Tamil Nadu Public Service Commission** has officially published the n"
+  },
+  {
+    "audit_id": "audit_14",
+    "authority": "Tamil Nadu Public Service Commission",
+    "title": "Release of Hall Ticket / Admit Card for Combined Civil Services Examination II",
+    "template": "admit_card.md.j2",
+    "qa_score": 100.0,
+    "qa_pass": true,
+    "material_errors": [],
+    "formatting_caveats": [],
+    "md_excerpt": "# Release of Hall Ticket / Admit Card for Combined Civil Services Examination II - Admit Card & City Intimation  **Authority:** Tamil Nadu Public Service Commission   **Notice No:** 45/2026   **State / Category:** Tamil Nadu (Central)    ---  ## Admit Card & City Intimation Overview  The **Tamil Nadu Public Service Commission** has activated the of"
+  },
+  {
+    "audit_id": "audit_15",
+    "authority": "Tamil Nadu Public Service Commission",
+    "title": "Tamil Nadu Public Service Commission Secretariat Administrative Regulations",
+    "template": "announcement.md.j2",
+    "qa_score": 100.0,
+    "qa_pass": true,
+    "material_errors": [],
+    "formatting_caveats": [
+      "Classification divergence: GT=ADMINISTRATIVE_ANNOUNCEMENT, Draft Template=announcement.md.j2 (OTHER_ANNOUNCEMENT)"
+    ],
+    "md_excerpt": "# Tamil Nadu Public Service Commission Secretariat Administrative Regulations  **Issuing Authority:** Tamil Nadu Public Service Commission   **Notice Reference:** 102/2026   **State / Region:** Tamil Nadu    ---  ## Announcement Summary  The **Tamil Nadu Public Service Commission** has issued an official announcement regarding **Tamil Nadu Public S"
+  }
+]

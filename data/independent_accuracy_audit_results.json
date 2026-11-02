@@ -1,0 +1,1634 @@
+[
+  {
+    "audit_id": "audit_01",
+    "filename": "audit_01_ssc_scientific_asst_recruitment.pdf",
+    "source_id": "src_ssc",
+    "authority": "Staff Selection Commission",
+    "title": "Recruitment of Scientific Assistant in India Meteorological Department Examination, 2026",
+    "ground_truth": {
+      "audit_id": "audit_01",
+      "authority": "Staff Selection Commission",
+      "source_id": "src_ssc",
+      "title": "Recruitment of Scientific Assistant in India Meteorological Department Examination, 2026",
+      "notice_type": "RECRUITMENT_NOTIFICATION",
+      "is_child_notice": false,
+      "official_notice_number": "F.No. 3/2/2026-P&P-I",
+      "parent_notice_number": null,
+      "fields": {
+        "total_vacancies": {
+          "status": "PRESENT",
+          "value": "990",
+          "page": 1,
+          "evidence": "Total Vacancies: 990 posts in India Meteorological Department across India."
+        },
+        "eligibility": {
+          "status": "PRESENT",
+          "value": "Bachelor's Degree in Science (with Physics) or Computer Science or IT or Diploma in Electronics & Telecommunication with 60% marks",
+          "page": 1,
+          "evidence": "Bachelor's Degree in Science (with Physics as one of the subjects) or Computer Science or Information Technology or Diploma in Electronics and Telecommunication Engineering with at least 60% marks."
+        },
+        "age_limit": {
+          "status": "PRESENT",
+          "value": "18 to 30 years as on 01.08.2026",
+          "page": 1,
+          "evidence": "A candidate must be between 18 to 30 years of age as on 01.08.2026."
+        },
+        "application_start_date": {
+          "status": "PRESENT",
+          "value": "01.11.2026",
+          "page": 1,
+          "evidence": "Dates for submission of online applications: 01.11.2026 to 30.11.2026"
+        },
+        "application_end_date": {
+          "status": "PRESENT",
+          "value": "30.11.2026",
+          "page": 1,
+          "evidence": "Last date and time for receipt of online applications: 30.11.2026 (23:00 hours)"
+        },
+        "exam_date": {
+          "status": "PRESENT",
+          "value": "December, 2026",
+          "page": 1,
+          "evidence": "Schedule of Computer Based Examination: December, 2026"
+        }
+      }
+    },
+    "prediction": {
+      "canonical_id": "cn_audit_01",
+      "version_id": "ver_24d5300d15bb",
+      "classification": "RECRUITMENT_NOTIFICATION",
+      "parent_notice_id": null,
+      "relation_type": null,
+      "relation_confidence": 0.0,
+      "triage_flag": "NONE",
+      "extracted_facts": {
+        "recruiting_authority": {
+          "fact_key": "recruiting_authority",
+          "fact_value": "Staff Selection Commission",
+          "evidence_text": "Official publishing authority: Staff Selection Commission",
+          "page_number": 1,
+          "confidence": 1.0,
+          "verified_status": "VERIFIED"
+        },
+        "official_source_url": {
+          "fact_key": "official_source_url",
+          "fact_value": "https://ssc.gov.in/api/attachment/uploads/masterData/NoticeBoards/scientific_asst_imd_2026.pdf",
+          "evidence_text": "https://ssc.gov.in/api/attachment/uploads/masterData/NoticeBoards/scientific_asst_imd_2026.pdf",
+          "page_number": 1,
+          "confidence": 1.0,
+          "verified_status": "VERIFIED"
+        },
+        "application_start_date": {
+          "fact_key": "application_start_date",
+          "fact_value": "01.11.2026",
+          "evidence_text": "ion, 2026\nDates for submission of online applications: 01.11.2026 to 30.11.2026\nLast date and time",
+          "page_number": 1,
+          "confidence": 0.95,
+          "verified_status": "VERIFIED"
+        },
+        "application_end_date": {
+          "fact_key": "application_end_date",
+          "fact_value": "30.11.2026",
+          "evidence_text": "ion, 2026\nDates for submission of online applications: 01.11.2026 to 30.11.2026\nLast date and time",
+          "page_number": 1,
+          "confidence": 0.95,
+          "verified_status": "VERIFIED"
+        },
+        "notice_number": {
+          "fact_key": "notice_number",
+          "fact_value": "F.No",
+          "evidence_text": "ELECTION COMMISSION\nNotice No. F.No. 3/2/2026-P&P-I\nRecruitment of Scientifi",
+          "page_number": 1,
+          "confidence": 0.95,
+          "verified_status": "UNVERIFIED"
+        },
+        "total_vacancies": {
+          "fact_key": "total_vacancies",
+          "fact_value": "990",
+          "evidence_text": "r, 2026\nVacancies:\nTotal Vacancies: 990 posts in India Meteorological Department acr",
+          "page_number": 1,
+          "confidence": 0.95,
+          "verified_status": "VERIFIED"
+        },
+        "age_limit": {
+          "fact_key": "age_limit",
+          "fact_value": "18 to 30 years",
+          "evidence_text": "A candidate must be between 18 to 30 years of age as on 01.08.2026. Cand",
+          "page_number": 1,
+          "confidence": 0.85,
+          "verified_status": "VERIFIED"
+        },
+        "eligibility": {
+          "fact_key": "eligibility",
+          "fact_value": "s: Bachelor's Degree in Science (with Physics as one of the subjects) or Computer Science or Information Technolo",
+          "evidence_text": "08.1996 a\nEssential Educational Qualifications: Bachelor's Degree in Science (with Physics as one of the subjects) or Computer Science or Information Technolo",
+          "page_number": 1,
+          "confidence": 0.85,
+          "verified_status": "VERIFIED"
+        },
+        "eligibility_qualification": {
+          "fact_key": "eligibility_qualification",
+          "fact_value": "s: Bachelor's Degree in Science (with Physics as one of the subjects) or Computer Science or Information Technolo",
+          "evidence_text": "08.1996 a\nEssential Educational Qualifications: Bachelor's Degree in Science (with Physics as one of the subjects) or Computer Science or Information Technolo",
+          "page_number": 1,
+          "confidence": 0.85,
+          "verified_status": "VERIFIED"
+        }
+      },
+      "article_id": "art_0eb551e26e83",
+      "article_version_id": "arv_c4fb4b9f4a81",
+      "template_type": "recruitment.md.j2",
+      "qa_score": 100.0,
+      "qa_pass": true,
+      "article_markdown": "# Recruitment of Scientific Assistant in India Meteorological Department Examination, 2026\n\n**Published By:** Staff Selection Commission  \n**Official Notice No:** Refer Official Notification  \n**State / Jurisdiction:** Central  \n**Source Category:** Central  \n\n---\n\n## Overview\n\nThe **Staff Selection Commission** has officially published the notification for **Recruitment of Scientific Assistant in India Meteorological Department Examination, 2026**. Candidates interested in applying for this recruitment can review the verified eligibility criteria, important schedule dates, and official notification details below.\n\n> [!NOTE]\n> All information in this article is sourced exclusively from official government portal releases. Testkart does not use secondary coaching aggregators or unverified third-party sources.\n\n---\n\n## Important Dates\n\n| Event | Official Date |\n| :--- | :--- |\n| **Notification Release Date** | 2026-10-29 |\n| **Online Application Start Date** | 01.11.2026 |\n| **Last Date to Apply Online** | 30.11.2026 |\n| **Scheduled Examination Date** | To be notified by authority |\n\n---\n\n## Vacancies & Eligibility Summary\n\n- **Total Vacancies:** **990** posts- **Educational Qualification:** s: Bachelor's Degree in Science (with Physics as one of the subjects) or Computer Science or Information Technolo\n- **Age Criteria:** 18 to 30 years\n\n---\n\n## Application Fee & Salary Details\n\n- **Application Fee:** Refer to official notification document\n- **Pay Scale / Remuneration:** Not specified in initial notification\n---\n\n## How to Apply\n\n1. Visit the verified official recruitment portal: [Staff Selection Commission](https://ssc.gov.in/api/attachment/uploads/masterData/NoticeBoards/scientific_asst_imd_2026.pdf).\n2. Locate the active link for **Recruitment of Scientific Assistant in India Meteorological Department Examination, 2026**.\n3. Register using valid mobile number and email ID.\n4. Fill in the online application form and upload prescribed documents.\n5. Pay the application fee (if applicable) and save the final confirmation page.\n\n---\n\n## Official Documents & Source Links\n\n- **Official Source URL:** [View Notification / Portal](https://ssc.gov.in/api/attachment/uploads/masterData/NoticeBoards/scientific_asst_imd_2026.pdf)\n- **Publishing Authority:** Staff Selection Commission\n- **Verification Status:** Verified Official Document"
+    }
+  },
+  {
+    "audit_id": "audit_02",
+    "filename": "audit_02_ssc_je_corrigendum.pdf",
+    "source_id": "src_ssc",
+    "authority": "Staff Selection Commission",
+    "title": "Corrigendum to Junior Engineer (Civil, Mechanical & Electrical) Examination, 2026",
+    "ground_truth": {
+      "audit_id": "audit_02",
+      "authority": "Staff Selection Commission",
+      "source_id": "src_ssc",
+      "title": "Corrigendum to Junior Engineer (Civil, Mechanical & Electrical) Examination, 2026",
+      "notice_type": "CORRIGENDUM",
+      "is_child_notice": true,
+      "official_notice_number": "HQ-EC033/7/2025-EC",
+      "parent_notice_number": "HQ-EC033/7/2025-EC",
+      "fields": {
+        "total_vacancies": {
+          "status": "ABSENT",
+          "value": null,
+          "page": 1,
+          "evidence": ""
+        },
+        "eligibility": {
+          "status": "ABSENT",
+          "value": null,
+          "page": 1,
+          "evidence": ""
+        },
+        "age_limit": {
+          "status": "ABSENT",
+          "value": null,
+          "page": 1,
+          "evidence": ""
+        },
+        "application_start_date": {
+          "status": "ABSENT",
+          "value": null,
+          "page": 1,
+          "evidence": ""
+        },
+        "application_end_date": {
+          "status": "ABSENT",
+          "value": null,
+          "page": 1,
+          "evidence": ""
+        },
+        "exam_date": {
+          "status": "PRESENT",
+          "value": "02nd to 06th November, 2026",
+          "page": 1,
+          "evidence": "Revised examination schedule: 02nd to 06th November, 2026."
+        }
+      }
+    },
+    "prediction": {
+      "canonical_id": "cn_audit_02",
+      "version_id": "ver_32b51350ff05",
+      "classification": "CORRIGENDUM",
+      "parent_notice_id": "cn_parent_ssc_je",
+      "relation_type": "CORRIGENDUM",
+      "relation_confidence": 0.98,
+      "triage_flag": "NONE",
+      "extracted_facts": {
+        "recruiting_authority": {
+          "fact_key": "recruiting_authority",
+          "fact_value": "Staff Selection Commission",
+          "evidence_text": "Official publishing authority: Staff Selection Commission",
+          "page_number": 1,
+          "confidence": 1.0,
+          "verified_status": "VERIFIED"
+        },
+        "official_source_url": {
+          "fact_key": "official_source_url",
+          "fact_value": "https://ssc.gov.in/api/attachment/uploads/masterData/NoticeBoards/corrigendum_je_exam_2026.pdf",
+          "evidence_text": "https://ssc.gov.in/api/attachment/uploads/masterData/NoticeBoards/corrigendum_je_exam_2026.pdf",
+          "page_number": 1,
+          "confidence": 1.0,
+          "verified_status": "VERIFIED"
+        },
+        "notice_number": {
+          "fact_key": "notice_number",
+          "fact_value": "HQ-EC033/7/2025-EC",
+          "evidence_text": "MISSION\nCORRIGENDUM\nNotice No. HQ-EC033/7/2025-EC\nReference: Examination Notice for Junio",
+          "page_number": 1,
+          "confidence": 0.95,
+          "verified_status": "VERIFIED"
+        }
+      },
+      "article_id": "art_456e0ebaf582",
+      "article_version_id": "arv_504f03e63453",
+      "template_type": "corrigendum.md.j2",
+      "qa_score": 100.0,
+      "qa_pass": true,
+      "article_markdown": "# Corrigendum: Corrigendum to Junior Engineer (Civil, Mechanical & Electrical) Examination, 2026\n\n**Publishing Authority:** Staff Selection Commission  \n**Corrigendum Reference:** HQ-EC033/7/2025-EC  \n**Jurisdiction:** Central  \n\n---\n\n## Notice of Revision / Corrigendum\n\nThe **Staff Selection Commission** has issued an official corrigendum / amendment regarding **Corrigendum to Junior Engineer (Civil, Mechanical & Electrical) Examination, 2026**.\n\nCandidates must take note of the revisions issued to the previous notification.\n\n---\n\n## Summary of Official Changes\n\n- **Nature of Notice:** Corrigendum / Official Revision\n- **Issuing Body:** Staff Selection Commission\n- **Date Issued:** 2026-10-29\n\n---\n\n## What Candidates Must Do\n\n1. Read the full corrigendum document carefully using the official link below.\n2. Note any changes to eligibility, vacancies, exam dates, or submission timelines.\n3. If an application deadline was extended, submit the form before the revised closing date.\n\n---\n\n## Official Documents & Source Evidence\n\n- **Official Corrigendum Document:** [View Corrigendum Notice](https://ssc.gov.in/api/attachment/uploads/masterData/NoticeBoards/corrigendum_je_exam_2026.pdf)\n- **Issuing Portal:** Staff Selection Commission"
+    }
+  },
+  {
+    "audit_id": "audit_03",
+    "filename": "audit_03_ssc_mts_instructions.pdf",
+    "source_id": "src_ssc",
+    "authority": "Staff Selection Commission",
+    "title": "Important Notice: Guidelines and Instructions for PwBD Candidates in Multi Tasking Staff Exam",
+    "ground_truth": {
+      "audit_id": "audit_03",
+      "authority": "Staff Selection Commission",
+      "source_id": "src_ssc",
+      "title": "Important Notice: Guidelines and Instructions for PwBD Candidates in Multi Tasking Staff Exam",
+      "notice_type": "ADMINISTRATIVE_ANNOUNCEMENT",
+      "is_child_notice": false,
+      "official_notice_number": "12/1/2026-C-1",
+      "parent_notice_number": null,
+      "fields": {
+        "total_vacancies": {
+          "status": "ABSENT",
+          "value": null,
+          "page": 1,
+          "evidence": ""
+        },
+        "eligibility": {
+          "status": "ABSENT",
+          "value": null,
+          "page": 1,
+          "evidence": ""
+        },
+        "age_limit": {
+          "status": "ABSENT",
+          "value": null,
+          "page": 1,
+          "evidence": ""
+        },
+        "application_start_date": {
+          "status": "ABSENT",
+          "value": null,
+          "page": 1,
+          "evidence": ""
+        },
+        "application_end_date": {
+          "status": "ABSENT",
+          "value": null,
+          "page": 1,
+          "evidence": ""
+        },
+        "exam_date": {
+          "status": "ABSENT",
+          "value": null,
+          "page": 1,
+          "evidence": ""
+        }
+      }
+    },
+    "prediction": {
+      "canonical_id": "cn_audit_03",
+      "version_id": "ver_603c2a931e5d",
+      "classification": "OTHER_ANNOUNCEMENT",
+      "parent_notice_id": null,
+      "relation_type": null,
+      "relation_confidence": 0.0,
+      "triage_flag": "NONE",
+      "extracted_facts": {
+        "recruiting_authority": {
+          "fact_key": "recruiting_authority",
+          "fact_value": "Staff Selection Commission",
+          "evidence_text": "Official publishing authority: Staff Selection Commission",
+          "page_number": 1,
+          "confidence": 1.0,
+          "verified_status": "VERIFIED"
+        },
+        "official_source_url": {
+          "fact_key": "official_source_url",
+          "fact_value": "https://ssc.gov.in/api/attachment/uploads/masterData/NoticeBoards/instructions_pwbd_mts_2026.pdf",
+          "evidence_text": "https://ssc.gov.in/api/attachment/uploads/masterData/NoticeBoards/instructions_pwbd_mts_2026.pdf",
+          "page_number": 1,
+          "confidence": 1.0,
+          "verified_status": "VERIFIED"
+        },
+        "notice_number": {
+          "fact_key": "notice_number",
+          "fact_value": "12/1/2026-C-1",
+          "evidence_text": "STRATIVE GUIDELINES\nNotice No. 12/1/2026-C-1\nSubject: Instructions and Guidelines fo",
+          "page_number": 1,
+          "confidence": 0.95,
+          "verified_status": "VERIFIED"
+        }
+      },
+      "article_id": "art_8e1db2239eb8",
+      "article_version_id": "arv_06c0021c0c33",
+      "template_type": "announcement.md.j2",
+      "qa_score": 100.0,
+      "qa_pass": true,
+      "article_markdown": "# Important Notice: Guidelines and Instructions for PwBD Candidates in Multi Tasking Staff Exam\n\n**Issuing Authority:** Staff Selection Commission  \n**Notice Reference:** 12/1/2026-C-1  \n**State / Region:** Central  \n\n---\n\n## Announcement Summary\n\nThe **Staff Selection Commission** has issued an official announcement regarding **Important Notice: Guidelines and Instructions for PwBD Candidates in Multi Tasking Staff Exam**.\n\nCandidates and stakeholders are advised to note the official notice details released directly by the authority.\n\n---\n\n## Important Highlights & Schedule\n\n- **Authority:** Staff Selection Commission\n- **Published / Discovered Date:** 2026-10-29\n\n---\n\n## Action Required for Candidates\n\n1. Access the official circular using the verified authority link below.\n2. Verify application numbers or registration details mentioned in the notice.\n3. Keep track of subsequent updates exclusively through official portals.\n\n---\n\n## Verified Source Link\n\n- **Official Notice Link:** [Staff Selection Commission Portal](https://ssc.gov.in/api/attachment/uploads/masterData/NoticeBoards/instructions_pwbd_mts_2026.pdf)\n- **Authority Domain:** https://ssc.gov.in/api/attachment/uploads/masterData/NoticeBoards/instructions_pwbd_mts_2026.pdf"
+    }
+  },
+  {
+    "audit_id": "audit_04",
+    "filename": "audit_04_upsc_specialist_grade_recruitment.html",
+    "source_id": "src_upsc",
+    "authority": "Union Public Service Commission",
+    "title": "Recruitment Notification for 45 Posts of Specialist Grade III Assistant Professor",
+    "ground_truth": {
+      "audit_id": "audit_04",
+      "authority": "Union Public Service Commission",
+      "source_id": "src_upsc",
+      "title": "Recruitment Notification for 45 Posts of Specialist Grade III Assistant Professor",
+      "notice_type": "RECRUITMENT_NOTIFICATION",
+      "is_child_notice": false,
+      "official_notice_number": "Advt. No. 15/2026",
+      "parent_notice_number": null,
+      "fields": {
+        "total_vacancies": {
+          "status": "PRESENT",
+          "value": "45",
+          "page": 1,
+          "evidence": "Vacancies: 45 posts of Specialist Grade III Assistant Professor (General Surgery)"
+        },
+        "eligibility": {
+          "status": "PRESENT",
+          "value": "MBBS degree and Post-Graduate Degree in the concerned speciality with three years experience",
+          "page": 1,
+          "evidence": "MBBS degree qualification included in the First Schedule or Second Schedule to the Indian Medical Council Act, 1956 and Post-Graduate Degree in the concerned speciality with three years experience."
+        },
+        "age_limit": {
+          "status": "PRESENT",
+          "value": "40 years",
+          "page": 1,
+          "evidence": "Not exceeding 40 years as on normal closing date."
+        },
+        "application_start_date": {
+          "status": "PRESENT",
+          "value": "12.11.2026",
+          "page": 1,
+          "evidence": "Portal opens on 12.11.2026."
+        },
+        "application_end_date": {
+          "status": "PRESENT",
+          "value": "02.12.2026",
+          "page": 1,
+          "evidence": "Closing date for submission of online recruitment application is 02.12.2026."
+        },
+        "exam_date": {
+          "status": "ABSENT",
+          "value": null,
+          "page": 1,
+          "evidence": ""
+        }
+      }
+    },
+    "prediction": {
+      "canonical_id": "cn_audit_04",
+      "version_id": "ver_bc1bfe41bca6",
+      "classification": "RECRUITMENT_NOTIFICATION",
+      "parent_notice_id": null,
+      "relation_type": null,
+      "relation_confidence": 0.0,
+      "triage_flag": "NONE",
+      "extracted_facts": {
+        "recruiting_authority": {
+          "fact_key": "recruiting_authority",
+          "fact_value": "Union Public Service Commission",
+          "evidence_text": "Official publishing authority: Union Public Service Commission",
+          "page_number": 1,
+          "confidence": 1.0,
+          "verified_status": "VERIFIED"
+        },
+        "official_source_url": {
+          "fact_key": "official_source_url",
+          "fact_value": "https://www.upsc.gov.in/recruitment/advt_15_2026_specialist_grade.html",
+          "evidence_text": "https://www.upsc.gov.in/recruitment/advt_15_2026_specialist_grade.html",
+          "page_number": 1,
+          "confidence": 1.0,
+          "verified_status": "VERIFIED"
+        },
+        "notice_number": {
+          "fact_key": "notice_number",
+          "fact_value": "15/2026",
+          "evidence_text": "ERVICE COMMISSION - ADVT NO. 15/2026\nOnline Recruitment Applications (ORA) a",
+          "page_number": 1,
+          "confidence": 0.95,
+          "verified_status": "VERIFIED"
+        },
+        "total_vacancies": {
+          "fact_key": "total_vacancies",
+          "fact_value": "45",
+          "evidence_text": "to the following posts:\nVacancies: 45 posts of Specialist Grade III Assistant Prof",
+          "page_number": 1,
+          "confidence": 0.95,
+          "verified_status": "VERIFIED"
+        },
+        "age_limit": {
+          "fact_key": "age_limit",
+          "fact_value": "40",
+          "evidence_text": "Welfare.\nAge Limit: Not exceeding 40 years as on normal closing date. Relaxable for SC/ST/OBC cand",
+          "page_number": 1,
+          "confidence": 0.85,
+          "verified_status": "VERIFIED"
+        }
+      },
+      "article_id": "art_0183cfda955f",
+      "article_version_id": "arv_15bbfc30f4cd",
+      "template_type": "recruitment.md.j2",
+      "qa_score": 60.0,
+      "qa_pass": false,
+      "article_markdown": "# Recruitment Notification for 45 Posts of Specialist Grade III Assistant Professor\n\n**Published By:** Union Public Service Commission  \n**Official Notice No:** 15/2026  \n**State / Jurisdiction:** Central  \n**Source Category:** Central  \n\n---\n\n## Overview\n\nThe **Union Public Service Commission** has officially published the notification for **Recruitment Notification for 45 Posts of Specialist Grade III Assistant Professor**. Candidates interested in applying for this recruitment can review the verified eligibility criteria, important schedule dates, and official notification details below.\n\n> [!NOTE]\n> All information in this article is sourced exclusively from official government portal releases. Testkart does not use secondary coaching aggregators or unverified third-party sources.\n\n---\n\n## Important Dates\n\n| Event | Official Date |\n| :--- | :--- |\n| **Notification Release Date** | 2026-10-29 |\n| **Online Application Start Date** | Not specified in verified extraction (Requires Editor Review) |\n| **Last Date to Apply Online** | Not specified in verified extraction (Requires Editor Review) |\n| **Scheduled Examination Date** | To be notified by authority |\n\n---\n\n## Vacancies & Eligibility Summary\n\n- **Total Vacancies:** **45** posts- **Educational Qualification:** Refer to official notification document\n- **Age Criteria:** 40\n\n---\n\n## Application Fee & Salary Details\n\n- **Application Fee:** Refer to official notification document\n- **Pay Scale / Remuneration:** Not specified in initial notification\n---\n\n## How to Apply\n\n1. Visit the verified official recruitment portal: [Union Public Service Commission](https://www.upsc.gov.in/recruitment/advt_15_2026_specialist_grade.html).\n2. Locate the active link for **Recruitment Notification for 45 Posts of Specialist Grade III Assistant Professor**.\n3. Register using valid mobile number and email ID.\n4. Fill in the online application form and upload prescribed documents.\n5. Pay the application fee (if applicable) and save the final confirmation page.\n\n---\n\n## Official Documents & Source Links\n\n- **Official Source URL:** [View Notification / Portal](https://www.upsc.gov.in/recruitment/advt_15_2026_specialist_grade.html)\n- **Publishing Authority:** Union Public Service Commission\n- **Verification Status:** Verified Official Document"
+    }
+  },
+  {
+    "audit_id": "audit_05",
+    "filename": "audit_05_upsc_app_delhi_addendum.html",
+    "source_id": "src_upsc",
+    "authority": "Union Public Service Commission",
+    "title": "Addendum Notice: Recruitment to 140 Posts of Assistant Public Prosecutor",
+    "ground_truth": {
+      "audit_id": "audit_05",
+      "authority": "Union Public Service Commission",
+      "source_id": "src_upsc",
+      "title": "Addendum Notice: Recruitment to 140 Posts of Assistant Public Prosecutor",
+      "notice_type": "RECRUITMENT_ADDENDUM",
+      "is_child_notice": true,
+      "official_notice_number": "Advt. No. 01/2026",
+      "parent_notice_number": "Advt. No. 01/2026",
+      "fields": {
+        "total_vacancies": {
+          "status": "PRESENT",
+          "value": "140",
+          "page": 1,
+          "evidence": "recruitment to 140 Posts of Assistant Public Prosecutor"
+        },
+        "eligibility": {
+          "status": "PRESENT",
+          "value": "A degree in Law of a recognized University with 3 years experience at the Bar",
+          "page": 1,
+          "evidence": "A degree in Law of a recognized University with 3 years experience at the Bar."
+        },
+        "age_limit": {
+          "status": "ABSENT",
+          "value": null,
+          "page": 1,
+          "evidence": ""
+        },
+        "application_start_date": {
+          "status": "ABSENT",
+          "value": null,
+          "page": 1,
+          "evidence": ""
+        },
+        "application_end_date": {
+          "status": "ABSENT",
+          "value": null,
+          "page": 1,
+          "evidence": ""
+        },
+        "exam_date": {
+          "status": "ABSENT",
+          "value": null,
+          "page": 1,
+          "evidence": ""
+        }
+      }
+    },
+    "prediction": {
+      "canonical_id": "cn_audit_05",
+      "version_id": "ver_dc5bc7e234ef",
+      "classification": "RECRUITMENT_ADDENDUM",
+      "parent_notice_id": "cn_parent_upsc_app",
+      "relation_type": "RECRUITMENT_ADDENDUM",
+      "relation_confidence": 0.98,
+      "triage_flag": "NONE",
+      "extracted_facts": {
+        "recruiting_authority": {
+          "fact_key": "recruiting_authority",
+          "fact_value": "Union Public Service Commission",
+          "evidence_text": "Official publishing authority: Union Public Service Commission",
+          "page_number": 1,
+          "confidence": 1.0,
+          "verified_status": "VERIFIED"
+        },
+        "official_source_url": {
+          "fact_key": "official_source_url",
+          "fact_value": "https://www.upsc.gov.in/recruitment/addendum_01_2026_app_delhi.html",
+          "evidence_text": "https://www.upsc.gov.in/recruitment/addendum_01_2026_app_delhi.html",
+          "page_number": 1,
+          "confidence": 1.0,
+          "verified_status": "VERIFIED"
+        },
+        "notice_number": {
+          "fact_key": "notice_number",
+          "fact_value": "01/2026",
+          "evidence_text": "ence Vacancy Notice Advt. No. 01/2026 published for recruitment to 140 Posts",
+          "page_number": 1,
+          "confidence": 0.95,
+          "verified_status": "VERIFIED"
+        },
+        "total_vacancies": {
+          "fact_key": "total_vacancies",
+          "fact_value": "140",
+          "evidence_text": "ished for recruitment to 140 Posts of Assistant Public Prosecutor in Directorate o",
+          "page_number": 1,
+          "confidence": 0.95,
+          "verified_status": "VERIFIED"
+        }
+      },
+      "article_id": "art_727e55094f5a",
+      "article_version_id": "arv_4b68f03a72d2",
+      "template_type": "corrigendum.md.j2",
+      "qa_score": 100.0,
+      "qa_pass": true,
+      "article_markdown": "# Corrigendum: Addendum Notice: Recruitment to 140 Posts of Assistant Public Prosecutor\n\n**Publishing Authority:** Union Public Service Commission  \n**Corrigendum Reference:** 01/2026  \n**Jurisdiction:** Central  \n\n---\n\n## Notice of Revision / Corrigendum\n\nThe **Union Public Service Commission** has issued an official corrigendum / amendment regarding **Addendum Notice: Recruitment to 140 Posts of Assistant Public Prosecutor**.\n\nCandidates must take note of the revisions issued to the previous notification.\n\n---\n\n## Summary of Official Changes\n\n- **Nature of Notice:** Corrigendum / Official Revision\n- **Issuing Body:** Union Public Service Commission\n- **Date Issued:** 2026-10-29\n- **Revised Vacancy Count:** 140 posts\n---\n\n## What Candidates Must Do\n\n1. Read the full corrigendum document carefully using the official link below.\n2. Note any changes to eligibility, vacancies, exam dates, or submission timelines.\n3. If an application deadline was extended, submit the form before the revised closing date.\n\n---\n\n## Official Documents & Source Evidence\n\n- **Official Corrigendum Document:** [View Corrigendum Notice](https://www.upsc.gov.in/recruitment/addendum_01_2026_app_delhi.html)\n- **Issuing Portal:** Union Public Service Commission"
+    }
+  },
+  {
+    "audit_id": "audit_06",
+    "filename": "audit_06_upsc_cgs_prelim_schedule.html",
+    "source_id": "src_upsc",
+    "authority": "Union Public Service Commission",
+    "title": "Combined Geo-Scientist (Preliminary) Examination 2027 Timetable and Schedule",
+    "ground_truth": {
+      "audit_id": "audit_06",
+      "authority": "Union Public Service Commission",
+      "source_id": "src_upsc",
+      "title": "Combined Geo-Scientist (Preliminary) Examination 2027 Timetable and Schedule",
+      "notice_type": "EXAM_DATE_ANNOUNCEMENT",
+      "is_child_notice": false,
+      "official_notice_number": "F.1/4/2026-E.I(B)",
+      "parent_notice_number": null,
+      "fields": {
+        "total_vacancies": {
+          "status": "ABSENT",
+          "value": null,
+          "page": 1,
+          "evidence": ""
+        },
+        "eligibility": {
+          "status": "ABSENT",
+          "value": null,
+          "page": 1,
+          "evidence": ""
+        },
+        "age_limit": {
+          "status": "ABSENT",
+          "value": null,
+          "page": 1,
+          "evidence": ""
+        },
+        "application_start_date": {
+          "status": "ABSENT",
+          "value": null,
+          "page": 1,
+          "evidence": ""
+        },
+        "application_end_date": {
+          "status": "ABSENT",
+          "value": null,
+          "page": 1,
+          "evidence": ""
+        },
+        "exam_date": {
+          "status": "PRESENT",
+          "value": "18th February 2027",
+          "page": 1,
+          "evidence": "The Examination will be held on 18th February 2027 in two sessions"
+        }
+      }
+    },
+    "prediction": {
+      "canonical_id": "cn_audit_06",
+      "version_id": "ver_337d72284650",
+      "classification": "ADMIT_CARD_RELEASE",
+      "parent_notice_id": null,
+      "relation_type": "ADMIT_CARD_RELEASE",
+      "relation_confidence": 0.0,
+      "triage_flag": "NONE",
+      "extracted_facts": {
+        "recruiting_authority": {
+          "fact_key": "recruiting_authority",
+          "fact_value": "Union Public Service Commission",
+          "evidence_text": "Official publishing authority: Union Public Service Commission",
+          "page_number": 1,
+          "confidence": 1.0,
+          "verified_status": "VERIFIED"
+        },
+        "official_source_url": {
+          "fact_key": "official_source_url",
+          "fact_value": "https://www.upsc.gov.in/examination/combined_geo_scientist_2027_schedule.html",
+          "evidence_text": "https://www.upsc.gov.in/examination/combined_geo_scientist_2027_schedule.html",
+          "page_number": 1,
+          "confidence": 1.0,
+          "verified_status": "VERIFIED"
+        },
+        "notice_number": {
+          "fact_key": "notice_number",
+          "fact_value": "F.1/4/2026-E.I",
+          "evidence_text": "MINATION TIME TABLE\nNotice No. F.1/4/2026-E.I(B): Programme of Examinations / Schedul",
+          "page_number": 1,
+          "confidence": 0.95,
+          "verified_status": "VERIFIED"
+        }
+      },
+      "article_id": "art_6eb6e7a0b7bd",
+      "article_version_id": "arv_c2cee7e830dc",
+      "template_type": "admit_card.md.j2",
+      "qa_score": 100.0,
+      "qa_pass": true,
+      "article_markdown": "# Combined Geo-Scientist (Preliminary) Examination 2027 Timetable and Schedule - Admit Card & City Intimation\n\n**Authority:** Union Public Service Commission  \n**Notice No:** F.1/4/2026-E.I  \n**State / Category:** Central (Central)  \n\n---\n\n## Admit Card & City Intimation Overview\n\nThe **Union Public Service Commission** has activated the official portal link for the download of Admission Certificates / Hall Tickets / City Intimation slips for **Combined Geo-Scientist (Preliminary) Examination 2027 Timetable and Schedule**.\n\nCandidates appearing for this examination stage can download their official e-admit card and verify their designated examination city following the authorized steps below.\n\n---\n\n## Key Examination & Hall Ticket Details\n\n| Detail | Official Information |\n| :--- | :--- |\n| **Exam Name / Stage** | Combined Geo-Scientist (Preliminary) Examination 2027 Timetable and Schedule |\n| **Scheduled Exam Date** | Refer official schedule |\n| **Admit Card / City Slip Status** | Available for download on official portal |\n| **Issuing Authority** | Union Public Service Commission |\n\n---\n\n## Steps to Download Admit Card / City Slip\n\n1. Navigate to the verified official portal: [Union Public Service Commission](https://www.upsc.gov.in/examination/combined_geo_scientist_2027_schedule.html).\n2. Click on the Admit Card / Hall Ticket / City Intimation download link.\n3. Enter your Registration Number / Roll Number and Date of Birth / Password.\n4. Download and print the admit card on A4 size paper.\n5. Carry the printed admit card along with an original photo identity card to the examination venue.\n\n---\n\n## Official Verification Link\n\n- **Official Download Portal:** [Access Official Notice / Admit Card](https://www.upsc.gov.in/examination/combined_geo_scientist_2027_schedule.html)\n- **Publishing Authority:** Union Public Service Commission\n- **Verification Status:** Verified Official Release"
+    }
+  },
+  {
+    "audit_id": "audit_07",
+    "filename": "audit_07_nta_swayam_application_notice.pdf",
+    "source_id": "src_nta",
+    "authority": "National Testing Agency",
+    "title": "Inviting Online Applications for Study Webs of Active Learning (SWAYAM) January 2027 Semester",
+    "ground_truth": {
+      "audit_id": "audit_07",
+      "authority": "National Testing Agency",
+      "source_id": "src_nta",
+      "title": "Inviting Online Applications for Study Webs of Active Learning (SWAYAM) January 2027 Semester",
+      "notice_type": "ADMISSION_OR_ENTRANCE_EXAM",
+      "is_child_notice": false,
+      "official_notice_number": "NTA/SWAYAM/2026/01",
+      "parent_notice_number": null,
+      "fields": {
+        "total_vacancies": {
+          "status": "NOT_APPLICABLE",
+          "value": null,
+          "page": 1,
+          "evidence": ""
+        },
+        "eligibility": {
+          "status": "PRESENT",
+          "value": "Students enrolled in university degree or diploma courses across recognized higher educational institutions",
+          "page": 1,
+          "evidence": "Eligibility: Students enrolled in university degree or diploma courses across recognized higher educational institutions."
+        },
+        "age_limit": {
+          "status": "ABSENT",
+          "value": null,
+          "page": 1,
+          "evidence": ""
+        },
+        "application_start_date": {
+          "status": "PRESENT",
+          "value": "15.11.2026",
+          "page": 1,
+          "evidence": "Online submission of Application Form: 15 November 2026 to 15 December 2026"
+        },
+        "application_end_date": {
+          "status": "PRESENT",
+          "value": "15.12.2026",
+          "page": 1,
+          "evidence": "Online submission of Application Form: 15 November 2026 to 15 December 2026"
+        },
+        "exam_date": {
+          "status": "PRESENT",
+          "value": "17 and 18 January 2027",
+          "page": 1,
+          "evidence": "Dates of Examination: 17 and 18 January 2027 in two shifts daily."
+        }
+      }
+    },
+    "prediction": {
+      "canonical_id": "cn_audit_07",
+      "version_id": "ver_bbd50e1f4e4f",
+      "classification": "RECRUITMENT_NOTIFICATION",
+      "parent_notice_id": null,
+      "relation_type": null,
+      "relation_confidence": 0.0,
+      "triage_flag": "NONE",
+      "extracted_facts": {
+        "recruiting_authority": {
+          "fact_key": "recruiting_authority",
+          "fact_value": "National Testing Agency",
+          "evidence_text": "Official publishing authority: National Testing Agency",
+          "page_number": 1,
+          "confidence": 1.0,
+          "verified_status": "VERIFIED"
+        },
+        "official_source_url": {
+          "fact_key": "official_source_url",
+          "fact_value": "https://nta.ac.in/Download/Notice/swayam_jan_2027_notification.pdf",
+          "evidence_text": "https://nta.ac.in/Download/Notice/swayam_jan_2027_notification.pdf",
+          "page_number": 1,
+          "confidence": 1.0,
+          "verified_status": "VERIFIED"
+        },
+        "application_start_date": {
+          "fact_key": "application_start_date",
+          "fact_value": "15 November 2026",
+          "evidence_text": "WAYAM) Ja\nOnline submission of Application Form: 15 November 2026 to 15 December 2026 up to 11:50 PM.\nLas",
+          "page_number": 1,
+          "confidence": 0.95,
+          "verified_status": "VERIFIED"
+        },
+        "application_end_date": {
+          "fact_key": "application_end_date",
+          "fact_value": "15 December 2026",
+          "evidence_text": "WAYAM) Ja\nOnline submission of Application Form: 15 November 2026 to 15 December 2026 up to 11:50 PM.\nLas",
+          "page_number": 1,
+          "confidence": 0.95,
+          "verified_status": "VERIFIED"
+        },
+        "notice_number": {
+          "fact_key": "notice_number",
+          "fact_value": "NTA/SWAYAM/2026/01",
+          "evidence_text": "NTRANCE EXAMINATION\nNotice No. NTA/SWAYAM/2026/01\nSubject: Inviting Online Applications f",
+          "page_number": 1,
+          "confidence": 0.95,
+          "verified_status": "VERIFIED"
+        }
+      },
+      "article_id": "art_0a2e3a807d77",
+      "article_version_id": "arv_29ce51b5fecf",
+      "template_type": "recruitment.md.j2",
+      "qa_score": 100.0,
+      "qa_pass": true,
+      "article_markdown": "# Inviting Online Applications for Study Webs of Active Learning (SWAYAM) January 2027 Semester\n\n**Published By:** National Testing Agency  \n**Official Notice No:** NTA/SWAYAM/2026/01  \n**State / Jurisdiction:** Central  \n**Source Category:** Central  \n\n---\n\n## Overview\n\nThe **National Testing Agency** has officially published the notification for **Inviting Online Applications for Study Webs of Active Learning (SWAYAM) January 2027 Semester**. Candidates interested in applying for this recruitment can review the verified eligibility criteria, important schedule dates, and official notification details below.\n\n> [!NOTE]\n> All information in this article is sourced exclusively from official government portal releases. Testkart does not use secondary coaching aggregators or unverified third-party sources.\n\n---\n\n## Important Dates\n\n| Event | Official Date |\n| :--- | :--- |\n| **Notification Release Date** | 2026-10-29 |\n| **Online Application Start Date** | 15 November 2026 |\n| **Last Date to Apply Online** | 15 December 2026 |\n| **Scheduled Examination Date** | To be notified by authority |\n\n---\n\n## Vacancies & Eligibility Summary\n\n- **Total Vacancies:** Refer to official notification document- **Educational Qualification:** Refer to official notification document\n- **Age Criteria:** Refer to official notification document\n\n---\n\n## Application Fee & Salary Details\n\n- **Application Fee:** Refer to official notification document\n- **Pay Scale / Remuneration:** Not specified in initial notification\n---\n\n## How to Apply\n\n1. Visit the verified official recruitment portal: [National Testing Agency](https://nta.ac.in/Download/Notice/swayam_jan_2027_notification.pdf).\n2. Locate the active link for **Inviting Online Applications for Study Webs of Active Learning (SWAYAM) January 2027 Semester**.\n3. Register using valid mobile number and email ID.\n4. Fill in the online application form and upload prescribed documents.\n5. Pay the application fee (if applicable) and save the final confirmation page.\n\n---\n\n## Official Documents & Source Links\n\n- **Official Source URL:** [View Notification / Portal](https://nta.ac.in/Download/Notice/swayam_jan_2027_notification.pdf)\n- **Publishing Authority:** National Testing Agency\n- **Verification Status:** Verified Official Document"
+    }
+  },
+  {
+    "audit_id": "audit_08",
+    "filename": "audit_08_nta_csir_net_result_declaration.pdf",
+    "source_id": "src_nta",
+    "authority": "National Testing Agency",
+    "title": "Declaration of Scores and Final Result for Joint CSIR-UGC NET Examination June 2026",
+    "ground_truth": {
+      "audit_id": "audit_08",
+      "authority": "National Testing Agency",
+      "source_id": "src_nta",
+      "title": "Declaration of Scores and Final Result for Joint CSIR-UGC NET Examination June 2026",
+      "notice_type": "EXAM_RESULT",
+      "is_child_notice": false,
+      "official_notice_number": "NTA/CSIR-NET/RESULT/2026",
+      "parent_notice_number": null,
+      "fields": {
+        "total_vacancies": {
+          "status": "ABSENT",
+          "value": null,
+          "page": 1,
+          "evidence": ""
+        },
+        "eligibility": {
+          "status": "ABSENT",
+          "value": null,
+          "page": 1,
+          "evidence": ""
+        },
+        "age_limit": {
+          "status": "ABSENT",
+          "value": null,
+          "page": 1,
+          "evidence": ""
+        },
+        "application_start_date": {
+          "status": "ABSENT",
+          "value": null,
+          "page": 1,
+          "evidence": ""
+        },
+        "application_end_date": {
+          "status": "ABSENT",
+          "value": null,
+          "page": 1,
+          "evidence": ""
+        },
+        "exam_date": {
+          "status": "ABSENT",
+          "value": null,
+          "page": 1,
+          "evidence": ""
+        }
+      }
+    },
+    "prediction": {
+      "canonical_id": "cn_audit_08",
+      "version_id": "ver_474824d4d4f2",
+      "classification": "EXAM_RESULT",
+      "parent_notice_id": null,
+      "relation_type": "EXAM_RESULT",
+      "relation_confidence": 0.0,
+      "triage_flag": "NONE",
+      "extracted_facts": {
+        "recruiting_authority": {
+          "fact_key": "recruiting_authority",
+          "fact_value": "National Testing Agency",
+          "evidence_text": "Official publishing authority: National Testing Agency",
+          "page_number": 1,
+          "confidence": 1.0,
+          "verified_status": "VERIFIED"
+        },
+        "official_source_url": {
+          "fact_key": "official_source_url",
+          "fact_value": "https://nta.ac.in/Download/Notice/csir_ugc_net_june_2026_result.pdf",
+          "evidence_text": "https://nta.ac.in/Download/Notice/csir_ugc_net_june_2026_result.pdf",
+          "page_number": 1,
+          "confidence": 1.0,
+          "verified_status": "VERIFIED"
+        },
+        "notice_number": {
+          "fact_key": "notice_number",
+          "fact_value": "NTA/CSIR-NET/RESULT/2026",
+          "evidence_text": "LARATION OF RESULTS\nNotice No. NTA/CSIR-NET/RESULT/2026\nSubject: Declaration of Scores, Cut-Off",
+          "page_number": 1,
+          "confidence": 0.95,
+          "verified_status": "VERIFIED"
+        }
+      },
+      "article_id": "art_8883179ac756",
+      "article_version_id": "arv_515294558ba8",
+      "template_type": "result_answer_key.md.j2",
+      "qa_score": 100.0,
+      "qa_pass": true,
+      "article_markdown": "# Declaration of Scores and Final Result for Joint CSIR-UGC NET Examination June 2026 - Official Result & Answer Key Details\n\n**Authority:** National Testing Agency  \n**Notice No:** NTA/CSIR-NET/RESULT/2026  \n**State / Category:** Central  \n\n---\n\n## Result / Answer Key Summary\n\nThe **National Testing Agency** has officially published the results / answer key for **Declaration of Scores and Final Result for Joint CSIR-UGC NET Examination June 2026**.\n\nCandidates can check their qualification status, response sheets, and objection timelines in accordance with the official announcement.\n\n---\n\n## Examination Details & Key Dates\n\n- **Examination Stage:** Declaration of Scores and Final Result for Joint CSIR-UGC NET Examination June 2026\n- **Publication Date:** 2026-10-29\n- **Issuing Body:** National Testing Agency\n\n---\n\n## How to Check Result / Answer Key\n\n1. Visit the authorized official website: [National Testing Agency](https://nta.ac.in/Download/Notice/csir_ugc_net_june_2026_result.pdf).\n2. Look for the link titled **Declaration of Scores and Final Result for Joint CSIR-UGC NET Examination June 2026**.\n3. Download the result PDF / log in to access the individual scorecard or answer key.\n4. If submitting objections against tentative answer keys, follow the official portal window within the stipulated timeframe.\n\n---\n\n## Verified Official Link\n\n- **Official Result Document / Portal:** [Check Official Notification](https://nta.ac.in/Download/Notice/csir_ugc_net_june_2026_result.pdf)"
+    }
+  },
+  {
+    "audit_id": "audit_09",
+    "filename": "audit_09_nta_ugc_net_answer_keys.pdf",
+    "source_id": "src_nta",
+    "authority": "National Testing Agency",
+    "title": "Uploading of Provisional Answer Keys and Question Paper with Recorded Responses for UGC-NET",
+    "ground_truth": {
+      "audit_id": "audit_09",
+      "authority": "National Testing Agency",
+      "source_id": "src_nta",
+      "title": "Uploading of Provisional Answer Keys and Question Paper with Recorded Responses for UGC-NET",
+      "notice_type": "ANSWER_KEY",
+      "is_child_notice": false,
+      "official_notice_number": "NTA/UGC-NET/KEY/2026",
+      "parent_notice_number": null,
+      "fields": {
+        "total_vacancies": {
+          "status": "ABSENT",
+          "value": null,
+          "page": 1,
+          "evidence": ""
+        },
+        "eligibility": {
+          "status": "ABSENT",
+          "value": null,
+          "page": 1,
+          "evidence": ""
+        },
+        "age_limit": {
+          "status": "ABSENT",
+          "value": null,
+          "page": 1,
+          "evidence": ""
+        },
+        "application_start_date": {
+          "status": "ABSENT",
+          "value": null,
+          "page": 1,
+          "evidence": ""
+        },
+        "application_end_date": {
+          "status": "ABSENT",
+          "value": null,
+          "page": 1,
+          "evidence": ""
+        },
+        "exam_date": {
+          "status": "ABSENT",
+          "value": null,
+          "page": 1,
+          "evidence": ""
+        }
+      }
+    },
+    "prediction": {
+      "canonical_id": "cn_audit_09",
+      "version_id": "ver_24bf0bf307bf",
+      "classification": "ANSWER_KEY",
+      "parent_notice_id": null,
+      "relation_type": "ANSWER_KEY",
+      "relation_confidence": 0.0,
+      "triage_flag": "NONE",
+      "extracted_facts": {
+        "recruiting_authority": {
+          "fact_key": "recruiting_authority",
+          "fact_value": "National Testing Agency",
+          "evidence_text": "Official publishing authority: National Testing Agency",
+          "page_number": 1,
+          "confidence": 1.0,
+          "verified_status": "VERIFIED"
+        },
+        "official_source_url": {
+          "fact_key": "official_source_url",
+          "fact_value": "https://nta.ac.in/Download/Notice/ugc_net_june_2026_provisional_keys.pdf",
+          "evidence_text": "https://nta.ac.in/Download/Notice/ugc_net_june_2026_provisional_keys.pdf",
+          "page_number": 1,
+          "confidence": 1.0,
+          "verified_status": "VERIFIED"
+        },
+        "notice_number": {
+          "fact_key": "notice_number",
+          "fact_value": "NTA/UGC-NET/KEY/2026",
+          "evidence_text": "NSWER KEY CHALLENGE\nNotice No. NTA/UGC-NET/KEY/2026\nSubject: Display of Provisional Answer",
+          "page_number": 1,
+          "confidence": 0.95,
+          "verified_status": "VERIFIED"
+        }
+      },
+      "article_id": "art_659b63120455",
+      "article_version_id": "arv_ed151e653f22",
+      "template_type": "result_answer_key.md.j2",
+      "qa_score": 100.0,
+      "qa_pass": true,
+      "article_markdown": "# Uploading of Provisional Answer Keys and Question Paper with Recorded Responses for UGC-NET - Official Result & Answer Key Details\n\n**Authority:** National Testing Agency  \n**Notice No:** NTA/UGC-NET/KEY/2026  \n**State / Category:** Central  \n\n---\n\n## Result / Answer Key Summary\n\nThe **National Testing Agency** has officially published the results / answer key for **Uploading of Provisional Answer Keys and Question Paper with Recorded Responses for UGC-NET**.\n\nCandidates can check their qualification status, response sheets, and objection timelines in accordance with the official announcement.\n\n---\n\n## Examination Details & Key Dates\n\n- **Examination Stage:** Uploading of Provisional Answer Keys and Question Paper with Recorded Responses for UGC-NET\n- **Publication Date:** 2026-10-29\n- **Issuing Body:** National Testing Agency\n\n---\n\n## How to Check Result / Answer Key\n\n1. Visit the authorized official website: [National Testing Agency](https://nta.ac.in/Download/Notice/ugc_net_june_2026_provisional_keys.pdf).\n2. Look for the link titled **Uploading of Provisional Answer Keys and Question Paper with Recorded Responses for UGC-NET**.\n3. Download the result PDF / log in to access the individual scorecard or answer key.\n4. If submitting objections against tentative answer keys, follow the official portal window within the stipulated timeframe.\n\n---\n\n## Verified Official Link\n\n- **Official Result Document / Portal:** [Check Official Notification](https://nta.ac.in/Download/Notice/ugc_net_june_2026_provisional_keys.pdf)"
+    }
+  },
+  {
+    "audit_id": "audit_10",
+    "filename": "audit_10_uppsc_technical_education_recruitment.html",
+    "source_id": "src_uppsc",
+    "authority": "Uttar Pradesh Public Service Commission",
+    "title": "UPPSC Technical Education Teaching Service Examination Advt. No. A-3/E-1/2026",
+    "ground_truth": {
+      "audit_id": "audit_10",
+      "authority": "Uttar Pradesh Public Service Commission",
+      "source_id": "src_uppsc",
+      "title": "UPPSC Technical Education Teaching Service Examination Advt. No. A-3/E-1/2026",
+      "notice_type": "RECRUITMENT_NOTIFICATION",
+      "is_child_notice": false,
+      "official_notice_number": "A-3/E-1/2026",
+      "parent_notice_number": null,
+      "fields": {
+        "total_vacancies": {
+          "status": "PRESENT",
+          "value": "125",
+          "page": 1,
+          "evidence": "Total number of vacancies is 125 posts of Lecturer and Workshop Superintendent"
+        },
+        "eligibility": {
+          "status": "PRESENT",
+          "value": "Bachelor's degree in Engineering or Technology in relevant discipline with First Class",
+          "page": 1,
+          "evidence": "Bachelor's degree in Engineering or Technology in relevant discipline with First Class from recognized University."
+        },
+        "age_limit": {
+          "status": "PRESENT",
+          "value": "21 to 40 years as on July 1, 2026",
+          "page": 1,
+          "evidence": "Candidates must have attained the age of 21 years and must not have crossed the age of 40 years on July 1, 2026"
+        },
+        "application_start_date": {
+          "status": "PRESENT",
+          "value": "20.11.2026",
+          "page": 1,
+          "evidence": "Starting date for online application: 20.11.2026."
+        },
+        "application_end_date": {
+          "status": "PRESENT",
+          "value": "20.12.2026",
+          "page": 1,
+          "evidence": "Last Date for Submission: 20.12.2026."
+        },
+        "exam_date": {
+          "status": "ABSENT",
+          "value": null,
+          "page": 1,
+          "evidence": ""
+        }
+      }
+    },
+    "prediction": {
+      "canonical_id": "cn_audit_10",
+      "version_id": "ver_ed9e36c9215b",
+      "classification": "RECRUITMENT_NOTIFICATION",
+      "parent_notice_id": null,
+      "relation_type": null,
+      "relation_confidence": 0.0,
+      "triage_flag": "NONE",
+      "extracted_facts": {
+        "recruiting_authority": {
+          "fact_key": "recruiting_authority",
+          "fact_value": "Uttar Pradesh Public Service Commission",
+          "evidence_text": "Official publishing authority: Uttar Pradesh Public Service Commission",
+          "page_number": 1,
+          "confidence": 1.0,
+          "verified_status": "VERIFIED"
+        },
+        "official_source_url": {
+          "fact_key": "official_source_url",
+          "fact_value": "https://uppsc.up.nic.in/OuterPages/View_Advertisement.aspx?ID=308&flag=E",
+          "evidence_text": "https://uppsc.up.nic.in/OuterPages/View_Advertisement.aspx?ID=308&flag=E",
+          "page_number": 1,
+          "confidence": 1.0,
+          "verified_status": "VERIFIED"
+        },
+        "notice_number": {
+          "fact_key": "notice_number",
+          "fact_value": "A-3/E-1/2026",
+          "evidence_text": "ERVICE COMMISSION - ADVT NO. A-3/E-1/2026\nUP Technical Education (Teaching/Traini",
+          "page_number": 1,
+          "confidence": 0.95,
+          "verified_status": "VERIFIED"
+        },
+        "total_vacancies": {
+          "fact_key": "total_vacancies",
+          "fact_value": "125",
+          "evidence_text": "e Examination-2026\nTotal number of vacancies is 125 posts of Lecturer and Workshop Superintenden",
+          "page_number": 1,
+          "confidence": 0.95,
+          "verified_status": "VERIFIED"
+        },
+        "application_end_date": {
+          "fact_key": "application_end_date",
+          "fact_value": "20.12.2026",
+          "evidence_text": "nation Fees: 18.12.2026, Last Date for Submission: 20.12.2026. Starting date for online application: 20.11",
+          "page_number": 1,
+          "confidence": 0.9,
+          "verified_status": "VERIFIED"
+        },
+        "age_limit": {
+          "fact_key": "age_limit",
+          "fact_value": "21 to 40 years as on July 1, 2026 ",
+          "evidence_text": "andidates must have attained the age of 21 years and must not have crossed the age of 40 years on July 1, 2026 (they must not have been born",
+          "page_number": 1,
+          "confidence": 0.85,
+          "verified_status": "VERIFIED"
+        },
+        "eligibility": {
+          "fact_key": "eligibility",
+          "fact_value": "s: Bachelor's degree in Engineering or Technology in relevant discipline with First Class from recognized University",
+          "evidence_text": "an 1st July, 2005).\nEducational Qualifications: Bachelor's degree in Engineering or Technology in relevant discipline with First Class from recognized University.\nLast Date for Receipt of Exa",
+          "page_number": 1,
+          "confidence": 0.85,
+          "verified_status": "VERIFIED"
+        },
+        "eligibility_qualification": {
+          "fact_key": "eligibility_qualification",
+          "fact_value": "s: Bachelor's degree in Engineering or Technology in relevant discipline with First Class from recognized University",
+          "evidence_text": "an 1st July, 2005).\nEducational Qualifications: Bachelor's degree in Engineering or Technology in relevant discipline with First Class from recognized University.\nLast Date for Receipt of Exa",
+          "page_number": 1,
+          "confidence": 0.85,
+          "verified_status": "VERIFIED"
+        }
+      },
+      "article_id": "art_da69b6a7d338",
+      "article_version_id": "arv_0520c4c0ab52",
+      "template_type": "recruitment.md.j2",
+      "qa_score": 60.0,
+      "qa_pass": false,
+      "article_markdown": "# UPPSC Technical Education Teaching Service Examination Advt. No. A-3/E-1/2026\n\n**Published By:** Uttar Pradesh Public Service Commission  \n**Official Notice No:** A-3/E-1/2026  \n**State / Jurisdiction:** Uttar Pradesh  \n**Source Category:** Central  \n\n---\n\n## Overview\n\nThe **Uttar Pradesh Public Service Commission** has officially published the notification for **UPPSC Technical Education Teaching Service Examination Advt. No. A-3/E-1/2026**. Candidates interested in applying for this recruitment can review the verified eligibility criteria, important schedule dates, and official notification details below.\n\n> [!NOTE]\n> All information in this article is sourced exclusively from official government portal releases. Testkart does not use secondary coaching aggregators or unverified third-party sources.\n\n---\n\n## Important Dates\n\n| Event | Official Date |\n| :--- | :--- |\n| **Notification Release Date** | 2026-10-29 |\n| **Online Application Start Date** | Not specified in verified extraction (Requires Editor Review) |\n| **Last Date to Apply Online** | 20.12.2026 |\n| **Scheduled Examination Date** | To be notified by authority |\n\n---\n\n## Vacancies & Eligibility Summary\n\n- **Total Vacancies:** **125** posts- **Educational Qualification:** s: Bachelor's degree in Engineering or Technology in relevant discipline with First Class from recognized University\n- **Age Criteria:** 21 to 40 years as on July 1, 2026 \n\n---\n\n## Application Fee & Salary Details\n\n- **Application Fee:** Refer to official notification document\n- **Pay Scale / Remuneration:** Not specified in initial notification\n---\n\n## How to Apply\n\n1. Visit the verified official recruitment portal: [Uttar Pradesh Public Service Commission](https://uppsc.up.nic.in/OuterPages/View_Advertisement.aspx?ID=308&flag=E).\n2. Locate the active link for **UPPSC Technical Education Teaching Service Examination Advt. No. A-3/E-1/2026**.\n3. Register using valid mobile number and email ID.\n4. Fill in the online application form and upload prescribed documents.\n5. Pay the application fee (if applicable) and save the final confirmation page.\n\n---\n\n## Official Documents & Source Links\n\n- **Official Source URL:** [View Notification / Portal](https://uppsc.up.nic.in/OuterPages/View_Advertisement.aspx?ID=308&flag=E)\n- **Publishing Authority:** Uttar Pradesh Public Service Commission\n- **Verification Status:** Verified Official Document"
+    }
+  },
+  {
+    "audit_id": "audit_11",
+    "filename": "audit_11_uppsc_medical_officer_screening_dates.html",
+    "source_id": "src_uppsc",
+    "authority": "Uttar Pradesh Public Service Commission",
+    "title": "Examination Schedule for Medical Officer (Allopathy) Screening Examination",
+    "ground_truth": {
+      "audit_id": "audit_11",
+      "authority": "Uttar Pradesh Public Service Commission",
+      "source_id": "src_uppsc",
+      "title": "Examination Schedule for Medical Officer (Allopathy) Screening Examination",
+      "notice_type": "EXAM_DATE_ANNOUNCEMENT",
+      "is_child_notice": false,
+      "official_notice_number": "Notice No. 42/E-2/2026",
+      "parent_notice_number": null,
+      "fields": {
+        "total_vacancies": {
+          "status": "ABSENT",
+          "value": null,
+          "page": 1,
+          "evidence": ""
+        },
+        "eligibility": {
+          "status": "ABSENT",
+          "value": null,
+          "page": 1,
+          "evidence": ""
+        },
+        "age_limit": {
+          "status": "ABSENT",
+          "value": null,
+          "page": 1,
+          "evidence": ""
+        },
+        "application_start_date": {
+          "status": "ABSENT",
+          "value": null,
+          "page": 1,
+          "evidence": ""
+        },
+        "application_end_date": {
+          "status": "ABSENT",
+          "value": null,
+          "page": 1,
+          "evidence": ""
+        },
+        "exam_date": {
+          "status": "PRESENT",
+          "value": "15 December 2026",
+          "page": 1,
+          "evidence": "Date of Screening Examination: 15 December 2026 from 11:00 AM to 1:00 PM"
+        }
+      }
+    },
+    "prediction": {
+      "canonical_id": "cn_audit_11",
+      "version_id": "ver_2fedfe41a7bb",
+      "classification": "ADMIT_CARD_RELEASE",
+      "parent_notice_id": null,
+      "relation_type": "ADMIT_CARD_RELEASE",
+      "relation_confidence": 0.0,
+      "triage_flag": "NONE",
+      "extracted_facts": {
+        "recruiting_authority": {
+          "fact_key": "recruiting_authority",
+          "fact_value": "Uttar Pradesh Public Service Commission",
+          "evidence_text": "Official publishing authority: Uttar Pradesh Public Service Commission",
+          "page_number": 1,
+          "confidence": 1.0,
+          "verified_status": "VERIFIED"
+        },
+        "official_source_url": {
+          "fact_key": "official_source_url",
+          "fact_value": "https://uppsc.up.nic.in/OuterPages/exam_schedule_mo_2026.html",
+          "evidence_text": "https://uppsc.up.nic.in/OuterPages/exam_schedule_mo_2026.html",
+          "page_number": 1,
+          "confidence": 1.0,
+          "verified_status": "VERIFIED"
+        },
+        "notice_number": {
+          "fact_key": "notice_number",
+          "fact_value": "42/E-2/2026",
+          "evidence_text": "ERVICE COMMISSION - NOTICE NO. 42/E-2/2026\nExamination Schedule and Timetable for",
+          "page_number": 1,
+          "confidence": 0.95,
+          "verified_status": "VERIFIED"
+        }
+      },
+      "article_id": "art_594fd5d188c9",
+      "article_version_id": "arv_42fe9d3e3f1a",
+      "template_type": "admit_card.md.j2",
+      "qa_score": 100.0,
+      "qa_pass": true,
+      "article_markdown": "# Examination Schedule for Medical Officer (Allopathy) Screening Examination - Admit Card & City Intimation\n\n**Authority:** Uttar Pradesh Public Service Commission  \n**Notice No:** 42/E-2/2026  \n**State / Category:** Uttar Pradesh (Central)  \n\n---\n\n## Admit Card & City Intimation Overview\n\nThe **Uttar Pradesh Public Service Commission** has activated the official portal link for the download of Admission Certificates / Hall Tickets / City Intimation slips for **Examination Schedule for Medical Officer (Allopathy) Screening Examination**.\n\nCandidates appearing for this examination stage can download their official e-admit card and verify their designated examination city following the authorized steps below.\n\n---\n\n## Key Examination & Hall Ticket Details\n\n| Detail | Official Information |\n| :--- | :--- |\n| **Exam Name / Stage** | Examination Schedule for Medical Officer (Allopathy) Screening Examination |\n| **Scheduled Exam Date** | Refer official schedule |\n| **Admit Card / City Slip Status** | Available for download on official portal |\n| **Issuing Authority** | Uttar Pradesh Public Service Commission |\n\n---\n\n## Steps to Download Admit Card / City Slip\n\n1. Navigate to the verified official portal: [Uttar Pradesh Public Service Commission](https://uppsc.up.nic.in/OuterPages/exam_schedule_mo_2026.html).\n2. Click on the Admit Card / Hall Ticket / City Intimation download link.\n3. Enter your Registration Number / Roll Number and Date of Birth / Password.\n4. Download and print the admit card on A4 size paper.\n5. Carry the printed admit card along with an original photo identity card to the examination venue.\n\n---\n\n## Official Verification Link\n\n- **Official Download Portal:** [Access Official Notice / Admit Card](https://uppsc.up.nic.in/OuterPages/exam_schedule_mo_2026.html)\n- **Publishing Authority:** Uttar Pradesh Public Service Commission\n- **Verification Status:** Verified Official Release"
+    }
+  },
+  {
+    "audit_id": "audit_12",
+    "filename": "audit_12_uppsc_combined_state_corrigendum.html",
+    "source_id": "src_uppsc",
+    "authority": "Uttar Pradesh Public Service Commission",
+    "title": "Corrigendum to Combined State / Upper Subordinate Services Examination 2026",
+    "ground_truth": {
+      "audit_id": "audit_12",
+      "authority": "Uttar Pradesh Public Service Commission",
+      "source_id": "src_uppsc",
+      "title": "Corrigendum to Combined State / Upper Subordinate Services Examination 2026",
+      "notice_type": "CORRIGENDUM",
+      "is_child_notice": true,
+      "official_notice_number": "A-1/E-1/2026",
+      "parent_notice_number": "A-1/E-1/2026",
+      "fields": {
+        "total_vacancies": {
+          "status": "PRESENT",
+          "value": "220",
+          "page": 1,
+          "evidence": "Total vacancies revised from 180 to 220 posts."
+        },
+        "eligibility": {
+          "status": "ABSENT",
+          "value": null,
+          "page": 1,
+          "evidence": ""
+        },
+        "age_limit": {
+          "status": "ABSENT",
+          "value": null,
+          "page": 1,
+          "evidence": ""
+        },
+        "application_start_date": {
+          "status": "ABSENT",
+          "value": null,
+          "page": 1,
+          "evidence": ""
+        },
+        "application_end_date": {
+          "status": "ABSENT",
+          "value": null,
+          "page": 1,
+          "evidence": ""
+        },
+        "exam_date": {
+          "status": "ABSENT",
+          "value": null,
+          "page": 1,
+          "evidence": ""
+        }
+      }
+    },
+    "prediction": {
+      "canonical_id": "cn_audit_12",
+      "version_id": "ver_57d9151787c4",
+      "classification": "CORRIGENDUM",
+      "parent_notice_id": "cn_parent_uppsc_combined_state",
+      "relation_type": "CORRIGENDUM",
+      "relation_confidence": 0.98,
+      "triage_flag": "NONE",
+      "extracted_facts": {
+        "recruiting_authority": {
+          "fact_key": "recruiting_authority",
+          "fact_value": "Uttar Pradesh Public Service Commission",
+          "evidence_text": "Official publishing authority: Uttar Pradesh Public Service Commission",
+          "page_number": 1,
+          "confidence": 1.0,
+          "verified_status": "VERIFIED"
+        },
+        "official_source_url": {
+          "fact_key": "official_source_url",
+          "fact_value": "https://uppsc.up.nic.in/OuterPages/corrigendum_combined_state_2026.html",
+          "evidence_text": "https://uppsc.up.nic.in/OuterPages/corrigendum_combined_state_2026.html",
+          "page_number": 1,
+          "confidence": 1.0,
+          "verified_status": "VERIFIED"
+        },
+        "notice_number": {
+          "fact_key": "notice_number",
+          "fact_value": "A-1/E-1/2026",
+          "evidence_text": "TICE\nCorrigendum to Advertisement No. A-1/E-1/2026: Combined State / Upper Subordinate Ser",
+          "page_number": 1,
+          "confidence": 0.95,
+          "verified_status": "VERIFIED"
+        }
+      },
+      "article_id": "art_6519cd5af6c3",
+      "article_version_id": "arv_35d8e168f253",
+      "template_type": "corrigendum.md.j2",
+      "qa_score": 100.0,
+      "qa_pass": true,
+      "article_markdown": "# Corrigendum: Corrigendum to Combined State / Upper Subordinate Services Examination 2026\n\n**Publishing Authority:** Uttar Pradesh Public Service Commission  \n**Corrigendum Reference:** A-1/E-1/2026  \n**Jurisdiction:** Uttar Pradesh  \n\n---\n\n## Notice of Revision / Corrigendum\n\nThe **Uttar Pradesh Public Service Commission** has issued an official corrigendum / amendment regarding **Corrigendum to Combined State / Upper Subordinate Services Examination 2026**.\n\nCandidates must take note of the revisions issued to the previous notification.\n\n---\n\n## Summary of Official Changes\n\n- **Nature of Notice:** Corrigendum / Official Revision\n- **Issuing Body:** Uttar Pradesh Public Service Commission\n- **Date Issued:** 2026-10-29\n\n---\n\n## What Candidates Must Do\n\n1. Read the full corrigendum document carefully using the official link below.\n2. Note any changes to eligibility, vacancies, exam dates, or submission timelines.\n3. If an application deadline was extended, submit the form before the revised closing date.\n\n---\n\n## Official Documents & Source Evidence\n\n- **Official Corrigendum Document:** [View Corrigendum Notice](https://uppsc.up.nic.in/OuterPages/corrigendum_combined_state_2026.html)\n- **Issuing Portal:** Uttar Pradesh Public Service Commission"
+    }
+  },
+  {
+    "audit_id": "audit_13",
+    "filename": "audit_13_tnpsc_group_ii_recruitment.pdf",
+    "source_id": "src_tnpsc",
+    "authority": "Tamil Nadu Public Service Commission",
+    "title": "Combined Civil Services Examination II (Group II and IIA Services) Notification No. 08/2026",
+    "ground_truth": {
+      "audit_id": "audit_13",
+      "authority": "Tamil Nadu Public Service Commission",
+      "source_id": "src_tnpsc",
+      "title": "Combined Civil Services Examination II (Group II and IIA Services) Notification No. 08/2026",
+      "notice_type": "RECRUITMENT_NOTIFICATION",
+      "is_child_notice": false,
+      "official_notice_number": "Notification No. 08/2026",
+      "parent_notice_number": null,
+      "fields": {
+        "total_vacancies": {
+          "status": "PRESENT",
+          "value": "2327",
+          "page": 1,
+          "evidence": "Total number of vacancies: 2327 posts in various State and Subordinate services."
+        },
+        "eligibility": {
+          "status": "PRESENT",
+          "value": "Bachelor's Degree of any University recognized by UGC",
+          "page": 1,
+          "evidence": "Must possess a Bachelor's Degree of any University recognized by the University Grants Commission."
+        },
+        "age_limit": {
+          "status": "PRESENT",
+          "value": "18 to 32 years as on 01.07.2026",
+          "page": 1,
+          "evidence": "Minimum age 18 years, Maximum age 32 years as on 01.07.2026 for general category."
+        },
+        "application_start_date": {
+          "status": "PRESENT",
+          "value": "25.11.2026",
+          "page": 1,
+          "evidence": "Date of Notification: 25.11.2026"
+        },
+        "application_end_date": {
+          "status": "PRESENT",
+          "value": "24.12.2026",
+          "page": 1,
+          "evidence": "Last date for submission of online application: 24.12.2026 up to 11:59 PM"
+        },
+        "exam_date": {
+          "status": "PRESENT",
+          "value": "28.02.2027",
+          "page": 1,
+          "evidence": "Date of Preliminary Examination: 28.02.2027 FN (9:30 AM to 12:30 PM)"
+        }
+      }
+    },
+    "prediction": {
+      "canonical_id": "cn_audit_13",
+      "version_id": "ver_b1efbd54b603",
+      "classification": "RECRUITMENT_NOTIFICATION",
+      "parent_notice_id": null,
+      "relation_type": null,
+      "relation_confidence": 0.0,
+      "triage_flag": "NONE",
+      "extracted_facts": {
+        "recruiting_authority": {
+          "fact_key": "recruiting_authority",
+          "fact_value": "Tamil Nadu Public Service Commission",
+          "evidence_text": "Official publishing authority: Tamil Nadu Public Service Commission",
+          "page_number": 1,
+          "confidence": 1.0,
+          "verified_status": "VERIFIED"
+        },
+        "official_source_url": {
+          "fact_key": "official_source_url",
+          "fact_value": "https://www.tnpsc.gov.in/Document/english/group_ii_2026_notification.pdf",
+          "evidence_text": "https://www.tnpsc.gov.in/Document/english/group_ii_2026_notification.pdf",
+          "page_number": 1,
+          "confidence": 1.0,
+          "verified_status": "VERIFIED"
+        },
+        "notice_number": {
+          "fact_key": "notice_number",
+          "fact_value": "08/2026",
+          "evidence_text": "SERVICE COMMISSION\nNotification No. 08/2026, Dated: 25.11.2026\nApplications are inv",
+          "page_number": 1,
+          "confidence": 0.95,
+          "verified_status": "VERIFIED"
+        },
+        "total_vacancies": {
+          "fact_key": "total_vacancies",
+          "fact_value": "2327",
+          "evidence_text": "to 12:30 PM)\nVacancies:\nTotal number of vacancies: 2327 posts in various State and Subordinate servi",
+          "page_number": 1,
+          "confidence": 0.95,
+          "verified_status": "VERIFIED"
+        },
+        "application_start_date": {
+          "fact_key": "application_start_date",
+          "fact_value": "25.11.2026",
+          "evidence_text": "ect recruitment to the p\nDate of Notification: 25.11.2026\nLast date for submission of online applicati",
+          "page_number": 1,
+          "confidence": 0.9,
+          "verified_status": "VERIFIED"
+        },
+        "application_end_date": {
+          "fact_key": "application_end_date",
+          "fact_value": "24.12.2026",
+          "evidence_text": "Notification: 25.11.2026\nLast date for submission of online application: 24.12.2026 up to 11:59 PM\nDate of Preliminary Examinati",
+          "page_number": 1,
+          "confidence": 0.9,
+          "verified_status": "VERIFIED"
+        },
+        "exam_date": {
+          "fact_key": "exam_date",
+          "fact_value": "28.02.2027",
+          "evidence_text": "4.12.2026 up to 11:59 PM\nDate of Preliminary Examination: 28.02.2027 FN (9:30 AM to 12:30 PM)\nVacancies:\nTotal nu",
+          "page_number": 1,
+          "confidence": 0.9,
+          "verified_status": "VERIFIED"
+        },
+        "age_limit": {
+          "fact_key": "age_limit",
+          "fact_value": "32",
+          "evidence_text": "nimum age 18 years, Maximum age 32 years as on 01.07.2026 for general",
+          "page_number": 1,
+          "confidence": 0.85,
+          "verified_status": "VERIFIED"
+        },
+        "eligibility": {
+          "fact_key": "eligibility",
+          "fact_value": "s: Must possess a Bachelor's Degree of any University recognized by the University Grants Commission",
+          "evidence_text": "r SC/SC(A)/ST/MBC/B\nEducational Qualifications: Must possess a Bachelor's Degree of any University recognized by the University Grants Commission.",
+          "page_number": 1,
+          "confidence": 0.85,
+          "verified_status": "VERIFIED"
+        },
+        "eligibility_qualification": {
+          "fact_key": "eligibility_qualification",
+          "fact_value": "s: Must possess a Bachelor's Degree of any University recognized by the University Grants Commission",
+          "evidence_text": "r SC/SC(A)/ST/MBC/B\nEducational Qualifications: Must possess a Bachelor's Degree of any University recognized by the University Grants Commission.",
+          "page_number": 1,
+          "confidence": 0.85,
+          "verified_status": "VERIFIED"
+        }
+      },
+      "article_id": "art_dd854a467198",
+      "article_version_id": "arv_7d67771761da",
+      "template_type": "recruitment.md.j2",
+      "qa_score": 100.0,
+      "qa_pass": true,
+      "article_markdown": "# Combined Civil Services Examination II (Group II and IIA Services) Notification No. 08/2026\n\n**Published By:** Tamil Nadu Public Service Commission  \n**Official Notice No:** 08/2026  \n**State / Jurisdiction:** Tamil Nadu  \n**Source Category:** Central  \n\n---\n\n## Overview\n\nThe **Tamil Nadu Public Service Commission** has officially published the notification for **Combined Civil Services Examination II (Group II and IIA Services) Notification No. 08/2026**. Candidates interested in applying for this recruitment can review the verified eligibility criteria, important schedule dates, and official notification details below.\n\n> [!NOTE]\n> All information in this article is sourced exclusively from official government portal releases. Testkart does not use secondary coaching aggregators or unverified third-party sources.\n\n---\n\n## Important Dates\n\n| Event | Official Date |\n| :--- | :--- |\n| **Notification Release Date** | 2026-10-29 |\n| **Online Application Start Date** | 25.11.2026 |\n| **Last Date to Apply Online** | 24.12.2026 |\n| **Scheduled Examination Date** | 28.02.2027 |\n\n---\n\n## Vacancies & Eligibility Summary\n\n- **Total Vacancies:** **2327** posts- **Educational Qualification:** s: Must possess a Bachelor's Degree of any University recognized by the University Grants Commission\n- **Age Criteria:** 32\n\n---\n\n## Application Fee & Salary Details\n\n- **Application Fee:** Refer to official notification document\n- **Pay Scale / Remuneration:** Not specified in initial notification\n---\n\n## How to Apply\n\n1. Visit the verified official recruitment portal: [Tamil Nadu Public Service Commission](https://www.tnpsc.gov.in/Document/english/group_ii_2026_notification.pdf).\n2. Locate the active link for **Combined Civil Services Examination II (Group II and IIA Services) Notification No. 08/2026**.\n3. Register using valid mobile number and email ID.\n4. Fill in the online application form and upload prescribed documents.\n5. Pay the application fee (if applicable) and save the final confirmation page.\n\n---\n\n## Official Documents & Source Links\n\n- **Official Source URL:** [View Notification / Portal](https://www.tnpsc.gov.in/Document/english/group_ii_2026_notification.pdf)\n- **Publishing Authority:** Tamil Nadu Public Service Commission\n- **Verification Status:** Verified Official Document"
+    }
+  },
+  {
+    "audit_id": "audit_14",
+    "filename": "audit_14_tnpsc_group_ii_hall_ticket_admit.pdf",
+    "source_id": "src_tnpsc",
+    "authority": "Tamil Nadu Public Service Commission",
+    "title": "Release of Hall Ticket / Admit Card for Combined Civil Services Examination II",
+    "ground_truth": {
+      "audit_id": "audit_14",
+      "authority": "Tamil Nadu Public Service Commission",
+      "source_id": "src_tnpsc",
+      "title": "Release of Hall Ticket / Admit Card for Combined Civil Services Examination II",
+      "notice_type": "ADMIT_CARD_RELEASE",
+      "is_child_notice": false,
+      "official_notice_number": "Press Release No. 45/2026",
+      "parent_notice_number": null,
+      "fields": {
+        "total_vacancies": {
+          "status": "ABSENT",
+          "value": null,
+          "page": 1,
+          "evidence": ""
+        },
+        "eligibility": {
+          "status": "ABSENT",
+          "value": null,
+          "page": 1,
+          "evidence": ""
+        },
+        "age_limit": {
+          "status": "ABSENT",
+          "value": null,
+          "page": 1,
+          "evidence": ""
+        },
+        "application_start_date": {
+          "status": "ABSENT",
+          "value": null,
+          "page": 1,
+          "evidence": ""
+        },
+        "application_end_date": {
+          "status": "ABSENT",
+          "value": null,
+          "page": 1,
+          "evidence": ""
+        },
+        "exam_date": {
+          "status": "PRESENT",
+          "value": "28.02.2027",
+          "page": 1,
+          "evidence": "The examination is scheduled to be held on 28.02.2027 FN at centres across Tamil Nadu."
+        }
+      }
+    },
+    "prediction": {
+      "canonical_id": "cn_audit_14",
+      "version_id": "ver_77a15eaf8dc9",
+      "classification": "ADMIT_CARD_RELEASE",
+      "parent_notice_id": "cn_audit_13",
+      "relation_type": "ADMIT_CARD_RELEASE",
+      "relation_confidence": 0.76,
+      "triage_flag": "NONE",
+      "extracted_facts": {
+        "recruiting_authority": {
+          "fact_key": "recruiting_authority",
+          "fact_value": "Tamil Nadu Public Service Commission",
+          "evidence_text": "Official publishing authority: Tamil Nadu Public Service Commission",
+          "page_number": 1,
+          "confidence": 1.0,
+          "verified_status": "VERIFIED"
+        },
+        "official_source_url": {
+          "fact_key": "official_source_url",
+          "fact_value": "https://www.tnpsc.gov.in/Document/english/hall_ticket_group_ii_2026.pdf",
+          "evidence_text": "https://www.tnpsc.gov.in/Document/english/hall_ticket_group_ii_2026.pdf",
+          "page_number": 1,
+          "confidence": 1.0,
+          "verified_status": "VERIFIED"
+        },
+        "notice_number": {
+          "fact_key": "notice_number",
+          "fact_value": "45/2026",
+          "evidence_text": "SSION\nPress Release No. 45/2026, Dated: 15.02.2027\nSubject: Release of",
+          "page_number": 1,
+          "confidence": 0.95,
+          "verified_status": "VERIFIED"
+        },
+        "exam_date": {
+          "fact_key": "exam_date",
+          "fact_value": "28.02.2027",
+          "evidence_text": "amination II (Group \nThe examination is scheduled to be held on 28.02.2027 FN at centres across Tamil Nadu.\nThe Memorand",
+          "page_number": 1,
+          "confidence": 0.9,
+          "verified_status": "VERIFIED"
+        }
+      },
+      "article_id": "art_6ddb639ab79e",
+      "article_version_id": "arv_b47199cff14d",
+      "template_type": "admit_card.md.j2",
+      "qa_score": 100.0,
+      "qa_pass": true,
+      "article_markdown": "# Release of Hall Ticket / Admit Card for Combined Civil Services Examination II - Admit Card & City Intimation\n\n**Authority:** Tamil Nadu Public Service Commission  \n**Notice No:** 45/2026  \n**State / Category:** Tamil Nadu (Central)  \n\n---\n\n## Admit Card & City Intimation Overview\n\nThe **Tamil Nadu Public Service Commission** has activated the official portal link for the download of Admission Certificates / Hall Tickets / City Intimation slips for **Release of Hall Ticket / Admit Card for Combined Civil Services Examination II**.\n\nCandidates appearing for this examination stage can download their official e-admit card and verify their designated examination city following the authorized steps below.\n\n---\n\n## Key Examination & Hall Ticket Details\n\n| Detail | Official Information |\n| :--- | :--- |\n| **Exam Name / Stage** | Release of Hall Ticket / Admit Card for Combined Civil Services Examination II |\n| **Scheduled Exam Date** | 28.02.2027 |\n| **Admit Card / City Slip Status** | Available for download on official portal |\n| **Issuing Authority** | Tamil Nadu Public Service Commission |\n\n---\n\n## Steps to Download Admit Card / City Slip\n\n1. Navigate to the verified official portal: [Tamil Nadu Public Service Commission](https://www.tnpsc.gov.in/Document/english/hall_ticket_group_ii_2026.pdf).\n2. Click on the Admit Card / Hall Ticket / City Intimation download link.\n3. Enter your Registration Number / Roll Number and Date of Birth / Password.\n4. Download and print the admit card on A4 size paper.\n5. Carry the printed admit card along with an original photo identity card to the examination venue.\n\n---\n\n## Official Verification Link\n\n- **Official Download Portal:** [Access Official Notice / Admit Card](https://www.tnpsc.gov.in/Document/english/hall_ticket_group_ii_2026.pdf)\n- **Publishing Authority:** Tamil Nadu Public Service Commission\n- **Verification Status:** Verified Official Release"
+    }
+  },
+  {
+    "audit_id": "audit_15",
+    "filename": "audit_15_tnpsc_office_gazette_regulations.pdf",
+    "source_id": "src_tnpsc",
+    "authority": "Tamil Nadu Public Service Commission",
+    "title": "Tamil Nadu Public Service Commission Secretariat Administrative Regulations",
+    "ground_truth": {
+      "audit_id": "audit_15",
+      "authority": "Tamil Nadu Public Service Commission",
+      "source_id": "src_tnpsc",
+      "title": "Tamil Nadu Public Service Commission Secretariat Administrative Regulations",
+      "notice_type": "ADMINISTRATIVE_ANNOUNCEMENT",
+      "is_child_notice": false,
+      "official_notice_number": "G.O. Ms. No. 102/2026",
+      "parent_notice_number": null,
+      "fields": {
+        "total_vacancies": {
+          "status": "ABSENT",
+          "value": null,
+          "page": 1,
+          "evidence": ""
+        },
+        "eligibility": {
+          "status": "ABSENT",
+          "value": null,
+          "page": 1,
+          "evidence": ""
+        },
+        "age_limit": {
+          "status": "ABSENT",
+          "value": null,
+          "page": 1,
+          "evidence": ""
+        },
+        "application_start_date": {
+          "status": "ABSENT",
+          "value": null,
+          "page": 1,
+          "evidence": ""
+        },
+        "application_end_date": {
+          "status": "ABSENT",
+          "value": null,
+          "page": 1,
+          "evidence": ""
+        },
+        "exam_date": {
+          "status": "ABSENT",
+          "value": null,
+          "page": 1,
+          "evidence": ""
+        }
+      }
+    },
+    "prediction": {
+      "canonical_id": "cn_audit_15",
+      "version_id": "ver_0b3152af6568",
+      "classification": "OTHER_ANNOUNCEMENT",
+      "parent_notice_id": null,
+      "relation_type": null,
+      "relation_confidence": 0.0,
+      "triage_flag": "NONE",
+      "extracted_facts": {
+        "recruiting_authority": {
+          "fact_key": "recruiting_authority",
+          "fact_value": "Tamil Nadu Public Service Commission",
+          "evidence_text": "Official publishing authority: Tamil Nadu Public Service Commission",
+          "page_number": 1,
+          "confidence": 1.0,
+          "verified_status": "VERIFIED"
+        },
+        "official_source_url": {
+          "fact_key": "official_source_url",
+          "fact_value": "https://www.tnpsc.gov.in/Document/english/secretariat_administrative_regulations.pdf",
+          "evidence_text": "https://www.tnpsc.gov.in/Document/english/secretariat_administrative_regulations.pdf",
+          "page_number": 1,
+          "confidence": 1.0,
+          "verified_status": "VERIFIED"
+        },
+        "notice_number": {
+          "fact_key": "notice_number",
+          "fact_value": "102/2026",
+          "evidence_text": "TIFICATION\nG.O. Ms. No. 102/2026, Dated: 10.05.2026\nSubject: Tamil Nadu",
+          "page_number": 1,
+          "confidence": 0.95,
+          "verified_status": "VERIFIED"
+        }
+      },
+      "article_id": "art_a22e60932a8d",
+      "article_version_id": "arv_325759cecaaf",
+      "template_type": "announcement.md.j2",
+      "qa_score": 100.0,
+      "qa_pass": true,
+      "article_markdown": "# Tamil Nadu Public Service Commission Secretariat Administrative Regulations\n\n**Issuing Authority:** Tamil Nadu Public Service Commission  \n**Notice Reference:** 102/2026  \n**State / Region:** Tamil Nadu  \n\n---\n\n## Announcement Summary\n\nThe **Tamil Nadu Public Service Commission** has issued an official announcement regarding **Tamil Nadu Public Service Commission Secretariat Administrative Regulations**.\n\nCandidates and stakeholders are advised to note the official notice details released directly by the authority.\n\n---\n\n## Important Highlights & Schedule\n\n- **Authority:** Tamil Nadu Public Service Commission\n- **Published / Discovered Date:** 2026-10-29\n\n---\n\n## Action Required for Candidates\n\n1. Access the official circular using the verified authority link below.\n2. Verify application numbers or registration details mentioned in the notice.\n3. Keep track of subsequent updates exclusively through official portals.\n\n---\n\n## Verified Source Link\n\n- **Official Notice Link:** [Tamil Nadu Public Service Commission Portal](https://www.tnpsc.gov.in/Document/english/secretariat_administrative_regulations.pdf)\n- **Authority Domain:** https://www.tnpsc.gov.in/Document/english/secretariat_administrative_regulations.pdf"
+    }
+  }
+]

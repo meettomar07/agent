@@ -1,0 +1,722 @@
+{
+  "audit_01_ssc_scientific_asst_recruitment.pdf": {
+    "audit_id": "audit_01",
+    "authority": "Staff Selection Commission",
+    "source_id": "src_ssc",
+    "title": "Recruitment of Scientific Assistant in India Meteorological Department Examination, 2026",
+    "notice_type": "RECRUITMENT_NOTIFICATION",
+    "is_child_notice": false,
+    "official_notice_number": "F.No. 3/2/2026-P&P-I",
+    "parent_notice_number": null,
+    "fields": {
+      "total_vacancies": {
+        "status": "PRESENT",
+        "value": "990",
+        "page": 1,
+        "evidence": "Total Vacancies: 990 posts in India Meteorological Department across India."
+      },
+      "eligibility": {
+        "status": "PRESENT",
+        "value": "Bachelor's Degree in Science (with Physics) or Computer Science or IT or Diploma in Electronics & Telecommunication with 60% marks",
+        "page": 1,
+        "evidence": "Bachelor's Degree in Science (with Physics as one of the subjects) or Computer Science or Information Technology or Diploma in Electronics and Telecommunication Engineering with at least 60% marks."
+      },
+      "age_limit": {
+        "status": "PRESENT",
+        "value": "18 to 30 years as on 01.08.2026",
+        "page": 1,
+        "evidence": "A candidate must be between 18 to 30 years of age as on 01.08.2026."
+      },
+      "application_start_date": {
+        "status": "PRESENT",
+        "value": "01.11.2026",
+        "page": 1,
+        "evidence": "Dates for submission of online applications: 01.11.2026 to 30.11.2026"
+      },
+      "application_end_date": {
+        "status": "PRESENT",
+        "value": "30.11.2026",
+        "page": 1,
+        "evidence": "Last date and time for receipt of online applications: 30.11.2026 (23:00 hours)"
+      },
+      "exam_date": {
+        "status": "PRESENT",
+        "value": "December, 2026",
+        "page": 1,
+        "evidence": "Schedule of Computer Based Examination: December, 2026"
+      }
+    }
+  },
+  "audit_02_ssc_je_corrigendum.pdf": {
+    "audit_id": "audit_02",
+    "authority": "Staff Selection Commission",
+    "source_id": "src_ssc",
+    "title": "Corrigendum to Junior Engineer (Civil, Mechanical & Electrical) Examination, 2026",
+    "notice_type": "CORRIGENDUM",
+    "is_child_notice": true,
+    "official_notice_number": "HQ-EC033/7/2025-EC",
+    "parent_notice_number": "HQ-EC033/7/2025-EC",
+    "fields": {
+      "total_vacancies": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "eligibility": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "age_limit": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "application_start_date": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "application_end_date": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "exam_date": {
+        "status": "PRESENT",
+        "value": "02nd to 06th November, 2026",
+        "page": 1,
+        "evidence": "Revised examination schedule: 02nd to 06th November, 2026."
+      }
+    }
+  },
+  "audit_03_ssc_mts_instructions.pdf": {
+    "audit_id": "audit_03",
+    "authority": "Staff Selection Commission",
+    "source_id": "src_ssc",
+    "title": "Important Notice: Guidelines and Instructions for PwBD Candidates in Multi Tasking Staff Exam",
+    "notice_type": "ADMINISTRATIVE_ANNOUNCEMENT",
+    "is_child_notice": false,
+    "official_notice_number": "12/1/2026-C-1",
+    "parent_notice_number": null,
+    "fields": {
+      "total_vacancies": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "eligibility": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "age_limit": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "application_start_date": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "application_end_date": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "exam_date": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      }
+    }
+  },
+  "audit_04_upsc_specialist_grade_recruitment.html": {
+    "audit_id": "audit_04",
+    "authority": "Union Public Service Commission",
+    "source_id": "src_upsc",
+    "title": "Recruitment Notification for 45 Posts of Specialist Grade III Assistant Professor",
+    "notice_type": "RECRUITMENT_NOTIFICATION",
+    "is_child_notice": false,
+    "official_notice_number": "Advt. No. 15/2026",
+    "parent_notice_number": null,
+    "fields": {
+      "total_vacancies": {
+        "status": "PRESENT",
+        "value": "45",
+        "page": 1,
+        "evidence": "Vacancies: 45 posts of Specialist Grade III Assistant Professor (General Surgery)"
+      },
+      "eligibility": {
+        "status": "PRESENT",
+        "value": "MBBS degree and Post-Graduate Degree in the concerned speciality with three years experience",
+        "page": 1,
+        "evidence": "MBBS degree qualification included in the First Schedule or Second Schedule to the Indian Medical Council Act, 1956 and Post-Graduate Degree in the concerned speciality with three years experience."
+      },
+      "age_limit": {
+        "status": "PRESENT",
+        "value": "40 years",
+        "page": 1,
+        "evidence": "Not exceeding 40 years as on normal closing date."
+      },
+      "application_start_date": {
+        "status": "PRESENT",
+        "value": "12.11.2026",
+        "page": 1,
+        "evidence": "Portal opens on 12.11.2026."
+      },
+      "application_end_date": {
+        "status": "PRESENT",
+        "value": "02.12.2026",
+        "page": 1,
+        "evidence": "Closing date for submission of online recruitment application is 02.12.2026."
+      },
+      "exam_date": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      }
+    }
+  },
+  "audit_05_upsc_app_delhi_addendum.html": {
+    "audit_id": "audit_05",
+    "authority": "Union Public Service Commission",
+    "source_id": "src_upsc",
+    "title": "Addendum Notice: Recruitment to 140 Posts of Assistant Public Prosecutor",
+    "notice_type": "RECRUITMENT_ADDENDUM",
+    "is_child_notice": true,
+    "official_notice_number": "Advt. No. 01/2026",
+    "parent_notice_number": "Advt. No. 01/2026",
+    "fields": {
+      "total_vacancies": {
+        "status": "PRESENT",
+        "value": "140",
+        "page": 1,
+        "evidence": "recruitment to 140 Posts of Assistant Public Prosecutor"
+      },
+      "eligibility": {
+        "status": "PRESENT",
+        "value": "A degree in Law of a recognized University with 3 years experience at the Bar",
+        "page": 1,
+        "evidence": "A degree in Law of a recognized University with 3 years experience at the Bar."
+      },
+      "age_limit": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "application_start_date": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "application_end_date": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "exam_date": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      }
+    }
+  },
+  "audit_06_upsc_cgs_prelim_schedule.html": {
+    "audit_id": "audit_06",
+    "authority": "Union Public Service Commission",
+    "source_id": "src_upsc",
+    "title": "Combined Geo-Scientist (Preliminary) Examination 2027 Timetable and Schedule",
+    "notice_type": "EXAM_DATE_ANNOUNCEMENT",
+    "is_child_notice": false,
+    "official_notice_number": "F.1/4/2026-E.I(B)",
+    "parent_notice_number": null,
+    "fields": {
+      "total_vacancies": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "eligibility": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "age_limit": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "application_start_date": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "application_end_date": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "exam_date": {
+        "status": "PRESENT",
+        "value": "18th February 2027",
+        "page": 1,
+        "evidence": "The Examination will be held on 18th February 2027 in two sessions"
+      }
+    }
+  },
+  "audit_07_nta_swayam_application_notice.pdf": {
+    "audit_id": "audit_07",
+    "authority": "National Testing Agency",
+    "source_id": "src_nta",
+    "title": "Inviting Online Applications for Study Webs of Active Learning (SWAYAM) January 2027 Semester",
+    "notice_type": "ADMISSION_OR_ENTRANCE_EXAM",
+    "is_child_notice": false,
+    "official_notice_number": "NTA/SWAYAM/2026/01",
+    "parent_notice_number": null,
+    "fields": {
+      "total_vacancies": {
+        "status": "NOT_APPLICABLE",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "eligibility": {
+        "status": "PRESENT",
+        "value": "Students enrolled in university degree or diploma courses across recognized higher educational institutions",
+        "page": 1,
+        "evidence": "Eligibility: Students enrolled in university degree or diploma courses across recognized higher educational institutions."
+      },
+      "age_limit": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "application_start_date": {
+        "status": "PRESENT",
+        "value": "15.11.2026",
+        "page": 1,
+        "evidence": "Online submission of Application Form: 15 November 2026 to 15 December 2026"
+      },
+      "application_end_date": {
+        "status": "PRESENT",
+        "value": "15.12.2026",
+        "page": 1,
+        "evidence": "Online submission of Application Form: 15 November 2026 to 15 December 2026"
+      },
+      "exam_date": {
+        "status": "PRESENT",
+        "value": "17 and 18 January 2027",
+        "page": 1,
+        "evidence": "Dates of Examination: 17 and 18 January 2027 in two shifts daily."
+      }
+    }
+  },
+  "audit_08_nta_csir_net_result_declaration.pdf": {
+    "audit_id": "audit_08",
+    "authority": "National Testing Agency",
+    "source_id": "src_nta",
+    "title": "Declaration of Scores and Final Result for Joint CSIR-UGC NET Examination June 2026",
+    "notice_type": "EXAM_RESULT",
+    "is_child_notice": false,
+    "official_notice_number": "NTA/CSIR-NET/RESULT/2026",
+    "parent_notice_number": null,
+    "fields": {
+      "total_vacancies": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "eligibility": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "age_limit": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "application_start_date": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "application_end_date": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "exam_date": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      }
+    }
+  },
+  "audit_09_nta_ugc_net_answer_keys.pdf": {
+    "audit_id": "audit_09",
+    "authority": "National Testing Agency",
+    "source_id": "src_nta",
+    "title": "Uploading of Provisional Answer Keys and Question Paper with Recorded Responses for UGC-NET",
+    "notice_type": "ANSWER_KEY",
+    "is_child_notice": false,
+    "official_notice_number": "NTA/UGC-NET/KEY/2026",
+    "parent_notice_number": null,
+    "fields": {
+      "total_vacancies": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "eligibility": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "age_limit": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "application_start_date": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "application_end_date": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "exam_date": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      }
+    }
+  },
+  "audit_10_uppsc_technical_education_recruitment.html": {
+    "audit_id": "audit_10",
+    "authority": "Uttar Pradesh Public Service Commission",
+    "source_id": "src_uppsc",
+    "title": "UPPSC Technical Education Teaching Service Examination Advt. No. A-3/E-1/2026",
+    "notice_type": "RECRUITMENT_NOTIFICATION",
+    "is_child_notice": false,
+    "official_notice_number": "A-3/E-1/2026",
+    "parent_notice_number": null,
+    "fields": {
+      "total_vacancies": {
+        "status": "PRESENT",
+        "value": "125",
+        "page": 1,
+        "evidence": "Total number of vacancies is 125 posts of Lecturer and Workshop Superintendent"
+      },
+      "eligibility": {
+        "status": "PRESENT",
+        "value": "Bachelor's degree in Engineering or Technology in relevant discipline with First Class",
+        "page": 1,
+        "evidence": "Bachelor's degree in Engineering or Technology in relevant discipline with First Class from recognized University."
+      },
+      "age_limit": {
+        "status": "PRESENT",
+        "value": "21 to 40 years as on July 1, 2026",
+        "page": 1,
+        "evidence": "Candidates must have attained the age of 21 years and must not have crossed the age of 40 years on July 1, 2026"
+      },
+      "application_start_date": {
+        "status": "PRESENT",
+        "value": "20.11.2026",
+        "page": 1,
+        "evidence": "Starting date for online application: 20.11.2026."
+      },
+      "application_end_date": {
+        "status": "PRESENT",
+        "value": "20.12.2026",
+        "page": 1,
+        "evidence": "Last Date for Submission: 20.12.2026."
+      },
+      "exam_date": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      }
+    }
+  },
+  "audit_11_uppsc_medical_officer_screening_dates.html": {
+    "audit_id": "audit_11",
+    "authority": "Uttar Pradesh Public Service Commission",
+    "source_id": "src_uppsc",
+    "title": "Examination Schedule for Medical Officer (Allopathy) Screening Examination",
+    "notice_type": "EXAM_DATE_ANNOUNCEMENT",
+    "is_child_notice": false,
+    "official_notice_number": "Notice No. 42/E-2/2026",
+    "parent_notice_number": null,
+    "fields": {
+      "total_vacancies": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "eligibility": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "age_limit": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "application_start_date": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "application_end_date": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "exam_date": {
+        "status": "PRESENT",
+        "value": "15 December 2026",
+        "page": 1,
+        "evidence": "Date of Screening Examination: 15 December 2026 from 11:00 AM to 1:00 PM"
+      }
+    }
+  },
+  "audit_12_uppsc_combined_state_corrigendum.html": {
+    "audit_id": "audit_12",
+    "authority": "Uttar Pradesh Public Service Commission",
+    "source_id": "src_uppsc",
+    "title": "Corrigendum to Combined State / Upper Subordinate Services Examination 2026",
+    "notice_type": "CORRIGENDUM",
+    "is_child_notice": true,
+    "official_notice_number": "A-1/E-1/2026",
+    "parent_notice_number": "A-1/E-1/2026",
+    "fields": {
+      "total_vacancies": {
+        "status": "PRESENT",
+        "value": "220",
+        "page": 1,
+        "evidence": "Total vacancies revised from 180 to 220 posts."
+      },
+      "eligibility": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "age_limit": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "application_start_date": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "application_end_date": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "exam_date": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      }
+    }
+  },
+  "audit_13_tnpsc_group_ii_recruitment.pdf": {
+    "audit_id": "audit_13",
+    "authority": "Tamil Nadu Public Service Commission",
+    "source_id": "src_tnpsc",
+    "title": "Combined Civil Services Examination II (Group II and IIA Services) Notification No. 08/2026",
+    "notice_type": "RECRUITMENT_NOTIFICATION",
+    "is_child_notice": false,
+    "official_notice_number": "Notification No. 08/2026",
+    "parent_notice_number": null,
+    "fields": {
+      "total_vacancies": {
+        "status": "PRESENT",
+        "value": "2327",
+        "page": 1,
+        "evidence": "Total number of vacancies: 2327 posts in various State and Subordinate services."
+      },
+      "eligibility": {
+        "status": "PRESENT",
+        "value": "Bachelor's Degree of any University recognized by UGC",
+        "page": 1,
+        "evidence": "Must possess a Bachelor's Degree of any University recognized by the University Grants Commission."
+      },
+      "age_limit": {
+        "status": "PRESENT",
+        "value": "18 to 32 years as on 01.07.2026",
+        "page": 1,
+        "evidence": "Minimum age 18 years, Maximum age 32 years as on 01.07.2026 for general category."
+      },
+      "application_start_date": {
+        "status": "PRESENT",
+        "value": "25.11.2026",
+        "page": 1,
+        "evidence": "Date of Notification: 25.11.2026"
+      },
+      "application_end_date": {
+        "status": "PRESENT",
+        "value": "24.12.2026",
+        "page": 1,
+        "evidence": "Last date for submission of online application: 24.12.2026 up to 11:59 PM"
+      },
+      "exam_date": {
+        "status": "PRESENT",
+        "value": "28.02.2027",
+        "page": 1,
+        "evidence": "Date of Preliminary Examination: 28.02.2027 FN (9:30 AM to 12:30 PM)"
+      }
+    }
+  },
+  "audit_14_tnpsc_group_ii_hall_ticket_admit.pdf": {
+    "audit_id": "audit_14",
+    "authority": "Tamil Nadu Public Service Commission",
+    "source_id": "src_tnpsc",
+    "title": "Release of Hall Ticket / Admit Card for Combined Civil Services Examination II",
+    "notice_type": "ADMIT_CARD_RELEASE",
+    "is_child_notice": false,
+    "official_notice_number": "Press Release No. 45/2026",
+    "parent_notice_number": null,
+    "fields": {
+      "total_vacancies": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "eligibility": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "age_limit": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "application_start_date": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "application_end_date": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "exam_date": {
+        "status": "PRESENT",
+        "value": "28.02.2027",
+        "page": 1,
+        "evidence": "The examination is scheduled to be held on 28.02.2027 FN at centres across Tamil Nadu."
+      }
+    }
+  },
+  "audit_15_tnpsc_office_gazette_regulations.pdf": {
+    "audit_id": "audit_15",
+    "authority": "Tamil Nadu Public Service Commission",
+    "source_id": "src_tnpsc",
+    "title": "Tamil Nadu Public Service Commission Secretariat Administrative Regulations",
+    "notice_type": "ADMINISTRATIVE_ANNOUNCEMENT",
+    "is_child_notice": false,
+    "official_notice_number": "G.O. Ms. No. 102/2026",
+    "parent_notice_number": null,
+    "fields": {
+      "total_vacancies": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "eligibility": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "age_limit": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "application_start_date": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "application_end_date": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "exam_date": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      }
+    }
+  }
+}
