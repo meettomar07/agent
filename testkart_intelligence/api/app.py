@@ -655,3 +655,13 @@ def api_editorial_confirm_fact(fact_id: str, req: FactConfirmRequest, request: R
         )
     except ValueError as exc:
         raise HTTPException(status_code=400, detail=str(exc))
+
+
+@app.get("/api/editorial/operational-metrics")
+def api_editorial_operational_metrics(request: Request) -> Dict[str, Any]:
+    """Retrieve cumulative operational metrics for the supervised operational pilot."""
+    validate_editorial_request(request)
+    from testkart_intelligence.editorial.operational_metrics import OperationalMetricsService
+    svc = OperationalMetricsService()
+    return svc.get_cumulative_metrics()
+

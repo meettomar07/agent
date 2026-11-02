@@ -51,8 +51,15 @@ class VerificationAgent:
                 f.write(doc_bytes)
 
         # 2. Extract text and page structure
+        is_corrupt_doc = False
         if is_pdf:
-            full_text, pages, page_count = self.pdf_extractor.extract(doc_bytes)
+            try:
+                full_text, pages, page_count = self.pdf_extractor.extract(doc_bytes)
+            except Exception as exc:
+                is_corrupt_doc = True
+                full_text = f"[DOCUMENT EXTRACTION FAILED: {exc}]"
+                pages = [{"page_number": 1, "text": full_text, "tables": [], "is_scanned": True, "ocr_confidence": 0.0}]
+                page_count = 1
         else:
             html_text = doc_bytes.decode("utf-8", errors="replace")
             full_text, pages, page_count = self.html_extractor.extract(html_text)
@@ -110,7 +117,9 @@ class VerificationAgent:
             )
             ocr_meets_threshold = (avg_ocr_confidence >= 0.60) and has_valid_ocr_text
 
-            if has_legacy_font:
+            if is_corrupt_doc:
+                canonical_status = "SCANNED_OCR_BLOCKED_FLAGGED_FOR_HUMAN_REVIEW"
+            elif has_legacy_font:
                 canonical_status = "NON_UNICODE_ENCODING_FLAGGED_FOR_HUMAN_REVIEW"
             elif is_scanned and not ocr_meets_threshold:
                 canonical_status = "SCANNED_OCR_BLOCKED_FLAGGED_FOR_HUMAN_REVIEW"
@@ -120,7 +129,19 @@ class VerificationAgent:
                 canonical_status = "EXTRACTED"
 
             # 5. Extract structured facts (or route to human review if scanned/unreadable)
-            if canonical_status == "SCANNED_OCR_BLOCKED_FLAGGED_FOR_HUMAN_REVIEW":
+            if is_corrupt_doc:
+                extracted_facts = [
+                    ExtractedFactItem(
+                        key="document_readability",
+                        value="DOCUMENT_CORRUPT_OR_UNREADABLE",
+                        evidence_text=full_text,
+                        page_number=1,
+                        confidence=0.0,
+                        status="SCANNED_OCR_BLOCKED_FLAGGED_FOR_HUMAN_REVIEW",
+                        notes="Document payload is corrupt or unreadable; flagged for human verification",
+                    )
+                ]
+            elif canonical_status == "SCANNED_OCR_BLOCKED_FLAGGED_FOR_HUMAN_REVIEW":
                 extracted_facts = [
                     ExtractedFactItem(
                         key="document_readability",

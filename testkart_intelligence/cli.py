@@ -137,6 +137,24 @@ def cmd_triage(args):
     print("=========================================================\n")
 
 
+def cmd_metrics(args):
+    """Display cumulative operational metrics and reliability statistics."""
+    from testkart_intelligence.editorial.operational_metrics import OperationalMetricsService
+    svc = OperationalMetricsService()
+    m = svc.get_cumulative_metrics()
+    print("\n================ Testkart Operational Metrics ================")
+    print(f"  Portal Scans:        {m['sources_scans_summary']['attempted']} attempted ({m['sources_scans_summary']['reliability_pct']:.2f}% reliability)")
+    print(f"  Scheduler Runs:      {m['scheduler']['total_runs']} total ({m['scheduler']['uptime_pct']:.2f}% uptime)")
+    print(f"  Canonical Notices:   {sum(m['classification_distribution'].values())} discovered")
+    print(f"  Blog Drafts:         {m['qa']['total_articles']} created ({m['qa']['qa_pass_rate_pct']:.2f}% QA passed)")
+    print(f"  Editorial Approvals: {m['editorial']['normal_approvals']} normal, {m['editorial']['override_approvals']} overrides, {m['editorial']['rejections']} rejections")
+    print(f"  Human Corrections:   {m['editorial']['human_fact_corrections']} fact corrections logged")
+    print(f"  Corrigenda Linked:   {m['corrigenda_and_linking']['linked_to_parent']} / {m['corrigenda_and_linking']['total_corrigenda_or_updates']} ({m['corrigenda_and_linking']['linking_accuracy_pct']:.2f}%)")
+    print(f"  Mock Publications:   {m['safety']['mock_publications_count']} simulated")
+    print(f"  Live Publishing:     {'ENABLED (ALERT!)' if m['safety']['allow_live_publishing'] else 'DISABLED (SECURE)'}")
+    print("=============================================================\n")
+
+
 def main():
     parser = argparse.ArgumentParser(
         prog="testkart",
@@ -177,6 +195,11 @@ def main():
     # status
     p_stat = subparsers.add_parser("status", help="Show system status and statistics")
     p_stat.set_defaults(func=cmd_status)
+
+    # metrics
+    p_met = subparsers.add_parser("metrics", help="Show cumulative operational metrics and reliability statistics")
+    p_met.set_defaults(func=cmd_metrics)
+
 
     args = parser.parse_args()
     args.func(args)
