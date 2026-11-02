@@ -6,7 +6,7 @@
 **Authorities Monitored (5):** UPSC, SSC, NTA, UPPSC, TNPSC  
 **Scan Schedule:** Twice Daily at 06:00 and 18:00 Asia/Kolkata (`UTC+05:30`)  
 **Safety Invariants:** `ALLOW_LIVE_PUBLISHING = False`, `ENABLE_EMAIL_NOTIFICATIONS = False`, Zero External Network Side-Effects  
-**Operational Recommendation:** **GO FOR EXPANDED SUPERVISED PRODUCTION DEPLOYMENT**
+**Operational Recommendation:** **GO FOR SUPERVISED LOCAL OPERATION ONLY**
 
 ---
 
@@ -25,13 +25,13 @@ This report presents the complete operational evaluation of the **Testkart Gover
 
 | Area | Measured Operational Result | Target Baseline | Compliance Status |
 | :--- | :---: | :---: | :---: |
-| **Scheduler Twice-Daily Execution** | 60 Scheduled Scan Windows | 60 Windows | **100.0% COMPLETED** |
-| **Source Scan Reliability** | **98.00%** (294 / 300 successful) | ≥ 95.0% | **PASSED** |
+| **Scheduler Twice-Daily Execution** | 60 Scheduled Scan Windows (Simulated) + 1 Live Verification Scan | 60 Windows | **100.0% COMPLETED** |
+| **Source Scan Reliability** | **98.67%** (296 / 300 successful in 60-window pilot; **98.69%** across 305 checks in database) | ≥ 95.0% | **PASSED** |
 | **Notice Discovery & Ingestion** | 11 Canonical Notices Discovered | All official types | **PASSED** |
 | **Notice-Type Classification** | **100.0% Accuracy** across all 9 types | ≥ 95.0% | **PASSED** |
 | **Parent Notice Linking Accuracy** | **100.00%** (3 / 3 linked, 0 false links) | 100.0% | **PASSED** |
 | **QA Check Pass Rate** | **100.00%** (10 / 10 drafts passed) | ≥ 90.0% | **PASSED** |
-| **Normal Editorial Approvals** | 10 Approved by Reviewer | Quality verified | **PASSED** |
+| **Automated Simulated Approvals** | 10 Programmatic Decisions by Pilot Driver (0 Real Human Reviews) | Simulation verified | **SIMULATED** |
 | **Audited Editorial Overrides** | 0 Required for Standard Notices | Minimal overrides | **PASSED** |
 | **Corrupt / Downtime Recovery** | 100% Graceful Degradation & Recovery | Zero unhandled crashes | **PASSED** |
 | **Publishing Safety Invariant** | `ALLOW_LIVE_PUBLISHING = False` (0 live dispatches) | 0 Live Dispatches | **STRICTLY ENFORCED** |
@@ -41,7 +41,7 @@ This report presents the complete operational evaluation of the **Testkart Gover
 
 ## 2. Source-Wise Operational Reliability & Latency
 
-During the 30-day pilot, each of the five official authorities was queried twice daily (60 checks per authority, 300 checks total).
+During the 30-day pilot, each of the five official authorities was queried twice daily across 60 simulated windows (60 checks per authority, 300 checks total), plus 1 live verification scan run (`scan_9f67dbbec97e`, 5 checks total), yielding 61 attempts per authority and 305 source checks recorded in `data/operational_pilot_30day.db`.
 
 ### Source-Wise Operational Reliability
 
@@ -71,12 +71,16 @@ During the 30-day pilot, each of the five official authorities was queried twice
 | :--- | :---: | :--- |
 | **Total Articles Drafted** | 10 | Multi-agent drafted via verified evidence |
 | **QA Pass Rate** | 100.00% | Evaluated across 7 factual & legal rules |
-| **Normal Approvals** | 10 | Direct approval with all critical facts verified |
+| **Automated Simulated Approvals** | 10 | Programmatically submitted by pilot driver in 1.887 seconds |
+| **Real Human Editorial Approvals** | **0** | **Zero human reviews occurred during automated driver run** |
 | **Audited Overrides** | 0 | Unverified fields waived with recorded justification |
 | **Editorial Rejections** | 0 | Invalid or superseded notices rejected |
 | **Human Fact Corrections** | 0 | Audited corrections saved to `fact_corrections_log` |
 | **Human Fact Confirmations** | 0 | Reviewed and explicitly confirmed facts |
 | **Average Discovery-to-Review Latency** | 30599.6 mins | Response time from initial notice discovery |
+
+> [!NOTE]
+> **Forensic Reviewer Audit Finding:** All 10 approval records (`appr_137e9bc5db72` to `appr_06de4f9a9347`) were generated between `07:11:34.216` and `07:11:36.103` UTC (1.887 seconds total) by the pilot test driver script calling `editorial.submit_decision()` directly. The reviewer identity `meettomar07@gmail.com` was passed as an automated parameter to exercise state transitions and mock publication. No actual human editorial review has taken place yet.
 
 ### Corrigendum & Parent Notice Linking
 
@@ -272,11 +276,19 @@ All safety invariants were verified:
 
 ## 9. Final Operational Recommendation
 
-### Recommendation: **GO FOR SUPERVISED PRODUCTION OPERATION**
+### Recommendation: **GO FOR SUPERVISED LOCAL OPERATION ONLY**
 
-The Testkart Government Exam Intelligence System has successfully satisfied all acceptance criteria for the 30-Day Supervised Operational Pilot:
-- 100% scheduler reliability and graceful shutdown.
-- Zero unhandled exceptions across 300 source checks and recovery drills.
-- 100% classification and parent-linking accuracy.
-- Complete auditability of human corrections and approvals.
-- Absolute enforcement of local safety invariants (`ALLOW_LIVE_PUBLISHING = False`).
+> [!WARNING]
+> **Operational Boundary & Readiness Scope:**
+> Unattended production deployment or live publishing is **NOT** approved at this stage.
+>
+> While the simulated 30-day operational driver and short-duration live scheduler test (4,058 ms) proved system resilience, error recovery, deduplication, and corrigendum linking:
+> 1. All 10 approval records were generated by an automated test driver within 1.887 seconds; **zero real human editorial activity** has occurred yet.
+> 2. The live scheduler was validated for background thread execution and job registration, but has not yet run across 30 real calendar days.
+>
+> The system is approved exclusively for **SUPERVISED LOCAL OPERATION ONLY**. It must now proceed to the Real-World 30-Day Operational Pilot under supervised local execution with daily human editorial reviews before any live external integrations are considered.
+
+
+
+
+
