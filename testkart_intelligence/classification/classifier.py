@@ -110,6 +110,13 @@ class NoticeClassifier:
         r"\bjee\s+main\b",
         r"\bcuet\b",
         r"\bneet\b",
+        r"\bneet[- ]ss\b",
+        r"\bswayam\b",
+        r"\bstudy\s+webs\s+of\s+active[- ]learning\b",
+        r"\bsemester\s+(?:courses?|examinations?)\b",
+        r"\bcertification\s+courses?\b",
+        r"\bdiploma\s+courses?\s+admission\b",
+        r"\bsuper\s+specialt(?:y|ies)\b",
         r"\bph\.?d\s+admission\b",
         r"\bcounselling\s+(?:schedule|process)\b",
         r"\bacademic\s+session\b",
@@ -165,6 +172,7 @@ class NoticeClassifier:
     KEYWORDS_EXAM_DATE = [
         r"\bexam\s+date\b",
         r"\bexamination\s+schedule\b",
+        r"\bschedule\s+of\s+(?:[a-zA-Z0-9\(\)\/\s\-]{0,40})?examination\b",
         r"\btime\s*table\b",
         r"\bdate\s+of\s+examination\b",
         r"\bschedule\s+of\s+cbt\b",
@@ -312,10 +320,29 @@ class NoticeClassifier:
             if re.search(pat, combined_text):
                 return NoticeCategory.ANSWER_KEY
 
-        # Step 6: Admit Card / City Slip
-        for pat in cls.KEYWORDS_ADMIT_CARD:
-            if re.search(pat, combined_text):
+        # Step 6: Admit Card / City Slip vs Exam Date / Timetable Disambiguation
+        # Rule: A notice is only classified as ADMIT_CARD_RELEASE if the primary heading/title or URL
+        # specifically announces the release or download of admit cards/hall tickets/city slips.
+        # If the notice title/subject announces an examination schedule, timetable, or date sheet,
+        # secondary mentions of admit cards in the body must NOT divert it to ADMIT_CARD_RELEASE.
+        has_admit_card_in_title_or_url = any(re.search(pat, f"{title} {url}".lower()) for pat in cls.KEYWORDS_ADMIT_CARD)
+        has_admit_card_in_text = any(re.search(pat, combined_text) for pat in cls.KEYWORDS_ADMIT_CARD)
+        
+        is_exam_schedule_title = any(re.search(pat, title.lower()) for pat in cls.KEYWORDS_EXAM_DATE) or any(
+            w in title.lower() for w in ["schedule", "timetable", "time table", "exam date", "dates of examination", "programme of examination", "calendar"]
+        )
+
+        if has_admit_card_in_title_or_url:
+            return NoticeCategory.ADMIT_CARD_RELEASE
+        elif has_admit_card_in_text and not is_exam_schedule_title:
+            is_future_guidance = bool(re.search(r"\b(?:will\s+be\s+(?:uploaded|available|released|hosted|issued)|to\s+be\s+(?:uploaded|released|hosted))\b", combined_text))
+            if not is_future_guidance:
                 return NoticeCategory.ADMIT_CARD_RELEASE
+
+        # Step 6.4: Admissions and Entrance Examinations (Strict precedence over employment recruitment)
+        for pat in cls.KEYWORDS_ADMISSION:
+            if re.search(pat, combined_text):
+                return NoticeCategory.ADMISSION_OR_ENTRANCE_EXAM
 
         # Step 6.5: Vacancy-backed or application-schedule-backed recruitment takes priority over generic exam date mentions
         if facts and (facts.get("total_vacancies") or (facts.get("application_start_date") and facts.get("application_end_date"))):
@@ -325,11 +352,6 @@ class NoticeClassifier:
         for pat in cls.KEYWORDS_EXAM_DATE:
             if re.search(pat, combined_text):
                 return NoticeCategory.EXAM_DATE_ANNOUNCEMENT
-
-        # Step 7.2: Admissions and Entrance Examinations (Takes strict precedence over employment recruitment)
-        for pat in cls.KEYWORDS_ADMISSION:
-            if re.search(pat, combined_text):
-                return NoticeCategory.ADMISSION_OR_ENTRANCE_EXAM
 
         # Step 7.5: General Administrative Announcements
         for pat in cls.KEYWORDS_ADMINISTRATIVE:
@@ -411,17 +433,43 @@ class NoticeClassifier:
         if not parents:
             return (None, category.value, 0.0, "No parent recruitment notifications in registry for this source")
 
-        # 1. Exact notice_number match
+        # 1. Exact notice_number match (including prefix-normalized match)
         if notice_number and str(notice_number).strip():
             nn_clean = str(notice_number).strip().lower()
             exact_matches = [p for p in parents if p["notice_number"] and str(p["notice_number"]).strip().lower() == nn_clean]
+            if not exact_matches:
+                # Try prefix-normalized match (e.g. "Notice No. 3/1/2026-P&P-I" vs "F.No. 3/1/2026-P&P-I")
+                def norm_nn(val: str) -> str:
+                    c = re.sub(r"^(?:advt\.?\s*no\.?|notice\s*no\.?|notification\s*no\.?|file\s*no\.?|f\.?\s*no\.?)\s*[:\-–]?\s*", "", val.lower().strip(), flags=re.IGNORECASE)
+                    return re.sub(r"[^a-z0-9]", "", c)
+                nn_norm = norm_nn(str(notice_number))
+                if len(nn_norm) >= 4:
+                    exact_matches = [p for p in parents if p["notice_number"] and norm_nn(str(p["notice_number"])) == nn_norm]
+
             if len(exact_matches) == 1:
                 return (exact_matches[0]["id"], category.value, 0.98, f"Exact notice number match '{notice_number}'")
             elif len(exact_matches) > 1:
                 p_ids = [p["id"] for p in exact_matches]
                 return (None, category.value, 0.40, f"AMBIGUOUS_PARENT_LINK: Multiple parent notices match notice number '{notice_number}': {p_ids}")
 
-        # 2. Key phrase token matching
+        # 2. Key phrase token matching - STRICTLY RESTRICTED:
+        # Title token matching is ONLY allowed for explicit child/amendment categories:
+        # CORRIGENDUM, RECRUITMENT_ADDENDUM, CANCELLATION_NOTICE.
+        # Standalone notices (ADMIT_CARD_RELEASE, EXAM_RESULT, ANSWER_KEY, EXAM_DATE_ANNOUNCEMENT)
+        # must NEVER be linked via title similarity alone without an official notice number match!
+        AMENDMENT_CATEGORIES = (
+            NoticeCategory.CORRIGENDUM,
+            NoticeCategory.RECRUITMENT_ADDENDUM,
+            NoticeCategory.CANCELLATION_NOTICE,
+        )
+        if category not in AMENDMENT_CATEGORIES:
+            return (None, category.value, 0.0, f"Standalone notice category '{category.value}' requires exact notice number match or explicit parent reference; title token matching is prohibited")
+
+        # In addition, amendment notices must have an explicit child marker in their title
+        child_markers = ["corrigendum", "addendum", "amendment", "errata", "revised", "modification", "cancellation", "withdrawn"]
+        if not any(cm in title.lower() for cm in child_markers):
+            return (None, category.value, 0.0, "Notice title lacks explicit amendment or child relationship marker; title token matching is prohibited")
+
         stop_words = {"notice", "advertisement", "examination", "exam", "recruitment", "for", "the", "post", "posts", "of", "in", "and", "to", "grade", "services"}
         title_words = set(re.findall(r"\b[a-zA-Z]{3,}\b", title.lower())) - stop_words
 

@@ -1,0 +1,722 @@
+{
+  "rem_01_ssc_cgl_schedule.pdf": {
+    "audit_id": "rem_01",
+    "authority": "Staff Selection Commission",
+    "source_id": "src_ssc",
+    "title": "Important Notice: Schedule of Combined Graduate Level Examination (Tier-II), 2026",
+    "notice_type": "EXAM_DATE_ANNOUNCEMENT",
+    "is_child_notice": false,
+    "official_notice_number": "F.No. 4/1/2026-C-1/1",
+    "parent_notice_number": null,
+    "fields": {
+      "total_vacancies": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "eligibility": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "age_limit": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "application_start_date": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "application_end_date": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "exam_date": {
+        "status": "PRESENT",
+        "value": "18th to 20th January 2027",
+        "page": 1,
+        "evidence": "Schedule of Examination: 18th to 20th January 2027"
+      }
+    }
+  },
+  "rem_02_ssc_stenographer_recruitment.pdf": {
+    "audit_id": "rem_02",
+    "authority": "Staff Selection Commission",
+    "source_id": "src_ssc",
+    "title": "Notice of Examination for Stenographer Grade 'C' & 'D' Examination, 2026",
+    "notice_type": "RECRUITMENT_NOTIFICATION",
+    "is_child_notice": false,
+    "official_notice_number": "F.No. 2/3/2026-P&P-II",
+    "parent_notice_number": null,
+    "fields": {
+      "total_vacancies": {
+        "status": "PRESENT",
+        "value": "1245",
+        "page": 1,
+        "evidence": "Total tentative vacancies: 1245 posts in various Ministries and Departments."
+      },
+      "eligibility": {
+        "status": "PRESENT",
+        "value": "Candidates must have passed 12th Standard or equivalent examination from a recognized Board or University",
+        "page": 1,
+        "evidence": "Qualifications: Candidates must have passed 12th Standard or equivalent examination from a recognized Board or University."
+      },
+      "age_limit": {
+        "status": "PRESENT",
+        "value": "18 to 27 years as on 01.08.2026",
+        "page": 1,
+        "evidence": "A candidate must be between 18 to 27 years of age as on 01.08.2026."
+      },
+      "application_start_date": {
+        "status": "PRESENT",
+        "value": "05.12.2026",
+        "page": 1,
+        "evidence": "Dates for submission of online applications: 05.12.2026 to 04.01.2027"
+      },
+      "application_end_date": {
+        "status": "PRESENT",
+        "value": "04.01.2027",
+        "page": 1,
+        "evidence": "Last date and time for receipt of online applications: 04.01.2027"
+      },
+      "exam_date": {
+        "status": "PRESENT",
+        "value": "February, 2027",
+        "page": 1,
+        "evidence": "Schedule of Computer Based Examination: February, 2027"
+      }
+    }
+  },
+  "rem_03_ssc_constable_gd_corrigendum.pdf": {
+    "audit_id": "rem_03",
+    "authority": "Staff Selection Commission",
+    "source_id": "src_ssc",
+    "title": "Corrigendum to Constable (GD) in Central Armed Police Forces Examination, 2026",
+    "notice_type": "CORRIGENDUM",
+    "is_child_notice": true,
+    "official_notice_number": "F.No. 3/1/2026-P&P-I",
+    "parent_notice_number": "Notice No. 3/1/2026-P&P-I",
+    "fields": {
+      "total_vacancies": {
+        "status": "PRESENT",
+        "value": "26146",
+        "page": 1,
+        "evidence": "Total vacancies are revised from 24000 to 26146 posts."
+      },
+      "eligibility": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "age_limit": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "application_start_date": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "application_end_date": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "exam_date": {
+        "status": "PRESENT",
+        "value": "12th to 25th March 2027",
+        "page": 1,
+        "evidence": "Revised examination schedule: 12th to 25th March 2027."
+      }
+    }
+  },
+  "rem_04_upsc_medical_officer_recruitment.html": {
+    "audit_id": "rem_04",
+    "authority": "Union Public Service Commission",
+    "source_id": "src_upsc",
+    "title": "Special Advertisement No. 51/2026: Recruitment to 215 Posts of Medical Officer (General Duty)",
+    "notice_type": "RECRUITMENT_NOTIFICATION",
+    "is_child_notice": false,
+    "official_notice_number": "Advt. No. 51/2026",
+    "parent_notice_number": null,
+    "fields": {
+      "total_vacancies": {
+        "status": "PRESENT",
+        "value": "215",
+        "page": 1,
+        "evidence": "direct recruitment by selection to 215 Posts of Medical Officer"
+      },
+      "eligibility": {
+        "status": "PRESENT",
+        "value": "A recognized MBBS degree qualification included in the First Schedule or Second Schedule or Part II of the Third Schedule to the Indian Medical Council Act, 1956",
+        "page": 1,
+        "evidence": "Qualifications: A recognized MBBS degree qualification included in the First Schedule or Second Schedule or Part II of the Third Schedule to the Indian Medical Council Act, 1956."
+      },
+      "age_limit": {
+        "status": "PRESENT",
+        "value": "Not exceeding 35 years as on normal closing date",
+        "page": 1,
+        "evidence": "Age limit: Not exceeding 35 years as on normal closing date."
+      },
+      "application_start_date": {
+        "status": "PRESENT",
+        "value": "10.12.2026",
+        "page": 1,
+        "evidence": "Opening date for submission of online application: 10.12.2026."
+      },
+      "application_end_date": {
+        "status": "PRESENT",
+        "value": "09.01.2027",
+        "page": 1,
+        "evidence": "Closing date for submission of online application: 09.01.2027."
+      },
+      "exam_date": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      }
+    }
+  },
+  "rem_05_upsc_civil_services_main_schedule.html": {
+    "audit_id": "rem_05",
+    "authority": "Union Public Service Commission",
+    "source_id": "src_upsc",
+    "title": "Timetable and Schedule for Civil Services (Main) Examination, 2026",
+    "notice_type": "EXAM_DATE_ANNOUNCEMENT",
+    "is_child_notice": false,
+    "official_notice_number": "F.1/8/2026-E.I(B)",
+    "parent_notice_number": null,
+    "fields": {
+      "total_vacancies": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "eligibility": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "age_limit": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "application_start_date": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "application_end_date": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "exam_date": {
+        "status": "PRESENT",
+        "value": "22nd, 23rd, 24th, 29th and 30th January 2027",
+        "page": 1,
+        "evidence": "The Examination will be held on 22nd, 23rd, 24th, 29th and 30th January 2027"
+      }
+    }
+  },
+  "rem_06_upsc_assistant_director_corrigendum.html": {
+    "audit_id": "rem_06",
+    "authority": "Union Public Service Commission",
+    "source_id": "src_upsc",
+    "title": "Addendum to Advertisement No. 12/2026 for Recruitment to the Post of Assistant Director (Law)",
+    "notice_type": "RECRUITMENT_ADDENDUM",
+    "is_child_notice": true,
+    "official_notice_number": "Advt. No. 12/2026",
+    "parent_notice_number": "Advt. No. 12/2026",
+    "fields": {
+      "total_vacancies": {
+        "status": "PRESENT",
+        "value": "18",
+        "page": 1,
+        "evidence": "Total Vacancies: 18 posts."
+      },
+      "eligibility": {
+        "status": "PRESENT",
+        "value": "Degree in Law (LLB) of a recognized University with minimum 2 years experience in legal affairs",
+        "page": 1,
+        "evidence": "Essential Qualification is amended as under: Degree in Law (LLB) of a recognized University with minimum 2 years experience in legal affairs."
+      },
+      "age_limit": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "application_start_date": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "application_end_date": {
+        "status": "PRESENT",
+        "value": "15.01.2027",
+        "page": 1,
+        "evidence": "The closing date for submission of online application is extended to 15.01.2027."
+      },
+      "exam_date": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      }
+    }
+  },
+  "rem_07_nta_swayam_july_semester_exam.pdf": {
+    "audit_id": "rem_07",
+    "authority": "National Testing Agency",
+    "source_id": "src_nta",
+    "title": "Public Notice: Schedule for Study Webs of Active-Learning for Young Aspiring Minds (SWAYAM) July 2026 Semester",
+    "notice_type": "ADMISSION_OR_ENTRANCE_EXAM",
+    "is_child_notice": false,
+    "official_notice_number": "NTA/SWAYAM/2026/02",
+    "parent_notice_number": null,
+    "fields": {
+      "total_vacancies": {
+        "status": "NOT_APPLICABLE",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "eligibility": {
+        "status": "PRESENT",
+        "value": "Students enrolled in certificate, diploma or degree programs across UGC/AICTE recognized universities",
+        "page": 1,
+        "evidence": "Eligibility: Students enrolled in certificate, diploma or degree programs across UGC/AICTE recognized universities."
+      },
+      "age_limit": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "application_start_date": {
+        "status": "PRESENT",
+        "value": "10.11.2026",
+        "page": 1,
+        "evidence": "Dates for submission of online applications: 10.11.2026 to 10.12.2026"
+      },
+      "application_end_date": {
+        "status": "PRESENT",
+        "value": "10.12.2026",
+        "page": 1,
+        "evidence": "Dates for submission of online applications: 10.11.2026 to 10.12.2026"
+      },
+      "exam_date": {
+        "status": "PRESENT",
+        "value": "20 and 21 February 2027",
+        "page": 1,
+        "evidence": "Dates of Examination: 20 and 21 February 2027"
+      }
+    }
+  },
+  "rem_08_nta_csir_net_exam_dates.pdf": {
+    "audit_id": "rem_08",
+    "authority": "National Testing Agency",
+    "source_id": "src_nta",
+    "title": "Public Notice: Advance Intimation of Examination Schedule for Joint CSIR-UGC NET December 2026",
+    "notice_type": "EXAM_DATE_ANNOUNCEMENT",
+    "is_child_notice": false,
+    "official_notice_number": "NTA/CSIR-NET/2026/03",
+    "parent_notice_number": null,
+    "fields": {
+      "total_vacancies": {
+        "status": "NOT_APPLICABLE",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "eligibility": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "age_limit": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "application_start_date": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "application_end_date": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "exam_date": {
+        "status": "PRESENT",
+        "value": "28th February 2027 and 01st March 2027",
+        "page": 1,
+        "evidence": "The Examination will be held on 28th February 2027 and 01st March 2027"
+      }
+    }
+  },
+  "rem_09_nta_neet_ss_eligibility_notice.pdf": {
+    "audit_id": "rem_09",
+    "authority": "National Testing Agency",
+    "source_id": "src_nta",
+    "title": "Information Bulletin and Application for National Eligibility cum Entrance Test (NEET-SS) 2026",
+    "notice_type": "ADMISSION_OR_ENTRANCE_EXAM",
+    "is_child_notice": false,
+    "official_notice_number": "NTA/NEET-SS/2026/01",
+    "parent_notice_number": null,
+    "fields": {
+      "total_vacancies": {
+        "status": "NOT_APPLICABLE",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "eligibility": {
+        "status": "PRESENT",
+        "value": "Candidates must possess recognized MD/MS/DNB degree or equivalent in the relevant specialty from NMC recognized medical college",
+        "page": 1,
+        "evidence": "Eligibility: Candidates must possess recognized MD/MS/DNB degree or equivalent in the relevant specialty from NMC recognized medical college."
+      },
+      "age_limit": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "application_start_date": {
+        "status": "PRESENT",
+        "value": "01.12.2026",
+        "page": 1,
+        "evidence": "Dates for submission of online applications: 01.12.2026 to 31.12.2026"
+      },
+      "application_end_date": {
+        "status": "PRESENT",
+        "value": "31.12.2026",
+        "page": 1,
+        "evidence": "Dates for submission of online applications: 01.12.2026 to 31.12.2026"
+      },
+      "exam_date": {
+        "status": "PRESENT",
+        "value": "15.03.2027",
+        "page": 1,
+        "evidence": "Date of Examination: 15.03.2027"
+      }
+    }
+  },
+  "rem_10_uppsc_ayush_medical_officer.html": {
+    "audit_id": "rem_10",
+    "authority": "Uttar Pradesh Public Service Commission",
+    "source_id": "src_uppsc",
+    "title": "Direct Recruitment Advertisement No. 04/2026: Medical Officer (Ayurvedic & Unani)",
+    "notice_type": "RECRUITMENT_NOTIFICATION",
+    "is_child_notice": false,
+    "official_notice_number": "Advt. No. 04/2026",
+    "parent_notice_number": null,
+    "fields": {
+      "total_vacancies": {
+        "status": "PRESENT",
+        "value": "425",
+        "page": 1,
+        "evidence": "Total vacancies: 425 posts."
+      },
+      "eligibility": {
+        "status": "PRESENT",
+        "value": "A degree in Ayurvedic or Unani Tibb of a recognized University or Board",
+        "page": 1,
+        "evidence": "Qualifications: A degree in Ayurvedic or Unani Tibb of a recognized University or Board."
+      },
+      "age_limit": {
+        "status": "PRESENT",
+        "value": "21 to 40 years as on July 1, 2026",
+        "page": 1,
+        "evidence": "Age limit: 21 to 40 years as on July 1, 2026."
+      },
+      "application_start_date": {
+        "status": "PRESENT",
+        "value": "01.12.2026",
+        "page": 1,
+        "evidence": "Online Application Starts: 01.12.2026."
+      },
+      "application_end_date": {
+        "status": "PRESENT",
+        "value": "02.01.2027",
+        "page": 1,
+        "evidence": "Last Date for Submission: 02.01.2027."
+      },
+      "exam_date": {
+        "status": "PRESENT",
+        "value": "25 April 2027",
+        "page": 1,
+        "evidence": "Date of Screening Examination: 25 April 2027 from 11:00 AM to 1:00 PM."
+      }
+    }
+  },
+  "rem_11_uppsc_technical_education_schedule.html": {
+    "audit_id": "rem_11",
+    "authority": "Uttar Pradesh Public Service Commission",
+    "source_id": "src_uppsc",
+    "title": "Examination Schedule for UP Technical Education (Teaching) Service Examination",
+    "notice_type": "EXAM_DATE_ANNOUNCEMENT",
+    "is_child_notice": false,
+    "official_notice_number": "Notice No. 58/E-3/2026",
+    "parent_notice_number": null,
+    "fields": {
+      "total_vacancies": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "eligibility": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "age_limit": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "application_start_date": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "application_end_date": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "exam_date": {
+        "status": "PRESENT",
+        "value": "14th March 2027",
+        "page": 1,
+        "evidence": "The Examination will be held on 14th March 2027 in two shifts"
+      }
+    }
+  },
+  "rem_12_uppsc_assistant_conservator_corrigendum.html": {
+    "audit_id": "rem_12",
+    "authority": "Uttar Pradesh Public Service Commission",
+    "source_id": "src_uppsc",
+    "title": "Corrigendum to Assistant Conservator of Forest / Range Forest Officer Examination 2026",
+    "notice_type": "CORRIGENDUM",
+    "is_child_notice": true,
+    "official_notice_number": "Advt. No. A-2/E-1/2026",
+    "parent_notice_number": "Advt. No. A-2/E-1/2026",
+    "fields": {
+      "total_vacancies": {
+        "status": "PRESENT",
+        "value": "62",
+        "page": 1,
+        "evidence": "Total vacancies are enhanced from 45 to 62 posts."
+      },
+      "eligibility": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "age_limit": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "application_start_date": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "application_end_date": {
+        "status": "PRESENT",
+        "value": "10.01.2027",
+        "page": 1,
+        "evidence": "The last date for submission of online application is extended to 10.01.2027."
+      },
+      "exam_date": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      }
+    }
+  },
+  "rem_13_tnpsc_group_i_recruitment.pdf": {
+    "audit_id": "rem_13",
+    "authority": "Tamil Nadu Public Service Commission",
+    "source_id": "src_tnpsc",
+    "title": "Combined Civil Services Examination I (Group I Services) Notification No. 12/2026",
+    "notice_type": "RECRUITMENT_NOTIFICATION",
+    "is_child_notice": false,
+    "official_notice_number": "Notification No. 12/2026",
+    "parent_notice_number": null,
+    "fields": {
+      "total_vacancies": {
+        "status": "PRESENT",
+        "value": "148",
+        "page": 1,
+        "evidence": "Total number of vacancies: 148 posts."
+      },
+      "eligibility": {
+        "status": "PRESENT",
+        "value": "Must possess a Bachelor's Degree of any University recognized by the University Grants Commission",
+        "page": 1,
+        "evidence": "Qualifications: Must possess a Bachelor's Degree of any University recognized by the University Grants Commission."
+      },
+      "age_limit": {
+        "status": "PRESENT",
+        "value": "21 to 34 years as on 01.07.2026",
+        "page": 1,
+        "evidence": "A candidate must have attained the age of 21 years and must not have crossed the age of 34 years as on 01.07.2026."
+      },
+      "application_start_date": {
+        "status": "PRESENT",
+        "value": "10.12.2026",
+        "page": 1,
+        "evidence": "Applications are invited online from 10.12.2026 to 09.01.2027"
+      },
+      "application_end_date": {
+        "status": "PRESENT",
+        "value": "09.01.2027",
+        "page": 1,
+        "evidence": "Applications are invited online from 10.12.2026 to 09.01.2027"
+      },
+      "exam_date": {
+        "status": "PRESENT",
+        "value": "12.04.2027",
+        "page": 1,
+        "evidence": "Date of Preliminary Examination: 12.04.2027 (9:30 AM to 12:30 PM)."
+      }
+    }
+  },
+  "rem_14_tnpsc_group_i_hall_ticket_admit.pdf": {
+    "audit_id": "rem_14",
+    "authority": "Tamil Nadu Public Service Commission",
+    "source_id": "src_tnpsc",
+    "title": "Press Release: Release of Hall Ticket / Admit Card for Combined Civil Services Examination I",
+    "notice_type": "ADMIT_CARD_RELEASE",
+    "is_child_notice": false,
+    "official_notice_number": "Press Release No. 62/2026",
+    "parent_notice_number": null,
+    "fields": {
+      "total_vacancies": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "eligibility": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "age_limit": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "application_start_date": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "application_end_date": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "exam_date": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      }
+    }
+  },
+  "rem_15_tnpsc_departmental_promotion_circular.pdf": {
+    "audit_id": "rem_15",
+    "authority": "Tamil Nadu Public Service Commission",
+    "source_id": "src_tnpsc",
+    "title": "Internal Circular: Limited Departmental Competitive Examination (LDCE) for Section Officers",
+    "notice_type": "INTERNAL_CIRCULAR",
+    "is_child_notice": false,
+    "official_notice_number": "Circular No. 18/LDCE/2026",
+    "parent_notice_number": null,
+    "fields": {
+      "total_vacancies": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "eligibility": {
+        "status": "PRESENT",
+        "value": "Only departmental candidates serving regularly for not less than 5 years in the Commission are eligible",
+        "page": 1,
+        "evidence": "Only departmental candidates serving regularly for not less than 5 years in the Commission are eligible."
+      },
+      "age_limit": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "application_start_date": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      },
+      "application_end_date": {
+        "status": "PRESENT",
+        "value": "15.01.2027",
+        "page": 1,
+        "evidence": "Last date for receipt of application through proper channel is 15.01.2027."
+      },
+      "exam_date": {
+        "status": "ABSENT",
+        "value": null,
+        "page": 1,
+        "evidence": ""
+      }
+    }
+  }
+}

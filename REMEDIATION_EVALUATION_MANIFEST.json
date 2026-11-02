@@ -1,0 +1,180 @@
+{
+  "dataset_name": "REMEDIATION_EVALUATION_DATASET",
+  "created_at": "2026-11-02T11:00:00Z",
+  "status": "FROZEN_FOR_POST_REMEDIATION_EVALUATION",
+  "total_documents": 15,
+  "authorities_distribution": {
+    "SSC": 3,
+    "UPSC": 3,
+    "NTA": 3,
+    "UPPSC": 3,
+    "TNPSC": 3
+  },
+  "documents": {
+    "rem_01_ssc_cgl_schedule.pdf": {
+      "audit_id": "rem_01",
+      "source_id": "src_ssc",
+      "authority": "Staff Selection Commission",
+      "title": "Important Notice: Schedule of Combined Graduate Level Examination (Tier-II), 2026",
+      "source_url": "https://ssc.gov.in/api/attachment/uploads/masterData/NoticeBoards/schedule_cgl_tier2_2026.pdf",
+      "sha256": "0b9164b385e73a228fe366d2fe3204e22a479f32c0164f0509811de996a47019",
+      "size_bytes": 1261,
+      "content_type": "application/pdf",
+      "local_path": "data\\remediation_evaluation_notices\\rem_01_ssc_cgl_schedule.pdf"
+    },
+    "rem_02_ssc_stenographer_recruitment.pdf": {
+      "audit_id": "rem_02",
+      "source_id": "src_ssc",
+      "authority": "Staff Selection Commission",
+      "title": "Notice of Examination for Stenographer Grade 'C' & 'D' Examination, 2026",
+      "source_url": "https://ssc.gov.in/api/attachment/uploads/masterData/NoticeBoards/stenographer_cd_2026.pdf",
+      "sha256": "50de78dd76dc7a151f47e30b472497761637222b49e440056baab8b064b692c2",
+      "size_bytes": 1318,
+      "content_type": "application/pdf",
+      "local_path": "data\\remediation_evaluation_notices\\rem_02_ssc_stenographer_recruitment.pdf"
+    },
+    "rem_03_ssc_constable_gd_corrigendum.pdf": {
+      "audit_id": "rem_03",
+      "source_id": "src_ssc",
+      "authority": "Staff Selection Commission",
+      "title": "Corrigendum to Constable (GD) in Central Armed Police Forces Examination, 2026",
+      "source_url": "https://ssc.gov.in/api/attachment/uploads/masterData/NoticeBoards/corrigendum_constable_gd_2026.pdf",
+      "sha256": "f9702a035d03e5cb88f7099e1268f1030f5d008b27605aee0cfc0cf3882ba15c",
+      "size_bytes": 1199,
+      "content_type": "application/pdf",
+      "local_path": "data\\remediation_evaluation_notices\\rem_03_ssc_constable_gd_corrigendum.pdf"
+    },
+    "rem_04_upsc_medical_officer_recruitment.html": {
+      "audit_id": "rem_04",
+      "source_id": "src_upsc",
+      "authority": "Union Public Service Commission",
+      "title": "Special Advertisement No. 51/2026: Recruitment to 215 Posts of Medical Officer (General Duty)",
+      "source_url": "https://upsc.gov.in/recruitment/special-advt-51-2026-medical-officer",
+      "sha256": "437b5d5c05398902032a1570e18cfeef57c432f4ee6bbd05ea27d8550c2eec1e",
+      "size_bytes": 863,
+      "content_type": "text/html",
+      "local_path": "data\\remediation_evaluation_notices\\rem_04_upsc_medical_officer_recruitment.html"
+    },
+    "rem_05_upsc_civil_services_main_schedule.html": {
+      "audit_id": "rem_05",
+      "source_id": "src_upsc",
+      "authority": "Union Public Service Commission",
+      "title": "Timetable and Schedule for Civil Services (Main) Examination, 2026",
+      "source_url": "https://upsc.gov.in/examinations/timetable-schedule-csm-2026",
+      "sha256": "eddf2c9701a771c449842df964eff3c1acedac8547a346037a104737c2d00a52",
+      "size_bytes": 716,
+      "content_type": "text/html",
+      "local_path": "data\\remediation_evaluation_notices\\rem_05_upsc_civil_services_main_schedule.html"
+    },
+    "rem_06_upsc_assistant_director_corrigendum.html": {
+      "audit_id": "rem_06",
+      "source_id": "src_upsc",
+      "authority": "Union Public Service Commission",
+      "title": "Addendum to Advertisement No. 12/2026 for Recruitment to the Post of Assistant Director (Law)",
+      "source_url": "https://upsc.gov.in/recruitment/addendum-advt-12-2026-law",
+      "sha256": "4879b11489934ba5739dd9bb598c00a8b741869d8770e36864641d3943c2c486",
+      "size_bytes": 589,
+      "content_type": "text/html",
+      "local_path": "data\\remediation_evaluation_notices\\rem_06_upsc_assistant_director_corrigendum.html"
+    },
+    "rem_07_nta_swayam_july_semester_exam.pdf": {
+      "audit_id": "rem_07",
+      "source_id": "src_nta",
+      "authority": "National Testing Agency",
+      "title": "Public Notice: Schedule for Study Webs of Active-Learning for Young Aspiring Minds (SWAYAM) July 2026 Semester",
+      "source_url": "https://nta.ac.in/notice/swayam_july_2026_exam_schedule.pdf",
+      "sha256": "9a2c3a39aa9554d0f790fa428975d6fb6ea559ea020867d151b32e9cf7674e70",
+      "size_bytes": 1303,
+      "content_type": "application/pdf",
+      "local_path": "data\\remediation_evaluation_notices\\rem_07_nta_swayam_july_semester_exam.pdf"
+    },
+    "rem_08_nta_csir_net_exam_dates.pdf": {
+      "audit_id": "rem_08",
+      "source_id": "src_nta",
+      "authority": "National Testing Agency",
+      "title": "Public Notice: Advance Intimation of Examination Schedule for Joint CSIR-UGC NET December 2026",
+      "source_url": "https://nta.ac.in/notice/csir_net_dec_2026_exam_dates.pdf",
+      "sha256": "2d1b72b769999edd72a5ee170e1cfc8fd11e811d0d94531f94e194ab08583287",
+      "size_bytes": 1186,
+      "content_type": "application/pdf",
+      "local_path": "data\\remediation_evaluation_notices\\rem_08_nta_csir_net_exam_dates.pdf"
+    },
+    "rem_09_nta_neet_ss_eligibility_notice.pdf": {
+      "audit_id": "rem_09",
+      "source_id": "src_nta",
+      "authority": "National Testing Agency",
+      "title": "Information Bulletin and Application for National Eligibility cum Entrance Test (NEET-SS) 2026",
+      "source_url": "https://nta.ac.in/notice/neet_ss_2026_information_bulletin.pdf",
+      "sha256": "63d77c9c0c1d4531fb11cc6dc250ef9280b0dfff6ed29145b713f43810e7fddc",
+      "size_bytes": 1199,
+      "content_type": "application/pdf",
+      "local_path": "data\\remediation_evaluation_notices\\rem_09_nta_neet_ss_eligibility_notice.pdf"
+    },
+    "rem_10_uppsc_ayush_medical_officer.html": {
+      "audit_id": "rem_10",
+      "source_id": "src_uppsc",
+      "authority": "Uttar Pradesh Public Service Commission",
+      "title": "Direct Recruitment Advertisement No. 04/2026: Medical Officer (Ayurvedic & Unani)",
+      "source_url": "https://uppsc.up.nic.in/recruitment/advt-04-2026-medical-officer",
+      "sha256": "0392854704b48ad1a261adf5872ca00e9bf1f6b3bc3f8442fecb0908ad7a2f59",
+      "size_bytes": 682,
+      "content_type": "text/html",
+      "local_path": "data\\remediation_evaluation_notices\\rem_10_uppsc_ayush_medical_officer.html"
+    },
+    "rem_11_uppsc_technical_education_schedule.html": {
+      "audit_id": "rem_11",
+      "source_id": "src_uppsc",
+      "authority": "Uttar Pradesh Public Service Commission",
+      "title": "Examination Schedule for UP Technical Education (Teaching) Service Examination",
+      "source_url": "https://uppsc.up.nic.in/notices/technical-education-exam-schedule-2026",
+      "sha256": "f743d002e8ae5967e105f3f795e50c49d7e4b0ef6f06b39806902fecef0a2674",
+      "size_bytes": 548,
+      "content_type": "text/html",
+      "local_path": "data\\remediation_evaluation_notices\\rem_11_uppsc_technical_education_schedule.html"
+    },
+    "rem_12_uppsc_assistant_conservator_corrigendum.html": {
+      "audit_id": "rem_12",
+      "source_id": "src_uppsc",
+      "authority": "Uttar Pradesh Public Service Commission",
+      "title": "Corrigendum to Assistant Conservator of Forest / Range Forest Officer Examination 2026",
+      "source_url": "https://uppsc.up.nic.in/notices/corrigendum-acf-rfo-2026",
+      "sha256": "607253cde7a0d6ac5b3421dcda36cee7b978507f4951891abb3b1eefd38aee4e",
+      "size_bytes": 502,
+      "content_type": "text/html",
+      "local_path": "data\\remediation_evaluation_notices\\rem_12_uppsc_assistant_conservator_corrigendum.html"
+    },
+    "rem_13_tnpsc_group_i_recruitment.pdf": {
+      "audit_id": "rem_13",
+      "source_id": "src_tnpsc",
+      "authority": "Tamil Nadu Public Service Commission",
+      "title": "Combined Civil Services Examination I (Group I Services) Notification No. 12/2026",
+      "source_url": "https://www.tnpsc.gov.in/document/notification/group_1_services_2026.pdf",
+      "sha256": "75f178431acbff6d6572e4874980cfe7576246fca5969281661adfbb3b412dbd",
+      "size_bytes": 1302,
+      "content_type": "application/pdf",
+      "local_path": "data\\remediation_evaluation_notices\\rem_13_tnpsc_group_i_recruitment.pdf"
+    },
+    "rem_14_tnpsc_group_i_hall_ticket_admit.pdf": {
+      "audit_id": "rem_14",
+      "source_id": "src_tnpsc",
+      "authority": "Tamil Nadu Public Service Commission",
+      "title": "Press Release: Release of Hall Ticket / Admit Card for Combined Civil Services Examination I",
+      "source_url": "https://www.tnpsc.gov.in/document/pressrelease/hall_ticket_group_1_2026.pdf",
+      "sha256": "705f112a7f24db44b99239d977bcb5069c225272a12c575ae1ede80dec155e97",
+      "size_bytes": 1266,
+      "content_type": "application/pdf",
+      "local_path": "data\\remediation_evaluation_notices\\rem_14_tnpsc_group_i_hall_ticket_admit.pdf"
+    },
+    "rem_15_tnpsc_departmental_promotion_circular.pdf": {
+      "audit_id": "rem_15",
+      "source_id": "src_tnpsc",
+      "authority": "Tamil Nadu Public Service Commission",
+      "title": "Internal Circular: Limited Departmental Competitive Examination (LDCE) for Section Officers",
+      "source_url": "https://www.tnpsc.gov.in/document/circular/ldce_section_officers_2026.pdf",
+      "sha256": "56bfef48fb559c8e70b60a3054df21ea9b804a2e32a13086dbe88f88b3e1abf8",
+      "size_bytes": 1262,
+      "content_type": "application/pdf",
+      "local_path": "data\\remediation_evaluation_notices\\rem_15_tnpsc_departmental_promotion_circular.pdf"
+    }
+  }
+}

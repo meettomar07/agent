@@ -44,6 +44,9 @@ class FactExtractor:
     VACANCY_PATTERNS = [
         r"(?:total\s*(?:number|no\.?)?\s*of\s*vacancies|number\s*of\s*posts|total\s*posts|tentative\s*vacancies)\s*[:\-–]?\s*([0-9,]+)",
         r"(?:total\s*no\.\s*of\s*vacancies.*?is\s*)([0-9,]+)",
+        r"(?:total\s*vacancies\s*(?:are\s*)?(?:revised|enhanced|increased)\s*from\s*[0-9,]+\s*to\s*)([0-9,]+)",
+        r"(?:total\s*vacancies\s*(?:are\s*)?(?:revised|enhanced|increased)\s*to\s*)([0-9,]+)",
+        r"(?:vacancies\s*(?:are\s*)?enhanced\s*from\s*[0-9,]+\s*to\s*)([0-9,]+)",
         r"(?:vacancies.*?expected\s*to\s*be\s*(?:approximately\s*)?|approximately\s*)([0-9,]+)\s*(?:vacancies|posts)",
         r"([0-9,]+)\s*(?:vacancies|posts)\s*(?:are\s*available|to\s*be\s*filled|tentative)",
         r"(?:vacancies|posts)\s*[:\-–]\s*([0-9,]+)",
@@ -56,25 +59,31 @@ class FactExtractor:
     # Supports both standalone start dates and combined ranges (e.g. "Dates for submission of online applications: 24.06.2026 to 24.07.2026")
     RANGE_DATE_PATTERNS = [
         r"(?:dates?\s*for\s*(?:submission\s*of\s*)?online\s*applications?|online\s*submission\s*of\s*application\s*form[^\n:]*|online\s*application\s*window|application\s*window)\s*[:\-–]?\s*([0-9]{1,2}(?:st|nd|rd|th)?[\/\.\-\s]+[0-9]{1,2}[\/\.\-\s]+[0-9]{4}|[0-9]{1,2}(?:st|nd|rd|th)?\s+[A-Za-z]+\s+[0-9]{4})\s*(?:to|-)\s*([0-9]{1,2}(?:st|nd|rd|th)?[\/\.\-\s]+[0-9]{1,2}[\/\.\-\s]+[0-9]{4}|[0-9]{1,2}(?:st|nd|rd|th)?\s+[A-Za-z]+\s+[0-9]{4})",
+        r"(?:applications?\s*(?:are\s*)?invited\s*(?:online\s*)?from\s*)([0-9]{1,2}(?:st|nd|rd|th)?[\/\.\-][0-9]{1,2}[\/\.\-][0-9]{4}|[0-9]{1,2}(?:st|nd|rd|th)?\s+[A-Za-z]+\s+[0-9]{4})\s*(?:to|-)\s*([0-9]{1,2}(?:st|nd|rd|th)?[\/\.\-][0-9]{1,2}[\/\.\-][0-9]{4}|[0-9]{1,2}(?:st|nd|rd|th)?\s+[A-Za-z]+\s+[0-9]{4})",
     ]
 
     START_DATE_PATTERNS = [
-        r"(?:opening\s*date|start\s*date|date\s*of\s*commencement(?:\s*of\s*on-?line\s*application)?|date\s*of\s*notification|application\s*starts|online\s*registration\s*from|submission\s*of\s*online\s*application\s*starts?)\s*[:\-–]?\s*([0-9]{1,2}(?:st|nd|rd|th)?[\/\.\-][0-9]{1,2}[\/\.\-][0-9]{4}|[0-9]{1,2}(?:st|nd|rd|th)?\s+[A-Za-z]+\s+[0-9]{4})",
+        r"(?:opening\s*date[^\n:]{0,50}?|start\s*date|date\s*of\s*commencement(?:\s*of\s*on-?line\s*application)?|date\s*of\s*notification|application\s*starts|online\s*registration\s*from|submission\s*of\s*online\s*application\s*starts?)\s*[:\-–]?\s*([0-9]{1,2}(?:st|nd|rd|th)?[\/\.\-][0-9]{1,2}[\/\.\-][0-9]{4}|[0-9]{1,2}(?:st|nd|rd|th)?\s+[A-Za-z]+\s+[0-9]{4})",
         r"(?:opening\s*date|start\s*date|date\s*of\s*commencement|date\s*of\s*notification)\s*[\r\n]+\s*([0-9]{1,2}(?:st|nd|rd|th)?[\/\.\-][0-9]{1,2}[\/\.\-][0-9]{4}|[0-9]{1,2}(?:st|nd|rd|th)?\s+[A-Za-z]+\s+[0-9]{4})",
     ]
 
     END_DATE_PATTERNS = [
-        r"(?:closing\s*date|last\s*date(?:\s*(?:and\s*time)?\s*for\s*(?:submission|receipt|apply|applying|payment))?(?:\s*of\s*(?:examination\s*fee|on-?line\s*application|applications?))?|application\s*ends)\s*[:\-–]?\s*([0-9]{1,2}(?:st|nd|rd|th)?[\/\.\-][0-9]{1,2}[\/\.\-][0-9]{4}|[0-9]{1,2}(?:st|nd|rd|th)?\s+[A-Za-z]+\s+[0-9]{4})",
+        r"(?:(?:last|closing)\s*date[^\n:]{0,60}?(?:extended|rescheduled)\s*(?:up\s*)?to\s*)([0-9]{1,2}(?:st|nd|rd|th)?[\/\.\-][0-9]{1,2}[\/\.\-][0-9]{4}|[0-9]{1,2}(?:st|nd|rd|th)?\s+[A-Za-z]+\s+[0-9]{4})",
+        r"(?:closing\s*date[^\n:]{0,50}?|last\s*date(?:\s*(?:and\s*time)?\s*for\s*(?:submission|receipt|apply|applying|payment))?(?:\s*of\s*(?:examination\s*fee|on-?line\s*application|applications?))?|application\s*ends)\s*(?:is\s*|[:\-–]\s*)([0-9]{1,2}(?:st|nd|rd|th)?[\/\.\-][0-9]{1,2}[\/\.\-][0-9]{4}|[0-9]{1,2}(?:st|nd|rd|th)?\s+[A-Za-z]+\s+[0-9]{4})",
         r"(?:applications?\s*(?:can\s*be\s*filled|to\s*be\s*submitted)\s*up\s*to|last\s*date\s*for\s*receipt\s*of\s*applications?)\s*[:\-–]?\s*([0-9]{1,2}(?:st|nd|rd|th)?[\/\.\-][0-9]{1,2}[\/\.\-][0-9]{4}|[0-9]{1,2}(?:st|nd|rd|th)?\s+[A-Za-z]+\s+[0-9]{4})",
         r"(?:closing\s*date|last\s*date(?:\s*and\s*time\s*for\s*submission\s*of\s*online\s*application)?)\s*[\r\n]+\s*([0-9]{1,2}(?:st|nd|rd|th)?[\/\.\-][0-9]{1,2}[\/\.\-][0-9]{4}|[0-9]{1,2}(?:st|nd|rd|th)?\s+[A-Za-z]+\s+[0-9]{4})",
-        r"last\s*date[^\n:]{0,90}?(?:submission|receipt|apply|application|fee)[^\n:]{0,40}[:\-–]\s*([0-9]{1,2}[\/\.\-][0-9]{1,2}[\/\.\-][0-9]{4}|[0-9]{1,2}(?:st|nd|rd|th)?\s+[A-Za-z]+\s+[0-9]{4})",
+        r"last\s*date[^\n:]{0,90}?(?:submission|receipt|apply|application|fee)[^\n:]{0,60}?(?:\s*is\s*|[:\-–]\s*)([0-9]{1,2}[\/\.\-][0-9]{1,2}[\/\.\-][0-9]{4}|[0-9]{1,2}(?:st|nd|rd|th)?\s+[A-Za-z]+\s+[0-9]{4})",
     ]
 
     EXAM_DATE_PATTERNS = [
-        r"(?:Date\s*(?:and\s*Time\s*)?of\s*(?:[A-Za-z\(\)\/\s]{0,40})?Examination|Examination\s*Schedule|Schedule\s*of\s*Examination)[^\n\r]*[\r\n]+(?:[^\n\r]*[\r\n]+){0,10}?\s*([0-9]{1,2}(?:st|nd|rd|th)?[\/\.\-][0-9]{1,2}[\/\.\-][0-9]{4}|[0-9]{1,2}(?:st|nd|rd|th)?\s+[A-Za-z]+\s+[0-9]{4})",
-        r"(?:date\s*(?:and\s*time\s*)?of\s*(?:entrance\s*|preliminary\s*)?examination|examination\s*date|exam\s*date|schedule\s*of\s*(?:tier[- ]?[a-zA-Z0-9]+\s*)?(?:\([^\)]+\)\s*)?(?:examination)?|cbt\s*date|schedule\s*of\s*cbt)\s*[:\-–]?\s*([0-9]{1,2}(?:st|nd|rd|th)?[\/\.\-][0-9]{1,2}[\/\.\-][0-9]{4}|[0-9]{1,2}(?:st|nd|rd|th)?\s+[A-Za-z]+\s+[0-9]{4}(?:\s*(?:to|-)\s*[0-9]{1,2}(?:st|nd|rd|th)?\s+[A-Za-z]+\s+[0-9]{4})?|(?:[A-Za-z]+[- ][A-Za-z]+,?\s+[0-9]{4})|(?:[A-Za-z]+\s+[0-9]{4})|(?:(?:[0-9]{1,2}[,\s]+)+(?:and\s+)?[0-9]{1,2}\s+[A-Za-z]+\s+[0-9]{4}))",
-        r"(?:examination|cbt|test)\s*(?:is\s*)?(?:(?:scheduled\s*)?to\s*be\s*held|conducted.*?from|held)\s*(?:on|from)\s*([0-9]{1,2}(?:st|nd|rd|th)?[\/\.\-][0-9]{1,2}[\/\.\-][0-9]{4}|[0-9]{1,2}(?:st|nd|rd|th)?\s+[A-Za-z]+\s+[0-9]{4})\s*(?:(?:to|-)\s*([0-9]{1,2}(?:st|nd|rd|th)?[\/\.\-][0-9]{1,2}[\/\.\-][0-9]{4}|[0-9]{1,2}(?:st|nd|rd|th)?\s+[A-Za-z]+\s+[0-9]{4}))?",
-        r"(?:Date\s*and\s*Time\s*of\s*Examination|Examination\s*Schedule)[^\n\r]*[\r\n]+(?:[^\n\r]*[\r\n]+){1,6}?\s*([0-9]{1,2}[\/\.\-][0-9]{1,2}[\/\.\-][0-9]{4})",
+        # 1. Header or Label followed by colon or dash
+        r"(?:Dates?\s*(?:and\s*Time\s*)?of\s*(?:[A-Za-z\(\)\/\s]{0,40})?Examination|Revised\s*(?:examination\s*)?schedule|Schedule\s*of\s*(?:tier[- ]?[a-zA-Z0-9]+\s*)?(?:\([^\)]+\)\s*)?(?:[A-Za-z0-9\(\)\/\s\-]{0,40})?Examination|Schedule\s*of\s*(?:tier[- ]?[a-zA-Z0-9]+\s*)?(?:\([^\)]+\)\s*)?|Examination\s*Schedule|Time\s*Table|Schedule\s*of\s*CBT|CBT\s*Date|Date\s*of\s*Screening\s*Examination)\s*[\):\-–]?\s*([0-9]{1,2}(?:st|nd|rd|th)?[\/\.\-][0-9]{1,2}[\/\.\-][0-9]{4}|[0-9]{1,2}(?:st|nd|rd|th)?\s+(?:to|-)\s+[0-9]{1,2}(?:st|nd|rd|th)?\s+[A-Za-z]+\s+[0-9]{4}|[0-9]{1,2}(?:st|nd|rd|th)?\s+[A-Za-z]+\s+[0-9]{4}(?:\s*(?:to|-)\s*[0-9]{1,2}(?:st|nd|rd|th)?\s+[A-Za-z]+\s+[0-9]{4})?|(?:[0-9]{1,2}(?:st|nd|rd|th)?\s+[A-Za-z]+\s+[0-9]{4}\s+and\s+[0-9]{1,2}(?:st|nd|rd|th)?\s+[A-Za-z]+\s+[0-9]{4})|(?:(?:[0-9]{1,2}(?:st|nd|rd|th)?[,\s]+)+(?:and\s+)?[0-9]{1,2}(?:st|nd|rd|th)?\s+[A-Za-z]+\s+[0-9]{4})|(?:[A-Za-z]+,?\s+[0-9]{4})|(?:[A-Za-z]+[- ][A-Za-z]+,?\s+[0-9]{4}))",
+        # 2. Prose sentence: "The Examination will be held on ...", "is scheduled to be held on ...", "conducted from ..."
+        r"(?:The\s+)?(?:Examination|CBT|Test|Screening\s+test)\s*(?:will\s*be\s*held\s*on|is\s*(?:scheduled\s*)?to\s*be\s*held\s*on|to\s*be\s*conducted\s*on|conducted\s*from|commencing\s*from|held\s*on)\s*([0-9]{1,2}(?:st|nd|rd|th)?[\/\.\-][0-9]{1,2}[\/\.\-][0-9]{4}|[0-9]{1,2}(?:st|nd|rd|th)?\s+(?:to|-)\s+[0-9]{1,2}(?:st|nd|rd|th)?\s+[A-Za-z]+\s+[0-9]{4}|[0-9]{1,2}(?:st|nd|rd|th)?\s+[A-Za-z]+\s+[0-9]{4}(?:\s*(?:to|-)\s*[0-9]{1,2}(?:st|nd|rd|th)?\s+[A-Za-z]+\s+[0-9]{4})?|(?:[0-9]{1,2}(?:st|nd|rd|th)?\s+[A-Za-z]+\s+[0-9]{4}\s+and\s+[0-9]{1,2}(?:st|nd|rd|th)?\s+[A-Za-z]+\s+[0-9]{4})|(?:(?:[0-9]{1,2}(?:st|nd|rd|th)?[,\s]+)+(?:and\s+)?[0-9]{1,2}(?:st|nd|rd|th)?\s+[A-Za-z]+\s+[0-9]{4})|(?:[A-Za-z]+,?\s+[0-9]{4}))",
+        # 3. Multiline header: "Date of Examination ... \n 15.03.2027"
+        r"(?:Dates?\s*(?:and\s*Time\s*)?of\s*(?:[A-Za-z\(\)\/\s]{0,40})?Examination|Examination\s*Schedule|Schedule\s*of\s*Examination|Schedule\s*of\s*CBT)[^\n\r]*[\r\n]+(?:[^\n\r]*[\r\n]+){0,10}?\s*([0-9]{1,2}(?:st|nd|rd|th)?[\/\.\-][0-9]{1,2}[\/\.\-][0-9]{4}|[0-9]{1,2}(?:st|nd|rd|th)?\s+[A-Za-z]+\s+[0-9]{4}|[0-9]{1,2}(?:st|nd|rd|th)?\s+(?:to|-)\s+[0-9]{1,2}(?:st|nd|rd|th)?\s+[A-Za-z]+\s+[0-9]{4}|(?:[A-Za-z]+,?\s+[0-9]{4}))",
+        # 4. Standard fallback for simple "examination date: DD/MM/YYYY"
+        r"(?:examination\s*date|exam\s*date)\s*[:\-–]?\s*([0-9]{1,2}[\/\.\-][0-9]{1,2}[\/\.\-][0-9]{4}|[0-9]{1,2}(?:st|nd|rd|th)?\s+[A-Za-z]+\s+[0-9]{4})",
     ]
 
     AGE_PATTERNS = [
@@ -83,7 +92,8 @@ class FactExtractor:
         r"(?:attained\s*the\s*age\s*of\s*([0-9]{2})\s*years?\s*and\s*must\s*not\s*have\s*(?:crossed|completed|attained)\s*(?:the\s*age\s*of\s*)?([0-9]{2})\s*years?(?:\s*(?:as\s*on|on)\s*([A-Za-z0-9\/.\-,\s]+))?)",
         r"(?:age\s*limit|age\s*criteria|prescribed\s*age)\s*[:\--]?\s*([0-9]{2}\s*(?:to|-)\s*[0-9]{2}\s*years?(?:[^\.\n]*?(?:as\s*on\s*[0-9\/.\-]+)?)?)",
         r"(?:between\s*([0-9]{2}\s*(?:to|and)\s*[0-9]{2}\s*years))",
-        r"(?:not\s*exceeding\s*([0-9]{2})\s*years(?:\s*as\s*on\s*[^\.\n]+)?)",
+        r"(?:not\s*exceeding\s*([0-9]{2}\s*years(?:\s*as\s*on\s*[^\.\n]+)?))",
+        r"(?:age\s*limit\s*[:\-–]\s*)(Not\s*exceeding\s*[0-9]{2}\s*years[^\.\n]*)",
         r"(?:not\s*more\s*than\s*([0-9]{2})\s*years(?:\s*as\s*on\s*[^\.\n]+)?)",
         r"(?:maximum\s*age\s*(?:limit)?\s*[:\-]?\s*([0-9]{2})\s*years)",
         r"(?:minimum\s*age\s*[:\-]?\s*([0-9]{2})\s*years?(?:.*?(?:maximum\s*age\s*[:\-]?\s*([0-9]{2})\s*years?))?)",
@@ -106,10 +116,18 @@ class FactExtractor:
     ]
 
     QUALIFICATION_PATTERNS = [
+        # Explicit Qualifications: or Eligibility: line header
+        r"(?:^|[\r\n])\s*(?:Qualifications?|Eligibility)\s*[:\-–]\s*([^\n\r]+)",
+        # SSLC
         r"(?:minimum\s+general\s+educational\s+qualification\s+means,?\s*(?:a\s+pass\s+in\s+the\s+)?)(Secondary\s+School\s+Leaving\s+Certificate\s+\(SSLC\)|SSLC)",
-        r"(?:educational\s*and\s*technical\s*qualification|educational\s*qualification|minimum\s*qualification|essential\s*qualification|prescribed\s*qualification|eligibility\s*criteria)\s*[:\-]?\s*([^.\n]+?(?:Degree|Graduate|Graduation|10\+2|Matriculation|Diploma|Master|B\.E|B\.Tech|Bachelor|Secondary\s*School|SSLC)[^.\n]*)",
-        r"(?:educational\s*qualification|essential\s*qualification|minimum\s*qualification|eligibility\s*criteria)[^\n\r]*[\r\n]+(?:[^\n\r]*[\r\n]+){0,3}?[^\n\r]*?(Bachelor[']?s\s*Degree[^\.\n]*|Master[']?s\s*Degree[^\.\n]*|Diploma[^\.\n]*|Degree[^\.\n]*|Graduation[^\.\n]*|10\+2[^\.\n]*|Matriculation[^\.\n]*)",
-        r"(?:Must\s*possess\s*Minimum\s*General\s*Educational\s*Qualification[^.\n]*)",
+        # Educational qualification followed by details
+        r"(?:educational\s*and\s*technical\s*qualification|educational\s*qualification|minimum\s*qualification|essential\s*qualification|prescribed\s*qualification|eligibility\s*criteria)\s*(?:is\s*(?:amended|modified)\s*as\s*(?:under)?\s*)?[:\-–]?\s*([^.\n]+?(?:Degree|Graduate|Graduation|10\+2|12th|Matriculation|Diploma|Master|B\.E|B\.Tech|Bachelor|Secondary\s*School|SSLC|MBBS|Law|LLB|Ayurvedic|Unani|MD|MS|DNB|enrolled\s*in)[^.\n]*)",
+        # Multiline qualification
+        r"(?:educational\s*qualification|essential\s*qualification|minimum\s*qualification|eligibility\s*criteria)[^\n\r]*[\r\n]+(?:[^\n\r]*[\r\n]+){0,3}?[^\n\r]*?(Bachelor[']?s\s*Degree[^\.\n]*|Master[']?s\s*Degree[^\.\n]*|Diploma[^\.\n]*|Degree[^\.\n]*|Graduation[^\.\n]*|10\+2[^\.\n]*|12th[^\.\n]*|Matriculation[^\.\n]*|MBBS[^\.\n]*|Law[^\.\n]*)",
+        # Standalone "Must possess..."
+        r"(?:Must\s*possess\s*(?:a\s*)?(?:Bachelor[']?s\s*Degree|Master[']?s\s*Degree|Degree|Diploma|Minimum\s*General\s*Educational\s*Qualification)[^.\n]*)",
+        # Departmental circular condition
+        r"(?:Only\s+departmental\s+candidates\s+serving\s+regularly[^.\n]*)",
         r"(?:posts\s*\(Educational\s*Qualifications-wise\s*viz\.\s*([^.\n\)]+)\))",
     ]
 
@@ -531,7 +549,7 @@ class FactExtractor:
         first_page_text = pages[0]["text"][:600].lower() if pages else ""
         title_lower = notice_title.lower()
         is_result_or_key = any(
-            k in title_lower or k in first_page_text
+            k in title_lower or (k in first_page_text and k not in ("admit card", "hall ticket"))
             for k in [
                 "written result", "final result", "declaration of result",
                 "marks write-up", "shortlist", "answer key", "admit card",
@@ -824,7 +842,7 @@ class FactExtractor:
                     if m:
                         val_str = " ".join(m.group(1).split()) if (len(m.groups()) >= 1 and m.group(1)) else " ".join(m.group(0).split())
                         val_str = re.sub(r"^(?:means,?\s*|a\s+pass\s+in\s+(?:the\s+)?)+", "", val_str, flags=re.I).strip()
-                        if any(b in val_str.lower() for b in ["order of studies", "order of study", "pattern of study", "in the order of", "degree : institution : class", "higher than the"]):
+                        if any(b in val_str.lower() for b in ["order of studies", "order of study", "pattern of study", "in the order of", "degree : institution : class", "higher than the", "emergency commissioned", "short service commissioned", "for age relaxation", "age relaxation"]):
                             continue
                         snippet = text[max(0, m.start() - 20): min(len(text), m.end() + 30)].strip()
                         facts.append(
