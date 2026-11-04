@@ -3,16 +3,16 @@
 import sqlite3
 from contextlib import contextmanager
 from pathlib import Path
-from typing import Generator, Optional
+from typing import Generator, Optional, Union
 from testkart_intelligence.config import settings
 
 
 SCHEMA_PATH = Path(__file__).resolve().parent / "schema.sql"
 
 
-def get_connection(db_path: Optional[Path] = None) -> sqlite3.Connection:
+def get_connection(db_path: Optional[Union[Path, str]] = None) -> sqlite3.Connection:
     """Create a configured sqlite3 connection with WAL mode and foreign keys enabled."""
-    target_path = db_path or settings.DATABASE_PATH
+    target_path = Path(db_path) if db_path else settings.DATABASE_PATH
     target_path.parent.mkdir(parents=True, exist_ok=True)
 
     conn = sqlite3.connect(
@@ -28,7 +28,7 @@ def get_connection(db_path: Optional[Path] = None) -> sqlite3.Connection:
 
 
 @contextmanager
-def get_db(db_path: Optional[Path] = None) -> Generator[sqlite3.Connection, None, None]:
+def get_db(db_path: Optional[Union[Path, str]] = None) -> Generator[sqlite3.Connection, None, None]:
     """Context manager for managing transactions with automatic commit/rollback."""
     conn = get_connection(db_path)
     try:
@@ -41,7 +41,7 @@ def get_db(db_path: Optional[Path] = None) -> Generator[sqlite3.Connection, None
         conn.close()
 
 
-def init_db(db_path: Optional[Path] = None) -> None:
+def init_db(db_path: Optional[Union[Path, str]] = None) -> None:
     """Initialize database tables and indexes from schema.sql."""
     with get_db(db_path) as conn:
         # Migration: Ensure canonical_notices has triage & recency columns if table was created earlier

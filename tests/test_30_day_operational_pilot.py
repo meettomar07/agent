@@ -18,6 +18,7 @@ import time
 from unittest.mock import MagicMock, patch
 import uuid
 from datetime import datetime, timezone, timedelta
+import psutil
 
 import httpx
 import pymupdf
@@ -825,8 +826,14 @@ def test_cross_process_duplicate_scheduler_lock(pilot_db, tmp_path):
     # Clear in-memory instance reference to strictly test cross-process lock file
     ScanScheduler._active_instance = None
 
-    # Patch psutil to report the foreign PID as live
-    with patch("psutil.pid_exists", return_value=True):
+    # Patch psutil to report the foreign PID as an active scheduler process
+    mock_proc = MagicMock()
+    mock_proc.is_running.return_value = True
+    mock_proc.status.return_value = psutil.STATUS_RUNNING
+    mock_proc.cmdline.return_value = ["python", "-m", "testkart_intelligence.cli", "scheduler"]
+    mock_proc.name.return_value = "python.exe"
+
+    with patch("psutil.pid_exists", return_value=True), patch("psutil.Process", return_value=mock_proc):
         with pytest.raises(SchedulerAlreadyRunningError) as exc_info:
             sched2.start()
         assert "already running in another process" in str(exc_info.value)

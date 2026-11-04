@@ -2,10 +2,13 @@
 
 import uuid
 import time
+import logging
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Union
 import sqlite3
+
+logger = logging.getLogger("testkart.discovery")
 
 from testkart_intelligence.database.connection import get_db
 from testkart_intelligence.discovery.fetcher import SafeFetcher, FetchError, SoftErrorPageDetected
@@ -20,12 +23,12 @@ class DiscoveryEngine:
 
     def __init__(
         self,
-        db_path: Optional[Path] = None,
+        db_path: Optional[Union[Path, str]] = None,
         fetcher: Optional[SafeFetcher] = None,
     ):
-        self.db_path = db_path
+        self.db_path = Path(db_path) if db_path else None
         self.fetcher = fetcher or SafeFetcher()
-        self.registry = SourceRegistryService(db_path)
+        self.registry = SourceRegistryService(self.db_path)
         self.recover_orphaned_scans()
         self.check_and_record_missed_windows()
 
@@ -82,8 +85,8 @@ class DiscoveryEngine:
                         row = conn.execute(
                             "SELECT value FROM system_metadata WHERE key = 'pilot_start_time'"
                         ).fetchone()
-                    except Exception:
-                        pass
+                    except Exception as meta_err:
+                        logger.debug("Could not read system_metadata.pilot_start_time: %s", meta_err)
                     if row and row["value"]:
                         start_dt = datetime.fromisoformat(row["value"])
                     else:
@@ -92,8 +95,8 @@ class DiscoveryEngine:
                         ).fetchone()
                         if earliest_row and earliest_row["earliest"]:
                             start_dt = datetime.fromisoformat(earliest_row["earliest"])
-            except Exception:
-                pass
+            except Exception as exc:
+                logger.warning("Could not determine pilot start time for missed window check: %s", exc)
 
         if start_dt is None:
             return 0
@@ -162,8 +165,9 @@ class DiscoveryEngine:
                                 ),
                             )
                             missed_count += 1
-        except Exception:
-            return 0
+        except Exception as exc:
+            logger.error("Failed recording missed scan windows: %s", exc, exc_info=True)
+            return missed_count
 
         return missed_count
 
