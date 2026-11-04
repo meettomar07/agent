@@ -155,12 +155,28 @@ def cmd_metrics(args):
     print("=============================================================\n")
 
 
+def cmd_doctor(args):
+    """Run read-only system diagnostic and health checks."""
+    from testkart_intelligence.diagnostics import DiagnosticChecker, format_diagnostic_report
+    checker = DiagnosticChecker(db_path=args.db)
+    results = checker.run_all_checks()
+    report = format_diagnostic_report(results)
+    print(report)
+    if not results.get("all_passed"):
+        sys.exit(1)
+
+
 def main():
     parser = argparse.ArgumentParser(
         prog="testkart",
         description="Testkart Government Exam Intelligence System",
     )
     subparsers = parser.add_subparsers(dest="command", required=True)
+
+    # doctor
+    p_doc = subparsers.add_parser("doctor", help="Run read-only system diagnostic and health checks")
+    p_doc.add_argument("--db", help="Path to database (defaults to configured TESTKART_DATABASE_PATH)")
+    p_doc.set_defaults(func=cmd_doctor)
 
     # init
     p_init = subparsers.add_parser("init", help="Initialize database and seed official sources")
