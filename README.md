@@ -15,19 +15,21 @@ A local-first, multi-agent intelligence and publishing platform for **Testkart**
 
 1. [Executive Summary & Core Philosophy](#1-executive-summary--core-philosophy)
 2. [Current System Status & Key Metrics](#2-current-system-status--key-metrics)
-3. [Architectural Overview & 7 Pipeline Stages](#3-architectural-overview--7-pipeline-stages)
-4. [Safety Invariants & Non-Negotiable Guardrails](#4-safety-invariants--non-negotiable-guardrails)
-5. [Repository Structure & Data Layout](#5-repository-structure--data-layout)
-6. [Quickstart & Onboarding Guide](#6-quickstart--onboarding-guide)
-7. [Comprehensive CLI Reference](#7-comprehensive-cli-reference)
-8. [Editorial Review Dashboard User Guide](#8-editorial-review-dashboard-user-guide)
-9. [Official Sources Registry (12 Authorized Portals)](#9-official-sources-registry-12-authorized-portals)
-10. [Scheduler & Windows Process Lifecycle](#10-scheduler--windows-process-lifecycle)
-11. [Database Schema & Data Model Reference](#11-database-schema--data-model-reference)
-12. [Testing, Verification & Quality Gates](#12-testing-verification--quality-gates)
-13. [Operational Runbook & Troubleshooting](#13-operational-runbook--troubleshooting)
-14. [Future Production Roadmap & Hand-off Checklist](#14-future-production-roadmap--hand-off-checklist)
-15. [Documentation Index & References](#15-documentation-index--references)
+3. [Technology Stack, Language Specifications & Dependencies](#3-technology-stack-language-specifications--dependencies)
+4. [Environment Configuration Reference (.env)](#4-environment-configuration-reference-env)
+5. [Architectural Overview & 7 Pipeline Stages](#5-architectural-overview--7-pipeline-stages)
+6. [Safety Invariants & Non-Negotiable Guardrails](#6-safety-invariants--non-negotiable-guardrails)
+7. [Repository Structure & Data Layout](#7-repository-structure--data-layout)
+8. [Quickstart & Onboarding Guide](#8-quickstart--onboarding-guide)
+9. [Comprehensive CLI Reference](#9-comprehensive-cli-reference)
+10. [Editorial Review Dashboard User Guide](#10-editorial-review-dashboard-user-guide)
+11. [Official Sources Registry (12 Authorized Portals)](#11-official-sources-registry-12-authorized-portals)
+12. [Scheduler & Windows Process Lifecycle](#12-scheduler--windows-process-lifecycle)
+13. [Database Schema & Data Model Reference](#13-database-schema--data-model-reference)
+14. [Testing, Verification & Quality Gates](#14-testing-verification--quality-gates)
+15. [Operational Runbook & Troubleshooting](#15-operational-runbook--troubleshooting)
+16. [Future Production Roadmap & Hand-off Checklist](#16-future-production-roadmap--hand-off-checklist)
+17. [Documentation Index & References](#17-documentation-index--references)
 
 ---
 
@@ -60,7 +62,102 @@ Government examination candidates in India frequently suffer from misinformation
 
 ---
 
-## 3. Architectural Overview & 7 Pipeline Stages
+## 3. Technology Stack, Language Specifications & Dependencies
+
+### Programming Language & Runtime Specifications
+
+- **Language:** **Python 3.11+** (Core development and acceptance testing verified on **CPython 3.13.13 64-bit**).
+- **Target OS:** Windows 10/11 (64-bit), Linux (Ubuntu 22.04 LTS+), macOS (12+).
+- **C Runtime Requirements (Windows):** Microsoft Visual C++ 2015–2022 Redistributable (x64) is required for PyMuPDF (`fitz`), WinRT, and ONNX Runtime native DLLs.
+- **CPython 3.13 Windows `_asyncio` Compatibility Patch:**
+  > [!NOTE]
+  > Under CPython 3.13 on Windows, the C-accelerated `_asyncio` extension module contains an upstream access violation bug when invoked in specific subprocess and event loop contexts. The CLI entrypoint in `testkart_intelligence/cli.py` applies a zero-overhead guard on startup:
+  > ```python
+  > if sys.platform == "win32" and sys.version_info >= (3, 13):
+  >     sys.modules["_asyncio"] = None
+  > ```
+  > This safely forces Python to use the standard pure-Python `asyncio` event loop implementation, eliminating crashes while maintaining full async performance.
+
+### Complete Dependencies Breakdown
+
+All dependencies are locked and managed via `pyproject.toml` and standard wheels:
+
+| Package Category | Library / Wheel | Installed Version | Architectural Purpose & Rationale |
+| :--- | :--- | :--- | :--- |
+| **HTTP & Networking** | `httpx` | `0.28.1` | Asynchronous & synchronous HTTP client with redirect chain inspection, proxy controls, and custom SSL contexts. |
+| | `httpcore` | `1.0.9` | Low-level HTTP transport with HTTP/1.1 and connection pooling. |
+| | `certifi` | `2026.10.23` | Up-to-date Mozilla CA certificate bundle for secure HTTPS verification. |
+| **Document & Web Parsing** | `pymupdf` (`fitz`) | `2.0` | High-speed C-native PDF text extraction, rotation detection, font inspection, and visual block layout reconstruction. |
+| | `beautifulsoup4` | `4.15.0` | Robust HTML DOM parsing for government notice tables and listings. |
+| | `soupsieve` | `3.0.4` | Modern CSS selector engine for BeautifulSoup4. |
+| **OCR & Vision Subsystem** | `winocr` | `0.0.15` | Pure local OCR wrapper communicating with Windows native OCR APIs. |
+| | `winrt-Windows.Media.Ocr` | `4!10.0.28000` | Native Windows 10/11 WinRT OCR engine. Zero external cloud API calls or large binary installations. |
+| | `winrt-runtime` | `4.0.3` | Windows Runtime projection engine for Python. |
+| | `numpy` | `2.5.4` | Fast array processing for OCR bounding boxes and layout matrices. |
+| | `onnxruntime` | `1.31.0` | Local machine learning inference engine for document element classification. |
+| **Web API & Dashboard** | `fastapi` | `0.162.0` | High-performance ASGI web framework powering the local editorial dashboard and REST endpoints. |
+| | `starlette` | `1.10.0` | Core ASGI toolkit providing HTTP request/response routing and middleware. |
+| | `uvicorn` | `0.54.0` | Lightning-fast ASGI web server bound strictly to `127.0.0.1`. |
+| | `h11` | `0.16.0` | Pure-Python HTTP/1.1 protocol implementation. |
+| **Data Validation & Settings** | `pydantic` | `2.14.1` | High-speed data validation and serialization for schemas, facts, and models. |
+| | `pydantic-settings` | `2.16.1` | Environment variable parsing and `.env` loading with type coercion. |
+| | `pydantic_core` | `2.50.1` | Rust-based core engine powering Pydantic v2 validation. |
+| **Scheduling & Timezones** | `APScheduler` | `3.11.3` | Robust in-process job scheduler running twice-daily cron jobs with overlap protection. |
+| | `tzdata` / `tzlocal` | `2026.5` / `5.4.5`| Complete IANA timezone database supporting accurate `Asia/Kolkata` calculations. |
+| **Templating & Markdown** | `Jinja2` | `3.1.6` | Deterministic template engine generating factual recruitment blog posts without hallucination risk. |
+| | `MarkupSafe` | `3.0.4` | High-speed string escaping preventing XSS vulnerabilities. |
+| **Process & OS Management**| `psutil` | `7.2.2` | Process table inspection, Windows PID verification, and stale-lock recovery. |
+| | `python-dateutil` | `3.0.0` | Powerful date parser handling diverse Indian date formats (`DD.MM.YYYY`, `DD/MM/YYYY`, text months). |
+| | `python-dotenv` | `1.2.4` | Twelve-factor configuration loading from `.env` files. |
+| **Quality & Test Automation**| `pytest` | `9.1.1` | Industry-standard automated testing framework running the 185-test regression suite. |
+| | `anyio` | `4.15.1` | Structured asynchronous concurrency framework compatible with asyncio. |
+| | `pluggy` / `iniconfig` | `1.7.0` / `2.3.1` | Pytest plugin and configuration parsing utilities. |
+| **CLI & Terminal UX** | `tabulate` | `0.10.0` | Pretty-printed terminal tables for source listings and doctor reports. |
+| | `colorama` | `0.4.6` | Cross-platform ANSI terminal coloring. |
+
+### System & Hardware Requirements
+
+- **RAM:** Minimum 4 GB (8 GB recommended for concurrent PDF parsing and OCR).
+- **Disk Space:** Minimum 500 MB for virtual environment and code; 2 GB recommended for documents cache.
+- **CPU:** 2+ cores (x86_64 or ARM64).
+- **Network:** Outbound HTTPS (port 443) access to verified `.gov.in` and `.nic.in` domains.
+
+---
+
+## 4. Environment Configuration Reference (.env)
+
+All settings are configured using the prefix `TESTKART_` in `.env` (or via OS environment variables). An annotated template is provided at `.env.example`.
+
+| Environment Variable | Type | Default Value | Description & Security Invariant |
+| :--- | :---: | :--- | :--- |
+| **`TESTKART_ALLOW_LIVE_PUBLISHING`**| `bool` | `False` | **NON-NEGOTIABLE:** Must remain `False` in local pilot. When `False`, all publication jobs use `MockPublisher`. |
+| **`TESTKART_ENABLE_EMAIL_NOTIFICATIONS`**| `bool` | `False` | **NON-NEGOTIABLE:** Must remain `False`. Zero external SMTP or email dispatches are attempted. |
+| **`TESTKART_DATABASE_PATH`** | `Path` | `data/real_world_pilot_30day.db` | Primary SQLite database path. WAL mode and foreign keys enforced. |
+| **`TESTKART_DATA_DIR`** | `Path` | `data` | Base directory for database, lock files, and runtime state. |
+| **`TESTKART_DOCUMENTS_DIR`** | `Path` | `data/documents` | Storage directory where downloaded official PDFs/HTMLs are immutably cached. |
+| **`TESTKART_TIMEZONE`** | `str` | `Asia/Kolkata` | IANA timezone for discovery scheduling, scan logs, and timestamping. |
+| **`TESTKART_SCAN_HOURS`** | `list[int]`| `[6, 18]` | Hours of the day (24h format) when discovery scans run (06:00 and 18:00 IST). |
+| **`TESTKART_SCAN_MINUTES`** | `int` | `0` | Minute of the hour for discovery scans (00). |
+| **`TESTKART_ENABLE_BACKGROUND_SCHEDULER`**| `bool` | `False` | Whether the web server daemon automatically starts the APScheduler runner. |
+| **`TESTKART_SERVER_HOST`** | `str` | `127.0.0.1` | Localhost IP interface binding for web server. Rejects non-local connections. |
+| **`TESTKART_SERVER_PORT`** | `int` | `8000` | Port for the local editorial review dashboard and API. |
+| **`TESTKART_OWNER_EMAIL`** | `str` | `meettomar07@gmail.com` | Primary administrative contact and authorized reviewer identity. |
+| **`TESTKART_REQUEST_TIMEOUT_SECONDS`**| `float`| `25.0` | Maximum timeout per HTTP request to handle slow government servers. |
+| **`TESTKART_MAX_RETRIES`** | `int` | `3` | Maximum retry attempts on connection drops or HTTP 5xx responses. |
+| **`TESTKART_BACKOFF_FACTOR`** | `float`| `1.5` | Exponential backoff multiplier between retry attempts. |
+| **`TESTKART_RATE_LIMIT_DELAY_SECONDS`**| `float`| `1.0` | Polite delay between consecutive HTTP requests to the same portal domain. |
+| **`TESTKART_MAX_REDIRECTS`** | `int` | `5` | Maximum redirect hops. Every hop is inspected against the domain allowlist. |
+| **`TESTKART_MAX_DOCUMENT_SIZE_BYTES`**| `int` | `52428800` | Maximum document download size (50 MB) to prevent memory exhaustion DoS. |
+| **`TESTKART_REQUIRE_CONTENT_HASH_VERIFICATION`**| `bool` | `True` | Enforces SHA-256 content-hash verification across article approvals and publishing. |
+| **`TESTKART_APPROVAL_TOKEN_EXPIRY_HOURS`**| `int` | `48` | Lifetime of single-use editorial approval tokens before invalidation. |
+| **`TESTKART_AI_PROVIDER`** | `str` | `deterministic` | Drafting engine: `deterministic` (Jinja2 templates), `gemini`, or `mock`. |
+| **`TESTKART_MIN_QA_PASS_SCORE`** | `float`| `85.0` | Minimum score (0-100) required to pass the automated Quality Assurance gate. |
+| **`TESTKART_MIN_TITLE_LENGTH`** | `int` | `15` | Minimum character length for generated article titles. |
+| **`TESTKART_MAX_TITLE_LENGTH`** | `int` | `120` | Maximum character length for generated article titles. |
+
+---
+
+## 5. Architectural Overview & 7 Pipeline Stages
 
 ```
                                  +-------------------------------------+
@@ -173,7 +270,7 @@ Government examination candidates in India frequently suffer from misinformation
 
 ---
 
-## 4. Safety Invariants & Non-Negotiable Guardrails
+## 6. Safety Invariants & Non-Negotiable Guardrails
 
 These safety invariants are enforced at the architectural, database, and code levels:
 
@@ -186,7 +283,7 @@ These safety invariants are enforced at the architectural, database, and code le
 
 ---
 
-## 5. Repository Structure & Data Layout
+## 7. Repository Structure & Data Layout
 
 ```
 d:\Agent
@@ -224,13 +321,14 @@ d:\Agent
 │   ├── test_pre_production_accuracy_evaluation.py # 33-document held-out accuracy evaluation
 │   └── ...                             # 22 additional unit, integration, and regression suites
 ├── scratch/                             # Benchmarking and offline evaluation scripts
+├── .env.example                         # Annotated environment variable configuration template
 ├── pyproject.toml                       # Python package dependencies and build configuration
 └── README.md                            # Comprehensive project guide (this document)
 ```
 
 ---
 
-## 6. Quickstart & Onboarding Guide
+## 8. Quickstart & Onboarding Guide
 
 ### Prerequisites
 - **Operating System:** Windows 10/11, Linux, or macOS (Windows verified)
@@ -286,7 +384,7 @@ python -m testkart_intelligence.cli scheduler
 
 ---
 
-## 7. Comprehensive CLI Reference
+## 9. Comprehensive CLI Reference
 
 All operational tasks can be managed via `python -m testkart_intelligence.cli <command>`.
 
@@ -306,7 +404,7 @@ All operational tasks can be managed via `python -m testkart_intelligence.cli <c
 
 ---
 
-## 8. Editorial Review Dashboard User Guide
+## 10. Editorial Review Dashboard User Guide
 
 The editorial dashboard provides human-in-the-loop oversight to ensure that no blog post is published without human verification.
 
@@ -333,7 +431,7 @@ The editorial dashboard provides human-in-the-loop oversight to ensure that no b
 
 ---
 
-## 9. Official Sources Registry (12 Authorized Portals)
+## 11. Official Sources Registry (12 Authorized Portals)
 
 All 12 sources are verified official government recruitment bodies and are currently **ENABLED**:
 
@@ -360,14 +458,14 @@ All 12 sources are verified official government recruitment bodies and are curre
 
 ---
 
-## 10. Scheduler & Windows Process Lifecycle
+## 12. Scheduler & Windows Process Lifecycle
 
 The discovery scheduler runs twice daily at **06:00 and 18:00 IST** (Asia/Kolkata).
 
 ### Process Concurrency & PID Locking
 - **Lock File:** Stored at `data/scheduler.lock`. Contains the active process PID, start timestamp, and hostname.
 - **Mutual Exclusion:** Prevents concurrent scheduler instances. Attempting to start a second scheduler raises `SchedulerAlreadyRunningError`.
-- **Windows PID Validation:** On startup, the scheduler verifies if the PID recorded in the lock file corresponds to an active Python process (via Windows `tasklist`).
+- **Windows PID Validation:** On startup, the scheduler verifies if the PID recorded in the lock file corresponds to an active Python process (via Windows `tasklist` and `psutil`).
 - **Stale Lock Recovery:** If the PID does not exist (e.g. system reboot or power outage), the stale lock is safely pruned and logged.
 - **Safe Signal Handling:** Interception of `SIGINT` (Ctrl+C), `SIGTERM`, and Windows `SIGBREAK` ensures the lock is cleanly deleted during process termination without deleting locks owned by other processes.
 
@@ -380,7 +478,7 @@ When the scheduler starts after a period of machine sleep or downtime:
 
 ---
 
-## 11. Database Schema & Data Model Reference
+## 13. Database Schema & Data Model Reference
 
 The SQLite schema (`testkart_intelligence/database/schema.sql`) enforces relational integrity with WAL journal mode and foreign keys enabled:
 
@@ -400,7 +498,7 @@ The SQLite schema (`testkart_intelligence/database/schema.sql`) enforces relatio
 
 ---
 
-## 12. Testing, Verification & Quality Gates
+## 14. Testing, Verification & Quality Gates
 
 The system includes a 185-test regression and acceptance suite.
 
@@ -429,7 +527,7 @@ pytest tests/test_windows_process_lifecycle.py -v
 
 ---
 
-## 13. Operational Runbook & Troubleshooting
+## 15. Operational Runbook & Troubleshooting
 
 ### Common Operational Issues
 
@@ -458,7 +556,7 @@ pytest tests/test_windows_process_lifecycle.py -v
 
 ---
 
-## 14. Future Production Roadmap & Hand-off Checklist
+## 16. Future Production Roadmap & Hand-off Checklist
 
 When transferring ownership or transitioning from supervised local pilot to production:
 
@@ -475,7 +573,7 @@ When transferring ownership or transitioning from supervised local pilot to prod
 
 ---
 
-## 15. Documentation Index & References
+## 17. Documentation Index & References
 
 For deep-dive architecture reviews and experimental logs, refer to these deliverables in the workspace:
 
