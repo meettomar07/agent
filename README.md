@@ -1,337 +1,497 @@
 # Testkart Government Exam Intelligence & Publishing Multi-Agent System
 
-A local-first, multi-agent intelligence platform for **Testkart** that discovers government examination notifications exclusively from verified official Indian government sources, extracts structured facts, validates claims against authoritative evidence, creates publication-ready blog drafts, and provides interfaces for human approval and mock publishing.
+A local-first, multi-agent intelligence and publishing platform for **Testkart** that discovers government examination notifications exclusively from verified official Indian government portals, extracts structured recruitment facts, verifies claims against verbatim document evidence, generates publication-ready blog drafts, and provides an audited editorial review interface for human verification, correction, approval, and mock publishing.
 
 > [!IMPORTANT]
-> **Phase: Local Development Only.**
-> Live publishing to Testkart's website, CMS, or public APIs is strictly disabled in code (`ALLOW_LIVE_PUBLISHING = False`). Real email sending is deferred to a future phase; the system currently utilizes single-use, content-hash-bound tokens and mock publishers for local verification.
+> **Operational Status: Supervised Pilot & Release Candidate Verified.**
+> - **Live Publishing:** Strictly disabled in code and runtime configuration (`ALLOW_LIVE_PUBLISHING = False`). Only `MockPublisher` is permitted.
+> - **External Notifications:** Email dispatch is strictly disabled (`ENABLE_EMAIL_NOTIFICATIONS = False`).
+> - **Localhost Boundary:** The editorial dashboard and API are strictly bound to `127.0.0.1:8000`.
+> - **Zero Fabrication:** The system strictly prohibits synthetic or fabricated pilot scans, notices, or human reviewer actions.
 
 ---
 
-## 1. Architectural Overview
+## Table of Contents
+
+1. [Executive Summary & Core Philosophy](#1-executive-summary--core-philosophy)
+2. [Current System Status & Key Metrics](#2-current-system-status--key-metrics)
+3. [Architectural Overview & 7 Pipeline Stages](#3-architectural-overview--7-pipeline-stages)
+4. [Safety Invariants & Non-Negotiable Guardrails](#4-safety-invariants--non-negotiable-guardrails)
+5. [Repository Structure & Data Layout](#5-repository-structure--data-layout)
+6. [Quickstart & Onboarding Guide](#6-quickstart--onboarding-guide)
+7. [Comprehensive CLI Reference](#7-comprehensive-cli-reference)
+8. [Editorial Review Dashboard User Guide](#8-editorial-review-dashboard-user-guide)
+9. [Official Sources Registry (12 Authorized Portals)](#9-official-sources-registry-12-authorized-portals)
+10. [Scheduler & Windows Process Lifecycle](#10-scheduler--windows-process-lifecycle)
+11. [Database Schema & Data Model Reference](#11-database-schema--data-model-reference)
+12. [Testing, Verification & Quality Gates](#12-testing-verification--quality-gates)
+13. [Operational Runbook & Troubleshooting](#13-operational-runbook--troubleshooting)
+14. [Future Production Roadmap & Hand-off Checklist](#14-future-production-roadmap--hand-off-checklist)
+15. [Documentation Index & References](#15-documentation-index--references)
+
+---
+
+## 1. Executive Summary & Core Philosophy
+
+Government examination candidates in India frequently suffer from misinformation, expired deadlines, hallucinated vacancy numbers, and deceptive clickbait published by unverified coaching blogs and aggregators.
+
+**Testkart Intelligence** solves this with an anti-hallucination, evidence-first multi-agent architecture:
+- **Authoritative Ingestion Only:** Notices are harvested directly from official `.gov.in`, `.nic.in`, or explicitly verified autonomous bodies (e.g. `ibps.in`, `nta.ac.in`). All commercial scrapers, coaching websites, and social media links are blocked at the networking layer.
+- **Verbatim Evidence Linking:** Every single extracted recruitment fact (dates, vacancies, age limit, qualifications, fees) is immutably linked to a verbatim quote snippet and specific page number in the official PDF/HTML document.
+- **Fail-Closed Quality Gates:** If a critical recruitment fact cannot be authoritatively verified or if a PDF is unreadable, automated approval is blocked.
+- **Human-in-the-Loop Supervision:** Human editors review drafts side-by-side with original official documents. Any editorial change generates an immutable version $N+1$, invalidates prior approvals, and logs a tamper-evident audit entry.
+
+---
+
+## 2. Current System Status & Key Metrics
+
+| Metric | Current Status / Value | Verified By |
+| :--- | :--- | :--- |
+| **Release Readiness** | **Phase 3 End-to-End Acceptance Approved** | 10/10 operational scenarios passed |
+| **Automated Test Suite** | **185 passed** / 185 tests (100% green) | `pytest -q` (519s execution) |
+| **Diagnostic Health** | **7 / 7 Suites Passed** (`[PASS]`) | `python -m testkart_intelligence.cli doctor` |
+| **Tracked Canonical Notices** | **1,986 notices** | `data/real_world_pilot_30day.db` |
+| **Recorded Scan Runs** | **8 runs** (1 baseline, 6 missed window detections, 1 live) | Audited scan runs table |
+| **Archived Documents** | **396 files** (26.15 MB) | `data/documents/` local repository |
+| **Active Official Portals** | **12 / 12 portals enabled** | Source registry & security allowlist |
+| **Runtime Environment** | Python 3.13.13 on Windows 10/11 (x64) | Tested on CPython 3.11+ |
+| **Live Publishing State** | **STRICTLY DISABLED (`False`)** | Security assertion & API guardrails |
+| **Notification Dispatch** | **STRICTLY DISABLED (`False`)** | Zero external SMTP/OAuth dispatches |
+
+---
+
+## 3. Architectural Overview & 7 Pipeline Stages
 
 ```
-                                +-----------------------------+
-                                |  Official Government Portals|
-                                |   (.gov.in, .nic.in, etc.)  |
-                                +--------------+--------------+
-                                               |
-                                               v
-                                +-----------------------------+
-                                | 1. Discovery Worker         |
-                                |    - Domain Allowlist Guard |
-                                |    - HTML Listing Parser    |
-                                |    - Multi-Factor Dedupl.   |
-                                +--------------+--------------+
-                                               |
-                                               v
-                                +-----------------------------+
-                                | 2. Extraction Worker        |
-                                |    - PyMuPDF Page Extractor |
-                                |    - Scanned PDF OCR Stub   |
-                                |    - Structured Fact Parser |
-                                +--------------+--------------+
-                                               |
-                                               v
-                                +-----------------------------+
-                                | 3. Verification Agent       |
-                                |    - Verbatim Quote Matcher |
-                                |    - Contradiction Detector |
-                                |    - Immutable Notice Ver.  |
-                                +--------------+--------------+
-                                               |
-                                               v
-                                +-----------------------------+
-                                | 4. Classification Agent     |
-                                |    - Notice Category Match  |
-                                |    - Template Selector      |
-                                +--------------+--------------+
-                                               |
-                                               v
-                                +-----------------------------+
-                                | 5. Writing Agent            |
-                                |    - Deterministic Jinja2   |
-                                |    - Factual Markdown Draft |
-                                |    - Content Hash Binding   |
-                                +--------------+--------------+
-                                               |
-                                               v
-                                +-----------------------------+
-                                | 6. Quality-Assurance Agent  |
-                                |    - Source Link Check      |
-                                |    - Branding Validator     |
-                                |    - Pass/Fail Quality Gate |
-                                +--------------+--------------+
-                                               |
-                                               v
-                                +-----------------------------+
-                                | 7. Approval & Mock Publish  |
-                                |    - Single-Use Hash Tokens |
-                                |    - Replay-Protected Audit |
-                                |    - MockPublisher (Tests)  |
-                                +-----------------------------+
+                                 +-------------------------------------+
+                                 |    12 Official Government Portals   |
+                                 |  (.gov.in, .nic.in, ibps.in, etc.)  |
+                                 +------------------+------------------+
+                                                    |
+                                                    v
+                                 +-------------------------------------+
+                                 | 1. Source Registry & Security Guard |
+                                 |    - Strict Domain Allowlist        |
+                                 |    - Host-Scoped TLS (SECLEVEL=1/2) |
+                                 |    - SSRF & Credential Interception |
+                                 +------------------+------------------+
+                                                    |
+                                                    v
+                                 +-------------------------------------+
+                                 | 2. Discovery Engine & Crawlers      |
+                                 |    - HTML Listing & Table Parsers   |
+                                 |    - SSC Official REST API Parser   |
+                                 |    - SHA-256 Multi-Factor Dedupl.   |
+                                 |    - Corrigenda & Revision Linking  |
+                                 +------------------+------------------+
+                                                    |
+                                                    v
+                                 +-------------------------------------+
+                                 | 3. Document Extraction & OCR Gate   |
+                                 |    - PyMuPDF Page Text Extractor    |
+                                 |    - Visual Layout Row Clusterer    |
+                                 |    - Tabular Multi-Column Extractor |
+                                 |    - Scanned PDF Gate (<50 chars)   |
+                                 +------------------+------------------+
+                                                    |
+                                                    v
+                                 +-------------------------------------+
+                                 | 4. Fact Extractor & Verifier        |
+                                 |    - Dates, Vacancies, Age, Fees    |
+                                 |    - Verbatim Excerpt Matching      |
+                                 |    - Document Page Referencing      |
+                                 |    - Contradiction & Conflict Check |
+                                 +------------------+------------------+
+                                                    |
+                                                    v
+                                 +-------------------------------------+
+                                 | 5. Notice Classifier & Writer       |
+                                 |    - 9-Class Recruitment Classifier |
+                                 |    - Deterministic Jinja2 Templates |
+                                 |    - SHA-256 Content Hash Binding   |
+                                 +------------------+------------------+
+                                                    |
+                                                    v
+                                 +-------------------------------------+
+                                 | 6. Quality Assurance Gate           |
+                                 |    - Missing Fact Detection         |
+                                 |    - Official Link Integrity Check  |
+                                 |    - Lowercase Branding Rule        |
+                                 |    - Strict Score Gate (Min 85.0)   |
+                                 +------------------+------------------+
+                                                    |
+                                                    v
+                                 +-------------------------------------+
+                                 | 7. Local Editorial Dashboard        |
+                                 |    - Side-by-Side Evidence Review   |
+                                 |    - Audited Overrides & Edits      |
+                                 |    - Version Invalidation (vN+1)    |
+                                 |    - Single-Use Hash Tokens         |
+                                 |    - Guarded Mock Publisher         |
+                                 +-------------------------------------+
+```
+
+### Stage Details
+
+1. **Official Source Registry & Security Allowlist (`testkart_intelligence/security/`)**
+   - Validates all outbound network targets against `OFFICIAL_DOMAIN_ALLOWLIST`.
+   - Inspects redirect hops: any destination outside allowlisted domains raises `SecurityValidationError`.
+   - Automatically handles legacy government TLS handshakes by applying OpenSSL `SECLEVEL=1` strictly to allowlisted legacy servers (`ibps.in`, `rrbcdg.gov.in`) while keeping modern `SECLEVEL=2` everywhere else.
+   - Blocks SSRF targets (private 10.x, 192.168.x, 127.x, 169.254.x, and cloud metadata endpoints).
+
+2. **Discovery Engine (`testkart_intelligence/discovery/`)**
+   - Discovers new notices using specialized parsers:
+     - HTML listing parser with soft-404 and error-redirect detection (`FileNotFound.aspx`, `error.aspx`).
+     - Staff Selection Commission official REST API client (`ssc.gov.in/api/general-website/portal/notice-boards`).
+   - Computes canonical URL normalization, advertisement number normalization, and document SHA-256 hashing.
+   - Detects revisions: if a notice URL publishes an updated PDF with a differing hash, an immutable `notice_version` ($v2$) is generated and parent-child corrigendum linkage is created.
+
+3. **Document Extraction & Layout Reconstruction (`testkart_intelligence/extraction/`)**
+   - Uses PyMuPDF (`pymupdf`) for high-fidelity text extraction.
+   - **Rotated & Multi-Column Layouts:** Employs `_reconstruct_layout_lines` to cluster bounding boxes into horizontal visual rows, properly handling pages rotated 90°, 180°, or 270° and multi-column tables.
+   - **Tabular Extraction:** Extracts structured vacancy, post-wise, and category-wise grids via `TableExtractor`.
+   - **Scanned Document Reliability Gate:** Pages with <50 characters of extractable text are tagged as scanned and blocked from automated article drafting until reviewed or OCR-processed.
+
+4. **Fact Extraction & Traceable Verification (`testkart_intelligence/extraction/`)**
+   - Extracts 8 critical recruitment attributes: `application_start_date`, `application_end_date`, `exam_date`, `total_vacancies`, `age_limit`, `eligibility`, `application_fee`, and `salary_pay_scale`.
+   - Verifies each fact against the raw text: checks verbatim snippet occurrence, page number, confidence score, and checks for contradictory date ranges or conflicting vacancy numbers.
+
+5. **Classification & Deterministic Writing (`testkart_intelligence/classification/`, `writing/`)**
+   - Classifies notices into 9 standard categories: `NEW_RECRUITMENT`, `CORRIGENDUM`, `EXAM_DATE_ANNOUNCEMENT`, `ADMIT_CARD`, `ANSWER_KEY`, `RESULT`, `APPLICATION_WINDOW_UPDATE`, `SYLLABUS_PATTERN`, `OTHER_ANNOUNCEMENT`.
+   - Renders factual markdown drafts via deterministic Jinja2 templates.
+   - Computes an immutable SHA-256 `content_hash` across the generated title and markdown body.
+
+6. **Quality Assurance Gate (`testkart_intelligence/writing/qa_agent.py`)**
+   - Runs automated rule checks: document readability, presence of critical recruitment dates, absence of placeholder tokens, correct lowercase `testkart` branding, valid source URLs, and heading fragment rejection.
+   - Computes a QA score (0-100). Drafts scoring below 85.0 or failing critical rules are flagged as `QA_FAILED` and blocked from approval.
+
+7. **Local Editorial Dashboard & Mock Publishing (`testkart_intelligence/api/`)**
+   - A local-first FastAPI interface running on `127.0.0.1:8000`.
+   - Provides side-by-side comparison between the official document evidence and the draft.
+   - Enforces single-use approval tokens, audited overrides with mandatory justification, and concurrency conflict protection (`409 Conflict`).
+   - Mock publishing verifies payload delivery without modifying external systems.
+
+---
+
+## 4. Safety Invariants & Non-Negotiable Guardrails
+
+These safety invariants are enforced at the architectural, database, and code levels:
+
+> [!CAUTION]
+> 1. **Live Publishing is Strictly Disabled:** `settings.ALLOW_LIVE_PUBLISHING = False` is hardcoded in `config.py` and guarded by assertions in `api/routes/publishing.py`. Live API calls to external CMS or web endpoints will immediately raise `RuntimeError`.
+> 2. **External Email Notifications are Disabled:** `settings.ENABLE_EMAIL_NOTIFICATIONS = False`. No outbound SMTP connections or socket calls are permitted during local operation.
+> 3. **Pilot Data Preservation:** The pilot database `data/real_world_pilot_30day.db` contains 1,986 real official notices. Never modify, truncate, or overwrite this database with synthetic test fixtures. All automated tests run against in-memory databases or temporary `tmp_path` copies.
+> 4. **No Fabricated Records:** Scan runs, notices, and human reviewer actions must never be fabricated. Missed scan windows caused by machine downtime are recorded honestly as `MISSED` with zero discovered notices.
+> 5. **Strict Domain Allowlist:** Only verified official domains ending in `.gov.in`, `.nic.in`, or explicitly verified autonomous portal domains (`ibps.in`, `nta.ac.in`) may be requested.
+
+---
+
+## 5. Repository Structure & Data Layout
+
+```
+d:\Agent
+├── data/                                # Local persistent storage (gitignored except seed)
+│   ├── real_world_pilot_30day.db       # Real-world 30-day pilot database (1,986 notices, WAL mode)
+│   ├── testkart.db                     # Default seed database
+│   ├── documents/                      # Local PDF/HTML cache (396 files, 26.15 MB)
+│   ├── validation_notices/             # 33 held-out real official notices for accuracy benchmarking
+│   └── scheduler.lock                  # Transient scheduler PID lock (created only when running)
+├── testkart_intelligence/               # Core application package
+│   ├── api/                            # Local FastAPI editorial dashboard & REST API
+│   │   ├── app.py                      # FastAPI application factory & lifespan
+│   │   └── routes/                     # Dashboard HTML and JSON API endpoints
+│   ├── classification/                 # 9-class notice categorization and triage
+│   ├── database/                       # SQLite connection management & schema migrations
+│   │   ├── connection.py               # Path coercion, WAL mode, foreign key enforcement
+│   │   ├── models.py                   # Pydantic data transfer objects
+│   │   └── schema.sql                  # Full relational DDL (13 tables, indexes)
+│   ├── discovery/                      # Web scraping, SSC API, deduplication engine
+│   ├── editorial/                      # Workflow review, override auditing, metrics
+│   ├── extraction/                     # PDF layout reconstruction, table extraction, facts
+│   ├── publishing/                     # Mock publisher & publishing guardrails
+│   ├── registry/                       # Official portal registry & seed service
+│   ├── scheduler/                      # APScheduler job runner, PID locks, missed window detector
+│   ├── security/                       # Domain allowlist, TLS cipher configuration, input sanitization
+│   ├── writing/                        # Jinja2 factual templates, QA agent, rule engine
+│   ├── cli.py                          # Unified CLI entry point (`python -m testkart_intelligence.cli`)
+│   ├── config.py                       # Pydantic settings & environment defaults
+│   └── diagnostics.py                  # Read-only system doctor (`cli doctor`)
+├── tests/                               # Comprehensive test suite (185 automated tests)
+│   ├── test_cli_doctor.py              # Tests for all 7 diagnostic suites
+│   ├── test_windows_process_lifecycle.py # Normal, Ctrl+C, SIGBREAK, and abrupt shutdown tests
+│   ├── test_release_cb01_cb02_mj01.py  # Path coercion, PID validation, lock cleanup tests
+│   ├── test_end_to_end_product_acceptance.py # 10 mandatory operational acceptance scenarios
+│   ├── test_pre_production_accuracy_evaluation.py # 33-document held-out accuracy evaluation
+│   └── ...                             # 22 additional unit, integration, and regression suites
+├── scratch/                             # Benchmarking and offline evaluation scripts
+├── pyproject.toml                       # Python package dependencies and build configuration
+└── README.md                            # Comprehensive project guide (this document)
 ```
 
 ---
 
-## 2. Source Verification & Allowlist Policy
+## 6. Quickstart & Onboarding Guide
 
-The engine adheres to a strict evidence hierarchy:
-- **Authoritative Evidence:** Only official government recruitment websites (`.gov.in`, `.nic.in`) and officially designated autonomous examination agencies (e.g., `ibps.in`, `nta.ac.in`).
-- **Strictly Prohibited:** Commercial coaching portals (`testbook`, `adda247`), job scrapers (`sarkariresult`, `freejobalert`), social media posts, search snippets, and unverified blogs.
-- **Domain & Redirect Validation:** Every HTTP request and every redirect hop is inspected. Any destination that does not match an allowlisted apex domain or exhibits lookalike patterns (e.g. `upsc-gov.in`, `upsc.com`) is rejected immediately with a `SecurityValidationError`.
-- **Untrusted Input:** All downloaded HTML and PDF documents are treated strictly as untrusted data inputs, never as executable instructions or prompt injection targets.
+### Prerequisites
+- **Operating System:** Windows 10/11, Linux, or macOS (Windows verified)
+- **Python:** Python 3.11, 3.12, or 3.13 (CPython 3.13.13 verified)
+- **Git:** Git 2.40+ installed
 
-### Initial Seed Registry (Representative Central & State Portals)
-The seed registry includes 12 verified official portals across categories:
-- **Central Recruitment:** UPSC (`upsc.gov.in`), SSC (`ssc.gov.in`)
-- **Banking / Finance:** IBPS (`ibps.in`)
-- **Railways:** Railway Recruitment Board Chandigarh (`rrbcdg.gov.in`)
-- **Defence:** Join Indian Army (`joinindianarmy.nic.in`)
-- **Teaching & Education:** National Testing Agency (`nta.ac.in`)
-- **State Public Service Commissions (PSCs):**
-  - Bihar: BPSC (`bpsc.bih.nic.in`)
-  - Uttar Pradesh: UPPSC (`uppsc.up.nic.in`)
-  - Madhya Pradesh: MPPSC (`mppsc.mp.gov.in`)
-  - Karnataka: KPSC (`kpsc.kar.nic.in`)
-  - Tamil Nadu: TNPSC (`tnpsc.gov.in`)
-- **Subordinate Services:** DSSSB (`dsssb.delhi.gov.in`)
-
----
-
-## 3. Technology Stack
-
-- **Runtime:** Python 3.11+ (verified on Python 3.13)
-- **Database:** SQLite with WAL mode, foreign key enforcement, and indexes
-- **Document & Web Parsing:** PyMuPDF (`pymupdf`), BeautifulSoup4 (`bs4`), HTTPX
-- **Data Validation & Settings:** Pydantic v2 & Pydantic-Settings
-- **Scheduling:** APScheduler (Asia/Kolkata timezone, twice-daily cron triggers)
-- **Templates:** Jinja2
-- **Local API & Dashboard:** FastAPI & Uvicorn
-- **Testing:** pytest
-
----
-
-## 4. Setup and Installation
-
-### 1. Clone & Enter Directory
+### Step 1: Environment Setup
 ```powershell
+# Navigate to the repository
 cd d:\Agent
-```
 
-### 2. Install Dependencies
-```powershell
+# Create and activate a Python virtual environment
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+
+# Upgrade pip and install the package in editable mode
+python -m pip install --upgrade pip
 pip install -e .
 ```
-Or install core dependencies directly:
+
+### Step 2: Run Read-Only System Diagnostics
+Before starting any services, verify system health using the `doctor` command:
 ```powershell
-pip install httpx beautifulsoup4 pymupdf pydantic pydantic-settings fastapi uvicorn apscheduler jinja2 pytest python-dateutil
+python -m testkart_intelligence.cli doctor
 ```
+*Expected result:* All 7 diagnostic categories must report `[PASS]`.
 
-### 3. Initialize Database & Seed Official Sources
+### Step 3: Launch the Editorial Review Dashboard
+Start the local FastAPI review dashboard on `http://127.0.0.1:8000`:
 ```powershell
-python -m testkart_intelligence.cli init
+python -m testkart_intelligence.cli serve --host 127.0.0.1 --port 8000
 ```
-This initializes `data/testkart.db` and loads the verified official portals.
+Open your browser to:
+- **Web Dashboard:** [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
+- **Swagger API Docs:** [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
 
----
-
-## 5. CLI Commands
-
-### List Official Sources
+### Step 4: Run a Manual Discovery Scan
+To fetch the latest notices from active official portals:
 ```powershell
-python -m testkart_intelligence.cli sources list
-```
-
-### Enable or Disable a Source
-```powershell
-python -m testkart_intelligence.cli sources disable --code UPSC
-python -m testkart_intelligence.cli sources enable --code UPSC
-```
-
-### Trigger a Manual Discovery Scan
-```powershell
-# Scan all enabled sources
+# Scan all 12 enabled official portals
 python -m testkart_intelligence.cli scan
 
-# Or scan a single specific source
+# Or scan a single specific portal (e.g. UPSC)
 python -m testkart_intelligence.cli scan --source UPSC
 ```
 
-### Display System Status
+### Step 5: Start the Background Scheduler Daemon
+To run the automated twice-daily discovery scheduler (06:00 and 18:00 IST):
 ```powershell
-python -m testkart_intelligence.cli status
+python -m testkart_intelligence.cli scheduler
 ```
+*Note: Press `Ctrl+C` to terminate cleanly. The PID lock in `data/scheduler.lock` will be safely removed.*
 
 ---
 
-## 6. Running Local Web Dashboard & API
+## 7. Comprehensive CLI Reference
 
-Launch the local FastAPI service:
+All operational tasks can be managed via `python -m testkart_intelligence.cli <command>`.
+
+| Command | Subcommand / Options | Description |
+| :--- | :--- | :--- |
+| **`doctor`** | `--db PATH` | Runs read-only diagnostic check across configuration, safety flags, DB integrity, whitelist, lock file, and storage. |
+| **`status`** | *none* | Displays quick operational counts (sources, scans, notices discovered, drafts, QA passed). |
+| **`metrics`** | *none* | Shows cumulative operational metrics, reliability %, uptime %, and mock publication counts. |
+| **`scan`** | `[--source CODE]` | Triggers an immediate discovery scan across all enabled sources or a specific source code. |
+| **`serve`** | `[--host H] [--port P]` | Starts the local Uvicorn web dashboard server (default: `127.0.0.1:8000`). |
+| **`scheduler`**| *none* | Runs the foreground twice-daily scheduler daemon with PID locking and graceful shutdown. |
+| **`sources`** | `list [--enabled-only]` | Lists all registered official government sources, domains, and active statuses. |
+| **`sources`** | `enable --code CODE` | Enables discovery scans for a specified authority (e.g. `--code UPSC`). |
+| **`sources`** | `disable --code CODE`| Disables discovery scans for a specified authority. |
+| **`triage`**  | *none* | Runs discovery quality triage and recency breakdown across all canonical notices. |
+| **`init`**    | *none* | Initializes the database schema and seeds official government portals if empty. |
+
+---
+
+## 8. Editorial Review Dashboard User Guide
+
+The editorial dashboard provides human-in-the-loop oversight to ensure that no blog post is published without human verification.
+
+### Key Views & Navigation
+1. **Overview (`/`):** Summary cards displaying total notices, pending drafts, blocked documents, active sources, and scan health.
+2. **Canonical Notices (`/editorial/notices`):** Search and filter all discovered notices by authority, category, recency, or keyword.
+3. **Draft Articles (`/editorial/articles`):** Review drafts categorized by status (`AWAITING_REVIEW`, `QA_PASSED`, `APPROVED`, `REJECTED`).
+4. **Scan History (`/editorial/scans`):** Audit trail of every scan run, including timestamps, sources checked, notices discovered, and downtime missed windows.
+
+### Side-by-Side Review & Editing (`/editorial/articles/{id}`)
+- **Left Panel (Authoritative Evidence):**
+  - Official source portal URL and download link to the local PDF/HTML document copy.
+  - Document SHA-256 hash.
+  - Extracted facts with verbatim quote snippets, page numbers, and verification status (`VERIFIED`, `CONTRADICTORY`, `MISSING`).
+- **Right Panel (Draft Editor & Markdown Preview):**
+  - Live editable Markdown draft and rendered preview.
+  - QA rule check report with pass/fail reasons.
+  - Actions:
+    - **Approve Draft:** Permitted only when critical facts (dates, vacancies) are verified and QA passes. Generates single-use hash-bound approval token.
+    - **Audited Editorial Override:** If automated extraction missed a fact that the editor sees in the document, the editor can submit an override with a mandatory justification explanation ($\ge 10$ characters).
+    - **Save Edit (vN+1):** Any text change generates version $N+1$, resets status to `DRAFT`, and invalidates prior approvals.
+    - **Reject:** Marks the draft as rejected with recorded reasoning.
+    - **Mock Publish:** Simulates publishing payload delivery for approved articles.
+
+---
+
+## 9. Official Sources Registry (12 Authorized Portals)
+
+All 12 sources are verified official government recruitment bodies and are currently **ENABLED**:
+
+| Code | Authority Name | State / Level | Category | Verified Official Domain | Retrieval |
+| :--- | :--- | :--- | :--- | :--- | :---: |
+| **UPSC** | Union Public Service Commission | Central | Central Recruitment | `www.upsc.gov.in` | HTML / PDF |
+| **SSC** | Staff Selection Commission | Central | Central Recruitment | `ssc.gov.in` | Official REST API |
+| **NTA** | National Testing Agency | Central | Teaching & Eligibility | `nta.ac.in` | HTML / PDF |
+| **IBPS** | Institute of Banking Personnel Selection | Central | Banking Recruitment | `ibps.in` | HTML / Legacy TLS |
+| **RRB_CHD** | Railway Recruitment Board (Chandigarh) | Central | Railway Recruitment | `rrbcdg.gov.in` | HTML / Legacy TLS |
+| **JOIN_ARMY** | Indian Army Recruitment (Join Indian Army) | Central | Defence Recruitment | `joinindianarmy.nic.in` | HTML / PDF |
+| **UPPSC** | Uttar Pradesh Public Service Commission | Uttar Pradesh | State PSC | `uppsc.up.nic.in` | HTML / PDF |
+| **TNPSC** | Tamil Nadu Public Service Commission | Tamil Nadu | State PSC | `www.tnpsc.gov.in` | HTML / PDF |
+| **BPSC** | Bihar Public Service Commission | Bihar | State PSC | `bpsc.bih.nic.in` | HTML / PDF |
+| **MPPSC** | Madhya Pradesh Public Service Commission | Madhya Pradesh | State PSC | `mppsc.mp.gov.in` | HTML / PDF |
+| **KPSC** | Karnataka Public Service Commission | Karnataka | State PSC | `kpsc.kar.nic.in` | HTML / Lenient HTTP |
+| **DSSSB** | Delhi Subordinate Services Selection Board | Delhi | Subordinate Services | `dsssb.delhi.gov.in` | HTML / PDF |
+
+### Adding a New Source Safely
+1. Verify the domain belongs to `.gov.in`, `.nic.in`, or an official statutory body.
+2. Add the apex domain to `OFFICIAL_DOMAIN_ALLOWLIST` in `testkart_intelligence/security/allowlist.py`.
+3. Add the authority code to `ALL_AUTHORIZED_OFFICIAL_SOURCES` in `testkart_intelligence/diagnostics.py` and `APPROVED_SOURCES` in `testkart_intelligence/discovery/engine.py`.
+4. Insert the source record into `official_sources` via `SourceRegistryService`.
+
+---
+
+## 10. Scheduler & Windows Process Lifecycle
+
+The discovery scheduler runs twice daily at **06:00 and 18:00 IST** (Asia/Kolkata).
+
+### Process Concurrency & PID Locking
+- **Lock File:** Stored at `data/scheduler.lock`. Contains the active process PID, start timestamp, and hostname.
+- **Mutual Exclusion:** Prevents concurrent scheduler instances. Attempting to start a second scheduler raises `SchedulerAlreadyRunningError`.
+- **Windows PID Validation:** On startup, the scheduler verifies if the PID recorded in the lock file corresponds to an active Python process (via Windows `tasklist`).
+- **Stale Lock Recovery:** If the PID does not exist (e.g. system reboot or power outage), the stale lock is safely pruned and logged.
+- **Safe Signal Handling:** Interception of `SIGINT` (Ctrl+C), `SIGTERM`, and Windows `SIGBREAK` ensures the lock is cleanly deleted during process termination without deleting locks owned by other processes.
+
+### Downtime Gap Detection (Missed Windows)
+When the scheduler starts after a period of machine sleep or downtime:
+- It checks for scheduled scan windows that were missed while the machine was off.
+- For each missed window, it records an entry in `scan_runs` with `status = 'MISSED'` and `scan_type = 'SCHEDULED'`.
+- It **does not fabricate** scan records or mock discovered notices.
+- The operator can trigger a manual scan (`python -m testkart_intelligence.cli scan`) to safely catch up on new notices.
+
+---
+
+## 11. Database Schema & Data Model Reference
+
+The SQLite schema (`testkart_intelligence/database/schema.sql`) enforces relational integrity with WAL journal mode and foreign keys enabled:
+
+1. `official_sources`: Registry of official government examination portals with status, failure counters, and domains.
+2. `scan_runs`: Audit history of scheduled and manual scan executions (`COMPLETED`, `FAILED`, `MISSED`).
+3. `scan_source_logs`: Granular per-portal execution records, response latency (ms), and error logs.
+4. `canonical_notices`: Canonical identity of examinations, normalized URLs, categories, and triage flags.
+5. `notice_versions`: Immutable document versions storing SHA-256 hashes, local PDF/HTML paths, and raw text.
+6. `extracted_facts`: Traceable facts linked to verbatim document quotes, page numbers, and verification statuses.
+7. `fact_corrections_log`: Audit ledger of all human editor corrections, recording previous values and reasons.
+8. `blog_articles`: Blog drafts with current version IDs, categories, and publication lifecycle statuses.
+9. `article_versions`: Immutable Markdown versions, content hashes, and author attribution.
+10. `qa_results`: Detailed rule-by-rule pass/fail test results, scores, and failure messages.
+11. `approval_records`: Replay-protected approvals with single-use token hashes, reviewer emails, and override logs.
+12. `publishing_jobs`: Publishing attempt records, mock publisher payloads, and published URLs.
+13. `audit_events`: Comprehensive tamper-evident ledger for all significant actions and decisions.
+
+---
+
+## 12. Testing, Verification & Quality Gates
+
+The system includes a 185-test regression and acceptance suite.
+
+### Running Tests
 ```powershell
-uvicorn testkart_intelligence.api.app:app --host 127.0.0.1 --port 8000 --reload
+# Run the complete test suite
+pytest -q
+
+# Run specific test modules
+pytest tests/test_end_to_end_product_acceptance.py -v
+pytest tests/test_cli_doctor.py -v
+pytest tests/test_windows_process_lifecycle.py -v
 ```
 
-Open your browser to:
-- **Web Dashboard:** [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
-- **Interactive Swagger Docs:** [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
-
-Key API Endpoints:
-- `GET /api/status`: Overall system metrics and live publishing guard verification
-- `GET /api/sources`: List official portals and their verification status
-- `POST /api/sources/{source_id}/toggle`: Enable or disable sources
-- `GET /api/scans`: Historical scan run logs with errors and timings
-- `POST /api/scans/run`: Trigger manual discovery scan
-- `GET /api/notices`: Discovered canonical notices
-- `GET /api/notices/{notice_id}`: Notice versions and extracted facts with evidence
-- `GET /api/articles`: Blog article drafts and QA statuses
-- `POST /api/articles/{article_id}/approval-token`: Create single-use approval token
-- `POST /api/approvals/decide`: Submit human approval/rejection decision
-- `POST /api/articles/{article_id}/mock-publish`: Execute mock publisher (guarded)
+### Mandatory Acceptance Scenarios Verified (`test_end_to_end_product_acceptance.py`)
+1. **Standard Recruitment Notice:** Normal end-to-end processing with dates, vacancies, QA pass, approval, and mock publish.
+2. **Missing Application Dates Notice:** Blocks normal approval; requires human clarification or override.
+3. **Contradictory Recruitment Facts Notice:** Detects date or vacancy contradictions; blocks publication.
+4. **Multi-Date Examination Timetable:** Accurately extracts multi-stage schedules without truncation.
+5. **Corrigendum Extending Deadline:** Links corrigendum to parent notice, updates timeline, resets draft.
+6. **Corrigendum Modifying Vacancies:** Updates vacancy numbers and invalidates prior approvals.
+7. **Notice Cancellation:** Overrides generic recruitment templates and formats strict cancellation alert.
+8. **Duplicate Notice Ingestion:** Discards unchanged duplicate notices idempotently using document hashes.
+9. **Corrupt PDF Ingestion:** Handles zero-byte or malformed PDF gracefully without crashing.
+10. **Official Source Unavailable:** Handles portal downtime or 5xx errors; logs failures without aborting scan.
 
 ---
 
-## 7. Testing & Quality Assurance
+## 13. Operational Runbook & Troubleshooting
 
-Run the automated test suite with pytest:
-```powershell
-pytest -v --tb=short
-```
+### Common Operational Issues
 
-The test suite contains **63 automated unit, integration, and regression tests** (100% passing across 10 test modules):
-1. **Security & Domain Allowlist:** Official domain checks, rejection of lookalike and commercial domains (`upsc-gov.in`, `sarkariresult.com`), SSRF IP address rejection, embedded credential blocking, and redirect chain validation.
-2. **Host-Specific TLS & Header Resilience:** Legacy OpenSSL `SECLEVEL=1` ciphers scoped strictly to allowlisted hosts (`ibps.in`, `rrbcdg.gov.in`); modern `SECLEVEL=2` enforced everywhere else. Lenient header fallback for non-compliant government portals (`kpsc.kar.nic.in`).
-3. **Streaming & Size Control:** Streaming chunk consumption enforcing `MAX_DOCUMENT_SIZE_BYTES` upfront to prevent memory exhaustion and DoS bombs.
-4. **Soft-404 Detection:** Detection of error-page redirects (e.g. `FileNotFound.aspx`, `error.aspx`) ensuring failed sources are never misclassified as empty successes.
-5. **Discovery & Deduplication:** HTML table link parsing, advt number detection, URL normalization, new notice detection, unchanged deduplication, and revision detection on document hash change.
-6. **SSC Official REST API:** Automated discovery and attachment parsing for Staff Selection Commission (`ssc.gov.in/api/general-website/portal/notice-boards`).
-7. **Extraction & Verification:** Multi-page PDF text extraction via PyMuPDF, corrupted/empty PDF handling, scanned document fallback interface, fact extraction (multi-date ranges, narrative vacancies, dates, qualifications), and contradiction detection.
-8. **Factual Integrity Remediation:** Strict cancellation precedence over generic keywords, scanned PDF drafting blocks (<50 chars/page), elimination of question counts matched as vacancies, digit requirement in notice numbers, and heading fragment rejection.
-9. **Editorial Review Interface (Stage 6):**
-   - Dashboard views: Newly discovered notices, drafts awaiting review, blocked documents, revisions/corrigenda, approved/rejected drafts, scan health.
-   - Side-by-side evidence inspection: Extracted facts, confidence, verification statuses, verbatim excerpts, PDF page references, document SHA-256 hashes, and safe official portal links.
-   - Draft Editor & Version Invalidation: Markdown editing with live preview, author attribution (`human_editor:<email>`), automatic invalidation of prior approvals upon modification, and new immutable version generation.
-   - Concurrency & Stale Tab Guards: Rejection of edits or approvals submitted against outdated version IDs or mismatched content hashes (`409 Conflict`).
-   - Review Safeguards & Audited Overrides: Hard block on normal approval when critical recruitment facts (dates, vacancies) are unverified or documents are unreadable; audited editorial override requiring recorded justification and editor identity.
-   - Security & XSS Neutralization: Bound strictly to `127.0.0.1`, unauthorized external host/origin rejection, complete HTML escaping, and event handler neutralization.
-   - Live Publishing Guard: `ALLOW_LIVE_PUBLISHING = False` strictly asserted across all editorial actions.
-10. **Revisions & Deadline Changes:** Multi-version notice and article updates, automatic reset of article status to `DRAFT` upon revision, token invalidation on content changes, and corrigenda handling.
-11. **Classification & Writing:** Notice categorisation across 9 categories, Jinja2 factual template generation, lowercase Testkart branding verification.
-12. **Quality Gate:** Category-aware QA agent blocking drafts with missing source links, unverified facts, or heading fragments.
-13. **Approvals & Publishing Guard:** Single-use tokens, replay protection, content-hash binding, token invalidation on content modification, mock publisher idempotency, and strict failsafe assertion that live publishing cannot be triggered.
-14. **Scheduler & Startup Recovery:** Overlap prevention lock, twice-daily cron in Asia/Kolkata timezone, FastAPI endpoint status checks, and automatic recovery of orphaned scans on startup.
-15. **End-to-End Pipeline:** Full 12-step lifecycle from mock portal discovery through extraction, verification, draft creation, QA pass, approval, and mock publishing.
+#### Issue 1: "Scheduler lock file already held" (`SchedulerAlreadyRunningError`)
+- **Cause:** A scheduler process is already running or a previous process was abruptly killed.
+- **Resolution:**
+  1. Check if a scheduler process is active:
+     ```powershell
+     Get-Process python | Select-Object Id, ProcessName
+     ```
+  2. Run `python -m testkart_intelligence.cli doctor` — the diagnostic checker will inspect the PID in `data/scheduler.lock` and report whether the process is alive.
+  3. If no scheduler process is running, delete the orphaned lock file:
+     ```powershell
+     Remove-Item data/scheduler.lock
+     ```
+
+#### Issue 2: Legacy TLS Handshake Failure on `ibps.in` or `rrbcdg.gov.in`
+- **Cause:** Some government portals run legacy SSL/TLS servers requiring OpenSSL `SECLEVEL=1` ciphers.
+- **Resolution:** Testkart Intelligence automatically applies `SECLEVEL=1` strictly to these two allowlisted domains in `testkart_intelligence/security/client.py`. No manual SSL modification is necessary.
+
+#### Issue 3: Portal Returns HTTP 403 or Cloudflare Challenge
+- **Cause:** Government portal WAF rate-limiting.
+- **Resolution:**
+  - Increase crawl delay in `.env`: `TESTKART_RATE_LIMIT_DELAY_SECONDS=2.5`.
+  - Use single-source scanning during off-peak hours: `python -m testkart_intelligence.cli scan --source UPSC`.
 
 ---
 
-## 8. Local Editorial Review Interface
+## 14. Future Production Roadmap & Hand-off Checklist
 
-The system features a local-first editorial dashboard designed for human-in-the-loop verification before any article can advance.
+When transferring ownership or transitioning from supervised local pilot to production:
 
-### Starting the Editorial Dashboard
-To launch the dashboard locally on `127.0.0.1:8000`:
-```powershell
-# Using Testkart CLI
-testkart serve
-
-# Or using python module
-python -m testkart_intelligence.cli serve
-
-# Or using Uvicorn directly
-uvicorn testkart_intelligence.api.app:app --host 127.0.0.1 --port 8000
-```
-Then navigate to: **`http://127.0.0.1:8000`**
-
-### Dashboard Layout & Features
-
-```
-+----------------------------------------------------------------------------------------------------+
-| Testkart Intelligence        [PHASE: LOCAL DEVELOPMENT ONLY • LIVE PUBLISHING DISABLED]   127.0.0.1|
-+----------------------------------------------------------------------------------------------------+
-| [Overview]  [Newly Discovered (12)]  [Drafts Awaiting Review (4)]  [Blocked (3)]  [Revisions]      |
-+----------------------------------------------------------------------------------------------------+
-|                                                                                                    |
-| +-------------------------+ +-------------------------+ +----------------------------------------+ |
-| | Newly Discovered: 12    | | Awaiting Review: 4      | | Blocked / QA Failures: 3               | |
-| +-------------------------+ +-------------------------+ +----------------------------------------+ |
-|                                                                                                    |
-| === DRAFTS AWAITING EDITORIAL REVIEW ===                                                           |
-| ID          Authority    Title                                     Status     Version   Action     |
-| art_geo26   UPSC         Combined Geo-Scientist Exam 2026          QA_PASSED  v1        [Edit ->]  |
-|                                                                                                    |
-| === BLOCKED DOCUMENTS & EXTRACTION FAILURES ===                                                    |
-| ID          Authority    Title                                     Block Reason         Action     |
-| not_bpsc69  BPSC         Assistant Professor Scanned Circular      SCANNED PDF (<50c)   [Inspect]  |
-+----------------------------------------------------------------------------------------------------+
-```
-
-### Side-by-Side Draft Editor & Evidence Inspection (`/editorial/articles/{id}`)
-
-```
-+----------------------------------------------------------------------------------------------------+
-| Draft Editor: UPSC Combined Geo-Scientist Exam 2026 (v1)                                           |
-| Status: QA_PASSED • Content Hash: a7f8b92... • Author: agent_writer                                |
-+----------------------------------------------------------------------------------------------------+
-| [LEFT COLUMN: OFFICIAL EVIDENCE]             | [RIGHT COLUMN: DRAFT EDITOR & PREVIEW]              |
-|                                              |                                                     |
-| Portal URL: https://upsc.gov.in/geo-2026.pdf | Title: [ UPSC Combined Geo-Scientist 2026 ...     ] |
-| Document Hash: 8f4e21a...                    | [ Markdown Editor ]   [ Formatted Preview ]         |
-| [Download Verified PDF (Local Copy)]         |                                                     |
-|                                              | # Union Public Service Commission                   |
-| EXTRACTED FACTS & TRACEABLE EVIDENCE:        | Combined Geo-Scientist Examination 2026             |
-| - total_vacancies: 85 [VERIFIED]             |                                                     |
-|   Excerpt: "There are 85 vacancies in total" | | Field | Value |                                   |
-|   Page: 2                                    | | Vacancies | 85 |                                  |
-| - application_start_date: 15/11/2026         |                                                     |
-| - application_end_date: 15/12/2026           | --------------------------------------------------- |
-|                                              | [Save Draft (v2)] [Request Correction] [Reject]     |
-| QA CHECKS:                                   |                                                     |
-| - rule_document_readability: PASS            |                                                     |
-| - rule_recruitment_critical_dates: PASS      | [✔ Approve Draft (v1)]                              |
-+----------------------------------------------------------------------------------------------------+
-```
-
-### Review Safeguards Enforced:
-1. **Normal Approval Block:** Normal one-click approval is disabled if material factual claims are unverified (missing start/end dates, missing vacancies) or if the document is scanned (<50 chars/page).
-2. **Audited Editorial Override:** If an editor verifies facts directly from an official PDF that automated regex missed, they may submit an override by providing a mandatory explanation (min 10 characters) and editor identity.
-3. **Approval Invalidation on Edit:** Editing an approved article immediately generates version $N+1$, resets status to `DRAFT`, and invalidates prior approval records.
-4. **Concurrency Conflict Protection:** Submitting actions against outdated versions or mismatched content hashes returns `409 Conflict`.
-5. **Localhost Binding & XSS Immunity:** Endpoints are bound to `127.0.0.1`; all Markdown rendering strictly escapes HTML and strips event handlers.
-6. **Live Publishing Boundary:** `ALLOW_LIVE_PUBLISHING = False` is hardcoded; no approval or override can trigger live CMS publication.
-
-For complete real-world validation findings, evaluation metrics, and source matrices, refer to:
-- [REAL_WORLD_VALIDATION_REPORT.md](file:///D:/Agent/REAL_WORLD_VALIDATION_REPORT.md)
-- [SOURCE_COVERAGE_MATRIX.csv](file:///D:/Agent/SOURCE_COVERAGE_MATRIX.csv)
-- [FACT_EXTRACTION_EVALUATION.csv](file:///D:/Agent/FACT_EXTRACTION_EVALUATION.csv)
-- [AUDIT_REPORT.md](file:///D:/Agent/AUDIT_REPORT.md)
-- [VALIDATION_GATE_REPORT.md](file:///D:/Agent/VALIDATION_GATE_REPORT.md)
+- [ ] **Step 1: Production OCR Integration**
+  - Connect `testkart_intelligence/extraction/ocr.py` to an enterprise OCR service (e.g. Google Cloud Document AI, Cloud Vision API, or local Tesseract) for Hindi and scanned vernacular circulars.
+- [ ] **Step 2: Authenticated Email Dispatch**
+  - Implement authenticated SMTP/SES in `testkart_intelligence/editorial/notifications.py` to deliver expiring approval links to designated reviewers.
+- [ ] **Step 3: Testkart Live CMS Publisher**
+  - Implement `TestkartCmsPublisher` implementing `PublisherInterface` in `publishing/`.
+  - Configure production OAuth credentials, API keys, and endpoint URLs.
+  - Review and obtain administrative approval before flipping `ALLOW_LIVE_PUBLISHING = True`.
+- [ ] **Step 4: All-India Portal Expansion**
+  - Expand `official_sources` registry to cover remaining State PSCs, High Courts, and Police Recruitment Boards across all 28 states and 8 UTs.
 
 ---
 
-## 8. Database Schema & Versioning
+## 15. Documentation Index & References
 
-The SQLite schema maintains an immutable audit trail:
-- `official_sources`: Authoritative portal registry with verification status and failure counters
-- `scan_runs` & `scan_source_logs`: Persistent history of scheduled and manual scan executions
-- `canonical_notices`: Canonical identity of examinations and recruitment drives
-- `notice_versions`: Immutable document versions with SHA-256 hashes, raw text, and local PDF/HTML storage paths
-- `extracted_facts`: Traceable facts linked to document page numbers, verbatim quote snippets, confidence scores, and verification status (`VERIFIED`, `CONTRADICTORY`, `MISSING`)
-- `blog_articles` & `article_versions`: Version-tracked markdown drafts with content hashes and QA statuses
-- `qa_results`: Detailed test results for each QA rule check
-- `approval_records`: Replay-protected approval records with single-use tokens, reviewer emails, and expiry dates
-- `publishing_jobs`: Publishing attempt records with mock status and published URLs
-- `audit_events`: Tamper-evident ledger of all critical decisions and actions
+For deep-dive architecture reviews and experimental logs, refer to these deliverables in the workspace:
+
+| Document | Description |
+| :--- | :--- |
+| **`END_TO_END_PRODUCT_ACCEPTANCE_REPORT.md`** | Complete Phase 3 acceptance test report across 10 operational scenarios. |
+| **`RELEASE_REMEDIATION_PHASE_2_REPORT.md`** | Windows process lifecycle, PID lock recovery, and `cli doctor` implementation. |
+| **`30_DAY_SUPERVISED_PILOT_REPORT.md`** | 30-day operational pilot findings, notice discovery rates, and latency logs. |
+| **`REAL_WORLD_VALIDATION_REPORT.md`** | Real-world validation against live Indian government exam notifications. |
+| **`PRE_PRODUCTION_ACCURACY_EVALUATION.csv`**| 33-notice held-out pre-production accuracy evaluation benchmark. |
+| **`SOURCE_COVERAGE_MATRIX.csv`** | Portal coverage, domain allowlist status, and retrieval methods. |
+| **`TABLE_AND_ELIGIBILITY_REMEDIATION_REPORT.md`**| Layout reconstruction and structured table extraction documentation. |
 
 ---
 
-## 9. Next Implementation Steps (Future Phases)
-
-1. **Systematic Source Expansion:**
-   - Extend the source registry to encompass all 28 states and 8 Union Territories across India (State PSCs, Subordinate Selection Boards, Police Recruitment Boards, High Courts, Municipal Corporations).
-   - Implement RSS feed parsers for government portals providing standard XML/RSS feeds.
-2. **Production OCR Integration:**
-   - Connect `OcrEngineInterface` to an OCR pipeline (e.g., Tesseract or Google Cloud Vision OCR) for scanned vernacular and Hindi/regional language notifications.
-3. **Email Approval Delivery:**
-   - Integrate authenticated email dispatch (e.g. SMTP or Google Workspace OAuth) to email draft previews with expiring single-use approval links to designated human reviewers.
-4. **Live CMS Integration (Only When Authorized):**
-   - Implement `TestkartCmsPublisher` implementing `PublisherInterface`, protected by two-factor reviewer authentication and hash-matched publishing guards.
+### Maintainer & Project Owner
+- **Primary Contact:** Meet Tomar (`meettomar07@gmail.com`)
+- **Repository:** [https://github.com/meettomar07/agent.git](https://github.com/meettomar07/agent.git)
+- **License:** Proprietary — All Rights Reserved to Testkart (India).
