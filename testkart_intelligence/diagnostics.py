@@ -45,6 +45,10 @@ REQUIRED_TABLES = [
 ]
 
 AUTHORIZED_FIVE_SOURCES = {"UPSC", "SSC", "NTA", "UPPSC", "TNPSC"}
+ALL_AUTHORIZED_OFFICIAL_SOURCES = {
+    "UPSC", "SSC", "NTA", "UPPSC", "TNPSC",
+    "IBPS", "RRB_CHD", "JOIN_ARMY", "BPSC", "DSSSB", "MPPSC", "KPSC",
+}
 
 
 class DiagnosticChecker:
@@ -257,14 +261,17 @@ class DiagnosticChecker:
 
                 details.append(f"Registered sources: {len(sources)} total, {len(enabled_sources)} enabled")
 
-                # Verify exactly the 5 authorized sources are enabled
-                if enabled_codes != AUTHORIZED_FIVE_SOURCES:
-                    passed = False
-                    details.append(
-                        f"Source whitelist mismatch! Expected {sorted(AUTHORIZED_FIVE_SOURCES)}, got {sorted(enabled_codes)}"
-                    )
-                else:
+                # Verify enabled sources are authorized official portals
+                if enabled_codes == AUTHORIZED_FIVE_SOURCES:
                     details.append(f"Authorized 5 sources active: {', '.join(sorted(enabled_codes))}")
+                elif enabled_codes.issubset(ALL_AUTHORIZED_OFFICIAL_SOURCES):
+                    details.append(f"Authorized official sources active ({len(enabled_codes)} enabled): {', '.join(sorted(enabled_codes))}")
+                else:
+                    passed = False
+                    unauthorized = enabled_codes - ALL_AUTHORIZED_OFFICIAL_SOURCES
+                    details.append(
+                        f"Source whitelist mismatch! Unauthorized sources enabled: {sorted(unauthorized)}"
+                    )
 
                 # Check domain allowlisting
                 domain_errors = []

@@ -204,8 +204,11 @@ class DiscoveryEngine:
         else:
             sources_to_check = self.registry.list_sources(enabled_only=True)
 
-        # Restrict discovery scans strictly to the 5 approved authorities
-        APPROVED_SOURCES = {"UPSC", "SSC", "NTA", "UPPSC", "TNPSC"}
+        # Restrict discovery scans strictly to authorized official authorities
+        APPROVED_SOURCES = {
+            "UPSC", "SSC", "NTA", "UPPSC", "TNPSC",
+            "IBPS", "RRB_CHD", "JOIN_ARMY", "BPSC", "DSSSB", "MPPSC", "KPSC",
+        }
         sources_to_check = [s for s in sources_to_check if s.get("code") in APPROVED_SOURCES]
 
         sources_checked = 0
