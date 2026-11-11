@@ -128,14 +128,28 @@ class WindowsMediaOcrEngine(OcrEngineInterface):
 
     def __init__(self, lang: str = "en"):
         self.lang = lang
+        self.python_exe = sys.executable
         self._check_availability()
 
     def _check_availability(self) -> None:
         try:
             import winocr
             self.available = True
+            self.python_exe = sys.executable
         except ImportError:
+            # Check if .venv python has winocr available
+            venv_py = os.path.join(os.path.abspath("."), ".venv", "Scripts", "python.exe")
+            if os.path.exists(venv_py):
+                try:
+                    res = subprocess.run([venv_py, "-c", "import winocr"], capture_output=True)
+                    if res.returncode == 0:
+                        self.available = True
+                        self.python_exe = venv_py
+                        return
+                except Exception:
+                    pass
             self.available = False
+            self.python_exe = sys.executable
             logger.warning("winocr not installed; WindowsMediaOcrEngine running in disabled mode")
 
     def ocr_page_pixmap(self, pixmap: Any, page_num: int = 1) -> Dict[str, Any]:
@@ -179,7 +193,7 @@ class WindowsMediaOcrEngine(OcrEngineInterface):
 
         try:
             res = subprocess.run(
-                [sys.executable, "-m", "testkart_intelligence.extraction.ocr_worker"],
+                [self.python_exe, "-m", "testkart_intelligence.extraction.ocr_worker"],
                 input=pdf_bytes,
                 capture_output=True,
                 timeout=60,
@@ -261,14 +275,16 @@ class TesseractOcrEngine(OcrEngineInterface):
 def get_default_ocr_engine() -> OcrEngineInterface:
     """Return an instance of the best available local OCR engine."""
     try:
-        import winocr
-        return WindowsMediaOcrEngine()
+        engine = WindowsMediaOcrEngine()
+        if engine.available:
+            return engine
     except Exception:
         pass
 
     try:
-        import pytesseract
-        return TesseractOcrEngine()
+        engine = TesseractOcrEngine()
+        if engine.available:
+            return engine
     except Exception:
         pass
 

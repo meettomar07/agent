@@ -232,9 +232,13 @@ class TableExtractor:
 
         # Phase 3: Single-post or post-wise aggregation fallback if no explicit Grand Total row exists
         if result.total_vacancies is None and result.post_vacancies:
-            if len(result.post_vacancies) == 1:
+            valid_posts = [
+                p for p in result.post_vacancies
+                if not any(b in p.post_name.lower() for b in ("backlog", "carried forward", "vacancies shown", "shortfall", "revised"))
+            ]
+            if len(valid_posts) == 1 and len(result.post_vacancies) == 1:
                 # Single-post recruitment notification
-                single_post = result.post_vacancies[0]
+                single_post = valid_posts[0]
                 result.total_vacancies = str(single_post.vacancies)
                 result.total_vacancies_evidence = f"Single Post Table Row (Page {single_post.page_number}): {single_post.post_name} - {single_post.vacancies} vacancies"
                 result.total_vacancies_page = single_post.page_number
@@ -255,6 +259,7 @@ class TableExtractor:
     @classmethod
     def _scan_for_grand_total_vacancy_row(cls, tables: List[Dict[str, Any]], result: TableExtractionResult) -> None:
         """Scan across ALL tables and rows for an explicit Grand Total / Total summary row."""
+        candidates = []
         for t in tables:
             # Skip examination schemes, marks tables, selection weightages
             if cls._is_marks_or_exam_scheme_table(t):
@@ -292,8 +297,6 @@ class TableExtractor:
                                     row_numbers.append(num_val)
 
                         if row_numbers:
-                            # In multi-column category breakdown tables (UR, SC, ST, OBC, EWS, Total, ESM...),
-                            # the grand total is the sum or maximum subtotal, not the first category count!
                             chosen_total = None
                             for i, num in enumerate(row_numbers):
                                 if i >= 2 and num == sum(row_numbers[:i]):
@@ -302,10 +305,21 @@ class TableExtractor:
                             if chosen_total is None:
                                 chosen_total = max(row_numbers) if len(row_numbers) > 1 else row_numbers[0]
 
-                            result.total_vacancies = str(chosen_total)
-                            result.total_vacancies_evidence = f"Table Total Row (Page {pno}): {row_str}"
-                            result.total_vacancies_page = pno
-                            return
+                            is_grand = any(g in cell_clean for g in ("grand", "all posts", "sum total", "total vacancies", "grand total"))
+                            candidates.append({
+                                "total": chosen_total,
+                                "evidence": f"Table Total Row (Page {pno}): {row_str}",
+                                "page": pno,
+                                "is_grand": is_grand,
+                            })
+
+        if candidates:
+            # Prefer explicit Grand Total row, otherwise the maximum summary total
+            grand_candidates = [c for c in candidates if c["is_grand"]]
+            best = max(grand_candidates, key=lambda c: c["total"]) if grand_candidates else max(candidates, key=lambda c: c["total"])
+            result.total_vacancies = str(best["total"])
+            result.total_vacancies_evidence = best["evidence"]
+            result.total_vacancies_page = best["page"]
 
     @classmethod
     def _parse_vacancy_table_items(cls, table: Dict[str, Any], result: TableExtractionResult) -> None:
@@ -335,7 +349,7 @@ class TableExtractor:
                     post_col = idx
                     break
 
-        for r in rows[1:]:
+        for r in rows:
             row_str = " | ".join(r)
             row_lower = row_str.lower()
             if any(r[c].lower().strip(".:- ") in ("total", "grand total") for c in range(min(3, len(r)))):
@@ -485,16 +499,28 @@ class TableExtractor:
         if qual_col is None:
             return
 
-        for r in rows[1:]:
+        for r in rows:
             post_name = r[post_col].strip() if (post_col is not None and post_col < len(r)) else ""
             qual_text = r[qual_col].strip() if qual_col < len(r) else ""
 
-            if qual_text and len(qual_text) > 15:
+            if qual_text and len(qual_text) > 10:
                 cleaned_qual = cls._clean_qualification_text(qual_text)
-                if post_name:
+                norm_qual = re.sub(r"[^a-zA-Z]", "", cleaned_qual.lower())
+                header_tokens = {
+                    "educationalqualification", "educationalqualifications",
+                    "qualificationandexperience", "minimumeducationalqualification",
+                    "qualification", "qualifications", "minimumqualification",
+                    "essentialqualification", "prescribedqualification",
+                    "qualificationexperience", "educationalqualificationandexperience",
+                    "educationalandexperience", "nameofthepost", "minimumgeneraleducationalqualification"
+                }
+                if norm_qual in header_tokens or norm_qual.startswith("nameofthe"):
+                    continue
+
+                if post_name and re.sub(r"[^a-zA-Z]", "", post_name.lower()) not in ("nameofthepost", "postname", "slno", "sno", "post"):
                     result.post_eligibility[post_name] = cleaned_qual
 
-                if result.eligibility is None and len(cleaned_qual) >= 10:
+                if result.eligibility is None and len(cleaned_qual) >= 8:
                     result.eligibility = cleaned_qual
                     result.eligibility_evidence = f"Qualification Table (Page {pno}): {qual_text[:140]}"
                     result.eligibility_page = pno
@@ -552,7 +578,7 @@ class TableExtractor:
         if max_age_cols:
             from collections import Counter
             col_ages = []
-            for r in rows[1:]:
+            for r in rows:
                 r_text = " ".join(r).lower()
                 is_relaxation_row = any(k in r_text for k in ("sc/st", "scs", "sts", "mbc", "destitute", "widow", "disability", "ex-service"))
                 if is_relaxation_row:

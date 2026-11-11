@@ -71,6 +71,7 @@ class FactExtractor:
     VACANCY_PATTERNS = [
         r"(?:total\s*(?:number|no\.?)?\s*of\s*vacancies|number\s*of\s*posts|total\s*posts|tentative\s*vacancies)\s*[:\-–]?\s*([0-9,]+)",
         r"(?:total\s*no\.\s*of\s*vacancies.*?is\s*)([0-9,]+)",
+        r"(?:Total\s*(?:No\.?\s*of\s*)?Vacancies)\s*[:\-–]?\s*([0-9,]+)",
         r"(?:total\s*vacancies\s*(?:are\s*)?(?:revised|enhanced|increased)\s*from\s*[0-9,]+\s*to\s*[:\-–]?\s*)([0-9,]+)",
         r"(?:total\s*vacancies\s*(?:are\s*)?(?:revised|enhanced|increased)\s*to\s*[:\-–]?\s*)([0-9,]+)",
         r"(?:vacancies\s*(?:revised|enhanced|increased)\s*to\s*[:\-–]?\s*)([0-9,]+)",
@@ -154,12 +155,21 @@ class FactExtractor:
         r"(?:not\s*more\s*than\s*([0-9]{2})\s*years(?:\s*as\s*on\s*[^\.\n]+)?)",
         r"(?:maximum\s*age\s*(?:limit)?\s*[:\-]?\s*([0-9]{2})\s*years)",
         r"(?:minimum\s*age\s*[:\-]?\s*([0-9]{2})\s*years?(?:.*?(?:maximum\s*age\s*[:\-]?\s*([0-9]{2})\s*years?))?)",
-        # Birth-date window: "born not earlier than DD.MM.YYYY and not later than DD.MM.YYYY"
+        # Birth-date window: "born not earlier than DD.MM.YYYY and not later than DD.MM.YYYY" or "born between ... to ..."
+        r"born\s*between\s*([0-9]{1,2}\s+[A-Za-z]+\s+[0-9]{4})\s*(?:to|and)\s*([0-9]{1,2}\s+[A-Za-z]+\s+[0-9]{4})",
         r"born\s*not\s*earlier\s*than\s*([0-9]{1,2}[./\-][0-9]{1,2}[./\-][0-9]{4})\s*and\s*not\s*later\s*than\s*([0-9]{1,2}[./\-][0-9]{1,2}[./\-][0-9]{4})",
         # TNPSC style: "born after DD-MM-YYYY and on or before DD-MM-YYYY"
         r"born\s*(?:on\s*or\s*)?after\s*([0-9]{1,2}[./\-][0-9]{1,2}[./\-][0-9]{4})\s*and\s*(?:on\s*or\s*)?before\s*([0-9]{1,2}[./\-][0-9]{1,2}[./\-][0-9]{4})",
         # Simple upper-age cap: "shall not have completed 35 years of age"
         r"shall\s*not\s*have\s*completed\s*([0-9]{2})\s*years?\s*of\s*age",
+        # RIMC fractional age limit: 11.5 to 13 years
+        r"\b(11\.5|11\s*½)\s*(?:to|-)\s*(13)\s*years?",
+        # Table / section pattern for state PSCs: Minimum Age ... (\d{2}) ... Maximum Age ... (\d{2})
+        r"(?:Minimum\s*Age[^\n\d]{0,40}?([0-9]{2})\s*(?:years|Years)?[^\n]*?(?:Maximum\s*Age[^\n\d]{0,40}?([0-9]{2})\s*years?))",
+        # completed the age of 21/26 years ... Others: 32/34 years
+        r"(?:completed\s*(?:the\s*)?age\s*of\s*([0-9]{2})\s*years?[^\n]*?(?:Others|‘OTHERS’|\"Others\"|Maximum\s*Age)[^\n\d]{0,60}?([0-9]{2})\s*years?)",
+        # Dedicated Others maximum age: Others ... 32/34 years
+        r"(?:Others|‘OTHERS’|\"Others\")[^\n\d]{0,60}?([0-9]{2})\s*years?(?:\s*\(Should\s*not\s*have\s*Completed\))?",
     ]
 
     FEE_PATTERNS = [
@@ -181,7 +191,9 @@ class FactExtractor:
         # Educational qualification followed by details
         r"(?:educational\s*and\s*technical\s*qualification|educational\s*qualification|minimum\s*qualification|essential\s*qualification|prescribed\s*qualification|eligibility\s*criteria)\s*(?:is\s*(?:amended|modified)\s*as\s*(?:under)?\s*)?[:\-–]?\s*([^.\n]+?(?:Degree|Graduate|Graduation|10\+2|12th|Matriculation|Diploma|Master|B\.E|B\.Tech|Bachelor|Secondary\s*School|SSLC|MBBS|Law|LLB|Ayurvedic|Unani|MD|MS|DNB|enrolled\s*in)[^.\n]*)",
         # Multiline qualification
-        r"(?:educational\s*qualification|essential\s*qualification|minimum\s*qualification|eligibility\s*criteria)[^\n\r]*[\r\n]+(?:[^\n\r]*[\r\n]+){0,3}?[^\n\r]*?(Bachelor[']?s\s*Degree[^\.\n]*|Master[']?s\s*Degree[^\.\n]*|Diploma[^\.\n]*|Degree[^\.\n]*|Graduation[^\.\n]*|10\+2[^\.\n]*|12th[^\.\n]*|Matriculation[^\.\n]*|MBBS[^\.\n]*|Law[^\.\n]*)",
+        r"(?:educational\s*qualification|essential\s*qualification|minimum\s*qualification|eligibility\s*criteria)[^\n\r]*[\r\n]+(?:[^\n\r]*[\r\n]+){0,4}?[^\n\r]*?(Bachelor[']?s\s*Degree[^\.\n]*|Master[']?s\s*Degree[^\.\n]*|Diploma[^\.\n]*|Degree[^\.\n]*|Graduation[^\.\n]*|10\+2[^\.\n]*|12th[^\.\n]*|Matriculation[^\.\n]*|MBBS[^\.\n]*|Law[^\.\n]*|Class\s*VII[^\.\n]*)",
+        # Qualification and Experience table format
+        r"(?:Qualification\s*and\s*Experience|Educational\s*Qualification[^\n\r]*)[^\n\r]*[\r\n]+(?:[^\n\r]*[\r\n]+){0,6}?[^\n\r]*?(B\.L\.[^\.\n]*|Degree\s*in\s*Law[^\.\n]*|Bachelor[']?s\s*Degree[^\.\n]*|Master[']?s\s*Degree[^\.\n]*|Diploma\s*in\s*[A-Za-z\s]+|Diploma[^\.\n]*|Class\s*VII[^\.\n]*|Matriculation[^\.\n]*|SSLC[^\.\n]*)",
         # Standalone "Must possess..."
         r"(?:Must\s*possess\s*(?:a\s*)?(?:Bachelor[']?s\s*Degree|Master[']?s\s*Degree|Degree|Diploma|Minimum\s*General\s*Educational\s*Qualification)[^.\n]*)",
         # Departmental circular condition
@@ -217,8 +229,30 @@ class FactExtractor:
         table_facts: List[ExtractedFactItem] = []
         found_keys = set()
 
-        range_pat = r"([0-9]{1,2}(?:st|nd|rd|th)?[\/\.\-\s]+[0-9]{1,2}[\/\.\-\s]+[0-9]{4}|[0-9]{1,2}(?:st|nd|rd|th)?\s+[A-Za-z]+\s+[0-9]{4})\s*(?:to|-)\s*([0-9]{1,2}(?:st|nd|rd|th)?[\/\.\-\s]+[0-9]{1,2}[\/\.\-\s]+[0-9]{4}|[0-9]{1,2}(?:st|nd|rd|th)?\s+[A-Za-z]+\s+[0-9]{4})"
-        single_date_pat = r"([0-9]{1,2}(?:st|nd|rd|th)?[\/\.\-][0-9]{1,2}[\/\.\-][0-9]{4}|[0-9]{1,2}(?:st|nd|rd|th)?\s+[A-Za-z]+\s+[0-9]{4}|(?:(?:[0-9]{1,2}[,\s]+)+(?:and\s+)?[0-9]{1,2}\s+[A-Za-z]+\s+[0-9]{4}))"
+        range_pat = r"([0-9]{1,2}(?:st|nd|rd|th)?[\/\.\-\s]+[0-9]{1,2}[\/\.\-\s]+[0-9]{4}|[0-9]{1,2}(?:st|nd|rd|th)?\s+[A-Za-z]+,?\s+[0-9]{4})\s*(?:to|-)\s*([0-9]{1,2}(?:st|nd|rd|th)?[\/\.\-\s]+[0-9]{1,2}[\/\.\-\s]+[0-9]{4}|[0-9]{1,2}(?:st|nd|rd|th)?\s+[A-Za-z]+,?\s+[0-9]{4})"
+        day_range_pat = r"([0-9]{1,2}(?:st|nd|rd|th)?)\s*(?:to|-)\s*([0-9]{1,2}(?:st|nd|rd|th)?)\s+([A-Za-z]+),?\s+([0-9]{4})"
+        month_range_pat = r"([0-9]{1,2}(?:st|nd|rd|th)?\s+[A-Za-z]+),?\s*(?:to|-)\s*([0-9]{1,2}(?:st|nd|rd|th)?\s+[A-Za-z]+),?\s+([0-9]{4})"
+        single_date_pat = r"([0-9]{1,2}(?:st|nd|rd|th)?[\/\.\-][0-9]{1,2}[\/\.\-][0-9]{4}|[0-9]{1,2}(?:st|nd|rd|th)?\s+[A-Za-z]+,?\s+[0-9]{4}|(?:(?:[0-9]{1,2}[,\s]+)+(?:and\s+)?[0-9]{1,2}\s+[A-Za-z]+,?\s+[0-9]{4}))"
+
+        def _parse_schedule_val_date(val: str) -> Optional[Tuple[str, str]]:
+            """Returns (formatted_val, raw_evidence)."""
+            if not val:
+                return None
+            m_dr = re.search(day_range_pat, val, re.I)
+            if m_dr:
+                d1, d2, mo, yr = m_dr.groups()
+                return f"{d1} {mo} {yr} to {d2} {mo} {yr}", val.strip()
+            m_mr = re.search(month_range_pat, val, re.I)
+            if m_mr:
+                d1_m, d2_m, yr = m_mr.groups()
+                return f"{d1_m} {yr} to {d2_m} {yr}", val.strip()
+            m_r = re.search(range_pat, val, re.I)
+            if m_r:
+                return f"{m_r.group(1).strip()} to {m_r.group(2).strip()}", val.strip()
+            m_s = re.search(single_date_pat, val, re.I)
+            if m_s:
+                return m_s.group(1).strip(), val.strip()
+            return None
 
         for p in pages:
             lines = []
@@ -285,7 +319,7 @@ class FactExtractor:
                             found_keys.add("application_start_date")
 
                 # 2b. Standalone Closing Date in table
-                elif any(k in label_l for k in ["closing date", "last date for submission", "last date to apply", "closing date for online submission", "last date of online application", "closing date of application"]) and "fee" not in label_l and "late" not in label_l:
+                elif any(k in label_l for k in ["closing date", "last date for submission", "last date and time for submission", "last date to apply", "closing date for online submission", "last date of online application", "closing date of application"]) and "fee" not in label_l and "late" not in label_l and "correction" not in label_l and "window" not in label_l:
                     if "application_end_date" not in found_keys:
                         m_single = re.search(single_date_pat, val_text, re.IGNORECASE)
                         if m_single:
@@ -307,7 +341,7 @@ class FactExtractor:
                             found_keys.add("application_end_date")
 
                 # 2c. Application schedule / submission range
-                elif any(k in label_l for k in ["online submission", "submission of online application", "submission of application", "dates for submission"]):
+                elif any(k in label_l for k in ["online submission", "submission of online application", "submission of application", "dates for submission"]) and "last date" not in label_l and "closing date" not in label_l and "correction" not in label_l:
                     if "application_start_date" not in found_keys or "application_end_date" not in found_keys:
                         m_range = re.search(range_pat, val_text, re.IGNORECASE)
                         if m_range:
@@ -453,16 +487,11 @@ class FactExtractor:
                             found_keys.add("admit_card_date")
 
                 # 7. Date of Examination
-                elif any(k in label_l for k in ["date of examination", "examination date", "schedule of cbt", "schedule of tier", "examination", "schedule of examination"]) and any(e in label_l for e in ["exam", "cbt", "test"]):
+                elif any(k in label_l for k in ["date of examination", "examination date", "schedule of cbt", "schedule of tier", "examination", "schedule of examination", "date and time of examination", "date of written examination", "paper-i", "paper – i", "paper 1", "tier-i", "cbt date", "proposed dates", "dates of examination", "dates of exam"]) and any(e in label_l for e in ["exam", "cbt", "test", "paper", "dates"]):
                     if "exam_date" not in found_keys:
-                        m_range = re.search(range_pat, val_text, re.IGNORECASE)
-                        if m_range:
-                            ex_v = f"{m_range.group(1).strip()} to {m_range.group(2).strip()}"
-                        else:
-                            m_single = re.search(single_date_pat, val_text, re.IGNORECASE)
-                            ex_v = m_single.group(1).strip() if m_single else None
-
-                        if ex_v:
+                        res_dt = _parse_schedule_val_date(val_text)
+                        if res_dt:
+                            ex_v = res_dt[0]
                             table_facts.append(
                                 ExtractedFactItem(
                                     key="exam_date",
@@ -500,6 +529,56 @@ class FactExtractor:
                                 )
                             )
                             found_keys.add("result_date")
+
+            # 2. Vertical layout lookahead (where label and date are on separate adjacent lines)
+            clean_lines = [l.strip() for l in lines if l.strip()]
+            for i, cl in enumerate(clean_lines):
+                cl_l = cl.lower()
+                # Notification date
+                if any(k in cl_l for k in ["date of notification", "date of publication", "advt date", "date of advertisement"]) and "publication_date" not in found_keys:
+                    for k in range(1, 4):
+                        if i + k < len(clean_lines):
+                            res_dt = _parse_schedule_val_date(clean_lines[i+k])
+                            if res_dt:
+                                table_facts.append(ExtractedFactItem(
+                                    key="publication_date", value=res_dt[0], evidence_text=f"{cl}: {clean_lines[i+k]}",
+                                    page_number=p["page_number"], confidence=0.95, status="VERIFIED",
+                                    notes="Extracted from vertical schedule block", extraction_method="TABLE_EXTRACTOR",
+                                    document_hash=doc_hash, source_url=source_url,
+                                ))
+                                found_keys.add("publication_date")
+                                break
+                # Application end date
+                elif any(k in cl_l for k in ["last date for submission", "last date and time for submission", "closing date of online application", "closing date for submission", "last date to apply"]) and "application_end_date" not in found_keys and "fee" not in cl_l and "correction" not in cl_l and "window" not in cl_l and not cl_l.startswith("after "):
+                    for k in range(1, 4):
+                        if i + k < len(clean_lines):
+                            res_dt = _parse_schedule_val_date(clean_lines[i+k])
+                            if res_dt:
+                                table_facts.append(ExtractedFactItem(
+                                    key="application_end_date", value=res_dt[0], evidence_text=f"{cl}: {clean_lines[i+k]}",
+                                    page_number=p["page_number"], confidence=0.95, status="VERIFIED",
+                                    notes="Extracted from vertical schedule block", extraction_method="TABLE_EXTRACTOR",
+                                    document_hash=doc_hash, source_url=source_url,
+                                ))
+                                found_keys.add("application_end_date")
+                                break
+                # Examination date
+                elif any(k in cl_l for k in ["date of written examination", "date of examination", "schedule of cbt", "date and time of examination", "schedule of examination"]) and "exam_date" not in found_keys:
+                    for k in range(1, 20):
+                        if i + k < len(clean_lines):
+                            next_line = clean_lines[i+k]
+                            if any(hdr in next_line.lower() for hdr in ["5. qualification", "4. qualification", "5. age", "note:", "annexure"]):
+                                break
+                            res_dt = _parse_schedule_val_date(next_line)
+                            if res_dt:
+                                table_facts.append(ExtractedFactItem(
+                                    key="exam_date", value=res_dt[0], evidence_text=f"{cl} ... {next_line}",
+                                    page_number=p["page_number"], confidence=0.95, status="VERIFIED",
+                                    notes="Extracted from vertical examination schedule block", extraction_method="TABLE_EXTRACTOR",
+                                    document_hash=doc_hash, source_url=source_url,
+                                ))
+                                found_keys.add("exam_date")
+                                break
 
         return table_facts
 
@@ -543,26 +622,53 @@ class FactExtractor:
 
         # --- Total Vacancies ---
         if "total_vacancies" not in extracted_keys and tbl_res.total_vacancies:
-            try:
-                num = int(tbl_res.total_vacancies)
-                if 0 < num < 500000:
-                    facts.append(
-                        ExtractedFactItem(
-                            key="total_vacancies",
-                            value=tbl_res.total_vacancies,
-                            evidence_text=tbl_res.total_vacancies_evidence,
-                            page_number=tbl_res.total_vacancies_page,
-                            confidence=0.92,
-                            status="VERIFIED",
-                            notes="Extracted from Grand Total row in vacancy table",
-                            extraction_method="TABLE_EXTRACTOR",
-                            document_hash=doc_hash,
-                            source_url=source_url,
-                        )
+            is_single_post = "Single Post Table Row" in (tbl_res.total_vacancies_evidence or "")
+            narrative_total = None
+            for p in pages[:8]:
+                m_narr = re.search(r"Total\s*(?:No\.?\s*of\s*)?Vacancies\s*[:\-–]?\s*([0-9,]+)", p.get("text", ""), re.I)
+                if m_narr:
+                    v_clean = m_narr.group(1).replace(",", "").strip()
+                    if v_clean and int(v_clean) > 0:
+                        narrative_total = (v_clean, m_narr.group(0), p["page_number"])
+                        break
+
+            if narrative_total and is_single_post:
+                facts.append(
+                    ExtractedFactItem(
+                        key="total_vacancies",
+                        value=narrative_total[0],
+                        evidence_text=narrative_total[1],
+                        page_number=narrative_total[2],
+                        confidence=0.95,
+                        status="VERIFIED",
+                        notes="Extracted from explicit narrative total vacancies (supersedes single-post table estimate)",
+                        extraction_method="PDF_TEXT",
+                        document_hash=doc_hash,
+                        source_url=source_url,
                     )
-                    extracted_keys.add("total_vacancies")
-            except (ValueError, TypeError):
-                pass
+                )
+                extracted_keys.add("total_vacancies")
+            else:
+                try:
+                    num = int(tbl_res.total_vacancies)
+                    if 0 < num < 500000:
+                        facts.append(
+                            ExtractedFactItem(
+                                key="total_vacancies",
+                                value=tbl_res.total_vacancies,
+                                evidence_text=tbl_res.total_vacancies_evidence,
+                                page_number=tbl_res.total_vacancies_page,
+                                confidence=0.92,
+                                status="VERIFIED",
+                                notes="Extracted from Grand Total row in vacancy table",
+                                extraction_method="TABLE_EXTRACTOR",
+                                document_hash=doc_hash,
+                                source_url=source_url,
+                            )
+                        )
+                        extracted_keys.add("total_vacancies")
+                except (ValueError, TypeError):
+                    pass
 
         # --- Application Start Date ---
         if "application_start_date" not in extracted_keys and tbl_res.application_start_date:
@@ -1111,6 +1217,8 @@ class FactExtractor:
         if "exam_date" not in extracted_keys:
             exam_date_found = False
             for p in pages:
+                if p["page_number"] > 15:
+                    continue
                 text = p["text"]
                 for pat in cls.EXAM_DATE_PATTERNS:
                     m = re.search(pat, text, re.IGNORECASE)
@@ -1119,6 +1227,9 @@ class FactExtractor:
                             val_str = f"{m.group(1).strip()} to {m.group(2).strip()}"
                         else:
                             val_str = m.group(1).strip()
+                        m_year = re.search(r"\b(20[0-2][0-9])\b", val_str)
+                        if m_year and int(m_year.group(1)) < 2022:
+                            continue
                         snippet = text[max(0, m.start() - 25): min(len(text), m.end() + 45)].strip()
                         facts.append(
                             ExtractedFactItem(
