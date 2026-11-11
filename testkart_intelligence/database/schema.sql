@@ -114,9 +114,11 @@ CREATE TABLE IF NOT EXISTS extracted_facts (
     notice_version_id TEXT NOT NULL REFERENCES notice_versions(id) ON DELETE CASCADE,
     fact_key TEXT NOT NULL,
     fact_value TEXT NOT NULL,
+    normalized_value TEXT,
     confidence REAL NOT NULL DEFAULT 1.0,
     evidence_text TEXT,
     page_number INTEGER DEFAULT 1,
+    extraction_method TEXT NOT NULL DEFAULT 'PDF_TEXT',
     verified_status TEXT NOT NULL DEFAULT 'VERIFIED', -- 'VERIFIED' | 'UNVERIFIED' | 'CONTRADICTORY' | 'MISSING'
     verification_notes TEXT,
     corrected_value TEXT,

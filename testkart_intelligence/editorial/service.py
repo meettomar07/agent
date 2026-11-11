@@ -432,7 +432,7 @@ class EditorialService:
             if latest_v:
                 facts_cursor = conn.execute(
                     """
-                    SELECT id, fact_key, fact_value, confidence, evidence_text,
+                    SELECT id, fact_key, fact_value, normalized_value, extraction_method, confidence, evidence_text,
                            page_number, verified_status, verification_notes, created_at,
                            corrected_value, corrected_by, correction_reason, corrected_at,
                            is_confirmed, confirmed_by, confirmed_at
@@ -467,14 +467,21 @@ class EditorialService:
                     if key not in verified_keys:
                         missing_critical_fields.append(label)
 
-            # Critical recruitment fields summary with confidence and confirmation flags
+            # Critical recruitment fields summary with confidence, normalized values, and evidence provenance
             critical_specs = [
+                ("publication_date", "Publication Date"),
                 ("application_start_date", "Application Start Date"),
                 ("application_end_date", "Application Closing Date"),
+                ("fee_payment_deadline", "Fee Payment Deadline"),
+                ("correction_window_start_date", "Correction Window Start"),
+                ("correction_window_end_date", "Correction Window End"),
                 ("exam_date", "Exam Date & Stages"),
+                ("admit_card_date", "Admit Card Release Date"),
+                ("result_date", "Result Date"),
                 ("total_vacancies", "Total Vacancies"),
-                ("eligibility", "Eligibility Requirements"),
+                ("eligibility", "Eligibility & Qualifications"),
                 ("age_limit", "Age Limit & Relaxations"),
+                ("age_reference_date", "Age Reference Date"),
                 ("application_fee", "Application Fee & Exemptions"),
             ]
 
@@ -489,6 +496,9 @@ class EditorialService:
                         "label": label,
                         "fact_id": None,
                         "machine_value": None,
+                        "extracted_value": None,
+                        "normalized_value": None,
+                        "extraction_method": "N/A",
                         "corrected_value": None,
                         "effective_value": None,
                         "confidence": 0.0,
@@ -499,6 +509,8 @@ class EditorialService:
                         "confirmed_at": None,
                         "evidence_text": None,
                         "page_number": None,
+                        "document_hash": latest_v.get("document_hash") if latest_v else None,
+                        "source_url": latest_v.get("document_url") if latest_v else None,
                         "flag": "MISSING",
                     })
                 else:
@@ -520,13 +532,21 @@ class EditorialService:
                     else:
                         flag = "UNCONFIRMED"
 
+                    m_val = f_entry.get("fact_value")
+                    n_val = f_entry.get("normalized_value") or m_val
+                    c_val = f_entry.get("corrected_value")
+                    eff_val = c_val or n_val or m_val
+
                     critical_fields_summary.append({
                         "field_key": f_key,
                         "label": label,
                         "fact_id": f_entry["id"],
-                        "machine_value": f_entry.get("fact_value"),
-                        "corrected_value": f_entry.get("corrected_value"),
-                        "effective_value": f_entry.get("corrected_value") or f_entry.get("fact_value"),
+                        "machine_value": m_val,
+                        "extracted_value": m_val,
+                        "normalized_value": n_val,
+                        "extraction_method": f_entry.get("extraction_method", "PDF_TEXT"),
+                        "corrected_value": c_val,
+                        "effective_value": eff_val,
                         "confidence": conf,
                         "is_low_confidence": conf < 0.85,
                         "verified_status": v_stat,
@@ -535,6 +555,8 @@ class EditorialService:
                         "confirmed_at": f_entry.get("confirmed_at"),
                         "evidence_text": f_entry.get("evidence_text"),
                         "page_number": f_entry.get("page_number"),
+                        "document_hash": latest_v.get("document_hash") if latest_v else None,
+                        "source_url": latest_v.get("document_url") if latest_v else None,
                         "flag": flag,
                     })
 

@@ -67,6 +67,8 @@ def init_db(db_path: Optional[Union[Path, str]] = None) -> None:
             existing_fact_cols = {row["name"] for row in conn.execute("PRAGMA table_info(extracted_facts)").fetchall()}
             if existing_fact_cols:
                 fact_migrations = [
+                    ("normalized_value", "TEXT"),
+                    ("extraction_method", "TEXT NOT NULL DEFAULT 'PDF_TEXT'"),
                     ("corrected_value", "TEXT"),
                     ("corrected_by", "TEXT"),
                     ("correction_reason", "TEXT"),

@@ -180,10 +180,21 @@
                   [Corrected]: {{ cf.corrected_value }}
                 </div>
                 <div style="font-size: 0.72rem; color: var(--text-muted); text-decoration: line-through;">
-                  [Machine]: {{ cf.machine_value or 'None' }}
+                  [Raw]: {{ cf.machine_value or 'None' }}
                 </div>
               {% elif cf.machine_value %}
-                <code style="font-size: 0.82rem;">{{ cf.machine_value }}</code>
+                <div style="display: flex; flex-direction: column; gap: 0.15rem;">
+                  <div>
+                    <span style="font-size: 0.75rem; color: var(--text-muted);">Norm:</span>
+                    <code style="font-size: 0.82rem; font-weight: 600;">{{ cf.normalized_value or cf.machine_value }}</code>
+                  </div>
+                  {% if cf.normalized_value and cf.normalized_value != cf.machine_value %}
+                    <div style="font-size: 0.7rem; color: var(--text-muted);">Raw: <code>{{ cf.machine_value }}</code></div>
+                  {% endif %}
+                  <div>
+                    <span class="status-pill status-neutral" style="font-size: 0.6rem; padding: 0.1rem 0.3rem;">{{ cf.extraction_method or 'PDF_TEXT' }}</span>
+                  </div>
+                </div>
               {% else %}
                 <span class="status-pill status-danger" style="font-size: 0.7rem;">MISSING</span>
               {% endif %}

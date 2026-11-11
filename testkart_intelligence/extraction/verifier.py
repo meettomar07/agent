@@ -1,5 +1,6 @@
 """Verification Agent and Document Ingestion Pipeline."""
 
+import json
 import uuid
 from datetime import datetime, timezone
 from pathlib import Path
@@ -10,7 +11,7 @@ from dateutil import parser as date_parser
 from testkart_intelligence.config import settings
 from testkart_intelligence.database.connection import get_db
 from testkart_intelligence.discovery.fetcher import SafeFetcher
-from testkart_intelligence.extraction.pdf_extractor import PdfDocumentExtractor
+from testkart_intelligence.extraction.pdf_extractor import PdfDocumentExtractor, PdfExtractionError
 from testkart_intelligence.extraction.html_extractor import HtmlDocumentExtractor
 from testkart_intelligence.extraction.fact_extractor import FactExtractor, ExtractedFactItem
 
@@ -52,9 +53,19 @@ class VerificationAgent:
 
         # 2. Extract text and page structure
         is_corrupt_doc = False
+        is_encrypted_doc = False
         if is_pdf:
             try:
                 full_text, pages, page_count = self.pdf_extractor.extract(doc_bytes)
+            except PdfExtractionError as exc:
+                if exc.code == "ENCRYPTED_PDF":
+                    is_encrypted_doc = True
+                    full_text = f"[DOCUMENT ENCRYPTED: {exc.message}]"
+                else:
+                    is_corrupt_doc = True
+                    full_text = f"[DOCUMENT EXTRACTION FAILED: {exc.message}]"
+                pages = [{"page_number": 1, "text": full_text, "tables": [], "is_scanned": True, "ocr_confidence": 0.0}]
+                page_count = 1
             except Exception as exc:
                 is_corrupt_doc = True
                 full_text = f"[DOCUMENT EXTRACTION FAILED: {exc}]"
@@ -105,7 +116,11 @@ class VerificationAgent:
             )
 
             # 4. Determine canonical status based on document readability and OCR
-            is_scanned = any(p.get("is_scanned") for p in pages) or "[SCANNED DOCUMENT" in full_text
+            has_digital_text = any(
+                len(p.get("text", "").strip()) >= 50 and not p.get("is_scanned")
+                for p in pages
+            )
+            all_pages_scanned = all(p.get("is_scanned") for p in pages) or "[SCANNED DOCUMENT" in full_text
             has_legacy_font = "[LEGACY_NON_UNICODE_FONT_DETECTED" in full_text or any(p.get("has_legacy_font") for p in pages)
 
             ocr_confidences = [p.get("ocr_confidence", 0.0) for p in pages if p.get("is_scanned")]
@@ -114,22 +129,42 @@ class VerificationAgent:
                 len(p.get("text", "").strip()) >= 50
                 and not p.get("text", "").startswith("[SCANNED DOCUMENT")
                 for p in pages
+                if p.get("is_scanned")
             )
             ocr_meets_threshold = (avg_ocr_confidence >= 0.60) and has_valid_ocr_text
 
-            if is_corrupt_doc:
+            if is_encrypted_doc:
+                canonical_status = "ENCRYPTED_PDF_FLAGGED_FOR_HUMAN_REVIEW"
+            elif is_corrupt_doc:
                 canonical_status = "SCANNED_OCR_BLOCKED_FLAGGED_FOR_HUMAN_REVIEW"
             elif has_legacy_font:
                 canonical_status = "NON_UNICODE_ENCODING_FLAGGED_FOR_HUMAN_REVIEW"
-            elif is_scanned and not ocr_meets_threshold:
+            elif all_pages_scanned and not ocr_meets_threshold:
                 canonical_status = "SCANNED_OCR_BLOCKED_FLAGGED_FOR_HUMAN_REVIEW"
-            elif is_scanned and ocr_meets_threshold:
+            elif all_pages_scanned and ocr_meets_threshold:
                 canonical_status = "SCANNED_OCR_PROCESSED"
-            else:
+            elif has_digital_text:
                 canonical_status = "EXTRACTED"
+            else:
+                canonical_status = "SCANNED_OCR_BLOCKED_FLAGGED_FOR_HUMAN_REVIEW"
 
             # 5. Extract structured facts (or route to human review if scanned/unreadable)
-            if is_corrupt_doc:
+            if is_encrypted_doc:
+                extracted_facts = [
+                    ExtractedFactItem(
+                        key="document_readability",
+                        value="ENCRYPTED_DOCUMENT",
+                        evidence_text=full_text,
+                        page_number=1,
+                        confidence=0.0,
+                        status="ENCRYPTED_PDF_FLAGGED_FOR_HUMAN_REVIEW",
+                        notes="Document is encrypted or password-protected; flagged for human review",
+                        extraction_method="PDF_TEXT",
+                        document_hash=doc_hash,
+                        source_url=doc_url,
+                    )
+                ]
+            elif is_corrupt_doc:
                 extracted_facts = [
                     ExtractedFactItem(
                         key="document_readability",
@@ -139,6 +174,9 @@ class VerificationAgent:
                         confidence=0.0,
                         status="SCANNED_OCR_BLOCKED_FLAGGED_FOR_HUMAN_REVIEW",
                         notes="Document payload is corrupt or unreadable; flagged for human verification",
+                        extraction_method="PDF_TEXT",
+                        document_hash=doc_hash,
+                        source_url=doc_url,
                     )
                 ]
             elif canonical_status == "SCANNED_OCR_BLOCKED_FLAGGED_FOR_HUMAN_REVIEW":
@@ -151,6 +189,9 @@ class VerificationAgent:
                         confidence=0.0,
                         status="SCANNED_OCR_BLOCKED_FLAGGED_FOR_HUMAN_REVIEW",
                         notes="Document is scanned image; automated OCR unavailable or low confidence; flagged for human verification",
+                        extraction_method="OCR",
+                        document_hash=doc_hash,
+                        source_url=doc_url,
                     )
                 ]
             else:
@@ -159,8 +200,9 @@ class VerificationAgent:
                     authority_name=notice_row["authority_name"],
                     notice_title=notice_row["title"],
                     official_url=doc_url,
+                    doc_hash=doc_hash,
                 )
-                if is_scanned and ocr_meets_threshold:
+                if any(p.get("is_scanned") for p in pages) and ocr_meets_threshold:
                     extracted_facts.append(
                         ExtractedFactItem(
                             key="document_readability",
@@ -169,28 +211,33 @@ class VerificationAgent:
                             page_number=1,
                             confidence=round(avg_ocr_confidence, 2),
                             status="VERIFIED",
-                            notes=f"Processed via local Windows Media OCR with empirical confidence {avg_ocr_confidence:.2f}",
+                            notes=f"Processed via local OCR with empirical confidence {avg_ocr_confidence:.2f}",
+                            extraction_method="OCR",
+                            document_hash=doc_hash,
+                            source_url=doc_url,
                         )
                     )
 
             # 6. Run verification & contradiction checks on facts
             verified_facts = self._verify_and_cross_check_facts(extracted_facts, full_text)
 
-            # 7. Insert verified facts into extracted_facts table
+            # 7. Insert verified facts into extracted_facts table (preserving full evidence and extraction method)
             for fact in verified_facts:
                 fact_id = f"fct_{uuid.uuid4().hex[:12]}"
                 conn.execute(
                     """
                     INSERT INTO extracted_facts (
-                        id, notice_version_id, fact_key, fact_value, confidence,
-                        evidence_text, page_number, verified_status, verification_notes, created_at
-                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                        id, notice_version_id, fact_key, fact_value, normalized_value, extraction_method,
+                        confidence, evidence_text, page_number, verified_status, verification_notes, created_at
+                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                     """,
                     (
                         fact_id,
                         version_id,
                         fact.key,
                         fact.value,
+                        getattr(fact, "normalized_value", None) or fact.value,
+                        getattr(fact, "extraction_method", "PDF_TEXT"),
                         fact.confidence,
                         fact.evidence_text,
                         fact.page_number,
@@ -199,6 +246,92 @@ class VerificationAgent:
                         now_iso,
                     ),
                 )
+
+            # 8. Corrigendum and Material Fact Change Detection across versions
+            if next_version > 1:
+                prev_v_num = next_version - 1
+                prev_ver = conn.execute(
+                    "SELECT id, document_hash FROM notice_versions WHERE notice_id = ? AND version_number = ?",
+                    (notice_id, prev_v_num),
+                ).fetchone()
+                if prev_ver:
+                    prev_facts = conn.execute(
+                        "SELECT fact_key, fact_value, normalized_value FROM extracted_facts WHERE notice_version_id = ?",
+                        (prev_ver["id"],),
+                    ).fetchall()
+                    prev_map = {row["fact_key"]: (row["normalized_value"] or row["fact_value"]) for row in prev_facts}
+
+                    material_keys = {
+                        "application_start_date",
+                        "application_end_date",
+                        "fee_payment_deadline",
+                        "exam_date",
+                        "total_vacancies",
+                        "age_limit",
+                        "eligibility_qualification",
+                        "correction_window_start_date",
+                        "correction_window_end_date",
+                    }
+                    changed_facts = []
+                    for fact in verified_facts:
+                        if fact.key in material_keys and fact.key in prev_map:
+                            curr_val = getattr(fact, "normalized_value", None) or fact.value
+                            prev_val = prev_map[fact.key]
+                            if str(curr_val).strip() != str(prev_val).strip():
+                                changed_facts.append({"key": fact.key, "old": prev_val, "new": curr_val})
+
+                    if changed_facts:
+                        # Material recruitment facts changed!
+                        # Invalidate existing approved editorial records and reset draft articles
+                        article_rows = conn.execute(
+                            "SELECT id FROM blog_articles WHERE canonical_notice_id = ?", (notice_id,)
+                        ).fetchall()
+                        if article_rows:
+                            article_ids = [r["id"] for r in article_rows]
+                            placeholders = ",".join("?" * len(article_ids))
+                            conn.execute(
+                                f"""
+                                UPDATE approval_records
+                                SET status = 'INVALIDATED', decision_notes = ?
+                                WHERE status = 'APPROVED'
+                                  AND article_version_id IN (
+                                      SELECT id FROM article_versions WHERE article_id IN ({placeholders})
+                                  )
+                                """,
+                                [f"Corrigendum (Version {next_version}) changed material facts: {', '.join(f['key'] for f in changed_facts)}"] + article_ids,
+                            )
+                            conn.execute(
+                                f"""
+                                UPDATE blog_articles
+                                SET status = 'DRAFT'
+                                WHERE id IN ({placeholders})
+                                  AND status IN ('QA_PASSED', 'PENDING_APPROVAL', 'APPROVED')
+                                """,
+                                article_ids,
+                            )
+
+                        canonical_status = "REVISION_DETECTED"
+                        audit_id = f"aud_{uuid.uuid4().hex[:12]}"
+                        conn.execute(
+                            """
+                            INSERT INTO audit_events (id, entity_type, entity_id, action, actor, payload_json, timestamp)
+                            VALUES (?, ?, ?, ?, ?, ?, ?)
+                            """,
+                            (
+                                audit_id,
+                                "canonical_notices",
+                                notice_id,
+                                "CORRIGENDUM_MATERIAL_FACTS_CHANGED",
+                                "verification_agent",
+                                json.dumps({
+                                    "notice_id": notice_id,
+                                    "previous_version": prev_v_num,
+                                    "current_version": next_version,
+                                    "changed_facts": changed_facts,
+                                }),
+                                now_iso,
+                            ),
+                        )
 
             # Update canonical notice status
             conn.execute(
@@ -283,6 +416,72 @@ class VerificationAgent:
             if is_app_label and not has_exam_label:
                 exam_f.status = "CONTRADICTORY"
                 exam_f.notes = f"Application submission date ({exam_f.value}) mistaken for exam date"
+
+        # Check 2d: Disambiguate publication date vs application start date
+        if "publication_date" in fact_map and "application_start_date" in fact_map:
+            pub_f = fact_map["publication_date"]
+            start_f = fact_map["application_start_date"]
+            try:
+                dt_pub = date_parser.parse(getattr(pub_f, "normalized_value", None) or pub_f.value, dayfirst=True)
+                dt_start = date_parser.parse(getattr(start_f, "normalized_value", None) or start_f.value, dayfirst=True)
+                if dt_pub > dt_start:
+                    start_f.status = "CONTRADICTORY"
+                    start_f.notes = f"Application start date ({start_f.value}) precedes notification publication date ({pub_f.value})"
+            except Exception:
+                pass
+            ev_start = (start_f.evidence_text or "").lower()
+            if (
+                getattr(pub_f, "normalized_value", None) != getattr(start_f, "normalized_value", None)
+                and any(term in ev_start for term in ("date of notification", "published on", "dated:", "advertisement dated"))
+                and not any(term in ev_start for term in ("apply", "submission", "online", "commencement", "opening", "schedule"))
+            ):
+                start_f.status = "CONTRADICTORY"
+                start_f.notes = f"Notification publication date ({start_f.value}) mistaken for application start date"
+
+        # Check 2e: Disambiguate fee payment deadline vs application closing deadline
+        if "fee_payment_deadline" in fact_map and "application_end_date" in fact_map:
+            fee_f = fact_map["fee_payment_deadline"]
+            end_f = fact_map["application_end_date"]
+            try:
+                dt_fee = date_parser.parse(getattr(fee_f, "normalized_value", None) or fee_f.value, dayfirst=True)
+                dt_end = date_parser.parse(getattr(end_f, "normalized_value", None) or end_f.value, dayfirst=True)
+                if dt_fee < dt_end:
+                    fee_f.status = "CONTRADICTORY"
+                    fee_f.notes = f"Fee payment deadline ({fee_f.value}) precedes application closing deadline ({end_f.value})"
+            except Exception:
+                pass
+            ev_end = (end_f.evidence_text or "").lower()
+            has_fee_phrase = any(term in ev_end for term in ("payment of fee", "payment of fees", "fee payment", "pay the fee", "fee submission", "offline challan"))
+            has_app_phrase = any(term in ev_end for term in ("application", "apply", "submission", "submit", "closing date", "last date for receipt"))
+            if has_fee_phrase and not has_app_phrase:
+                end_f.status = "CONTRADICTORY"
+                end_f.notes = f"Fee payment deadline ({end_f.value}) mistaken for application closing date"
+
+        # Check 2f: Disambiguate examination date vs admit card release date
+        if "exam_date" in fact_map and "admit_card_date" in fact_map:
+            exam_f = fact_map["exam_date"]
+            admit_f = fact_map["admit_card_date"]
+            try:
+                dt_exam = date_parser.parse(getattr(exam_f, "normalized_value", None) or exam_f.value, dayfirst=True)
+                dt_admit = date_parser.parse(getattr(admit_f, "normalized_value", None) or admit_f.value, dayfirst=True)
+                if dt_admit > dt_exam:
+                    admit_f.status = "CONTRADICTORY"
+                    admit_f.notes = f"Admit card release date ({admit_f.value}) is after examination date ({exam_f.value})"
+            except Exception:
+                pass
+
+        # Check 2g: Validate correction window timeline
+        if "correction_window_start_date" in fact_map and "correction_window_end_date" in fact_map:
+            cw_start = fact_map["correction_window_start_date"]
+            cw_end = fact_map["correction_window_end_date"]
+            try:
+                dt_cws = date_parser.parse(getattr(cw_start, "normalized_value", None) or cw_start.value, dayfirst=True)
+                dt_cwe = date_parser.parse(getattr(cw_end, "normalized_value", None) or cw_end.value, dayfirst=True)
+                if dt_cwe < dt_cws:
+                    cw_end.status = "CONTRADICTORY"
+                    cw_end.notes = f"Correction window end date ({cw_end.value}) precedes correction window start date ({cw_start.value})"
+            except Exception:
+                pass
 
         # Check 3: Vacancy value must be positive integer and not question/mark count or sub-post count
         if "total_vacancies" in fact_map:

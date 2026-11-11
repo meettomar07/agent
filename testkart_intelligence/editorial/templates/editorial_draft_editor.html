@@ -212,9 +212,13 @@
             <div style="color: #0284c7; font-weight: 600; font-size: 0.82rem;">[Reviewer]: {{ cf.corrected_value }}</div>
             <div style="color: var(--text-muted); font-size: 0.72rem; text-decoration: line-through;">[Extracted]: {{ cf.machine_value }}</div>
           {% elif cf.machine_value %}
-            <div style="font-family: monospace; background: #f8fafc; padding: 0.15rem 0.3rem; border-radius: 3px; font-size: 0.8rem;">
-              {{ cf.machine_value }}
+            <div style="font-family: monospace; background: #f8fafc; padding: 0.15rem 0.3rem; border-radius: 3px; font-size: 0.8rem; display: flex; justify-content: space-between; align-items: center;">
+              <span><b>Normalized:</b> {{ cf.normalized_value or cf.machine_value }}</span>
+              <span class="status-pill status-neutral" style="font-size: 0.6rem; padding: 0.1rem 0.3rem;">{{ cf.extraction_method or 'PDF_TEXT' }}</span>
             </div>
+            {% if cf.normalized_value and cf.normalized_value != cf.machine_value %}
+              <div style="color: var(--text-muted); font-size: 0.72rem; margin-top: 0.15rem;">Raw: <code>{{ cf.machine_value }}</code></div>
+            {% endif %}
           {% else %}
             <span style="color: #b91c1c; font-size: 0.75rem; font-style: italic;">No value extracted from source</span>
           {% endif %}
@@ -222,7 +226,7 @@
         {% if cf.evidence_text %}
           <div style="font-size: 0.72rem; color: var(--text-muted); font-style: italic; border-left: 2px solid #cbd5e1; padding-left: 0.35rem; margin-top: 0.2rem;">
             &ldquo;{{ cf.evidence_text }}&rdquo;
-            {% if cf.page_number %}(p. {{ cf.page_number }}){% endif %}
+            {% if cf.page_number %}<span style="font-weight: 600;">(Page {{ cf.page_number }})</span>{% endif %}
           </div>
         {% endif %}
         {% if cf.fact_id %}

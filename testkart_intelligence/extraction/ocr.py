@@ -90,26 +90,34 @@ class OcrEngineInterface(ABC):
 class StubOcrEngine(OcrEngineInterface):
     """Fallback stub OCR engine when local OCR runtime is unavailable."""
 
+    def __init__(self, canned_text: Optional[str] = None, ocr_confidence: float = 0.0):
+        self.canned_text = canned_text
+        self.ocr_confidence = ocr_confidence
+
     def extract_text_from_scanned_pdf(self, pdf_bytes: bytes) -> List[Dict[str, Any]]:
+        text = self.canned_text or "[SCANNED DOCUMENT: Local OCR engine unavailable. Manual review required.]"
+        conf = self.ocr_confidence if self.canned_text else 0.0
         return [
             {
                 "page_number": 1,
-                "text": "[SCANNED DOCUMENT: Local OCR engine unavailable. Manual review required.]",
-                "ocr_confidence": 0.0,
+                "text": text,
+                "ocr_confidence": conf,
                 "is_scanned": True,
-                "requires_human_verification": True,
-                "ocr_notes": "Local OCR not configured",
+                "requires_human_verification": not bool(self.canned_text and conf >= 0.6),
+                "ocr_notes": "Stub OCR result" if self.canned_text else "Local OCR not configured",
             }
         ]
 
     def ocr_page_pixmap(self, pixmap: Any, page_num: int = 1) -> Dict[str, Any]:
+        text = self.canned_text or ""
+        conf = self.ocr_confidence if self.canned_text else 0.0
         return {
             "page_number": page_num,
-            "text": "",
-            "ocr_confidence": 0.0,
+            "text": text,
+            "ocr_confidence": conf,
             "is_scanned": True,
-            "requires_human_verification": True,
-            "ocr_notes": "Local OCR not configured",
+            "requires_human_verification": not bool(self.canned_text and conf >= 0.6),
+            "ocr_notes": "Stub OCR result" if self.canned_text else "Local OCR not configured",
         }
 
 
@@ -187,11 +195,81 @@ class WindowsMediaOcrEngine(OcrEngineInterface):
             return StubOcrEngine().extract_text_from_scanned_pdf(pdf_bytes)
 
 
+class TesseractOcrEngine(OcrEngineInterface):
+    """Local OCR engine fallback using Tesseract OCR (via pytesseract or CLI)."""
+
+    def __init__(self, lang: str = "eng"):
+        self.lang = lang
+        self._check_availability()
+
+    def _check_availability(self) -> None:
+        try:
+            import pytesseract
+            self.available = True
+        except ImportError:
+            self.available = False
+
+    def ocr_page_pixmap(self, pixmap: Any, page_num: int = 1) -> Dict[str, Any]:
+        """Process PyMuPDF pixmap using Tesseract OCR."""
+        if not self.available:
+            return StubOcrEngine().ocr_page_pixmap(pixmap, page_num)
+
+        try:
+            import io
+            import pytesseract
+            from PIL import Image
+
+            img_bytes = pixmap.tobytes("png")
+            img = Image.open(io.BytesIO(img_bytes))
+            text = pytesseract.image_to_string(img, lang=self.lang).strip()
+            conf = compute_ocr_confidence(text)
+            requires_review = (conf < 0.60) or (len(text) < 20)
+
+            return {
+                "page_number": page_num,
+                "text": text,
+                "ocr_confidence": conf,
+                "is_scanned": True,
+                "requires_human_verification": requires_review,
+                "ocr_notes": f"Processed via Tesseract OCR (conf={conf:.2f})",
+            }
+        except Exception as exc:
+            logger.error("Tesseract single-page OCR failed: %s", exc)
+            return StubOcrEngine().ocr_page_pixmap(pixmap, page_num)
+
+    def extract_text_from_scanned_pdf(self, pdf_bytes: bytes) -> List[Dict[str, Any]]:
+        """Process all pages of scanned PDF via PyMuPDF rendering + Tesseract OCR."""
+        if not self.available:
+            return StubOcrEngine().extract_text_from_scanned_pdf(pdf_bytes)
+
+        import pymupdf
+        pages: List[Dict[str, Any]] = []
+        try:
+            doc = pymupdf.open(stream=pdf_bytes, filetype="pdf")
+            for page_idx in range(len(doc)):
+                page_num = page_idx + 1
+                pix = doc[page_idx].get_pixmap(dpi=150, alpha=False)
+                res = self.ocr_page_pixmap(pix, page_num=page_num)
+                pages.append(res)
+            doc.close()
+            return pages
+        except Exception as exc:
+            logger.error("Tesseract PDF extraction failed: %s", exc)
+            return StubOcrEngine().extract_text_from_scanned_pdf(pdf_bytes)
+
+
 def get_default_ocr_engine() -> OcrEngineInterface:
     """Return an instance of the best available local OCR engine."""
     try:
         import winocr
         return WindowsMediaOcrEngine()
-    except Exception as exc:
-        logger.info("WindowsMediaOcrEngine unavailable (%s); using StubOcrEngine", exc)
-        return StubOcrEngine()
+    except Exception:
+        pass
+
+    try:
+        import pytesseract
+        return TesseractOcrEngine()
+    except Exception:
+        pass
+
+    return StubOcrEngine()
