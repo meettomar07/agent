@@ -89,8 +89,7 @@ class GeminiFactExtractorAdapter:
         Gracefully returns [] if API key is not configured, or if the API call fails,
         ensuring the system is fully operational offline with deterministic extraction.
         """
-        if not self.is_available():
-            logger.debug("GeminiFactExtractorAdapter: GEMINI_API_KEY not configured; skipping AI extraction")
+        if not self.is_available() or getattr(self.__class__, "_quota_exhausted", False):
             return []
 
         if not full_text or len(full_text.strip()) < 50:
@@ -137,6 +136,10 @@ class GeminiFactExtractorAdapter:
                     elif resp.status_code in (404, 503):
                         logger.info("Gemini model %s returned status %d; attempting fallback", mdl, resp.status_code)
                         continue
+                    elif resp.status_code == 429:
+                        logger.warning("Gemini extraction quota exhausted (429); fast fail enabled for session")
+                        self.__class__._quota_exhausted = True
+                        return []
                     else:
                         logger.warning("Gemini extraction API returned status %d: %s", resp.status_code, resp.text)
                         return []
