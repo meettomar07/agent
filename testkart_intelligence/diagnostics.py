@@ -138,6 +138,14 @@ class DiagnosticChecker:
         else:
             details.append(f"Scan hours: {settings.SCAN_HOURS} (Minute: {settings.SCAN_MINUTES:02d})")
 
+        ai_provider = getattr(settings, "AI_PROVIDER", "deterministic")
+        gemini_key = getattr(settings, "GEMINI_API_KEY", "")
+        if gemini_key:
+            masked_key = f"{gemini_key[:6]}...{gemini_key[-4:]}" if len(gemini_key) > 10 else "***"
+            details.append(f"AI Provider: {ai_provider} (Gemini key: {masked_key}, model: {settings.GEMINI_MODEL})")
+        else:
+            details.append(f"AI Provider: {ai_provider} (Deterministic standard; no external API key)")
+
         return {
             "passed": passed,
             "status": "PASS" if passed else "FAIL",

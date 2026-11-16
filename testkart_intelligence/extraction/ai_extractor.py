@@ -70,7 +70,7 @@ class GeminiFactExtractorAdapter:
 
     def __init__(self, api_key: Optional[str] = None, model: Optional[str] = None):
         self.api_key = api_key or getattr(settings, "GEMINI_API_KEY", "")
-        self.model = model or getattr(settings, "GEMINI_MODEL", "gemini-2.5-flash")
+        self.model = model or getattr(settings, "GEMINI_MODEL", "gemini-3.5-flash")
 
     def is_available(self) -> bool:
         """Return True if Gemini API key is configured."""
@@ -115,16 +115,36 @@ class GeminiFactExtractorAdapter:
             },
         }
 
-        url = f"https://generativelanguage.googleapis.com/v1beta/models/{self.model}:generateContent?key={self.api_key}"
+        headers = {
+            "x-goog-api-key": self.api_key,
+            "Content-Type": "application/json",
+        }
+
+        candidate_models = [self.model]
+        for fallback in ["gemini-3.5-flash", "gemini-flash-latest"]:
+            if fallback not in candidate_models:
+                candidate_models.append(fallback)
 
         try:
-            with httpx.Client(timeout=20.0) as client:
-                resp = client.post(url, json=payload)
-                if resp.status_code != 200:
-                    logger.warning("Gemini extraction API returned status %d: %s", resp.status_code, resp.text)
+            with httpx.Client(timeout=30.0) as client:
+                data = None
+                for mdl in candidate_models:
+                    url = f"https://generativelanguage.googleapis.com/v1beta/models/{mdl}:generateContent"
+                    resp = client.post(url, headers=headers, json=payload)
+                    if resp.status_code == 200:
+                        data = resp.json()
+                        break
+                    elif resp.status_code in (404, 503):
+                        logger.info("Gemini model %s returned status %d; attempting fallback", mdl, resp.status_code)
+                        continue
+                    else:
+                        logger.warning("Gemini extraction API returned status %d: %s", resp.status_code, resp.text)
+                        return []
+
+                if not data:
+                    logger.warning("Gemini extraction failed across all candidate models")
                     return []
 
-                data = resp.json()
                 raw_json = (
                     data.get("candidates", [{}])[0]
                     .get("content", {})

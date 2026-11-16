@@ -1,9 +1,13 @@
 """Structured fact extraction from official government recruitment notifications."""
 
+import logging
 import re
 from typing import Any, Dict, List, Optional, Tuple
 
+from testkart_intelligence.config import settings
 from testkart_intelligence.extraction.date_normalizer import DateNormalizer
+
+logger = logging.getLogger(__name__)
 
 
 class ExtractedFactItem:
@@ -1449,5 +1453,28 @@ class FactExtractor:
                         break
                 if qual_found:
                     break
+
+        # 17. Layer 4: AI-Assisted Extraction (Optional fallback for missing critical fields)
+        if getattr(settings, "AI_PROVIDER", "deterministic") == "gemini" or bool(getattr(settings, "GEMINI_API_KEY", "")):
+            try:
+                from testkart_intelligence.extraction.ai_extractor import GeminiFactExtractorAdapter
+                ai_adapter = GeminiFactExtractorAdapter()
+                if ai_adapter.is_available():
+                    existing_keys = {f.key for f in facts}
+                    full_text = "\n".join(p.get("text", "") for p in pages)
+                    ai_facts = ai_adapter.extract_facts(
+                        full_text=full_text,
+                        authority_name=authority_name,
+                        notice_title=notice_title,
+                        doc_hash=doc_hash,
+                        source_url=official_url,
+                    )
+                    # Only add AI facts for fields not already extracted with high confidence
+                    for af in ai_facts:
+                        if af.key not in existing_keys:
+                            facts.append(af)
+                            existing_keys.add(af.key)
+            except Exception as exc:
+                logger.debug("Layer 4 AI extraction skipped: %s", exc)
 
         return facts

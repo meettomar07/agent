@@ -2,7 +2,7 @@
 
 from pathlib import Path
 from typing import List
-from pydantic import Field
+from pydantic import AliasChoices, Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -53,9 +53,9 @@ class Settings(BaseSettings):
     SMTP_PORT: int = 587
 
     # AI / LLM Generation
-    AI_PROVIDER: str = "deterministic"  # "deterministic" | "gemini" | "mock"
-    GEMINI_API_KEY: str = ""
-    GEMINI_MODEL: str = "gemini-2.5-flash"
+    AI_PROVIDER: str = Field(default="deterministic", validation_alias=AliasChoices("TESTKART_AI_PROVIDER", "AI_PROVIDER"))
+    GEMINI_API_KEY: str = Field(default="", validation_alias=AliasChoices("TESTKART_GEMINI_API_KEY", "GEMINI_API_KEY"))
+    GEMINI_MODEL: str = Field(default="gemini-3.5-flash", validation_alias=AliasChoices("TESTKART_GEMINI_MODEL", "GEMINI_MODEL"))
 
     # Quality Assurance Thresholds
     MIN_QA_PASS_SCORE: float = 85.0
