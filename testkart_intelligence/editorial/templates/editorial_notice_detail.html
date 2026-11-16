@@ -120,7 +120,7 @@
       <div style="margin-top: 1rem; border-top: 1px solid var(--border); padding-top: 0.75rem;">
         {% if safe_file_available %}
           <a href="/editorial/documents/{{ latest_version.id }}/download" class="btn btn-primary" style="width: 100%; justify-content: center;">
-            Download Local Verified PDF &darr;
+            Download Local Verified {{ latest_version.document_type }} &darr;
           </a>
         {% else %}
           <a href="{{ notice.normalized_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="width: 100%; justify-content: center;">
@@ -161,6 +161,17 @@
 
   <!-- Right: Extracted Facts and Evidence -->
   <div>
+    {% if latest_version and latest_version.document_type == 'HTML' and not all_facts %}
+    <div class="alert alert-info" style="margin-bottom: 1.25rem;">
+      <div>
+        <strong style="font-size: 0.95rem;">ℹ️ PORTAL LANDING PAGE DETECTED:</strong><br>
+        This link points to an external HTML portal page (<code>{{ notice.normalized_url }}</code>), not a notification PDF document.
+        Portal landing pages contain navigation menus, login links, or candidate registration portals. 
+        Recruitment schedules, vacancies, and eligibility criteria are published in official notification PDFs.
+      </div>
+    </div>
+    {% endif %}
+
     <!-- Critical Recruitment Fields Table -->
     {% if critical_fields_summary %}
     <div class="card" style="margin-bottom: 1.25rem;">

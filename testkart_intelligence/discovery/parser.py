@@ -42,6 +42,14 @@ NAVIGATION_IGNORE_KEYWORDS = {
     "central government",
     "state government",
     "helpline",
+    "apply online",
+    "link for online application",
+    "online application",
+    "know more",
+    "view all",
+    "latest result",
+    "our services",
+    "welcome",
 }
 
 # Generic button / action link texts that should not serve as article titles
@@ -321,9 +329,14 @@ class ListingParser:
                 if not title or len(title) < 8 or "{{" in title:
                     continue
 
-                clean_lower = title.lower()
-                if any(term in clean_lower for term in NAVIGATION_IGNORE_KEYWORDS):
+                clean_lower = title.lower().strip()
+                if any(term in clean_lower for term in NAVIGATION_IGNORE_KEYWORDS) or clean_lower in GENERIC_LINK_TEXTS:
                     continue
+
+                # For HTML links without PDF extension, ensure it is not a generic button or short label
+                if not (norm_url.lower().endswith(".pdf") or "pdf" in norm_url.lower()):
+                    if len(clean_lower) < 15 or clean_lower in ("apply online", "view all", "latest result", "know more", "download"):
+                        continue
 
                 advt_no = extract_advt_number(title)
                 pub_date = extract_notice_date(title)
