@@ -161,13 +161,12 @@
 
   <!-- Right: Extracted Facts and Evidence -->
   <div>
-    {% if latest_version and latest_version.document_type == 'HTML' and not all_facts %}
+    {% if latest_version and latest_version.document_type == 'HTML' %}
     <div class="alert alert-info" style="margin-bottom: 1.25rem;">
       <div>
-        <strong style="font-size: 0.95rem;">ℹ️ PORTAL LANDING PAGE DETECTED:</strong><br>
-        This link points to an external HTML portal page (<code>{{ notice.normalized_url }}</code>), not a notification PDF document.
-        Portal landing pages contain navigation menus, login links, or candidate registration portals. 
-        Recruitment schedules, vacancies, and eligibility criteria are published in official notification PDFs.
+        <strong style="font-size: 0.95rem;">ℹ️ PORTAL LANDING PAGE / AUXILIARY LINK DETECTED:</strong><br>
+        This link points to an external HTML portal page (<code>{{ notice.normalized_url }}</code>) rather than a PDF notification document.
+        Official recruitment schedules (application start/end dates, exam dates, fee deadlines) are typically published inside official PDF notifications.
       </div>
     </div>
     {% endif %}
