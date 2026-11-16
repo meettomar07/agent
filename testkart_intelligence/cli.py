@@ -120,6 +120,57 @@ def cmd_scheduler(args):
         print("Scheduler stopped cleanly.")
 
 
+def cmd_ingest(args):
+    """Ingest official documents for discovered notices, extract facts via OCR + AI, and record versions."""
+    from testkart_intelligence.discovery.fetcher import SafeFetcher
+    from testkart_intelligence.extraction.verifier import VerificationAgent
+    from testkart_intelligence.database.connection import get_db
+
+    notice_id = args.notice_id
+    limit = args.limit or 5
+
+    fetcher = SafeFetcher()
+    verifier = VerificationAgent()
+
+    with get_db() as conn:
+        if notice_id:
+            notices = conn.execute("SELECT id, title, normalized_url FROM canonical_notices WHERE id = ?", (notice_id,)).fetchall()
+        else:
+            notices = conn.execute(
+                """
+                SELECT cn.id, cn.title, cn.normalized_url 
+                FROM canonical_notices cn
+                LEFT JOIN notice_versions nv ON cn.id = nv.notice_id
+                WHERE nv.id IS NULL AND cn.normalized_url IS NOT NULL
+                LIMIT ?
+                """,
+                (limit,),
+            ).fetchall()
+
+    if not notices:
+        print("No pending notices to ingest.")
+        return
+
+    print(f"Ingesting documents and extracting facts for {len(notices)} notice(s)...")
+    for n in notices:
+        nid = n["id"]
+        url = n["normalized_url"]
+        title = n["title"]
+        print(f"\nProcessing [{nid}]: {title[:60]}")
+        print(f"  URL: {url}")
+        try:
+            content_bytes, content_type, final_url, elapsed_ms = fetcher.fetch(url)
+            v_id, facts = verifier.process_and_verify_document(
+                notice_id=nid,
+                doc_bytes=content_bytes,
+                doc_url=final_url,
+                content_type=content_type,
+            )
+            print(f"  -> SUCCESS: Created Version {v_id}, Extracted {len(facts)} facts (took {int(elapsed_ms)}ms)")
+        except Exception as exc:
+            print(f"  -> ERROR: {exc}")
+
+
 def cmd_triage(args):
     """Run discovery triage, categorization, and recency assessment across canonical notices."""
     from testkart_intelligence.classification.classifier import NoticeClassifier
@@ -215,6 +266,12 @@ def main():
     # metrics
     p_met = subparsers.add_parser("metrics", help="Show cumulative operational metrics and reliability statistics")
     p_met.set_defaults(func=cmd_metrics)
+
+    # ingest
+    p_ing = subparsers.add_parser("ingest", help="Ingest official documents and extract facts for discovered notices")
+    p_ing.add_argument("--notice-id", help="Ingest a specific notice ID")
+    p_ing.add_argument("--limit", type=int, default=5, help="Maximum number of notices to ingest (default: 5)")
+    p_ing.set_defaults(func=cmd_ingest)
 
 
     args = parser.parse_args()

@@ -12,6 +12,8 @@ from testkart_intelligence.config import settings
 from testkart_intelligence.database.connection import get_db, init_db
 from testkart_intelligence.registry.service import SourceRegistryService, seed_sources_if_empty
 from testkart_intelligence.discovery.engine import DiscoveryEngine
+from testkart_intelligence.discovery.fetcher import SafeFetcher
+from testkart_intelligence.extraction.verifier import VerificationAgent
 from testkart_intelligence.writing.generator import WritingAgent
 from testkart_intelligence.writing.qa import QualityAssuranceAgent
 from testkart_intelligence.security.approvals import ApprovalService, ApprovalSecurityError
@@ -459,7 +461,7 @@ def api_editorial_flag_notice(
 
 
 @app.get("/editorial/notices/{notice_id}", response_class=HTMLResponse)
-def editorial_notice_detail_view(notice_id: str, request: Request):
+def editorial_notice_detail_view(notice_id: str, request: Request, auto_ingest: bool = True):
     """Notice metadata, version history, document hash, and extracted facts verification view."""
     validate_editorial_request(request)
     service = EditorialService()
@@ -468,6 +470,25 @@ def editorial_notice_detail_view(notice_id: str, request: Request):
     except ValueError as e:
         raise HTTPException(status_code=404, detail=str(e))
 
+    # Auto-ingest newly discovered notices on first view if no versions exist
+    if auto_ingest and not details.get("versions") and details.get("notice", {}).get("normalized_url"):
+        notice = details["notice"]
+        url = notice["normalized_url"]
+        try:
+            fetcher = SafeFetcher()
+            content_bytes, content_type, final_url, _ = fetcher.fetch(url)
+            verifier = VerificationAgent()
+            verifier.process_and_verify_document(
+                notice_id=notice_id,
+                doc_bytes=content_bytes,
+                doc_url=final_url,
+                content_type=content_type,
+            )
+            details = service.get_notice_review(notice_id)
+        except Exception as exc:
+            import logging
+            logging.getLogger("testkart.editorial").warning("Auto-ingestion on view failed for %s: %s", notice_id, exc)
+
     template = jinja_editorial_env.get_template("editorial_notice_detail.html")
     rendered = template.render(
         active_tab="notices_all",
@@ -475,6 +496,39 @@ def editorial_notice_detail_view(notice_id: str, request: Request):
         **details,
     )
     return HTMLResponse(content=rendered)
+
+
+@app.post("/api/editorial/notices/{notice_id}/ingest")
+def api_editorial_ingest_notice(notice_id: str, request: Request) -> Dict[str, Any]:
+    """Ingest official document for a notice, extract facts via OCR + AI, and record version."""
+    validate_editorial_request(request)
+    with get_db() as conn:
+        notice = conn.execute("SELECT * FROM canonical_notices WHERE id = ?", (notice_id,)).fetchone()
+        if not notice:
+            raise HTTPException(status_code=404, detail="Notice not found")
+        url = notice["normalized_url"]
+        if not url:
+            raise HTTPException(status_code=400, detail="Notice has no official URL")
+
+    try:
+        fetcher = SafeFetcher()
+        content_bytes, content_type, final_url, elapsed_ms = fetcher.fetch(url)
+        verifier = VerificationAgent()
+        version_id, facts = verifier.process_and_verify_document(
+            notice_id=notice_id,
+            doc_bytes=content_bytes,
+            doc_url=final_url,
+            content_type=content_type,
+        )
+        return {
+            "notice_id": notice_id,
+            "version_id": version_id,
+            "facts_extracted": len(facts),
+            "status": "INGESTED",
+            "elapsed_ms": int(elapsed_ms),
+        }
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=f"Ingestion failed: {exc}")
 
 
 @app.get("/editorial/articles", response_class=HTMLResponse)

@@ -31,7 +31,10 @@
         {% endif %}
       </div>
     </div>
-    <div>
+    <div style="display: flex; gap: 0.5rem; align-items: center;">
+      <button onclick="triggerIngest('{{ notice.id }}')" id="btnIngest" class="btn btn-outline" style="font-size: 0.88rem; display: inline-flex; align-items: center; gap: 0.35rem;">
+        ⚡ Ingest &amp; Extract Facts (AI + OCR)
+      </button>
       {% if linked_article %}
         <a href="/editorial/articles/{{ linked_article.id }}" class="btn btn-primary" style="font-size: 0.88rem;">
           Open Draft Editor &rarr;
@@ -40,6 +43,19 @@
     </div>
   </div>
 </div>
+
+<!-- Not Ingested Warning -->
+{% if not latest_version %}
+  <div class="alert alert-info" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+    <div>
+      <strong style="font-size: 0.95rem;">DOCUMENT PENDING INGESTION:</strong><br>
+      This notice was recorded during portal listing discovery. Its official PDF binary has not yet been processed.
+    </div>
+    <button onclick="triggerIngest('{{ notice.id }}')" class="btn btn-primary" style="white-space: nowrap; margin-left: 1rem;">
+      ⚡ Extract Facts Now
+    </button>
+  </div>
+{% endif %}
 
 <!-- Readability / OCR Warnings -->
 {% if readability_warnings %}
@@ -319,6 +335,29 @@
 </div>
 
 <script>
+async function triggerIngest(noticeId) {
+  const btn = document.getElementById("btnIngest");
+  if (btn) {
+    btn.disabled = true;
+    btn.textContent = "Processing PDF (OCR + Gemini)...";
+  }
+  try {
+    const res = await fetch(`/api/editorial/notices/${noticeId}/ingest`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" }
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.detail || "Failed to ingest document");
+    location.reload();
+  } catch (e) {
+    alert("Error: " + e.message);
+    if (btn) {
+      btn.disabled = false;
+      btn.textContent = "⚡ Ingest & Extract Facts (AI + OCR)";
+    }
+  }
+}
+
 async function confirmFact(factId) {
   if (!confirm("Confirm this extracted fact as verified against official sources?")) return;
   try {
