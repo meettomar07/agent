@@ -44,19 +44,26 @@ def cmd_sources(args):
             sys.exit(1)
         ok = service.set_enabled(args.code, False)
         print(f"Source {args.code} disabled: {ok}")
+    elif args.action == "enable-all-india":
+        res = service.enable_all_india_recruitment_sources()
+        print(f"Enabled {res['enabled_count']} Pan-India official job recruitment portals (entrance-only portals disabled):")
+        for s in res["sources"]:
+            print(f"  - [{s['code']:<10}] ({s['state']:<16}) {s['name']}")
 
 
 def cmd_scan(args):
     """Trigger manual discovery scan."""
-    print(f"Starting discovery scan (Source: {args.source or 'ALL ENABLED'})...")
+    print(f"Starting discovery scan (Source: {args.source or 'ALL ENABLED PAN-INDIA RECRUITMENT'})...")
     engine = DiscoveryEngine()
     result = engine.run_scan(scan_type="MANUAL", source_code=args.source)
     print("\nScan Results Summary:")
-    print(f"  Scan ID:         {result['scan_id']}")
-    print(f"  Status:          {result['status']}")
-    print(f"  Sources Checked: {result['sources_checked']}")
-    print(f"  Notices Found:   {result['notices_found']}")
-    print(f"  Errors:          {result['errors_count']}")
+    print(f"  Scan ID:                  {result['scan_id']}")
+    print(f"  Status:                   {result['status']}")
+    print(f"  Recruitment-Only Mode:    {result.get('recruitment_only', True)}")
+    print(f"  Sources Checked:          {result['sources_checked']}")
+    print(f"  Recruitment Found:        {result['notices_found']}")
+    print(f"  Non-Recruitment Skipped:  {result.get('filtered_non_recruitment', 0)}")
+    print(f"  Errors:                   {result['errors_count']}")
     if result["error_summary"]:
         print("\nErrors encountered:")
         for err in result["error_summary"]:
@@ -249,7 +256,7 @@ def main():
 
     # sources
     p_src = subparsers.add_parser("sources", help="Manage official sources")
-    p_src.add_argument("action", choices=["list", "enable", "disable"], default="list", nargs="?")
+    p_src.add_argument("action", choices=["list", "enable", "disable", "enable-all-india"], default="list", nargs="?")
     p_src.add_argument("--code", help="Source code (e.g. UPSC, SSC)")
     p_src.add_argument("--enabled-only", action="store_true", help="Only show enabled sources")
     p_src.set_defaults(func=cmd_sources)

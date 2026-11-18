@@ -10,12 +10,14 @@ import sqlite3
 
 logger = logging.getLogger("testkart.discovery")
 
+from testkart_intelligence.config import settings
+from testkart_intelligence.classification.classifier import NoticeClassifier, NoticeCategory
 from testkart_intelligence.database.connection import get_db
 from testkart_intelligence.discovery.fetcher import SafeFetcher, FetchError, SoftErrorPageDetected
 from testkart_intelligence.discovery.parser import ListingParser
 from testkart_intelligence.discovery.deduplication import DeduplicationEngine, MatchType
 from testkart_intelligence.registry.service import SourceRegistryService
-from testkart_intelligence.security.allowlist import SecurityValidationError
+from testkart_intelligence.security.allowlist import SecurityValidationError, is_official_domain
 
 
 class DiscoveryEngine:
@@ -175,6 +177,7 @@ class DiscoveryEngine:
         self,
         scan_type: str = "MANUAL",
         source_code: Optional[str] = None,
+        recruitment_only: Optional[bool] = None,
     ) -> Dict[str, Any]:
         """Execute a discovery scan across enabled official sources.
 
@@ -185,6 +188,7 @@ class DiscoveryEngine:
         """
         scan_id = f"scan_{uuid.uuid4().hex[:12]}"
         now_iso = datetime.now(timezone.utc).isoformat()
+        use_recruitment_only = settings.RECRUITMENT_ONLY_MODE if recruitment_only is None else recruitment_only
 
         with get_db(self.db_path) as conn:
             conn.execute(
@@ -204,16 +208,16 @@ class DiscoveryEngine:
         else:
             sources_to_check = self.registry.list_sources(enabled_only=True)
 
-        # Restrict discovery scans strictly to authorized official authorities
-        APPROVED_SOURCES = {
-            "UPSC", "SSC", "NTA", "UPPSC", "TNPSC",
-            "IBPS", "RRB_CHD", "JOIN_ARMY", "BPSC", "DSSSB", "MPPSC", "KPSC",
-        }
-        sources_to_check = [s for s in sources_to_check if s.get("code") in APPROVED_SOURCES]
+        # Restrict discovery scans strictly to allowlisted official government domains across India
+        sources_to_check = [
+            s for s in sources_to_check
+            if is_official_domain(s.get("official_domain", "")) and is_official_domain(s.get("listing_url", ""))
+        ]
 
         sources_checked = 0
         total_new_notices = 0
         total_revisions = 0
+        total_filtered_non_recruitment = 0
         total_errors = 0
         error_summaries: List[str] = []
 
@@ -238,11 +242,16 @@ class DiscoveryEngine:
                 # 2. Parse candidate notice links
                 candidates = ListingParser.parse_listing(html_text, final_url)
 
-                # 3. Process candidates with deduplication and revision tracking
+                # 3. Process candidates with recruitment filtering, deduplication, and revision tracking
                 with get_db(self.db_path) as conn:
                     dedup = DeduplicationEngine(conn)
 
                     for cand in candidates:
+                        cand_category = NoticeClassifier.classify(cand["title"], cand["url"])
+                        if use_recruitment_only and cand_category != NoticeCategory.RECRUITMENT_NOTIFICATION:
+                            total_filtered_non_recruitment += 1
+                            continue
+
                         match_type, existing_id, last_v_num = dedup.evaluate_candidate(
                             source_id=source_id,
                             normalized_url=cand["url"],
@@ -256,9 +265,9 @@ class DiscoveryEngine:
                                 """
                                 INSERT INTO canonical_notices (
                                     id, source_id, authority_name, notice_number,
-                                    title, normalized_url, category, state, status,
+                                    title, normalized_url, category, state, classification, status,
                                     first_discovered_at, last_updated_at
-                                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'DISCOVERED', ?, ?)
+                                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 'DISCOVERED', ?, ?)
                                 """,
                                 (
                                     notice_id,
@@ -269,6 +278,7 @@ class DiscoveryEngine:
                                     cand["url"],
                                     category,
                                     state,
+                                    cand_category.value,
                                     check_time_iso,
                                     check_time_iso,
                                 ),
@@ -353,10 +363,12 @@ class DiscoveryEngine:
         return {
             "scan_id": scan_id,
             "status": overall_status,
+            "recruitment_only": use_recruitment_only,
             "sources_checked": sources_checked,
             "notices_found": total_new_notices + total_revisions,
             "new_notices": total_new_notices,
             "revisions_found": total_revisions,
+            "filtered_non_recruitment": total_filtered_non_recruitment,
             "errors_count": total_errors,
             "error_summary": error_summaries,
             "started_at": now_iso,

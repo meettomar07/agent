@@ -22,6 +22,9 @@ class Settings(BaseSettings):
     DOCUMENTS_DIR: Path = DATA_DIR / "documents"
     DATABASE_PATH: Path = DATA_DIR / "testkart.db"
 
+    # Discovery Scope & Filtering
+    RECRUITMENT_ONLY_MODE: bool = True  # Restrict discovery & feeds strictly to job recruitment notifications
+
     # Scheduling
     TIMEZONE: str = "Asia/Kolkata"
     SCAN_HOURS: List[int] = [6, 18]  # Twice daily at 06:00 and 18:00 IST

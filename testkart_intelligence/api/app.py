@@ -153,6 +153,13 @@ def list_sources(
     return service.list_sources(enabled_only=enabled_only, category=category, state=state)
 
 
+@app.post("/api/sources/enable-all-india")
+def enable_all_india_sources() -> Dict[str, Any]:
+    """Enable all verified Pan-India official job recruitment portals (excludes entrance-only agencies)."""
+    service = SourceRegistryService()
+    return service.enable_all_india_recruitment_sources()
+
+
 @app.post("/api/sources/{source_id}/toggle")
 def toggle_source(source_id: str, enabled: bool) -> Dict[str, Any]:
     """Enable or disable an official source."""
@@ -181,10 +188,17 @@ def list_scans(limit: int = 20) -> List[Dict[str, Any]]:
 
 
 @app.post("/api/scans/run")
-def trigger_scan(source_code: Optional[str] = None) -> Dict[str, Any]:
-    """Manually run discovery scan across official sources."""
+def trigger_scan(
+    source_code: Optional[str] = None,
+    recruitment_only: bool = True,
+) -> Dict[str, Any]:
+    """Manually run discovery scan across official Pan-India recruitment sources."""
     engine = DiscoveryEngine()
-    return engine.run_scan(scan_type="MANUAL", source_code=source_code)
+    return engine.run_scan(
+        scan_type="MANUAL",
+        source_code=source_code,
+        recruitment_only=recruitment_only,
+    )
 
 
 @app.get("/api/notices")

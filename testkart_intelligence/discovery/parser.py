@@ -58,9 +58,16 @@ GENERIC_LINK_TEXTS = {
     "view advertisement",
     "click here",
     "download",
+    "download pdf",
+    "download notice",
+    "download notice (pdf)",
+    "notice pdf",
+    "view pdf",
+    "view notice",
     "details",
     "view",
     "apply",
+    "apply online",
     "user help",
     "read more",
     "notice",
@@ -265,14 +272,22 @@ class ListingParser:
             row_text = " ".join(row.get_text(separator=" ").split())
             link_text = " ".join(best_link.get_text(separator=" ").split())
 
-            # Determine title: if link_text is generic (e.g. "View Advertisement", "User Instructions"), derive from row cells
+            # Determine title: if link_text is generic (e.g. "View Advertisement", "Download Notice (PDF)"), derive from row cells
             title = link_text
-            if not link_text or link_text.lower() in GENERIC_LINK_TEXTS or len(link_text) < 10:
+            lk_low = link_text.lower()
+            is_generic_link = (
+                not link_text
+                or lk_low in GENERIC_LINK_TEXTS
+                or len(link_text) < 12
+                or lk_low.startswith(("download ", "view ", "click here"))
+            )
+            if is_generic_link:
                 td_texts = [" ".join(td.get_text().split()) for td in row.find_all(["td", "th"])]
                 cell_candidates = [
                     t for t in td_texts
                     if len(t) >= 10
-                    and not any(k in t.lower() for k in GENERIC_LINK_TEXTS)
+                    and t.lower() not in GENERIC_LINK_TEXTS
+                    and not t.lower().startswith(("download ", "view ", "click here"))
                     and not re.search(r"^\d{1,2}[/-]\d{1,2}[/-]\d{4}", t)
                     and not any(term in t.lower() for term in NAVIGATION_IGNORE_KEYWORDS)
                 ]
@@ -280,6 +295,10 @@ class ListingParser:
                     title = max(cell_candidates, key=len)
                 elif len(row_text) >= 10:
                     title = row_text
+
+            title = title.strip()
+            if not title or len(title) < 8 or title.startswith("{") or "{{" in title:
+                continue
 
             if any(term in title.lower() for term in NAVIGATION_IGNORE_KEYWORDS) and len(title) < 25:
                 continue

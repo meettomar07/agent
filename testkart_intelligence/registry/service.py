@@ -44,7 +44,6 @@ def seed_sources_if_empty(conn: sqlite3.Connection) -> int:
                 listing_url = excluded.listing_url,
                 retrieval_method = excluded.retrieval_method,
                 verification_status = excluded.verification_status,
-                enabled = excluded.enabled,
                 updated_at = excluded.updated_at
             """,
             (
@@ -168,6 +167,37 @@ class SourceRegistryService:
                 (1 if enabled else 0, now_iso, source_id, source_id.upper()),
             )
             return cursor.rowcount > 0
+
+    def enable_all_india_recruitment_sources(self) -> Dict[str, Any]:
+        """Enable all verified Pan-India official job recruitment portals and disable entrance-only portals."""
+        now_iso = datetime.now(timezone.utc).isoformat()
+        with get_db(self.db_path) as conn:
+            seed_sources_if_empty(conn)
+            # Enable all VERIFIED recruitment portals across India (exclude entrance-exam-only agencies like NTA)
+            conn.execute(
+                """
+                UPDATE official_sources
+                SET enabled = 1, updated_at = ?
+                WHERE verification_status = 'VERIFIED' AND code != 'NTA'
+                """,
+                (now_iso,),
+            )
+            # Disable non-recruitment / entrance-only portals (NTA) and unverified roadmap portals
+            conn.execute(
+                """
+                UPDATE official_sources
+                SET enabled = 0, updated_at = ?
+                WHERE code = 'NTA' OR verification_status != 'VERIFIED'
+                """,
+                (now_iso,),
+            )
+            enabled = conn.execute(
+                "SELECT code, name, state FROM official_sources WHERE enabled = 1 ORDER BY state, code"
+            ).fetchall()
+            return {
+                "enabled_count": len(enabled),
+                "sources": [dict(r) for r in enabled],
+            }
 
     def record_scan_result(
         self,

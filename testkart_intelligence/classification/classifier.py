@@ -120,6 +120,11 @@ class NoticeClassifier:
         r"\bph\.?d\s+admission\b",
         r"\bcounselling\s+(?:schedule|process)\b",
         r"\bacademic\s+session\b",
+        r"\bshreshta\b",
+        r"\bniftee\b",
+        r"\bcsir[- ]?ugc\s*net\b",
+        r"\bugc[- ]?net\b",
+        r"\bgate\s+20\d{2}\b",
     ]
 
     # Priority 3: Results & Merit Lists
@@ -134,11 +139,16 @@ class NoticeClassifier:
         r"\bshortlisted\s+candidates\b",
         r"\buploading\s+(?:of\s+)?marks\b",
         r"\bdeclaration\s+of\s+(?:additional\s+)?result\b",
+        r"\blist\s+of\s+(?:eligible\s+|shortlisted\s+)?candidates\b",
+        r"\bselection\s+panel\b",
+        r"\bappointment\s+letters?\b",
     ]
 
     # Priority 4: Answer Keys & Response Sheets
     KEYWORDS_ANSWER_KEY = [
         r"\banswer\s+keys?\b",
+        r"\bfinal\s+keys?\b",
+        r"\bquestion\s+papers?\b",
         r"\bresponse\s+sheets?\b",
         r"\bobjection\s+(?:tracker|window|form)\b",
         r"\btentative\s+keys?\b",
@@ -151,6 +161,7 @@ class NoticeClassifier:
         r"\bhall\s+tickets?\b",
         r"\be-admit\b",
         r"\bcall\s+letters?\b",
+        r"\binterview\s+letters?\b",
         r"\bcity\s+intimation\s+slips?\b",
         r"\bcity\s+slips?\b",
         r"\badmission\s+certificates?\b",
@@ -173,8 +184,9 @@ class NoticeClassifier:
         r"\bexam\s+date\b",
         r"\bexamination\s+schedule\b",
         r"\bschedule\s+of\s+(?:[a-zA-Z0-9\(\)\/\s\-]{0,40})?examination\b",
+        r"\bschedule\s+of\s+interview\b",
         r"\btime\s*table\b",
-        r"\bdate\s+of\s+examination\b",
+        r"\bdate\s+of\s+(?:commencement\s+of\s+)?examination\b",
         r"\bschedule\s+of\s+cbt\b",
         r"\bexam\s+calendar\b",
         r"\bprogramme\s+of\s+examinations?\b",
@@ -182,6 +194,9 @@ class NoticeClassifier:
         r"\binterview\s+details\b",
         r"\brevised\s+dates?\b",
         r"\brescheduling\b",
+        r"\bpostponement\s+of\b",
+        r"\bscreening\s+test\b",
+        r"\babsentee\s+candidates\b",
     ]
 
     # Priority 7.5: General Administrative Announcements (Tenders, relocations, office orders)
