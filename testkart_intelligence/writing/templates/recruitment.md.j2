@@ -1,59 +1,184 @@
-# {{ facts.exam_name or notice.title }}
+# {{ article_title }}
 
-**Published By:** {{ facts.recruiting_authority or notice.authority_name }}  
-**Official Notice No:** {{ facts.notice_number or "Refer Official Notification" }}  
-**State / Jurisdiction:** {{ notice.state }}  
-**Source Category:** {{ notice.category }}  
+The **{{ facts.recruiting_authority or notice.authority_name }}** has released the official notification for **{{ facts.exam_name or notice.title }}**{% if facts.total_vacancies %} announcing **{{ facts.total_vacancies }} vacancies**{% endif %}{% if notice.state and notice.state != 'Central' %} in {{ notice.state }}{% endif %}.{% if facts.notice_number %} Under **Notification No. {{ facts.notice_number }}**, eligible candidates fulfilling the prescribed qualifications can apply through the official recruitment portal.{% else %} Eligible candidates fulfilling the prescribed qualifications can apply through the official recruitment portal.{% endif %}
 
----
 
-## Overview
+This recruitment provides an opportunity for eligible aspirants seeking government jobs under {{ facts.recruiting_authority or notice.authority_name }}. Candidates should carefully review the vacancy breakdown, eligibility requirements, age limit, application fees, salary structure, and selection process before submitting their online applications.
 
-The **{{ facts.recruiting_authority or notice.authority_name }}** has officially published the notification for **{{ facts.exam_name or notice.title }}**. Candidates interested in applying for this recruitment can review the verified eligibility criteria, important schedule dates, and official notification details below.
+## {{ short_name }} – Overview
 
-> [!NOTE]
-> All information in this article is sourced exclusively from official government portal releases. Testkart does not use secondary coaching aggregators or unverified third-party sources.
-
----
-
-## Important Dates
-
-| Event | Official Date |
+| Particulars | Details |
 | :--- | :--- |
-| **Notification Release Date** | {{ facts.notification_date or notice.first_discovered_at[:10] }} |
-| **Online Application Start Date** | {{ facts.application_start_date or "Not specified in verified extraction (Requires Editor Review)" }} |
-| **Last Date to Apply Online** | {{ facts.application_end_date or "Not specified in verified extraction (Requires Editor Review)" }} |
-| **Scheduled Examination Date** | {{ facts.exam_date or "To be notified by authority" }} |
+| **Organization** | {{ facts.recruiting_authority or notice.authority_name }} |
+| **Recruitment Name** | {{ facts.exam_name or notice.title }} |
+{% if facts.post_name %}| **Post Name** | {{ facts.post_name }} |
+{% endif %}| **Notification Number** | {{ facts.notice_number or "Refer Official Notification" }} |
+| **Total Vacancies** | {% if facts.total_vacancies %}{{ facts.total_vacancies }} Posts{% else %}Refer Official Notification{% endif %} |
+| **Job Location** | {{ notice.state or "All India" }} |
+| **Qualification** | {{ facts.eligibility_qualification or facts.eligibility or "Refer Official Notification" }} |
+| **Age Limit** | {{ facts.age_limit or "Refer Official Notification" }} |
+| **Application Mode** | {{ facts.application_mode or "Online" }} |
+| **Salary** | {{ facts.salary_pay_scale or "As per Government Pay Matrix Rules" }} |
+| **Selection Process** | {{ facts.selection_process or "Written Examination / Computer-Based Test & Document Verification" }} |
+| **Official Website** | {{ facts.apply_online_url or portal_url }} |
 
----
+## {{ short_name }} Vacancy – Post-Wise Details
 
-## Vacancies & Eligibility Summary
+{% if facts.vacancy_breakdown_markdown %}
+{{ facts.vacancy_breakdown_markdown }}
+{% else %}
+{{ facts.recruiting_authority or notice.authority_name }} has notified {% if facts.total_vacancies %}**{{ facts.total_vacancies }} vacancies**{% else %}vacancies{% endif %} under {{ facts.exam_name or notice.title }}.
 
-- **Total Vacancies:** {% if facts.total_vacancies %}**{{ facts.total_vacancies }}** posts{% else %}Refer to official notification document{% endif %}
-- **Educational Qualification:** {{ facts.eligibility_qualification or "Refer to official notification document" }}
-- **Age Criteria:** {{ facts.age_limit or "Refer to official notification document" }}
+| Post / Cadre | Vacancies |
+| :--- | :--- |
+| {{ facts.post_name or facts.exam_name or notice.title }} | {{ facts.total_vacancies or "Refer Official Notification" }} |
+| **Total** | **{{ facts.total_vacancies or "Refer Official Notification" }}** |
+{% endif %}
 
----
+Candidates should refer to the official notification PDF for category-wise, department-wise, and horizontal reservation details.
 
-## Application Fee & Salary Details
+## {{ short_name }} – Important Dates
 
-- **Application Fee:** {{ facts.application_fee or "Refer to official notification document" }}
-- **Pay Scale / Remuneration:** {% if facts.salary_pay_scale %}{{ facts.salary_pay_scale }}{% else %}Not specified in initial notification{% endif %}
+| Event | Date |
+| :--- | :--- |
+| **Notification Release Date** | {{ facts.publication_date or facts.notification_date or notice.first_discovered_at[:10] }} |
+| **Online Application Start Date** | {{ facts.application_start_date or "Refer Official Notification" }} |
+| **Last Date to Apply Online** | {{ facts.application_end_date or "Refer Official Notification" }} |
+{% if facts.fee_payment_deadline %}| **Last Date for Fee Payment** | {{ facts.fee_payment_deadline }} |
+{% endif %}{% if facts.correction_window_start_date and facts.correction_window_end_date %}| **Application Correction Window** | {{ facts.correction_window_start_date }} to {{ facts.correction_window_end_date }} |
+{% endif %}{% if facts.age_reference_date %}| **Age Calculation Date** | {{ facts.age_reference_date }} |
+{% endif %}| **Written Examination Date** | {{ facts.exam_date or "To Be Announced" }} |
+| **Admit Card Release** | {{ facts.admit_card_date or "To Be Announced" }} |
+{% if facts.result_date %}| **Result Declaration** | {{ facts.result_date }} |
+{% endif %}
 
----
+Candidates are advised to complete the online application process well before the closing deadline to avoid last-minute technical issues.
 
-## How to Apply
+## {{ short_name }} Eligibility Criteria
 
-1. Visit the verified official recruitment portal: [{{ facts.recruiting_authority or notice.authority_name }}]({{ facts.official_source_url or notice.normalized_url }}).
-2. Locate the active link for **{{ facts.exam_name or notice.title }}**.
-3. Register using valid mobile number and email ID.
-4. Fill in the online application form and upload prescribed documents.
-5. Pay the application fee (if applicable) and save the final confirmation page.
+Applicants must possess the prescribed educational qualifications from a recognized board, university, or institution as of the closing date of application.
 
----
+### Educational Qualification
 
-## Official Documents & Source Links
+{% if facts.eligibility_bullets_markdown %}
+{{ facts.eligibility_bullets_markdown }}
+{% else %}
+- **Prescribed Qualification:** {{ facts.eligibility or facts.eligibility_qualification or "Candidates must hold the educational qualification specified for their chosen post code in the official notification." }}
+{% endif %}
 
-- **Official Source URL:** [View Notification / Portal]({{ facts.official_source_url or notice.normalized_url }})
-- **Publishing Authority:** {{ facts.recruiting_authority or notice.authority_name }}
-- **Verification Status:** Verified Official Document
+Candidates should verify post-code-wise educational and experience criteria in the official notification before submitting their form.
+
+## {{ short_name }} Age Limit
+
+The prescribed age limit and category-wise upper age relaxation are summarized below{% if facts.age_reference_date %} (calculated as on **{{ facts.age_reference_date }}**){% endif %}:
+
+{% if facts.age_table_markdown %}
+{{ facts.age_table_markdown }}
+{% else %}
+| Category | Age Limit / Relaxation |
+| :--- | :--- |
+| **General / Prescribed Age Limit** | {{ facts.age_limit or "Refer Official Notification" }} |
+| **SC / ST** | 5 Years Relaxation (as per Government Rules) |
+| **OBC (Non-Creamy Layer)** | 3 Years Relaxation (as per Government Rules) |
+| **Persons with Benchmark Disabilities (PwBD)** | 10 Years Relaxation (as per Government Rules) |
+| **Ex-Servicemen** | As per Government Rules |
+{% endif %}
+
+Age relaxation is applicable only to eligible reserved categories subject to producing valid certificates during document verification.
+
+## {{ short_name }} Application Fee
+
+Candidates must pay the prescribed application fee through the official online payment gateway.
+
+{% if facts.fee_table_markdown %}
+{{ facts.fee_table_markdown }}
+{% else %}
+| Fee Particulars / Category | Amount |
+| :--- | :--- |
+| **Application Fee Details** | {{ facts.application_fee or "Refer Official Notification" }} |
+{% endif %}
+
+Payment can be completed online via Net Banking, Debit Card, Credit Card, or UPI as supported by the portal. Fee exemptions apply strictly as per the official notification rules.
+
+## {{ short_name }} Selection Process
+
+The selection process consists of the following stages:
+
+{% if facts.selection_process_bullets_markdown %}
+{{ facts.selection_process_bullets_markdown }}
+{% else %}
+- **Written Examination / Computer-Based Test (CBT):** Candidates must appear in the prescribed objective examination covering the notified syllabus.
+- **Skill Test / Physical Test / Interview (if applicable):** Shortlisted candidates must qualify in any post-specific proficiency or skill stage notified by the authority.
+- **Document Verification:** Original educational certificates, age proof, category certificates, and reservation documents will be verified.
+- **Final Selection:** Final merit will be prepared based on examination performance, subject to eligibility and document verification.
+{% endif %}
+
+## {{ short_name }} Exam Pattern and Syllabus
+
+{% if facts.exam_pattern_markdown %}
+{{ facts.exam_pattern_markdown }}
+{% else %}
+The detailed examination scheme, marking criteria, and post-wise syllabus are provided in the official notification issued by **{{ facts.recruiting_authority or notice.authority_name }}**.
+
+- **Examination Mode:** {{ facts.exam_mode or "Computer-Based Test (CBT) / Written Examination as notified" }}
+- **Syllabus Scope:** Covers General Awareness, General Intelligence & Reasoning, Arithmetical/Numerical Ability, Language Comprehension, and post-specific technical/domain subjects where applicable.
+
+Candidates should follow the official post-code-wise syllabus for accurate preparation.
+{% endif %}
+
+## {{ short_name }} Salary
+
+Selected candidates will receive remuneration under the applicable government pay structure.
+
+- **Pay Scale:** {{ facts.salary_pay_scale or "As per applicable 7th CPC Pay Matrix Level specified in the official notification" }}
+
+Additional allowances and service benefits (such as DA, HRA, and TA) will be provided according to applicable government rules.
+
+## How to Apply Online for {{ short_name }}
+
+Eligible candidates can follow the step-by-step instructions below to apply online:
+
+1. Visit the official website of **{{ facts.recruiting_authority or notice.authority_name }}** at [{{ facts.apply_online_url or portal_url }}]({{ facts.apply_online_url or portal_url }}).
+2. Complete One-Time Registration (OTR) if you are a new user, or log in using your existing registration credentials.
+3. Open the Active Vacancies / Online Application section and select **{{ facts.exam_name or notice.title }}**{% if facts.notice_number %} (Notification No. {{ facts.notice_number }}){% endif %}.
+4. Fill in personal, communication, educational, and post-code details carefully.
+5. Upload scanned copies of your recent photograph, signature, and required certificates in the prescribed format.
+6. Preview all entered details thoroughly before final submission.
+7. Pay the applicable application fee online (if not exempted).
+8. Submit the final form and download or print the confirmation page for future reference.
+
+**Important:** Registration alone is not considered a completed application. Candidates must submit the final recruitment form and complete fee payment before the closing deadline.
+
+## {{ short_name }} – Important Links
+
+| Description | Official Link |
+| :--- | :--- |
+| **Apply Online** | [{{ facts.apply_online_url or portal_url }}]({{ facts.apply_online_url or portal_url }}) |
+| **Detailed Official Notification** | [View Official Notification]({{ facts.official_source_url or notice.normalized_url }}) |
+| **Official Website** | [{{ portal_url }}]({{ portal_url }}) |
+
+## Frequently Asked Questions (FAQs)
+
+**Q1. How many vacancies are announced under {{ short_name }}?**  
+{{ facts.recruiting_authority or notice.authority_name }} has announced {% if facts.total_vacancies %}**{{ facts.total_vacancies }} vacancies**{% else %}vacancies as detailed in the official notification{% endif %}.
+
+**Q2. What is the last date to apply online for {{ short_name }}?**  
+The last date to submit the online application is **{{ facts.application_end_date or "as specified in the official notification" }}**.
+
+**Q3. Who can apply for {{ short_name }}?**  
+Candidates meeting the prescribed educational qualification (**{{ facts.eligibility_qualification or facts.eligibility or "as detailed in the official notification" }}**) and age requirements can apply online.
+
+**Q4. What is the age limit for {{ short_name }}?**  
+The prescribed age limit is **{{ facts.age_limit or "as per the official notification" }}**, with relaxation available to eligible reserved categories as per government rules.
+
+**Q5. What is the application fee for {{ short_name }}?**  
+{{ facts.application_fee or "The category-wise application fee and exemption rules are specified in the official notification." }}
+
+**Q6. Where can candidates apply online for {{ short_name }}?**  
+Eligible candidates must apply exclusively through the official portal at [{{ facts.apply_online_url or portal_url }}]({{ facts.apply_online_url or portal_url }}).
+
+## Conclusion
+
+**{{ facts.exam_name or notice.title }}** offers a significant opportunity for eligible candidates seeking government roles under **{{ facts.recruiting_authority or notice.authority_name }}**. Interested applicants should carefully review the official notification, verify post-wise eligibility criteria, and submit their online application well before the closing date.
+
+**Official Source:** {{ facts.recruiting_authority or notice.authority_name }} — Always confirm dates and instructions on the official website before you act. Verified via Testkart.

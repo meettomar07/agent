@@ -6,6 +6,7 @@ import uuid
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, Optional, Tuple
+from urllib.parse import urlparse
 from jinja2 import Environment, FileSystemLoader
 
 from testkart_intelligence.config import settings
@@ -102,16 +103,47 @@ class WritingAgent:
                     raise ValueError(f"No document version found for notice {notice_id}")
                 notice_version_id = v_row["id"]
 
-            # 3. Fetch verified facts
+            # 3. Fetch verified facts (preferring editor-corrected value if present)
             facts_cursor = conn.execute(
                 """
-                SELECT fact_key, fact_value, verified_status
+                SELECT fact_key, fact_value, corrected_value, verified_status
                 FROM extracted_facts
                 WHERE notice_version_id = ? AND verified_status = 'VERIFIED'
                 """,
                 (notice_version_id,),
             )
-            facts = {f["fact_key"]: f["fact_value"] for f in facts_cursor.fetchall()}
+            facts = {
+                f["fact_key"]: (f["corrected_value"] or f["fact_value"])
+                for f in facts_cursor.fetchall()
+            }
+
+            # Derive clean portal URL, short exam name, and SEO article title
+            raw_url = facts.get("official_source_url") or notice_row["normalized_url"] or ""
+            parsed = urlparse(raw_url)
+            portal_url = f"{parsed.scheme}://{parsed.netloc}/" if parsed.scheme and parsed.netloc else raw_url
+
+            short_name = (
+                facts.get("short_name")
+                or facts.get("exam_name")
+                or notice_row["title"]
+            ).strip()
+            if len(short_name) > 75:
+                short_name = short_name[:72].rsplit(" ", 1)[0]
+
+            if facts.get("blog_title"):
+                article_title = facts["blog_title"].strip()
+            else:
+                auth = (notice_row["authority_name"] or "").strip()
+                raw_t = (notice_row["title"] or "").strip()
+                if auth and auth.lower() in raw_t.lower():
+                    article_title = raw_t
+                elif auth:
+                    article_title = f"{auth} {raw_t}"
+                else:
+                    article_title = raw_t
+
+            if len(article_title) > settings.MAX_TITLE_LENGTH:
+                article_title = article_title[: settings.MAX_TITLE_LENGTH - 3].rstrip() + "..."
 
             # 4. Select template and render content
             template_name = self.select_template(notice_row["classification"])
@@ -119,19 +151,21 @@ class WritingAgent:
             markdown_content = template.render(
                 notice=dict(notice_row),
                 facts=facts,
+                short_name=short_name,
+                portal_url=portal_url,
+                article_title=article_title,
             ).strip()
 
             # 5. Compute content hash
             content_hash = hashlib.sha256(markdown_content.encode("utf-8")).hexdigest()
 
-            # 6. Generate title, slug, and meta
-            article_title = f"{notice_row['authority_name']} {notice_row['title']}"
-            if len(article_title) > 120:
-                article_title = article_title[:117] + "..."
-
-            slug = generate_slug(notice_row["title"], notice_row["authority_name"])
-            meta_desc = f"Verified details on {notice_row['title']} by {notice_row['authority_name']}. Check official dates, vacancies, and application guidelines."
-            keywords = f"{notice_row['authority_name']}, {notice_row['category']}, govt jobs, exam notification"
+            # 6. Generate slug and meta
+            slug = generate_slug(article_title, "")
+            meta_desc = (
+                facts.get("meta_description")
+                or f"{article_title}. Check official overview, important dates, eligibility, fee, selection process and official portal links."
+            )
+            keywords = f"{notice_row['authority_name']}, {notice_row['category']}, {short_name}, govt jobs, exam notification"
 
             # 7. Check if article already exists for this notice
             art_row = conn.execute(

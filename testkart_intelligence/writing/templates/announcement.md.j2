@@ -1,37 +1,125 @@
-# {{ notice.title }}
+# {{ article_title }}
 
-**Issuing Authority:** {{ facts.recruiting_authority or notice.authority_name }}  
-**Notice Reference:** {{ facts.notice_number or "Official Circular" }}  
-**State / Region:** {{ notice.state }}  
+The **{{ facts.recruiting_authority or notice.authority_name }}** has issued an official public notice regarding **{{ facts.exam_name or notice.title }}**{% if facts.total_vacancies %} covering **{{ facts.total_vacancies }} seats / intake**{% endif %}.{% if facts.intro_summary %} {{ facts.intro_summary }}{% else %} Eligible candidates and applicants can review the complete official schedule, key highlights, fee details, and step-by-step instructions below.{% endif %}
 
----
 
-## Announcement Summary
+Candidates are advised to carefully check the official timelines, portal instructions, and permitted actions before completing their submission on the authorized portal.
 
-The **{{ facts.recruiting_authority or notice.authority_name }}** has issued an official announcement regarding **{{ notice.title }}**.
+## {{ short_name }} – Overview
 
-Candidates and stakeholders are advised to note the official notice details released directly by the authority.
+| Particulars | Details |
+| :--- | :--- |
+| **Organization** | {{ facts.recruiting_authority or notice.authority_name }} |
+| **Examination / Notice Name** | {{ facts.exam_name or notice.title }} |
+{% if facts.notice_number %}| **Notice Reference** | {{ facts.notice_number }} |
+{% endif %}{% if facts.total_vacancies %}| **Total Seats / Intake** | {{ facts.total_vacancies }} |
+{% endif %}{% if facts.programme_scope %}| **Programmes / Scope** | {{ facts.programme_scope }} |
+{% endif %}| **Jurisdiction** | {{ notice.state or "All India" }} |
+| **Application / Process Mode** | {{ facts.application_mode or "Online" }} |
+{% if facts.exam_mode %}| **Mode of Examination** | {{ facts.exam_mode }} |
+{% endif %}{% if facts.application_fee %}| **Examination Fee** | {{ facts.application_fee }} |
+{% endif %}{% if facts.helpline %}| **Official Helpline** | {{ facts.helpline }} |
+{% endif %}| **Official Website** | {{ facts.apply_online_url or portal_url }} |
 
----
+{% if facts.details_section_markdown %}
+## {{ short_name }} – Key Details & Breakdown
 
-## Important Highlights & Schedule
+{{ facts.details_section_markdown }}
+{% endif %}
 
-- **Authority:** {{ facts.recruiting_authority or notice.authority_name }}
-- **Published / Discovered Date:** {{ notice.first_discovered_at[:10] }}
-{% if facts.exam_date %}- **Relevant Schedule Date:** {{ facts.exam_date }}{% endif %}
-{% if facts.application_end_date %}- **Important Deadline:** {{ facts.application_end_date }}{% endif %}
+## {{ short_name }} – Important Dates
 
----
+{% if facts.dates_table_markdown %}
+{{ facts.dates_table_markdown }}
+{% else %}
+| Event | Date |
+| :--- | :--- |
+| **Public Notice Release Date** | {{ facts.publication_date or facts.notification_date or notice.first_discovered_at[:10] }} |
+{% if facts.application_start_date %}| **Online Application Start Date** | {{ facts.application_start_date }} |
+{% endif %}{% if facts.application_end_date %}| **Last Date to Apply Online** | {{ facts.application_end_date }} |
+{% endif %}{% if facts.late_fee_window %}| **Application Window with Late Fee** | {{ facts.late_fee_window }} |
+{% endif %}{% if facts.correction_window_start_date and facts.correction_window_end_date %}| **Correction Window** | {{ facts.correction_window_start_date }} to {{ facts.correction_window_end_date }} |
+{% elif facts.correction_window %}| **Correction Window** | {{ facts.correction_window }} |
+{% endif %}{% if facts.city_intimation_date %}| **City of Examination Intimation** | {{ facts.city_intimation_date }} |
+{% endif %}{% if facts.admit_card_date %}| **Admit Card Release Date** | {{ facts.admit_card_date }} |
+{% endif %}{% if facts.exam_date %}| **Examination Date** | {{ facts.exam_date }} |
+{% endif %}{% if facts.result_date %}| **Result Declaration** | {{ facts.result_date }} |
+{% endif %}
+{% endif %}
 
-## Action Required for Candidates
+Candidates are advised to complete all required steps strictly within the notified schedule.
 
-1. Access the official circular using the verified authority link below.
-2. Verify application numbers or registration details mentioned in the notice.
-3. Keep track of subsequent updates exclusively through official portals.
+{% if facts.eligibility or facts.eligibility_bullets_markdown %}
+## {{ short_name }} – Eligibility & Scheme Details
 
----
+{% if facts.eligibility_bullets_markdown %}
+{{ facts.eligibility_bullets_markdown }}
+{% else %}
+- **Eligibility:** {{ facts.eligibility }}
+{% endif %}
+{% endif %}
 
-## Verified Source Link
+{% if facts.exam_pattern_markdown %}
+## {{ short_name }} – Exam Pattern & Test Structure
 
-- **Official Notice Link:** [{{ notice.authority_name }} Portal]({{ facts.official_source_url or notice.normalized_url }})
-- **Authority Domain:** {{ notice.normalized_url }}
+{{ facts.exam_pattern_markdown }}
+{% endif %}
+
+{% if facts.fee_table_markdown or facts.application_fee %}
+## {{ short_name }} – Fee Details
+
+{% if facts.fee_table_markdown %}
+{{ facts.fee_table_markdown }}
+{% else %}
+| Fee Particulars | Details |
+| :--- | :--- |
+| **Applicable Fee** | {{ facts.application_fee }} |
+{% endif %}
+{% endif %}
+
+## How to Complete Online Process for {{ short_name }}
+
+{% if facts.steps_markdown %}
+{{ facts.steps_markdown }}
+{% else %}
+1. Visit the official website of **{{ facts.recruiting_authority or notice.authority_name }}** at [{{ facts.apply_online_url or portal_url }}]({{ facts.apply_online_url or portal_url }}).
+2. Open the active link for **{{ facts.exam_name or notice.title }}**.
+3. Log in using your application credentials or complete new registration as instructed.
+4. Enter or verify all required particulars carefully and upload prescribed documents (if applicable).
+5. Pay any applicable fee online via Credit Card, Debit Card, Net Banking, or UPI.
+6. Submit the form and download the confirmation receipt for future reference.
+{% endif %}
+
+**Important:** {{ facts.important_note or "Verify all entries thoroughly before final submission, as no further changes are entertained after the official portal window closes." }}
+
+## {{ short_name }} – Important Links
+
+| Description | Official Link |
+| :--- | :--- |
+| **Official Portal / Apply Online** | [{{ facts.apply_online_url or portal_url }}]({{ facts.apply_online_url or portal_url }}) |
+| **Official Public Notice (PDF)** | [Download Official Notice]({{ facts.official_source_url or notice.normalized_url }}) |
+| **Issuing Authority Website** | [{{ portal_url }}]({{ portal_url }}) |
+
+## Frequently Asked Questions (FAQs)
+
+{% if facts.faqs_markdown %}
+{{ facts.faqs_markdown }}
+{% else %}
+**Q1. Who issued the official notice for {{ short_name }}?**  
+The official notice was issued by **{{ facts.recruiting_authority or notice.authority_name }}**.
+
+**Q2. What is the key deadline notified for {{ short_name }}?**  
+{% if facts.application_end_date %}The closing date is **{{ facts.application_end_date }}**.{% elif facts.correction_window_end_date %}The correction window closes on **{{ facts.correction_window_end_date }}**.{% else %}Candidates should refer to the Important Dates table above for the complete schedule.{% endif %}
+
+**Q3. What is the official website for {{ short_name }}?**  
+Candidates must visit [{{ facts.apply_online_url or portal_url }}]({{ facts.apply_online_url or portal_url }}) for official registration, notices, and updates.
+
+**Q4. Where can I download the official notification PDF?**  
+The verified official PDF notice can be accessed directly through the Important Links table above.
+{% endif %}
+
+## Conclusion
+
+Candidates appearing for or applying under **{{ facts.exam_name or notice.title }}** should review the official public notice released by **{{ facts.recruiting_authority or notice.authority_name }}** and complete all required actions within the prescribed dates.
+
+**Official Source:** {{ facts.recruiting_authority or notice.authority_name }} — Always confirm dates and instructions on the official website before you act. Verified via Testkart.

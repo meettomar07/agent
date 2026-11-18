@@ -1,39 +1,84 @@
-# Corrigendum: {{ notice.title }}
+# {{ article_title }}
 
-**Publishing Authority:** {{ facts.recruiting_authority or notice.authority_name }}  
-**Corrigendum Reference:** {{ facts.notice_number or "Corrigendum Notice" }}  
-**Jurisdiction:** {{ notice.state }}  
+The **{{ facts.recruiting_authority or notice.authority_name }}** has issued an official corrigendum regarding **{{ facts.exam_name or notice.title }}**{% if facts.notice_number %} under **File / Reference No. {{ facts.notice_number }}**{% endif %}.{% if facts.intro_summary %} {{ facts.intro_summary }}{% else %} Candidates concerned with this recruitment or examination stage must carefully review the official amendments below.{% endif %}
 
----
 
-## Notice of Revision / Corrigendum
+All other terms, conditions, and instructions of the original notification or result write-up remain unchanged except for the specific revisions notified in this corrigendum.
 
-The **{{ facts.recruiting_authority or notice.authority_name }}** has issued an official corrigendum / amendment regarding **{{ notice.title }}**.
+## {{ short_name }} – Overview
 
-Candidates must take note of the revisions issued to the previous notification.
+| Particulars | Details |
+| :--- | :--- |
+| **Organization** | {{ facts.recruiting_authority or notice.authority_name }} |
+| **Examination / Recruitment** | {{ facts.exam_name or notice.title }} |
+| **Notice Type** | Official Corrigendum / Amendment |
+| **File / Notice Number** | {{ facts.notice_number or "Refer Official Corrigendum" }} |
+| **Corrigendum Release Date** | {{ facts.publication_date or facts.notification_date or notice.first_discovered_at[:10] }} |
+| **Jurisdiction** | {{ notice.state or "All India" }} |
+| **Official Website** | {{ portal_url }} |
 
----
+## {{ short_name }} – Summary of Official Amendments
 
-## Summary of Official Changes
+{% if facts.amendments_markdown %}
+{{ facts.amendments_markdown }}
+{% else %}
+The **{{ facts.recruiting_authority or notice.authority_name }}** has notified the following official updates:
 
-- **Nature of Notice:** Corrigendum / Official Revision
-- **Issuing Body:** {{ facts.recruiting_authority or notice.authority_name }}
-- **Date Issued:** {{ notice.first_discovered_at[:10] }}
-{% if facts.application_end_date %}- **Revised Application Deadline:** {{ facts.application_end_date }}{% endif %}
-{% if facts.exam_date %}- **Revised Examination Date:** {{ facts.exam_date }}{% endif %}
-{% if facts.total_vacancies %}- **Revised Vacancy Count:** {{ facts.total_vacancies }} posts{% endif %}
+| Field / Item | Revised Official Detail |
+| :--- | :--- |
+| **Nature of Revision** | Official Corrigendum / Amendment |
+{% if facts.application_end_date %}| **Revised Application Deadline** | {{ facts.application_end_date }} |
+{% endif %}{% if facts.exam_date %}| **Revised Examination Date** | {{ facts.exam_date }} |
+{% endif %}{% if facts.total_vacancies %}| **Revised Total Vacancies** | {{ facts.total_vacancies }} Posts |
+{% endif %}| **Applicability** | Effective immediately from the date of issue; all other terms remain unchanged |
+{% endif %}
 
----
+## {{ short_name }} – Important Dates
+
+| Event | Date |
+| :--- | :--- |
+| **Corrigendum Publication Date** | {{ facts.publication_date or facts.notification_date or notice.first_discovered_at[:10] }} |
+{% if facts.original_notice_date %}| **Original Result / Notice Date** | {{ facts.original_notice_date }} |
+{% endif %}{% if facts.application_end_date %}| **Revised Last Date to Apply** | {{ facts.application_end_date }} |
+{% endif %}{% if facts.exam_date %}| **Examination Date** | {{ facts.exam_date }} |
+{% endif %}
 
 ## What Candidates Must Do
 
-1. Read the full corrigendum document carefully using the official link below.
-2. Note any changes to eligibility, vacancies, exam dates, or submission timelines.
-3. If an application deadline was extended, submit the form before the revised closing date.
+1. Visit the official website of **{{ facts.recruiting_authority or notice.authority_name }}** at [{{ portal_url }}]({{ portal_url }}) and download the official corrigendum PDF.
+2. Verify whether your roll number, post code, or application schedule is covered by the amended clauses.
+3. Keep a copy of both the original notification/result write-up and this corrigendum for future stages (such as Paper-II or Document Verification).
+4. Continue monitoring the official website regularly for subsequent schedules and admit card updates.
 
----
+**Important:** This corrigendum modifies only the specific clauses mentioned in the official notice; all other terms and conditions of the original release continue to apply.
 
-## Official Documents & Source Evidence
+## {{ short_name }} – Important Links
 
-- **Official Corrigendum Document:** [View Corrigendum Notice]({{ facts.official_source_url or notice.normalized_url }})
-- **Issuing Portal:** {{ notice.authority_name }}
+| Description | Official Link |
+| :--- | :--- |
+| **Official Corrigendum PDF** | [Download Corrigendum Notice]({{ facts.official_source_url or notice.normalized_url }}) |
+| **Official Website** | [{{ portal_url }}]({{ portal_url }}) |
+
+## Frequently Asked Questions (FAQs)
+
+{% if facts.faqs_markdown %}
+{{ facts.faqs_markdown }}
+{% else %}
+**Q1. Who issued this corrigendum?**  
+This official corrigendum was issued by **{{ facts.recruiting_authority or notice.authority_name }}**{% if facts.notice_number %} (File No. {{ facts.notice_number }}){% endif %}.
+
+**Q2. When was the corrigendum published?**  
+The corrigendum is dated **{{ facts.publication_date or notice.first_discovered_at[:10] }}**.
+
+**Q3. Does this corrigendum cancel the earlier notification or result?**  
+No. It amends only the specific points detailed in the official notice; all other terms and conditions remain unchanged.
+
+**Q4. Where can candidates verify the official corrigendum document?**  
+Candidates can download the official corrigendum directly via the link in the Important Links section above or on [{{ portal_url }}]({{ portal_url }}).
+{% endif %}
+
+## Conclusion
+
+Affected candidates should carefully check the official corrigendum issued by **{{ facts.recruiting_authority or notice.authority_name }}** and follow all updated instructions for the upcoming examination stage.
+
+**Official Source:** {{ facts.recruiting_authority or notice.authority_name }} — Always confirm dates and instructions on the official website before you act. Verified via Testkart.

@@ -1,38 +1,45 @@
-# Cancellation Notice: {{ notice.title }}
+# {{ article_title }}
 
-**Publishing Authority:** {{ facts.recruiting_authority or notice.authority_name }}  
-**Notice Reference:** {{ facts.notice_number or "Refer Official Circular" }}  
-**Jurisdiction:** {{ notice.state }}  
-**Current Status:** **CANCELLED / WITHDRAWN**  
-
----
+The **{{ facts.recruiting_authority or notice.authority_name }}** has formally issued a cancellation / withdrawal notice for **{{ facts.exam_name or notice.title }}**{% if facts.notice_number %} (Reference No. {{ facts.notice_number }}){% endif %}.
 
 > [!WARNING]
-> **RECRUITMENT / EXAMINATION CANCELLED**  
-> This examination or recruitment process has been officially **cancelled or withdrawn** by {{ facts.recruiting_authority or notice.authority_name }}. Candidates must **NOT** submit applications, register on any portal, or pay application fees for this notification.
+> **RECRUITMENT / EXAMINATION CANCELLED:** This recruitment or examination process has been officially cancelled or withdrawn by {{ facts.recruiting_authority or notice.authority_name }}. Candidates must **NOT** submit applications or pay fees on any unauthorized portal for this notification.
 
----
+## {{ short_name }} – Overview
 
-## Official Cancellation Details
-
-The **{{ facts.recruiting_authority or notice.authority_name }}** has formally issued a notification cancelling **{{ notice.title }}**.
-
-- **Issuing Authority:** {{ facts.recruiting_authority or notice.authority_name }}
-- **Cancellation Notice Reference:** {{ facts.notice_number or "Official Cancellation Document" }}
-- **Publication Date:** {{ notice.first_discovered_at[:10] }}
-- **Status of Selection Process:** Closed / Revoked by Official Order
-
----
+| Particulars | Details |
+| :--- | :--- |
+| **Organization** | {{ facts.recruiting_authority or notice.authority_name }} |
+| **Notification Name** | {{ facts.exam_name or notice.title }} |
+| **Notice Reference** | {{ facts.notice_number or "Official Cancellation Order" }} |
+| **Publication Date** | {{ facts.publication_date or notice.first_discovered_at[:10] }} |
+| **Current Status** | **CANCELLED / WITHDRAWN** |
+| **Jurisdiction** | {{ notice.state or "All India" }} |
+| **Official Website** | {{ portal_url }} |
 
 ## Important Guidance for Candidates
 
-1. **Do Not Apply:** The application window is closed and void. Any third-party portals offering registration are unauthorized.
-2. **Do Not Pay Fees:** No examination fee is payable for cancelled posts. If fee refund rules apply, check the official cancellation order.
-3. **Official Verification:** Always verify updates directly from the official portal link provided below.
+1. **Do Not Apply:** The recruitment window is closed and revoked by official order.
+2. **Do Not Pay Fees:** No examination fee is payable for cancelled posts. Candidates who previously submitted fees should check the official cancellation circular for refund instructions.
+3. **Verify Official Updates:** Rely solely on announcements published directly on [{{ portal_url }}]({{ portal_url }}).
 
----
+## {{ short_name }} – Important Links
 
-## Official Circular & Evidence
+| Description | Official Link |
+| :--- | :--- |
+| **Official Cancellation Order (PDF)** | [Download Official Cancellation Notice]({{ facts.official_source_url or notice.normalized_url }}) |
+| **Official Website** | [{{ portal_url }}]({{ portal_url }}) |
 
-- **Official Cancellation Order:** [Download Official Cancellation Notice]({{ facts.official_source_url or notice.normalized_url }})
-- **Publishing Portal:** {{ notice.authority_name }}
+## Frequently Asked Questions (FAQs)
+
+**Q1. Is {{ short_name }} still open for candidates?**  
+No. **{{ facts.recruiting_authority or notice.authority_name }}** has officially cancelled or withdrawn this notification.
+
+**Q2. Where can candidates read the official cancellation circular?**  
+The official notice can be accessed directly through the Important Links table above.
+
+## Conclusion
+
+Candidates should note that **{{ facts.exam_name or notice.title }}** stands officially cancelled and check [{{ portal_url }}]({{ portal_url }}) for any fresh re-notification in the future.
+
+**Official Source:** {{ facts.recruiting_authority or notice.authority_name }} — Always confirm dates and instructions on the official website before you act. Verified via Testkart.

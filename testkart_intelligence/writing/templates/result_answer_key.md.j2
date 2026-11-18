@@ -1,37 +1,56 @@
-# {{ notice.title }} - Official Result & Answer Key Details
+# {{ article_title }}
 
-**Authority:** {{ facts.recruiting_authority or notice.authority_name }}  
-**Notice No:** {{ facts.notice_number or "Refer Portal" }}  
-**State / Category:** {{ notice.state }}  
+The **{{ facts.recruiting_authority or notice.authority_name }}** has officially published the result / answer key for **{{ facts.exam_name or notice.title }}**{% if facts.notice_number %} under **Notice No. {{ facts.notice_number }}**{% endif %}.
 
----
+Candidates who appeared in the examination can check their qualification status, download the official merit list or answer key PDF, and review objection timelines (if applicable) below.
 
-## Result / Answer Key Summary
+## {{ short_name }} – Overview
 
-The **{{ facts.recruiting_authority or notice.authority_name }}** has officially published the results / answer key for **{{ notice.title }}**.
+| Particulars | Details |
+| :--- | :--- |
+| **Organization** | {{ facts.recruiting_authority or notice.authority_name }} |
+| **Examination Name** | {{ facts.exam_name or notice.title }} |
+| **Notice Reference** | {{ facts.notice_number or "Refer Official Notice" }} |
+| **Publication Date** | {{ facts.publication_date or notice.first_discovered_at[:10] }} |
+| **Jurisdiction** | {{ notice.state or "All India" }} |
+| **Official Website** | {{ portal_url }} |
 
-Candidates can check their qualification status, response sheets, and objection timelines in accordance with the official announcement.
+## {{ short_name }} – Important Dates
 
----
+| Event | Date |
+| :--- | :--- |
+| **Result / Answer Key Release Date** | {{ facts.publication_date or notice.first_discovered_at[:10] }} |
+{% if facts.objection_deadline %}| **Objection Submission Deadline** | {{ facts.objection_deadline }} |
+{% endif %}{% if facts.next_stage_date %}| **Next Stage Date** | {{ facts.next_stage_date }} |
+{% endif %}
 
-## Examination Details & Key Dates
+## How to Check {{ short_name }} Result / Answer Key
 
-- **Examination Stage:** {{ notice.title }}
-- **Publication Date:** {{ notice.first_discovered_at[:10] }}
-{% if facts.objection_deadline %}- **Objection Submission Deadline:** {{ facts.objection_deadline }}{% endif %}
-- **Issuing Body:** {{ facts.recruiting_authority or notice.authority_name }}
+1. Visit the official website of **{{ facts.recruiting_authority or notice.authority_name }}** at [{{ portal_url }}]({{ portal_url }}).
+2. Open the Result / Answer Key section on the homepage.
+3. Click the link for **{{ facts.exam_name or notice.title }}**.
+4. Download the merit list PDF or log in with your credentials to view your individual scorecard / response sheet.
+5. Save a printed or digital copy for subsequent selection stages.
 
----
+**Important:** Objections against provisional answer keys (where applicable) must be submitted strictly within the notified portal window.
 
-## How to Check Result / Answer Key
+## {{ short_name }} – Important Links
 
-1. Visit the authorized official website: [{{ facts.recruiting_authority or notice.authority_name }}]({{ facts.official_source_url or notice.normalized_url }}).
-2. Look for the link titled **{{ notice.title }}**.
-3. Download the result PDF / log in to access the individual scorecard or answer key.
-4. If submitting objections against tentative answer keys, follow the official portal window within the stipulated timeframe.
+| Description | Official Link |
+| :--- | :--- |
+| **Official Result / Answer Key PDF** | [View Official Document]({{ facts.official_source_url or notice.normalized_url }}) |
+| **Official Website** | [{{ portal_url }}]({{ portal_url }}) |
 
----
+## Frequently Asked Questions (FAQs)
 
-## Verified Official Link
+**Q1. Where can candidates check the {{ short_name }} result or answer key?**  
+Candidates can verify their result directly on [{{ portal_url }}]({{ portal_url }}) or via the link in the Important Links table above.
 
-- **Official Result Document / Portal:** [Check Official Notification]({{ facts.official_source_url or notice.normalized_url }})
+**Q2. When was the official result / answer key published?**  
+It was released on **{{ facts.publication_date or notice.first_discovered_at[:10] }}**.
+
+## Conclusion
+
+Shortlisted candidates should regularly visit the official website of **{{ facts.recruiting_authority or notice.authority_name }}** for upcoming cut-off marks, scorecards, and document verification schedules.
+
+**Official Source:** {{ facts.recruiting_authority or notice.authority_name }} — Always confirm dates and instructions on the official website before you act. Verified via Testkart.
