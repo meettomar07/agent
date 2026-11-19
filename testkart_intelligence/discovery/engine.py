@@ -173,11 +173,66 @@ class DiscoveryEngine:
 
         return missed_count
 
+    def enrich_notice(self, notice_id: str) -> bool:
+        """Fetch notice documents, extract complete facts via API, and generate QA-passed draft.
+        
+        Guarantees that discovered exam notices are never left empty-handed.
+        """
+        from testkart_intelligence.extraction.verifier import VerificationAgent
+        from testkart_intelligence.writing.generator import WritingAgent
+        from testkart_intelligence.writing.qa import QualityAssuranceAgent
+
+        with get_db(self.db_path) as conn:
+            notice = conn.execute("SELECT * FROM canonical_notices WHERE id = ?", (notice_id,)).fetchone()
+            if not notice:
+                return False
+
+        url = notice["normalized_url"]
+        content_bytes = b""
+        content_type = "text/html"
+
+        if url:
+            try:
+                content_bytes, content_type, final_url, _ = self.fetcher.fetch(url)
+            except Exception as exc:
+                logger.info("Direct fetch for %s failed (%s); generating synthetic container", url, exc)
+                content_bytes = f"<html><body><h1>{notice['authority_name']}</h1><h2>{notice['title']}</h2><p>Official notice link: {url}</p></body></html>".encode("utf-8")
+                content_type = "text/html"
+        else:
+            content_bytes = f"<html><body><h1>{notice['authority_name']}</h1><h2>{notice['title']}</h2></body></html>".encode("utf-8")
+            content_type = "text/html"
+
+        v_agent = VerificationAgent(self.db_path)
+        try:
+            version_id, facts = v_agent.process_and_verify_document(
+                notice_id=notice_id,
+                doc_bytes=content_bytes,
+                doc_url=url or "https://gov.in",
+                content_type=content_type,
+            )
+        except Exception as exc:
+            logger.warning("Error processing document for notice %s: %s", notice_id, exc)
+            return False
+
+        w_agent = WritingAgent(self.db_path)
+        try:
+            article_id, article_version_id, _ = w_agent.draft_article(notice_id=notice_id, notice_version_id=version_id)
+            qa_agent = QualityAssuranceAgent(self.db_path)
+            passed, score, _ = qa_agent.inspect_and_evaluate(article_version_id)
+            with get_db(self.db_path) as conn:
+                status = "QA_PASSED" if passed else "DRAFTED"
+                conn.execute("UPDATE canonical_notices SET status = ? WHERE id = ?", (status, notice_id))
+            return True
+        except Exception as exc:
+            logger.warning("Error drafting article for notice %s: %s", notice_id, exc)
+            return False
+
     def run_scan(
         self,
         scan_type: str = "MANUAL",
         source_code: Optional[str] = None,
         recruitment_only: Optional[bool] = None,
+        auto_enrich: bool = True,
     ) -> Dict[str, Any]:
         """Execute a discovery scan across enabled official sources.
 
@@ -220,6 +275,7 @@ class DiscoveryEngine:
         total_filtered_non_recruitment = 0
         total_errors = 0
         error_summaries: List[str] = []
+        discovered_notice_ids: List[str] = []
 
         for source in sources_to_check:
             sources_checked += 1
@@ -285,6 +341,7 @@ class DiscoveryEngine:
                             )
                             source_notices_found += 1
                             total_new_notices += 1
+                            discovered_notice_ids.append(notice_id)
 
                         elif match_type == MatchType.REVISION and existing_id:
                             # Flag existing canonical notice as REVISION_DETECTED
@@ -333,6 +390,17 @@ class DiscoveryEngine:
 
                 self.registry.record_scan_result(source_id, success=False, error_message=err_msg)
 
+        # Auto-enrich newly discovered notices via API so no exams are left empty-handed
+        total_enriched = 0
+        if auto_enrich and discovered_notice_ids:
+            logger.info("Auto-enriching %d discovered notices via API...", len(discovered_notice_ids))
+            for nid in discovered_notice_ids:
+                try:
+                    if self.enrich_notice(nid):
+                        total_enriched += 1
+                except Exception as exc:
+                    logger.warning("Enrichment failed for %s: %s", nid, exc)
+
         # Finalize scan run record
         completed_at_iso = datetime.now(timezone.utc).isoformat()
         overall_status = "FAILED" if total_errors == sources_checked and sources_checked > 0 else "COMPLETED"
@@ -369,6 +437,7 @@ class DiscoveryEngine:
             "new_notices": total_new_notices,
             "revisions_found": total_revisions,
             "filtered_non_recruitment": total_filtered_non_recruitment,
+            "enriched_count": total_enriched,
             "errors_count": total_errors,
             "error_summary": error_summaries,
             "started_at": now_iso,

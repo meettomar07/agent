@@ -56,9 +56,9 @@ class Settings(BaseSettings):
     SMTP_PORT: int = 587
 
     # AI / LLM Generation
-    AI_PROVIDER: str = Field(default="deterministic", validation_alias=AliasChoices("TESTKART_AI_PROVIDER", "AI_PROVIDER"))
+    AI_PROVIDER: str = Field(default="gemini", validation_alias=AliasChoices("TESTKART_AI_PROVIDER", "AI_PROVIDER"))
     GEMINI_API_KEY: str = Field(default="", validation_alias=AliasChoices("TESTKART_GEMINI_API_KEY", "GEMINI_API_KEY"))
-    GEMINI_MODEL: str = Field(default="gemini-3.5-flash", validation_alias=AliasChoices("TESTKART_GEMINI_MODEL", "GEMINI_MODEL"))
+    GEMINI_MODEL: str = Field(default="gemini-3-flash-preview", validation_alias=AliasChoices("TESTKART_GEMINI_MODEL", "GEMINI_MODEL"))
 
     # Quality Assurance Thresholds
     MIN_QA_PASS_SCORE: float = 85.0

@@ -108,7 +108,7 @@ class WritingAgent:
                 """
                 SELECT fact_key, fact_value, corrected_value, verified_status
                 FROM extracted_facts
-                WHERE notice_version_id = ? AND verified_status = 'VERIFIED'
+                WHERE notice_version_id = ? AND verified_status IN ('VERIFIED', 'CONFIRMED')
                 """,
                 (notice_version_id,),
             )

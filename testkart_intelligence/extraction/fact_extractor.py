@@ -1474,6 +1474,21 @@ class FactExtractor:
                         if af.key not in existing_keys:
                             facts.append(af)
                             existing_keys.add(af.key)
+
+                    # Ensure notice is never empty-handed: if critical recruitment fields are missing, enrich via API
+                    critical_fields = {"application_start_date", "application_end_date", "total_vacancies", "eligibility", "age_limit"}
+                    if critical_fields - existing_keys:
+                        enriched = ai_adapter.enrich_recruitment_intel(
+                            authority_name=authority_name,
+                            notice_title=notice_title,
+                            doc_text=full_text,
+                            official_url=official_url,
+                            doc_hash=doc_hash,
+                        )
+                        for ef in enriched:
+                            if ef.key not in existing_keys:
+                                facts.append(ef)
+                                existing_keys.add(ef.key)
             except Exception as exc:
                 logger.debug("Layer 4 AI extraction skipped: %s", exc)
 
