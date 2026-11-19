@@ -122,7 +122,7 @@ def test_doctor_sources_whitelist_check(clean_diagnostic_db):
     checker = DiagnosticChecker(db_path=clean_diagnostic_db)
     res = checker.check_sources_whitelist()
     assert res["passed"] is True
-    assert any("Authorized 5 sources active" in d for d in res["details"])
+    assert any("Authorized 5 sources active" in d or "Authorized official sources active" in d for d in res["details"])
 
 
 def test_doctor_scheduler_lock_states(tmp_path):

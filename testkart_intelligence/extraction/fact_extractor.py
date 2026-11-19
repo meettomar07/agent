@@ -1469,7 +1469,13 @@ class FactExtractor:
                         doc_hash=doc_hash,
                         source_url=official_url,
                     )
-                    # Only add AI facts for fields not already extracted with high confidence
+                    # Overwrite UNVERIFIED or CONTRADICTORY regex facts with high-quality AI facts
+                    unverified_keys = {f.key for f in facts if f.status in ("UNVERIFIED", "CONTRADICTORY")}
+                    if unverified_keys:
+                        facts = [f for f in facts if f.key not in unverified_keys]
+                        existing_keys = {f.key for f in facts}
+
+                    # Add AI facts for fields not already extracted with high confidence
                     for af in ai_facts:
                         if af.key not in existing_keys:
                             facts.append(af)
@@ -1477,7 +1483,7 @@ class FactExtractor:
 
                     # Ensure notice is never empty-handed: if critical recruitment fields are missing, enrich via API
                     critical_fields = {"application_start_date", "application_end_date", "total_vacancies", "eligibility", "age_limit"}
-                    if critical_fields - existing_keys:
+                    if critical_fields - existing_keys or unverified_keys:
                         enriched = ai_adapter.enrich_recruitment_intel(
                             authority_name=authority_name,
                             notice_title=notice_title,

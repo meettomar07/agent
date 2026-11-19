@@ -98,15 +98,15 @@ def test_register_new_source(test_db: Path):
 
     # Valid official portal
     new_src = service.register_source(
-        code="OPSC",
-        name="Odisha Public Service Commission",
+        code="MPSC_MH",
+        name="Maharashtra Public Service Commission",
         category="PSC",
-        state="Odisha",
-        listing_url="https://opsc.gov.in/notices.html",
+        state="Maharashtra",
+        listing_url="https://mpsc.gov.in/notices.html",
     )
     assert new_src is not None
-    assert new_src["code"] == "OPSC"
-    assert new_src["official_domain"] == "opsc.gov.in"
+    assert new_src["code"] == "MPSC_MH"
+    assert new_src["official_domain"] == "mpsc.gov.in"
 
     # Reject non-official portal
     with pytest.raises(SecurityValidationError):

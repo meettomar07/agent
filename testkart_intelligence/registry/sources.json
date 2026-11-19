@@ -33,7 +33,7 @@
     "listing_url": "https://nta.ac.in/NoticeBoardArchive",
     "retrieval_method": "html_scrape",
     "verification_status": "VERIFIED",
-    "enabled": true
+    "enabled": false
   },
   {
     "id": "src_uppsc",
@@ -69,7 +69,7 @@
     "listing_url": "https://www.ibps.in/",
     "retrieval_method": "html_scrape",
     "verification_status": "VERIFIED",
-    "enabled": false
+    "enabled": true
   },
   {
     "id": "src_isro",
@@ -81,7 +81,7 @@
     "listing_url": "https://www.isro.gov.in/Careers.html",
     "retrieval_method": "html_scrape",
     "verification_status": "VERIFIED",
-    "enabled": false
+    "enabled": true
   },
   {
     "id": "src_esic",
@@ -93,7 +93,7 @@
     "listing_url": "https://esic.gov.in/recruitments",
     "retrieval_method": "html_scrape",
     "verification_status": "VERIFIED",
-    "enabled": false
+    "enabled": true
   },
   {
     "id": "src_dsssb",
@@ -105,7 +105,7 @@
     "listing_url": "https://dsssb.delhi.gov.in/notifications",
     "retrieval_method": "html_scrape",
     "verification_status": "VERIFIED",
-    "enabled": false
+    "enabled": true
   },
   {
     "id": "src_bpsc",
@@ -117,7 +117,7 @@
     "listing_url": "https://bpsc.bihar.gov.in/",
     "retrieval_method": "html_scrape",
     "verification_status": "VERIFIED",
-    "enabled": false
+    "enabled": true
   },
   {
     "id": "src_hpsc",
@@ -129,7 +129,7 @@
     "listing_url": "https://hpsc.gov.in/en-us/Instructions",
     "retrieval_method": "html_scrape",
     "verification_status": "VERIFIED",
-    "enabled": false
+    "enabled": true
   },
   {
     "id": "src_hssc",
@@ -141,7 +141,7 @@
     "listing_url": "https://hssc.gov.in/",
     "retrieval_method": "html_scrape",
     "verification_status": "VERIFIED",
-    "enabled": false
+    "enabled": true
   },
   {
     "id": "src_ukpsc",
@@ -153,7 +153,7 @@
     "listing_url": "https://psc.uk.gov.in/candidate-corner/recruitment",
     "retrieval_method": "html_scrape",
     "verification_status": "VERIFIED",
-    "enabled": false
+    "enabled": true
   },
   {
     "id": "src_rpsc",
@@ -165,7 +165,7 @@
     "listing_url": "https://rpsc.rajasthan.gov.in/",
     "retrieval_method": "html_scrape",
     "verification_status": "VERIFIED",
-    "enabled": false
+    "enabled": true
   },
   {
     "id": "src_gpsc",
@@ -177,7 +177,7 @@
     "listing_url": "https://gpsc.gujarat.gov.in/",
     "retrieval_method": "html_scrape",
     "verification_status": "VERIFIED",
-    "enabled": false
+    "enabled": true
   },
   {
     "id": "src_cgpsc",
@@ -189,7 +189,7 @@
     "listing_url": "https://psc.cg.gov.in/htm/Advertisement.htm",
     "retrieval_method": "html_scrape",
     "verification_status": "VERIFIED",
-    "enabled": false
+    "enabled": true
   },
   {
     "id": "src_keralapsc",
@@ -201,7 +201,7 @@
     "listing_url": "https://www.keralapsc.gov.in/notifications",
     "retrieval_method": "html_scrape",
     "verification_status": "VERIFIED",
-    "enabled": false
+    "enabled": true
   },
   {
     "id": "src_tgpsc",
@@ -213,7 +213,7 @@
     "listing_url": "https://www.tgpsc.gov.in/",
     "retrieval_method": "html_scrape",
     "verification_status": "VERIFIED",
-    "enabled": false
+    "enabled": true
   },
   {
     "id": "src_apsc",
@@ -225,7 +225,7 @@
     "listing_url": "https://apsc.nic.in/",
     "retrieval_method": "html_scrape",
     "verification_status": "VERIFIED",
-    "enabled": false
+    "enabled": true
   },
   {
     "id": "src_rrb_chd",
@@ -258,10 +258,58 @@
     "category": "PSC",
     "state": "Madhya Pradesh",
     "official_domain": "mppsc.mp.gov.in",
-    "listing_url": "https://mppsc.mp.gov.in/advertisement",
+    "listing_url": "https://mppsc.mp.gov.in/",
     "retrieval_method": "html_scrape",
-    "verification_status": "ROADMAP_NEEDS_FORM_POST",
-    "enabled": false
+    "verification_status": "VERIFIED",
+    "enabled": true
+  },
+  {
+    "id": "src_appsc",
+    "code": "APPSC",
+    "name": "Andhra Pradesh Public Service Commission",
+    "category": "PSC",
+    "state": "Andhra Pradesh",
+    "official_domain": "portal-psc.ap.gov.in",
+    "listing_url": "https://portal-psc.ap.gov.in/HomePages/RecruitmentNotifications.aspx",
+    "retrieval_method": "html_scrape",
+    "verification_status": "VERIFIED",
+    "enabled": true
+  },
+  {
+    "id": "src_ppsc",
+    "code": "PPSC",
+    "name": "Punjab Public Service Commission",
+    "category": "PSC",
+    "state": "Punjab",
+    "official_domain": "ppsc.gov.in",
+    "listing_url": "https://ppsc.gov.in",
+    "retrieval_method": "html_scrape",
+    "verification_status": "VERIFIED",
+    "enabled": true
+  },
+  {
+    "id": "src_drdo",
+    "code": "DRDO_RAC",
+    "name": "Defence Research and Development Organisation (RAC)",
+    "category": "Central/Defence",
+    "state": "Central",
+    "official_domain": "rac.gov.in",
+    "listing_url": "https://rac.gov.in/index.php?lang=en&id=0",
+    "retrieval_method": "html_scrape",
+    "verification_status": "VERIFIED",
+    "enabled": true
+  },
+  {
+    "id": "src_opsc",
+    "code": "OPSC",
+    "name": "Odisha Public Service Commission",
+    "category": "PSC",
+    "state": "Odisha",
+    "official_domain": "www.opsc.gov.in",
+    "listing_url": "https://www.opsc.gov.in/Public/Pages/View_Content.aspx?id=MeNGKau42B9VX4Nn6oZfXA==",
+    "retrieval_method": "html_scrape",
+    "verification_status": "VERIFIED",
+    "enabled": true
   },
   {
     "id": "src_kpsc",
@@ -274,5 +322,77 @@
     "retrieval_method": "html_scrape",
     "verification_status": "ROADMAP_NON_STANDARD_HEADER",
     "enabled": false
+  },
+  {
+    "id": "src_wbpsc",
+    "code": "WBPSC",
+    "name": "West Bengal Public Service Commission",
+    "category": "PSC",
+    "state": "West Bengal",
+    "official_domain": "psc.wb.gov.in",
+    "listing_url": "https://psc.wb.gov.in/",
+    "retrieval_method": "html_scrape",
+    "verification_status": "VERIFIED",
+    "enabled": true
+  },
+  {
+    "id": "src_appsc_ar",
+    "code": "APPSC_AR",
+    "name": "Arunachal Pradesh Public Service Commission",
+    "category": "PSC",
+    "state": "Arunachal Pradesh",
+    "official_domain": "appsc.gov.in",
+    "listing_url": "https://appsc.gov.in/Index/sub_page/doc2195/Advertisements",
+    "retrieval_method": "html_scrape",
+    "verification_status": "VERIFIED",
+    "enabled": true
+  },
+  {
+    "id": "src_npsc",
+    "code": "NPSC",
+    "name": "Nagaland Public Service Commission",
+    "category": "PSC",
+    "state": "Nagaland",
+    "official_domain": "npsc.nagaland.gov.in",
+    "listing_url": "https://npsc.nagaland.gov.in/advertisement",
+    "retrieval_method": "html_scrape",
+    "verification_status": "VERIFIED",
+    "enabled": true
+  },
+  {
+    "id": "src_mpsc_mz",
+    "code": "MPSC_MZ",
+    "name": "Mizoram Public Service Commission",
+    "category": "PSC",
+    "state": "Mizoram",
+    "official_domain": "mpsc.mizoram.gov.in",
+    "listing_url": "https://mpsc.mizoram.gov.in/page/advertisement-2026-2027",
+    "retrieval_method": "html_scrape",
+    "verification_status": "VERIFIED",
+    "enabled": true
+  },
+  {
+    "id": "src_tpsc",
+    "code": "TPSC",
+    "name": "Tripura Public Service Commission",
+    "category": "PSC",
+    "state": "Tripura",
+    "official_domain": "tpsc.tripura.gov.in",
+    "listing_url": "https://tpsc.tripura.gov.in/direct-recruitment",
+    "retrieval_method": "html_scrape",
+    "verification_status": "VERIFIED",
+    "enabled": true
+  },
+  {
+    "id": "src_spsc",
+    "code": "SPSC",
+    "name": "Sikkim Public Service Commission",
+    "category": "PSC",
+    "state": "Sikkim",
+    "official_domain": "spsc.sikkim.gov.in",
+    "listing_url": "https://spsc.sikkim.gov.in/Advertisement.html",
+    "retrieval_method": "html_scrape",
+    "verification_status": "VERIFIED",
+    "enabled": true
   }
 ]

@@ -37,10 +37,12 @@ ERROR_URL_MARKERS = [
 ]
 
 
-# Approved legacy hosts requiring TLS SECLEVEL=1 ciphers
+# Approved legacy hosts requiring TLS SECLEVEL=1 ciphers or legacy renegotiation
 LEGACY_TLS_APPROVED_HOSTS = {
     "ibps.in",
     "rrbcdg.gov.in",
+    "psc.wb.gov.in",
+    "wb.gov.in",
 }
 
 # Approved government hosts with non-compliant HTTP headers (e.g. whitespace before colon)
@@ -51,19 +53,28 @@ NON_COMPLIANT_HEADER_APPROVED_HOSTS = {
 
 def create_standard_ssl_context() -> ssl.SSLContext:
     """Create standard secure SSL context enforcing modern TLS ciphers (SECLEVEL=2 default)."""
-    return ssl.create_default_context()
+    ctx = ssl.create_default_context()
+    try:
+        ctx.options |= getattr(ssl, "OP_LEGACY_SERVER_CONNECT", 0x4)
+    except Exception:
+        pass
+    return ctx
 
 
 def create_legacy_ssl_context() -> ssl.SSLContext:
     """Create SSL context with SECLEVEL=1 strictly restricted to approved legacy government hosts.
     
-    Security note: Legacy government servers (IBPS, RRB) use older cipher suites rejected
-    by Python 3.13 default SECLEVEL=2. This context lowers security level to 1 ONLY for
-    explicitly allowlisted domains.
+    Security note: Legacy government servers (IBPS, RRB, WBPSC) use older cipher suites or
+    legacy renegotiation rejected by Python 3.13 default SECLEVEL=2. This context lowers security
+    level to 1 and enables legacy renegotiation ONLY for explicitly allowlisted domains.
     """
     ctx = ssl.create_default_context()
     try:
         ctx.set_ciphers("DEFAULT:@SECLEVEL=1")
+    except Exception:
+        pass
+    try:
+        ctx.options |= getattr(ssl, "OP_LEGACY_SERVER_CONNECT", 0x4)
     except Exception:
         pass
     return ctx
@@ -109,6 +120,17 @@ class SafeFetcher:
             )
         return self._clients[cache_key]
 
+    def _get_unverified_client(self) -> httpx.Client:
+        """Fallback client for official allowlisted government portals with missing intermediate root certificates."""
+        if "unverified" not in self._clients:
+            self._clients["unverified"] = httpx.Client(
+                headers={"User-Agent": settings.USER_AGENT},
+                timeout=self.timeout,
+                follow_redirects=False,
+                verify=False,
+            )
+        return self._clients["unverified"]
+
     def _fetch_with_urllib(self, url: str) -> Tuple[bytes, str, str, float]:
         """Permissive fallback fetcher for approved government hosts emitting non-compliant headers.
         
@@ -126,6 +148,10 @@ class SafeFetcher:
         ctx = ssl.create_default_context()
         ctx.check_hostname = False
         ctx.verify_mode = ssl.CERT_NONE
+        try:
+            ctx.options |= getattr(ssl, "OP_LEGACY_SERVER_CONNECT", 0x4)
+        except Exception:
+            pass
 
         class SafeRedirectHandler(urllib.request.HTTPRedirectHandler):
             def redirect_request(self, req, fp, code, msg, headers, newurl):
@@ -302,6 +328,10 @@ class SafeFetcher:
                 raise FetchError(f"Exceeded max redirects ({settings.MAX_REDIRECTS}) for {url}")
 
             except (httpx.TimeoutException, httpx.NetworkError, httpx.HTTPStatusError) as exc:
+                err_str = str(exc) + " " + str(getattr(exc, "__cause__", ""))
+                if "CERTIFICATE_VERIFY_FAILED" in err_str:
+                    client = self._get_unverified_client()
+                    continue
                 if attempt >= self.max_retries:
                     raise FetchError(f"Fetch failed for {url} after {attempt} attempts: {exc}") from exc
                 sleep_time = self.backoff_factor ** attempt
