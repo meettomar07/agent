@@ -102,7 +102,7 @@ All dependencies are locked and managed via `pyproject.toml` and standard wheels
 | **Data Validation & Settings** | `pydantic` | `2.14.1` | High-speed data validation and serialization for schemas, facts, and models. |
 | | `pydantic-settings` | `2.16.1` | Environment variable parsing and `.env` loading with type coercion. |
 | | `pydantic_core` | `2.50.1` | Rust-based core engine powering Pydantic v2 validation. |
-| **Scheduling & Timezones** | `APScheduler` | `3.11.3` | Robust in-process job scheduler running twice-daily cron jobs with overlap protection. |
+| **Scheduling & Timezones** | `APScheduler` | `3.11.3` | Robust in-process job scheduler running hourly cron jobs with overlap protection. |
 | | `tzdata` / `tzlocal` | `2026.5` / `5.4.5`| Complete IANA timezone database supporting accurate `Asia/Kolkata` calculations. |
 | **Templating & Markdown** | `Jinja2` | `3.1.6` | Deterministic template engine generating factual recruitment blog posts without hallucination risk. |
 | | `MarkupSafe` | `3.0.4` | High-speed string escaping preventing XSS vulnerabilities. |
@@ -136,7 +136,7 @@ All settings are configured using the prefix `TESTKART_` in `.env` (or via OS en
 | **`TESTKART_DATA_DIR`** | `Path` | `data` | Base directory for database, lock files, and runtime state. |
 | **`TESTKART_DOCUMENTS_DIR`** | `Path` | `data/documents` | Storage directory where downloaded official PDFs/HTMLs are immutably cached. |
 | **`TESTKART_TIMEZONE`** | `str` | `Asia/Kolkata` | IANA timezone for discovery scheduling, scan logs, and timestamping. |
-| **`TESTKART_SCAN_HOURS`** | `list[int]`| `[6, 18]` | Hours of the day (24h format) when discovery scans run (06:00 and 18:00 IST). |
+| **`TESTKART_SCAN_HOURS`** | `list[int]`| `[0, 1, ..., 23]` | Hours of the day (24h format) when discovery scans run every hour at minute 00 IST. |
 | **`TESTKART_SCAN_MINUTES`** | `int` | `0` | Minute of the hour for discovery scans (00). |
 | **`TESTKART_ENABLE_BACKGROUND_SCHEDULER`**| `bool` | `False` | Whether the web server daemon automatically starts the APScheduler runner. |
 | **`TESTKART_SERVER_HOST`** | `str` | `127.0.0.1` | Localhost IP interface binding for web server. Rejects non-local connections. |
@@ -376,7 +376,7 @@ python -m testkart_intelligence.cli scan --source UPSC
 ```
 
 ### Step 5: Start the Background Scheduler Daemon
-To run the automated twice-daily discovery scheduler (06:00 and 18:00 IST):
+To run the automated hourly discovery scheduler (at minute 00, Asia/Kolkata):
 ```powershell
 python -m testkart_intelligence.cli scheduler
 ```
@@ -395,7 +395,7 @@ All operational tasks can be managed via `python -m testkart_intelligence.cli <c
 | **`metrics`** | *none* | Shows cumulative operational metrics, reliability %, uptime %, and mock publication counts. |
 | **`scan`** | `[--source CODE]` | Triggers an immediate discovery scan across all enabled sources or a specific source code. |
 | **`serve`** | `[--host H] [--port P]` | Starts the local Uvicorn web dashboard server (default: `127.0.0.1:8000`). |
-| **`scheduler`**| *none* | Runs the foreground twice-daily scheduler daemon with PID locking and graceful shutdown. |
+| **`scheduler`**| *none* | Runs the foreground hourly scheduler daemon with PID locking and graceful shutdown. |
 | **`sources`** | `list [--enabled-only]` | Lists all registered official government sources, domains, and active statuses. |
 | **`sources`** | `enable --code CODE` | Enables discovery scans for a specified authority (e.g. `--code UPSC`). |
 | **`sources`** | `disable --code CODE`| Disables discovery scans for a specified authority. |
@@ -460,7 +460,7 @@ All 12 sources are verified official government recruitment bodies and are curre
 
 ## 12. Scheduler & Windows Process Lifecycle
 
-The discovery scheduler runs twice daily at **06:00 and 18:00 IST** (Asia/Kolkata).
+The discovery scheduler runs hourly at **minute 00 IST** (Asia/Kolkata).
 
 ### Process Concurrency & PID Locking
 - **Lock File:** Stored at `data/scheduler.lock`. Contains the active process PID, start timestamp, and hostname.

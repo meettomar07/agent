@@ -329,7 +329,7 @@ def test_scheduler_lifecycle_and_duplicate_prevention(readiness_db):
         status = sched1.get_status()
         assert status["running"] is True
         assert status["timezone"] == "Asia/Kolkata"
-        assert status["scan_hours"] == [6, 18]
+        assert status["scan_hours"] == list(range(24))
         assert status["scan_minutes"] == 0
         assert status["next_run_time"] is not None
 

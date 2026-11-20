@@ -1,5 +1,5 @@
 """Acceptance tests for Pre-Production Operational Stability:
-1. Asia/Kolkata scheduler and twice-daily cron configuration
+1. Asia/Kolkata scheduler and hourly cron configuration
 2. Overlap prevention for concurrent scan jobs
 3. Orphaned scan recovery across restarts
 4. Source timeout, retry, partial failure, and logging

@@ -95,7 +95,7 @@ def test_scheduler_live_execution_and_overlap_prevention(pilot_db):
         status = scheduler.get_status()
         assert status["running"] is True
         assert status["timezone"] == "Asia/Kolkata"
-        assert status["scan_hours"] == [6, 18]
+        assert status["scan_hours"] == list(range(24))
         assert status["scan_minutes"] == 0
         assert status["next_run_time"] is not None
 
