@@ -27,9 +27,9 @@ class Settings(BaseSettings):
 
     # Scheduling
     TIMEZONE: str = "Asia/Kolkata"
-    SCAN_HOURS: List[int] = [6, 18]  # Twice daily at 06:00 and 18:00 IST
+    SCAN_HOURS: List[int] = list(range(24))  # Hourly scans every 1 hour (00:00 through 23:00 IST)
     SCAN_MINUTES: int = 0
-    ENABLE_BACKGROUND_SCHEDULER: bool = False  # Set to True for live daemon execution
+    ENABLE_BACKGROUND_SCHEDULER: bool = True  # Set to True for live daemon execution
 
     # HTTP & Crawler Settings
     REQUEST_TIMEOUT_SECONDS: float = 25.0

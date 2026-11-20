@@ -127,13 +127,16 @@ class DiscoveryEngine:
         if not expected_windows:
             return 0
 
+        # For hourly scans (interval <= 1 hour), use 25-minute tolerance to prevent window overlap
+        window_margin = timedelta(minutes=25) if len(settings.SCAN_HOURS) >= 12 else timedelta(minutes=45)
+
         missed_count = 0
         try:
             with get_db(self.db_path) as conn:
                 for w_dt in expected_windows:
                     w_iso = w_dt.isoformat()
-                    min_bound = (w_dt - timedelta(minutes=45)).isoformat()
-                    max_bound = (w_dt + timedelta(minutes=45)).isoformat()
+                    min_bound = (w_dt - window_margin).isoformat()
+                    max_bound = (w_dt + window_margin).isoformat()
 
                     existing = conn.execute(
                         """
@@ -303,7 +306,18 @@ class DiscoveryEngine:
                     dedup = DeduplicationEngine(conn)
 
                     for cand in candidates:
-                        cand_category = NoticeClassifier.classify(cand["title"], cand["url"])
+                        cand_title = cand.get("title", "")
+                        cand_url = cand.get("url", "")
+
+                        # Filter out historical archive notices from past years prior to current live cycle
+                        past_years = [int(y) for y in re.findall(r"\b(19\d\d|200\d|201\d|202[0-4])\b", cand_title)]
+                        has_live_year = bool(re.search(r"\b(2026|2027|2028)\b", cand_title))
+                        is_archive_url = bool(re.search(r"/(archive|archived|previous|old_advertisements?|old_notices?)/", cand_url, re.I))
+                        if is_archive_url or (past_years and not has_live_year):
+                            total_filtered_non_recruitment += 1
+                            continue
+
+                        cand_category = NoticeClassifier.classify(cand_title, cand_url)
                         if use_recruitment_only and cand_category != NoticeCategory.RECRUITMENT_NOTIFICATION:
                             total_filtered_non_recruitment += 1
                             continue

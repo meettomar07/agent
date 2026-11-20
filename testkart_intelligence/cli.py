@@ -110,9 +110,10 @@ def cmd_scheduler(args):
 
     scheduler = ScanScheduler()
     print("=================================================================")
-    print(" Testkart Intelligence - Twice-Daily Discovery Scan Scheduler")
+    print(" Testkart Intelligence - Official Notice Discovery Scheduler")
     print(f" Timezone: {settings.TIMEZONE}")
-    print(f" Hours:    {settings.SCAN_HOURS} (Minute: {settings.SCAN_MINUTES:02d})")
+    cadence_str = f"Every 1 hour at minute :{settings.SCAN_MINUTES:02d} (24x daily)" if len(settings.SCAN_HOURS) == 24 else f"Hours: {settings.SCAN_HOURS} (Minute: {settings.SCAN_MINUTES:02d})"
+    print(f" Cadence:  {cadence_str}")
     print("=================================================================")
     scheduler.start()
     status = scheduler.get_status()

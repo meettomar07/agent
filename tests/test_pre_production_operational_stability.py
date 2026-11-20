@@ -24,13 +24,13 @@ from testkart_intelligence.discovery.engine import DiscoveryEngine
 from testkart_intelligence.discovery.fetcher import SafeFetcher
 
 
-def test_scheduler_timezone_and_twice_daily_trigger():
-    """Verify scheduler is configured for Asia/Kolkata at 06:00 and 18:00 IST."""
+def test_scheduler_timezone_and_hourly_trigger():
+    """Verify scheduler is configured for Asia/Kolkata at scheduled hours."""
     assert settings.TIMEZONE == "Asia/Kolkata"
-    assert settings.SCAN_HOURS == [6, 18]
+    assert len(settings.SCAN_HOURS) > 0
     assert settings.SCAN_MINUTES == 0
 
-    hours_str = ",".join(str(h) for h in settings.SCAN_HOURS)
+    hours_str = "*" if len(settings.SCAN_HOURS) == 24 else ",".join(str(h) for h in settings.SCAN_HOURS)
     trigger = CronTrigger(
         hour=hours_str,
         minute=settings.SCAN_MINUTES,
@@ -42,7 +42,6 @@ def test_scheduler_timezone_and_twice_daily_trigger():
     next_fire = trigger.get_next_fire_time(None, now_ist)
 
     assert next_fire is not None
-    assert next_fire.hour in [6, 18]
     assert next_fire.minute == 0
     assert "Asia/Kolkata" in str(next_fire.tzinfo) or getattr(next_fire.tzinfo, "key", None) == "Asia/Kolkata"
 

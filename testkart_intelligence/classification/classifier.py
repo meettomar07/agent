@@ -185,6 +185,8 @@ class NoticeClassifier:
         r"\bexamination\s+schedule\b",
         r"\bschedule\s+of\s+(?:[a-zA-Z0-9\(\)\/\s\-]{0,40})?examination\b",
         r"\bschedule\s+of\s+interview\b",
+        r"\bprogramme\s+of\s+interview\b",
+        r"\bpersonality\s+test\b",
         r"\btime\s*table\b",
         r"\bdate\s+of\s+(?:commencement\s+of\s+)?examination\b",
         r"\bschedule\s+of\s+cbt\b",

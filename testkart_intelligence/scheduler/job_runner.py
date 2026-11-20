@@ -194,18 +194,19 @@ class ScanScheduler:
             # Detect any missed scan windows from prior downtime
             self.engine.check_and_record_missed_windows()
 
-            hours_str = ",".join(str(h) for h in settings.SCAN_HOURS)
+            hours_str = "*" if len(settings.SCAN_HOURS) == 24 else ",".join(str(h) for h in settings.SCAN_HOURS)
             trigger = CronTrigger(
                 hour=hours_str,
                 minute=settings.SCAN_MINUTES,
                 timezone=settings.TIMEZONE,
             )
 
+            job_name = "Hourly Official Notice Discovery" if len(settings.SCAN_HOURS) == 24 else "Official Notice Discovery"
             self.scheduler.add_job(
                 self.scan_job,
                 trigger=trigger,
-                id="twice_daily_discovery_scan",
-                name="Twice Daily Official Notice Discovery",
+                id="discovery_scan_job",
+                name=job_name,
                 replace_existing=True,
             )
 
@@ -223,9 +224,9 @@ class ScanScheduler:
             # Register exit handlers for guaranteed cleanup
             self._register_exit_handlers()
 
+        cadence_desc = "hourly scans (every 1 hour)" if len(settings.SCAN_HOURS) == 24 else f"scans for hours [{hours_str}]"
         logger.info(
-            f"Scheduler active: twice daily scans configured for hours [{hours_str}] "
-            f"at minute {settings.SCAN_MINUTES} ({settings.TIMEZONE})"
+            f"Scheduler active: {cadence_desc} at minute {settings.SCAN_MINUTES:02d} ({settings.TIMEZONE})"
         )
 
     def shutdown(self) -> None:
@@ -241,7 +242,11 @@ class ScanScheduler:
 
     def get_status(self) -> Dict[str, Any]:
         """Return runtime diagnostic status and calculated next fire times."""
-        job = self.scheduler.get_job("twice_daily_discovery_scan")
+        job = (
+            self.scheduler.get_job("discovery_scan_job")
+            or self.scheduler.get_job("twice_daily_discovery_scan")
+            or (self.scheduler.get_jobs()[0] if self.scheduler.get_jobs() else None)
+        )
         next_run = job.next_run_time.isoformat() if job and job.next_run_time else None
         return {
             "running": self.is_running,
