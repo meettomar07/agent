@@ -85,8 +85,8 @@ def fix_and_enrich():
         with get_db(DB_PATH) as conn:
             # Check or create version
             v_row = conn.execute(
-                "SELECT id FROM notice_versions WHERE notice_id = ? ORDER BY version_number DESC LIMIT 1",
-                (nid,),
+                "SELECT id FROM notice_versions WHERE notice_id = ? OR document_hash = ? LIMIT 1",
+                (nid, doc_hash),
             ).fetchone()
             if v_row:
                 version_id = v_row["id"]
@@ -96,7 +96,7 @@ def fix_and_enrich():
                 version_id = f"ver_{uuid.uuid4().hex[:12]}"
                 conn.execute(
                     """
-                    INSERT INTO notice_versions (
+                    INSERT OR REPLACE INTO notice_versions (
                         id, notice_id, version_number, document_url, document_hash,
                         document_type, storage_path, raw_text, page_count, retrieved_at
                     ) VALUES (?, ?, 1, ?, ?, ?, ?, ?, 1, ?)
