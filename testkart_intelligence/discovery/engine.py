@@ -1,6 +1,7 @@
 """Discovery Engine orchestrating source scans, deduplication, revision handling, and scan logging."""
 
 import uuid
+import re
 import time
 import logging
 from datetime import datetime, timezone

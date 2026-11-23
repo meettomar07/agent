@@ -13,7 +13,10 @@ SCHEMA_PATH = Path(__file__).resolve().parent / "schema.sql"
 def get_connection(db_path: Optional[Union[Path, str]] = None) -> sqlite3.Connection:
     """Create a configured sqlite3 connection with WAL mode and foreign keys enabled."""
     target_path = Path(db_path) if db_path else settings.DATABASE_PATH
-    target_path.parent.mkdir(parents=True, exist_ok=True)
+    try:
+        target_path.parent.mkdir(parents=True, exist_ok=True)
+    except (OSError, PermissionError):
+        pass
 
     conn = sqlite3.connect(
         str(target_path),
@@ -22,7 +25,10 @@ def get_connection(db_path: Optional[Union[Path, str]] = None) -> sqlite3.Connec
     )
     conn.row_factory = sqlite3.Row
     conn.execute("PRAGMA foreign_keys = ON;")
-    conn.execute("PRAGMA journal_mode = WAL;")
+    try:
+        conn.execute("PRAGMA journal_mode = WAL;")
+    except sqlite3.OperationalError:
+        conn.execute("PRAGMA journal_mode = DELETE;")
     conn.execute("PRAGMA busy_timeout = 10000;")
     return conn
 

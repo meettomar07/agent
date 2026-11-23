@@ -67,8 +67,11 @@ class Settings(BaseSettings):
 
     def ensure_directories(self) -> None:
         """Ensure necessary data directories exist."""
-        self.DATA_DIR.mkdir(parents=True, exist_ok=True)
-        self.DOCUMENTS_DIR.mkdir(parents=True, exist_ok=True)
+        try:
+            self.DATA_DIR.mkdir(parents=True, exist_ok=True)
+            self.DOCUMENTS_DIR.mkdir(parents=True, exist_ok=True)
+        except (OSError, PermissionError):
+            pass  # Gracefully ignore read-only file systems on serverless environments
 
 
 settings = Settings()

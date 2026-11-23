@@ -41,21 +41,34 @@ jinja_editorial_env = Environment(
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """Ensure database schema is ready, sources are seeded, and manage scheduler lifecycle."""
-    init_db()
-    with get_db() as conn:
-        seed_sources_if_empty(conn)
+    import os
+    try:
+        init_db()
+        with get_db() as conn:
+            seed_sources_if_empty(conn)
+    except Exception as exc:
+        import logging
+        logging.getLogger("testkart_intelligence").warning("Database startup notice: %s", exc)
 
     scheduler = None
-    if settings.ENABLE_BACKGROUND_SCHEDULER:
-        from testkart_intelligence.scheduler.job_runner import ScanScheduler
-        scheduler = ScanScheduler()
-        scheduler.start()
-        app.state.scheduler = scheduler
+    # Never start background loop thread inside serverless execution contexts
+    if settings.ENABLE_BACKGROUND_SCHEDULER and not os.environ.get("VERCEL"):
+        try:
+            from testkart_intelligence.scheduler.job_runner import ScanScheduler
+            scheduler = ScanScheduler()
+            scheduler.start()
+            app.state.scheduler = scheduler
+        except Exception as exc:
+            import logging
+            logging.getLogger("testkart_intelligence").warning("Scheduler startup notice: %s", exc)
 
     yield
 
     if scheduler:
-        scheduler.shutdown()
+        try:
+            scheduler.shutdown()
+        except Exception:
+            pass
 
 
 app = FastAPI(
@@ -116,6 +129,13 @@ class FactConfirmRequest(BaseModel):
 
 
 # --- API Endpoints ---
+
+@app.get("/")
+def root_redirect():
+    """Redirect root path to editorial articles dashboard."""
+    from fastapi.responses import RedirectResponse
+    return RedirectResponse(url="/editorial/articles")
+
 
 @app.get("/api/status")
 def get_system_status() -> Dict[str, Any]:
