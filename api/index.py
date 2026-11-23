@@ -1,7 +1,9 @@
 import os
-from pathlib import Path
-import shutil
 import sys
+import shutil
+from pathlib import Path
+from fastapi import Request
+from fastapi.responses import RedirectResponse
 
 # Ensure project root is available on sys.path
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -29,3 +31,25 @@ if os.environ.get("VERCEL"):
     os.environ["TESTKART_ENABLE_BACKGROUND_SCHEDULER"] = "false"
 
 from testkart_intelligence.api.app import app
+
+
+# Middleware to normalize Vercel serverless function path prefixes
+@app.middleware("http")
+async def normalize_vercel_paths(request: Request, call_next):
+    path = request.scope.get("path", "")
+    for prefix in ("/api/index.py", "/api/index"):
+        if path == prefix:
+            request.scope["path"] = "/"
+            break
+        elif path.startswith(prefix + "/"):
+            request.scope["path"] = path[len(prefix):]
+            break
+    return await call_next(request)
+
+
+# Direct route fallbacks
+@app.get("/api/index.py")
+@app.get("/api/index")
+@app.get("/api")
+def handle_direct_api_index():
+    return RedirectResponse(url="/editorial/articles")
