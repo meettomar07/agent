@@ -317,6 +317,8 @@ class EditorialService:
                 SELECT ba.id, ba.canonical_notice_id, ba.title, ba.template_type,
                        ba.status, ba.current_version_id, ba.updated_at, ba.created_at,
                        cn.authority_name, cn.classification as notice_classification,
+                       cn.published_date, cn.application_start_date, cn.application_end_date,
+                       cn.recency_status,
                        av.version_number, av.generated_by, av.content_hash
                 FROM blog_articles ba
                 JOIN canonical_notices cn ON ba.canonical_notice_id = cn.id

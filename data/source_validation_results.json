@@ -1,0 +1,839 @@
+[
+  {
+    "name": "Railway Recruitment Boards",
+    "input_url": "https://www.rrbcdg.gov.in/",
+    "status": "CONNECTION_FAILED",
+    "http_code": null,
+    "final_url": null,
+    "latency_sec": 0.0,
+    "notes": "URL error: [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1028)"
+  },
+  {
+    "name": "RRB Apply",
+    "input_url": "https://www.rrbapply.gov.in/",
+    "status": "ACCESSIBLE",
+    "http_code": 200,
+    "final_url": "https://www.rrbapply.gov.in/",
+    "latency_sec": 0.12,
+    "notes": ""
+  },
+  {
+    "name": "IBPS",
+    "input_url": "https://www.ibps.in/",
+    "status": "CONNECTION_FAILED",
+    "http_code": null,
+    "final_url": null,
+    "latency_sec": 0.0,
+    "notes": "URL error: [SSL: UNEXPECTED_MESSAGE] unexpected message (_ssl.c:1028)"
+  },
+  {
+    "name": "NTA",
+    "input_url": "https://nta.ac.in/",
+    "status": "ACCESSIBLE",
+    "http_code": 200,
+    "final_url": "https://nta.ac.in/",
+    "latency_sec": 0.36,
+    "notes": ""
+  },
+  {
+    "name": "UPSC",
+    "input_url": "https://upsc.gov.in/",
+    "status": "ACCESSIBLE",
+    "http_code": 200,
+    "final_url": "https://www.upsc.gov.in/",
+    "latency_sec": 0.41,
+    "notes": ""
+  },
+  {
+    "name": "RBI Opportunities",
+    "input_url": "https://opportunities.rbi.org.in/",
+    "status": "ACCESSIBLE",
+    "http_code": 200,
+    "final_url": "https://opportunities.rbi.org.in/",
+    "latency_sec": 0.44,
+    "notes": ""
+  },
+  {
+    "name": "SSC",
+    "input_url": "https://ssc.gov.in/",
+    "status": "ACCESSIBLE",
+    "http_code": 200,
+    "final_url": "https://ssc.gov.in/",
+    "latency_sec": 0.46,
+    "notes": ""
+  },
+  {
+    "name": "LIC",
+    "input_url": "https://www.licindia.in/",
+    "status": "ACCESSIBLE",
+    "http_code": 200,
+    "final_url": "https://www.licindia.in/",
+    "latency_sec": 0.05,
+    "notes": ""
+  },
+  {
+    "name": "SIDBI",
+    "input_url": "https://www.sidbi.in/",
+    "status": "ACCESSIBLE",
+    "http_code": 200,
+    "final_url": "https://www.sidbi.in/en/",
+    "latency_sec": 0.16,
+    "notes": ""
+  },
+  {
+    "name": "National Career Service",
+    "input_url": "https://www.ncs.gov.in/",
+    "status": "ACCESSIBLE",
+    "http_code": 200,
+    "final_url": "https://ncs.gov.in/",
+    "latency_sec": 0.33,
+    "notes": ""
+  },
+  {
+    "name": "UPSC Online",
+    "input_url": "https://upsconline.nic.in/",
+    "status": "ACCESSIBLE",
+    "http_code": 200,
+    "final_url": "https://upsconline.nic.in/candidate/realms/candidate-portal/protocol/openid-connect/auth?client_id=account&redirect_uri=https%3A%2F%2Fupsconline.nic.in%2Fcandidate%2Frealms%2Fcandidate-portal%2Faccount%2Flogin-redirect&state=0%2Ffaad452f-5ad0-403c-e148-9523096f3cce&response_type=code&scope=openid",
+    "latency_sec": 0.55,
+    "notes": ""
+  },
+  {
+    "name": "SBI Careers",
+    "input_url": "https://sbi.co.in/web/careers",
+    "status": "ACCESSIBLE",
+    "http_code": 200,
+    "final_url": "https://sbi.bank.in/web/careers",
+    "latency_sec": 0.55,
+    "notes": ""
+  },
+  {
+    "name": "SEBI",
+    "input_url": "https://www.sebi.gov.in/",
+    "status": "ACCESSIBLE",
+    "http_code": 200,
+    "final_url": "https://www.sebi.gov.in/",
+    "latency_sec": 0.3,
+    "notes": ""
+  },
+  {
+    "name": "CBSE",
+    "input_url": "https://www.cbse.gov.in/",
+    "status": "ACCESSIBLE",
+    "http_code": 200,
+    "final_url": "https://www.cbse.gov.in/",
+    "latency_sec": 0.11,
+    "notes": ""
+  },
+  {
+    "name": "NABARD",
+    "input_url": "https://www.nabard.org/",
+    "status": "ACCESSIBLE",
+    "http_code": 200,
+    "final_url": "https://www.nabard.org/Hindi/Default.aspx",
+    "latency_sec": 0.47,
+    "notes": ""
+  },
+  {
+    "name": "PFRDA",
+    "input_url": "https://pfrda.org.in/",
+    "status": "ACCESSIBLE",
+    "http_code": 200,
+    "final_url": "https://pfrda.org.in/",
+    "latency_sec": 0.29,
+    "notes": ""
+  },
+  {
+    "name": "CTET",
+    "input_url": "https://ctet.nic.in/",
+    "status": "ACCESSIBLE",
+    "http_code": 200,
+    "final_url": "https://ctet.nic.in/",
+    "latency_sec": 0.26,
+    "notes": ""
+  },
+  {
+    "name": "IRDAI",
+    "input_url": "https://irdai.gov.in/",
+    "status": "ACCESSIBLE",
+    "http_code": 200,
+    "final_url": "https://irdai.gov.in/",
+    "latency_sec": 0.59,
+    "notes": ""
+  },
+  {
+    "name": "UGC NET",
+    "input_url": "https://ugcnet.nta.ac.in/",
+    "status": "ACCESSIBLE",
+    "http_code": 200,
+    "final_url": "https://ugcnet.nta.ac.in/",
+    "latency_sec": 0.3,
+    "notes": ""
+  },
+  {
+    "name": "Indian Army",
+    "input_url": "https://joinindianarmy.nic.in/",
+    "status": "ACCESSIBLE",
+    "http_code": 200,
+    "final_url": "https://joinindianarmy.nic.in/Authentication.aspx",
+    "latency_sec": 0.1,
+    "notes": ""
+  },
+  {
+    "name": "KVS",
+    "input_url": "https://kvsangathan.nic.in/",
+    "status": "ACCESSIBLE",
+    "http_code": 200,
+    "final_url": "https://kvs.gov.in/",
+    "latency_sec": 0.63,
+    "notes": ""
+  },
+  {
+    "name": "IIBF",
+    "input_url": "https://www.iibf.org.in/",
+    "status": "ACCESSIBLE",
+    "http_code": 200,
+    "final_url": "https://www.iibf.org.in/",
+    "latency_sec": 0.72,
+    "notes": ""
+  },
+  {
+    "name": "IFSCA",
+    "input_url": "https://www.ifsca.gov.in/",
+    "status": "ACCESSIBLE",
+    "http_code": 200,
+    "final_url": "https://www.ifsca.gov.in/",
+    "latency_sec": 0.76,
+    "notes": ""
+  },
+  {
+    "name": "UGC",
+    "input_url": "https://www.ugc.gov.in/",
+    "status": "ACCESSIBLE",
+    "http_code": 200,
+    "final_url": "https://www.ugc.gov.in/",
+    "latency_sec": 0.62,
+    "notes": ""
+  },
+  {
+    "name": "Indian Navy",
+    "input_url": "https://www.joinindiannavy.gov.in/",
+    "status": "ACCESSIBLE",
+    "http_code": 200,
+    "final_url": "https://www.joinindiannavy.gov.in/",
+    "latency_sec": 0.21,
+    "notes": ""
+  },
+  {
+    "name": "AFCAT",
+    "input_url": "https://afcat.cdac.in/",
+    "status": "CONNECTION_FAILED",
+    "http_code": null,
+    "final_url": null,
+    "latency_sec": 0.0,
+    "notes": "URL error: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1028)"
+  },
+  {
+    "name": "DSSSB",
+    "input_url": "https://dsssb.delhi.gov.in/",
+    "status": "ACCESSIBLE",
+    "http_code": 200,
+    "final_url": "https://dsssb.delhi.gov.in/",
+    "latency_sec": 0.85,
+    "notes": ""
+  },
+  {
+    "name": "CRPF",
+    "input_url": "https://rect.crpf.gov.in/",
+    "status": "ACCESSIBLE",
+    "http_code": 200,
+    "final_url": "https://rect.crpf.gov.in/",
+    "latency_sec": 0.09,
+    "notes": ""
+  },
+  {
+    "name": "BSF",
+    "input_url": "https://rectt.bsf.gov.in/",
+    "status": "ACCESSIBLE",
+    "http_code": 200,
+    "final_url": "https://rectt.bsf.gov.in/",
+    "latency_sec": 0.18,
+    "notes": ""
+  },
+  {
+    "name": "CISF",
+    "input_url": "https://cisfrectt.cisf.gov.in/",
+    "status": "ACCESSIBLE",
+    "http_code": 200,
+    "final_url": "https://cisfrectt.cisf.gov.in/",
+    "latency_sec": 0.11,
+    "notes": ""
+  },
+  {
+    "name": "NESTS",
+    "input_url": "https://nests.tribal.gov.in/",
+    "status": "ACCESSIBLE",
+    "http_code": 200,
+    "final_url": "https://nests.tribal.gov.in/",
+    "latency_sec": 0.75,
+    "notes": ""
+  },
+  {
+    "name": "UPPSC",
+    "input_url": "https://uppsc.up.nic.in/",
+    "status": "CONNECTION_FAILED",
+    "http_code": null,
+    "final_url": null,
+    "latency_sec": 0.0,
+    "notes": "URL error: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)"
+  },
+  {
+    "name": "UPSSSC",
+    "input_url": "https://upsssc.gov.in/",
+    "status": "CONNECTION_FAILED",
+    "http_code": null,
+    "final_url": null,
+    "latency_sec": 0.0,
+    "notes": "URL error: [SSL: UNSAFE_LEGACY_RENEGOTIATION_DISABLED] unsafe legacy renegotiation disabled (_ssl.c:1028)"
+  },
+  {
+    "name": "BPSC",
+    "input_url": "https://bpsc.bihar.gov.in/",
+    "status": "ACCESSIBLE",
+    "http_code": 200,
+    "final_url": "https://bpsc.bihar.gov.in/",
+    "latency_sec": 0.12,
+    "notes": ""
+  },
+  {
+    "name": "UP Police Recruitment",
+    "input_url": "https://uppbpb.gov.in/",
+    "status": "ACCESSIBLE",
+    "http_code": 200,
+    "final_url": "https://uppbpb.gov.in/",
+    "latency_sec": 0.29,
+    "notes": ""
+  },
+  {
+    "name": "BSSC",
+    "input_url": "https://bssc.bihar.gov.in/",
+    "status": "CONNECTION_FAILED",
+    "http_code": null,
+    "final_url": null,
+    "latency_sec": 0.0,
+    "notes": "URL error: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)"
+  },
+  {
+    "name": "RSSB",
+    "input_url": "https://rssb.rajasthan.gov.in/",
+    "status": "CONNECTION_FAILED",
+    "http_code": null,
+    "final_url": null,
+    "latency_sec": 0.0,
+    "notes": "URL error: [SSL: UNSAFE_LEGACY_RENEGOTIATION_DISABLED] unsafe legacy renegotiation disabled (_ssl.c:1028)"
+  },
+  {
+    "name": "RPSC",
+    "input_url": "https://rpsc.rajasthan.gov.in/",
+    "status": "ACCESSIBLE",
+    "http_code": 200,
+    "final_url": "https://rpsc.rajasthan.gov.in/",
+    "latency_sec": 0.24,
+    "notes": ""
+  },
+  {
+    "name": "MPESB",
+    "input_url": "https://esb.mp.gov.in/",
+    "status": "CONNECTION_FAILED",
+    "http_code": null,
+    "final_url": null,
+    "latency_sec": 0.0,
+    "notes": "URL error: [SSL: UNSAFE_LEGACY_RENEGOTIATION_DISABLED] unsafe legacy renegotiation disabled (_ssl.c:1028)"
+  },
+  {
+    "name": "MPPSC",
+    "input_url": "https://mppsc.mp.gov.in/",
+    "status": "ACCESSIBLE",
+    "http_code": 200,
+    "final_url": "https://mppsc.mp.gov.in/",
+    "latency_sec": 0.16,
+    "notes": ""
+  },
+  {
+    "name": "HSSC",
+    "input_url": "https://hssc.gov.in/",
+    "status": "ACCESSIBLE",
+    "http_code": 200,
+    "final_url": "https://hssc.gov.in/",
+    "latency_sec": 0.17,
+    "notes": ""
+  },
+  {
+    "name": "MPSC",
+    "input_url": "https://mpsc.gov.in/",
+    "status": "ACCESSIBLE",
+    "http_code": 200,
+    "final_url": "https://mpsc.gov.in/",
+    "latency_sec": 0.14,
+    "notes": ""
+  },
+  {
+    "name": "HPSC",
+    "input_url": "https://hpsc.gov.in/",
+    "status": "ACCESSIBLE",
+    "http_code": 200,
+    "final_url": "https://hpsc.gov.in/en-us/",
+    "latency_sec": 0.68,
+    "notes": ""
+  },
+  {
+    "name": "WBPSC",
+    "input_url": "https://psc.wb.gov.in/",
+    "status": "CONNECTION_FAILED",
+    "http_code": null,
+    "final_url": null,
+    "latency_sec": 0.0,
+    "notes": "URL error: [SSL: UNSAFE_LEGACY_RENEGOTIATION_DISABLED] unsafe legacy renegotiation disabled (_ssl.c:1028)"
+  },
+  {
+    "name": "TNPSC",
+    "input_url": "https://tnpsc.gov.in/",
+    "status": "ACCESSIBLE",
+    "http_code": 200,
+    "final_url": "https://tnpsc.gov.in/",
+    "latency_sec": 0.51,
+    "notes": ""
+  },
+  {
+    "name": "ITBP",
+    "input_url": "https://recruitment.itbpolice.nic.in/",
+    "status": "ACCESSIBLE",
+    "http_code": 200,
+    "final_url": "https://recruitment.itbpolice.nic.in/",
+    "latency_sec": 1.91,
+    "notes": ""
+  },
+  {
+    "name": "Kerala PSC",
+    "input_url": "https://keralapsc.gov.in/",
+    "status": "ACCESSIBLE",
+    "http_code": 200,
+    "final_url": "https://keralapsc.gov.in/",
+    "latency_sec": 0.46,
+    "notes": ""
+  },
+  {
+    "name": "APSC",
+    "input_url": "https://apsc.nic.in/",
+    "status": "ACCESSIBLE",
+    "http_code": 200,
+    "final_url": "https://apsc.nic.in/",
+    "latency_sec": 0.24,
+    "notes": ""
+  },
+  {
+    "name": "New India Assurance",
+    "input_url": "https://www.newindia.co.in/",
+    "status": "ACCESSIBLE",
+    "http_code": 200,
+    "final_url": "https://www.newindia.co.in/",
+    "latency_sec": 3.82,
+    "notes": ""
+  },
+  {
+    "name": "JPSC",
+    "input_url": "https://jpsc.gov.in/",
+    "status": "ACCESSIBLE",
+    "http_code": 200,
+    "final_url": "https://jpsc.gov.in/",
+    "latency_sec": 0.16,
+    "notes": ""
+  },
+  {
+    "name": "JKPSC",
+    "input_url": "https://jkpsc.nic.in/",
+    "status": "CONNECTION_FAILED",
+    "http_code": null,
+    "final_url": null,
+    "latency_sec": 0.0,
+    "notes": "URL error: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)"
+  },
+  {
+    "name": "OPSC",
+    "input_url": "https://opsc.gov.in/",
+    "status": "ACCESSIBLE",
+    "http_code": 200,
+    "final_url": "https://opsc.gov.in/Public/OPSC/Default.aspx",
+    "latency_sec": 1.25,
+    "notes": ""
+  },
+  {
+    "name": "ISRO",
+    "input_url": "https://www.isro.gov.in/",
+    "status": "ACCESSIBLE",
+    "http_code": 200,
+    "final_url": "https://www.isro.gov.in/",
+    "latency_sec": 0.09,
+    "notes": ""
+  },
+  {
+    "name": "Agniveervayu",
+    "input_url": "https://agnipathvayu.cdac.in/",
+    "status": "HTTP_503",
+    "http_code": 503,
+    "final_url": null,
+    "latency_sec": 3.3,
+    "notes": "Server returned error code 503"
+  },
+  {
+    "name": "Delhi Police",
+    "input_url": "https://delhipolice.gov.in/",
+    "status": "ACCESSIBLE",
+    "http_code": 200,
+    "final_url": "https://delhipolice.gov.in/",
+    "latency_sec": 3.09,
+    "notes": ""
+  },
+  {
+    "name": "DRDO",
+    "input_url": "https://drdo.gov.in/",
+    "status": "ACCESSIBLE",
+    "http_code": 200,
+    "final_url": "https://xn--m1b0a2bb8esed.xn--11b7cb3a6a.xn--h2brj9c/drdo/hi/",
+    "latency_sec": 0.29,
+    "notes": ""
+  },
+  {
+    "name": "KPSC Karnataka",
+    "input_url": "https://kpsc.kar.nic.in/",
+    "status": "CONNECTION_FAILED",
+    "http_code": null,
+    "final_url": null,
+    "latency_sec": 0.0,
+    "notes": "URL error: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)"
+  },
+  {
+    "name": "AIIMS Examinations",
+    "input_url": "https://aiimsexams.ac.in/",
+    "status": "ACCESSIBLE",
+    "http_code": 200,
+    "final_url": "https://aiimsexams.ac.in/",
+    "latency_sec": 0.2,
+    "notes": ""
+  },
+  {
+    "name": "ESIC",
+    "input_url": "https://www.esic.gov.in/",
+    "status": "ACCESSIBLE",
+    "http_code": 200,
+    "final_url": "https://esic.gov.in/",
+    "latency_sec": 0.21,
+    "notes": ""
+  },
+  {
+    "name": "India Post GDS",
+    "input_url": "https://indiapostgdsonline.gov.in/",
+    "status": "ACCESSIBLE",
+    "http_code": 200,
+    "final_url": "https://indiapostgdsonline.gov.in/",
+    "latency_sec": 0.19,
+    "notes": ""
+  },
+  {
+    "name": "EPFO",
+    "input_url": "https://www.epfindia.gov.in/",
+    "status": "ACCESSIBLE",
+    "http_code": 200,
+    "final_url": "https://www.epfo.gov.in:443/",
+    "latency_sec": 0.18,
+    "notes": ""
+  },
+  {
+    "name": "FSSAI",
+    "input_url": "https://fssai.gov.in/",
+    "status": "ACCESSIBLE",
+    "http_code": 200,
+    "final_url": "https://fssai.gov.in/",
+    "latency_sec": 0.08,
+    "notes": ""
+  },
+  {
+    "name": "e-Gazette",
+    "input_url": "https://egazette.gov.in/",
+    "status": "CONNECTION_FAILED",
+    "http_code": null,
+    "final_url": null,
+    "latency_sec": 0.0,
+    "notes": "URL error: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)"
+  },
+  {
+    "name": "Press Information Bureau",
+    "input_url": "https://www.pib.gov.in/",
+    "status": "ACCESSIBLE",
+    "http_code": 200,
+    "final_url": "https://www.pib.gov.in/index.aspx?reg=48&lang=2",
+    "latency_sec": 0.16,
+    "notes": ""
+  },
+  {
+    "name": "JEE Advanced",
+    "input_url": "https://jeeadv.ac.in/",
+    "status": "ACCESSIBLE",
+    "http_code": 200,
+    "final_url": "https://jeeadv.ac.in/",
+    "latency_sec": 0.16,
+    "notes": ""
+  },
+  {
+    "name": "NEET UG (NTA)",
+    "input_url": "https://exams.nta.ac.in/NEET/",
+    "status": "HTTP_404",
+    "http_code": 404,
+    "final_url": null,
+    "latency_sec": 0.41,
+    "notes": "Server returned error code 404"
+  },
+  {
+    "name": "JEE Main",
+    "input_url": "https://jeemain.nta.ac.in/",
+    "status": "CONNECTION_FAILED",
+    "http_code": null,
+    "final_url": null,
+    "latency_sec": 0.0,
+    "notes": "URL error: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate in certificate chain (_ssl.c:1028)"
+  },
+  {
+    "name": "NEET PG (NBEMS)",
+    "input_url": "https://natboard.edu.in/",
+    "status": "BLOCKED_WAF_BOT_DEFENSE",
+    "http_code": 403,
+    "final_url": null,
+    "latency_sec": 0.47,
+    "notes": "HTTP 403: WAF/Cloudflare/NIC bot defense blocks automated HTTP clients; requires residential IP or specialized browser headers."
+  },
+  {
+    "name": "CUET UG",
+    "input_url": "https://exams.nta.ac.in/CUET-UG/",
+    "status": "HTTP_404",
+    "http_code": 404,
+    "final_url": null,
+    "latency_sec": 0.32,
+    "notes": "Server returned error code 404"
+  },
+  {
+    "name": "GATE (IIT Roorkee 2025)",
+    "input_url": "https://gate2025.iitr.ac.in/",
+    "status": "CONNECTION_FAILED",
+    "http_code": null,
+    "final_url": null,
+    "latency_sec": 0.0,
+    "notes": "URL error: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)"
+  },
+  {
+    "name": "CUET PG",
+    "input_url": "https://exams.nta.ac.in/CUET-PG/",
+    "status": "HTTP_404",
+    "http_code": 404,
+    "final_url": null,
+    "latency_sec": 0.31,
+    "notes": "Server returned error code 404"
+  },
+  {
+    "name": "CLAT (Consortium of NLUs)",
+    "input_url": "https://consortiumofnlus.ac.in/",
+    "status": "ACCESSIBLE",
+    "http_code": 200,
+    "final_url": "https://consortiumofnlus.ac.in/",
+    "latency_sec": 0.14,
+    "notes": ""
+  },
+  {
+    "name": "CAT (IIM)",
+    "input_url": "https://iimcat.ac.in/",
+    "status": "ACCESSIBLE",
+    "http_code": 200,
+    "final_url": "https://iimcat.ac.in/per/g06/pub/32842/ASM/WebPortal/1/index.html?32842@@1@@1",
+    "latency_sec": 0.38,
+    "notes": ""
+  },
+  {
+    "name": "AILET (NLU Delhi)",
+    "input_url": "https://nationallawuniversitydelhi.in/",
+    "status": "ACCESSIBLE",
+    "http_code": 200,
+    "final_url": "https://nationallawuniversitydelhi.in/",
+    "latency_sec": 0.2,
+    "notes": ""
+  },
+  {
+    "name": "FreeJobAlert",
+    "input_url": "https://www.freejobalert.com/",
+    "status": "ACCESSIBLE",
+    "http_code": 200,
+    "final_url": "https://www.freejobalert.com/",
+    "latency_sec": 0.06,
+    "notes": ""
+  },
+  {
+    "name": "Career Power",
+    "input_url": "https://www.careerpower.in/",
+    "status": "ACCESSIBLE",
+    "http_code": 200,
+    "final_url": "https://www.careerpower.in/",
+    "latency_sec": 0.13,
+    "notes": ""
+  },
+  {
+    "name": "Testbook",
+    "input_url": "https://testbook.com/",
+    "status": "ACCESSIBLE",
+    "http_code": 200,
+    "final_url": "https://testbook.com/",
+    "latency_sec": 0.06,
+    "notes": ""
+  },
+  {
+    "name": "Sarkari Result",
+    "input_url": "https://www.sarkariresult.com/",
+    "status": "ACCESSIBLE",
+    "http_code": 200,
+    "final_url": "https://www.sarkariresult.com/",
+    "latency_sec": 0.47,
+    "notes": ""
+  },
+  {
+    "name": "Adda247",
+    "input_url": "https://www.adda247.com/",
+    "status": "ACCESSIBLE",
+    "http_code": 200,
+    "final_url": "https://www.adda247.com/",
+    "latency_sec": 0.14,
+    "notes": ""
+  },
+  {
+    "name": "Careers360",
+    "input_url": "https://www.careers360.com/",
+    "status": "ACCESSIBLE",
+    "http_code": 200,
+    "final_url": "https://www.careers360.com/",
+    "latency_sec": 0.13,
+    "notes": ""
+  },
+  {
+    "name": "Shiksha",
+    "input_url": "https://www.shiksha.com/",
+    "status": "BLOCKED_WAF_BOT_DEFENSE",
+    "http_code": 403,
+    "final_url": null,
+    "latency_sec": 0.08,
+    "notes": "HTTP 403: WAF/Cloudflare/NIC bot defense blocks automated HTTP clients; requires residential IP or specialized browser headers."
+  },
+  {
+    "name": "Jagran Josh",
+    "input_url": "https://www.jagranjosh.com/",
+    "status": "ACCESSIBLE",
+    "http_code": 200,
+    "final_url": "https://www.jagranjosh.com/",
+    "latency_sec": 0.23,
+    "notes": ""
+  },
+  {
+    "name": "BankersAdda",
+    "input_url": "https://www.bankersadda.com/",
+    "status": "ACCESSIBLE",
+    "http_code": 200,
+    "final_url": "https://www.bankersadda.com/",
+    "latency_sec": 0.07,
+    "notes": ""
+  },
+  {
+    "name": "Oliveboard",
+    "input_url": "https://www.oliveboard.in/",
+    "status": "ACCESSIBLE",
+    "http_code": 200,
+    "final_url": "https://www.oliveboard.in/",
+    "latency_sec": 0.17,
+    "notes": ""
+  },
+  {
+    "name": "Physics Wallah",
+    "input_url": "https://www.pw.live/",
+    "status": "ACCESSIBLE",
+    "http_code": 200,
+    "final_url": "https://www.pw.live/",
+    "latency_sec": 0.13,
+    "notes": ""
+  },
+  {
+    "name": "Employment News",
+    "input_url": "https://employmentnews.gov.in/",
+    "status": "TIMEOUT",
+    "http_code": null,
+    "final_url": null,
+    "latency_sec": 0.0,
+    "notes": "Request timed out."
+  },
+  {
+    "name": "Indian Air Force",
+    "input_url": "https://careerairforce.gov.in/",
+    "status": "TIMEOUT",
+    "http_code": null,
+    "final_url": null,
+    "latency_sec": 0.0,
+    "notes": "Request timed out."
+  },
+  {
+    "name": "Indian Coast Guard",
+    "input_url": "https://joinindiancoastguard.cdac.in/",
+    "status": "ACCESSIBLE",
+    "http_code": 200,
+    "final_url": "https://joinindiancoastguard.cdac.in/",
+    "latency_sec": 12.07,
+    "notes": ""
+  },
+  {
+    "name": "NVS",
+    "input_url": "https://navodaya.gov.in/",
+    "status": "ACCESSIBLE",
+    "http_code": 200,
+    "final_url": "https://navodaya.gov.in/nvs/",
+    "latency_sec": 14.27,
+    "notes": ""
+  },
+  {
+    "name": "BARC",
+    "input_url": "https://recruit.barc.gov.in/",
+    "status": "TIMEOUT",
+    "http_code": null,
+    "final_url": null,
+    "latency_sec": 0.0,
+    "notes": "Connection timed out after 12s."
+  },
+  {
+    "name": "ASRB",
+    "input_url": "https://asrb.org.in/",
+    "status": "TIMEOUT",
+    "http_code": null,
+    "final_url": null,
+    "latency_sec": 0.0,
+    "notes": "Request timed out."
+  },
+  {
+    "name": "GPSC",
+    "input_url": "https://gpsc.gujarat.gov.in/",
+    "status": "TIMEOUT",
+    "http_code": null,
+    "final_url": null,
+    "latency_sec": 0.0,
+    "notes": "Connection timed out after 12s."
+  },
+  {
+    "name": "CSIR",
+    "input_url": "https://csir.res.in/",
+    "status": "TIMEOUT",
+    "http_code": null,
+    "final_url": null,
+    "latency_sec": 0.0,
+    "notes": "Request timed out."
+  }
+]

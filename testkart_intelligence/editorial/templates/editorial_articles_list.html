@@ -26,6 +26,7 @@
         <th>Article ID</th>
         <th>Authority &amp; Draft Title</th>
         <th>Notice Type</th>
+        <th style="min-width: 140px;">Important Dates</th>
         <th>Status</th>
         <th>Version</th>
         <th>Author / Agent</th>
@@ -42,6 +43,21 @@
           <span style="font-size: 0.9rem;">{{ a.title }}</span>
         </td>
         <td><span class="status-pill status-info">{{ a.notice_classification }}</span></td>
+        <td>
+          {% if a.application_end_date %}
+            <div style="font-size: 0.82rem; color: #b45309; font-weight: 600;">
+              Last Date: {{ a.application_end_date }}
+            </div>
+          {% endif %}
+          {% if a.published_date %}
+            <div style="font-size: 0.74rem; color: var(--text-muted);">
+              Pub: {{ a.published_date }}
+            </div>
+          {% endif %}
+          {% if not a.application_end_date and not a.published_date %}
+            <span style="font-size: 0.78rem; color: var(--text-muted);">&mdash;</span>
+          {% endif %}
+        </td>
         <td>
           {% if a.status == 'APPROVED' %}
             <span class="status-pill status-pass">APPROVED</span>
